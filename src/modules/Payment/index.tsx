@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import s from './style.module.scss';
-import { Button, Form, Input, Radio, Space, message } from 'antd';
+import { Button, Form, Input, Radio, Space } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { paymentMethod } from '@/constants/method';
@@ -16,19 +16,16 @@ import { createOrder } from '@/api/orderAPI';
 
 const PaymentModule = () => {
   const [value, setValue] = useState<string>('');
-
+  const [dataStorage, setDataStorage] = useState<any | undefined>();
   const dispatch = useDispatch();
   const router = useRouter();
-
-  const data =
-    typeof window !== 'undefined' &&
-    JSON.parse(localStorage.getItem('cart') || '{}');
-  const { cartItems, itemsPrice, shippingPrice, taxPrice, totalPrice } = data;
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const localUser = localStorage.getItem('userInfo');
       const localCart = localStorage.getItem('cart');
+      const data = JSON.parse(localStorage.getItem('cart') || '{}');
+      setDataStorage(data);
       if (!localUser || !localCart) {
         router.push('/login');
       }
@@ -45,13 +42,13 @@ const PaymentModule = () => {
 
     try {
       const res = await createOrder({
-        orderItems: data.cartItems,
+        orderItems: dataStorage.cartItems,
         shippingAddress: values,
         paymentMethod: value,
-        itemsPrice: data.itemsPrice,
-        taxPrice: data.taxPrice,
-        shippingPrice: data.shippingPrice,
-        totalPrice: data.totalPrice,
+        itemsPrice: dataStorage.itemsPrice,
+        taxPrice: dataStorage.taxPrice,
+        shippingPrice: dataStorage.shippingPrice,
+        totalPrice: dataStorage.totalPrice,
       });
       dispatch(clearCartItems());
       // @ts-ignore:next-line
@@ -187,26 +184,33 @@ const PaymentModule = () => {
             </Button>
           </Form.Item>
         </Form>
-        {/* {isLoading && <p>Loading ...</p>} */}
       </div>
 
-      <div className={`col-span-6`}>
-        {cartItems.map((item: any, index: number) => (
-          <div key={index} className={s.orderItem}>
-            <img src={item.image} alt={item.name} />
-            <Link href={`/product/${item._id}`}>{item.name}</Link>
+      {dataStorage && (
+        <div className={`col-span-6`}>
+          {dataStorage.cartItems &&
+            dataStorage.cartItems.map((item: any, index: number) => (
+              <div key={index} className={s.orderItem}>
+                <img src={item.image} alt={item.name} />
+                <Link href={`/product/${item._id}`}>{item.name}</Link>
+                <p>
+                  Price: ${item.price} X {item.qty}
+                </p>
+              </div>
+            ))}
+          <div className={s.sumary}>
+            <p>Subtotal: ${dataStorage.itemsPrice}</p>
             <p>
-              Price: ${item.price} X {item.qty}
+              Shipping:{' '}
+              {dataStorage.shippingPrice == 0
+                ? 'Free ship'
+                : dataStorage.shippingPrice}
             </p>
+            <p>Tax: {dataStorage.taxPrice}</p>
+            <p>Total: {dataStorage.totalPrice}</p>
           </div>
-        ))}
-        <div className={s.sumary}>
-          <p>Subtotal: ${itemsPrice}</p>
-          <p>Shipping: {shippingPrice == 0 ? 'Free ship' : shippingPrice}</p>
-          <p>Tax: {taxPrice}</p>
-          <p>Total: {totalPrice}</p>
         </div>
-      </div>
+      )}
     </div>
   );
 };
