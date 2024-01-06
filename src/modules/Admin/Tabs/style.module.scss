@@ -1,0 +1,8 @@
+.adminTabs {
+  display: flex;
+  gap: rem(20px);
+
+  &_item {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@Components/*": [
+        "./src/components/*"
+      ],
+      "@Components": [
+        "./src/components"
+      ],
+      "@Constants": [
+        "./src/constants"
+      ],
+      "@Constants/*": [
+        "./src/constants/*"
+      ],
+      "@Modules/*": [
+        "./src/modules/*"
+      ],
+      "@Modules": [
+        "./src/modules"
+      ],
+      "@Services": [
+        "./src/services"
+      ],
+      "@Services/*": [
+        "./src/services/*"
+      ],
+      "@Hooks": [
+        "./src/hooks"
+      ],
+      "@Hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@Styles/*": [
+        "./src/styles/*"
+      ],
+      "@Styles": [
+        "./src/styles"
+      ],
+      "@Types/*": ["./src/types/*"],
+      "@Types": ["./src/types"],
+      "@Utils/*": [
+        "./src/utils/*"
+      ],
+      "@Utils": [
+        "./src/utils"
+      ],
+      "@Api/*": [
+        "./src/api/*"
+      ],
+      "@Api": [
+        "./src/api"
+      ]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/types/**/*.d.ts", "../server/src/data/product.ts"],
+  "exclude": [
+    "node_modules"
+  ]
+}

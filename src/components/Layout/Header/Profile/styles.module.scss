@@ -1,0 +1,25 @@
+.profile {
+  position: relative;
+
+  .profileTitle {
+    cursor: pointer;
+  }
+
+  .profileOptions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(100%);
+    display: none;
+    width: fit-content;
+    min-width: rem(50px);
+
+    &_item {
+      cursor: pointer;
+    }
+
+    &.open {
+      display: block;
+    }
+  }
+}

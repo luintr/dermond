@@ -1,0 +1,15 @@
+body:not(.is-loading-ready).is-loading {
+  opacity: 0;
+}
+
+.anim-paragraph {
+  .line {
+    clip-path: inset(0);
+  }
+}
+
+.anim-heading {
+  .line {
+    clip-path: inset(0);
+  }
+}
