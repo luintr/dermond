@@ -75,6 +75,12 @@
       ],
       "@Api": [
         "./src/api"
+      ],
+      "@Images/*": [
+        "./src/images/*"
+      ],
+      "@Images": [
+        "./src/images"
       ]
     }
   },

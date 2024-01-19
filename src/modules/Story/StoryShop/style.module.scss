@@ -1,0 +1,48 @@
+.storyShop {
+  &_wrap {
+    margin: 0 rem(-40px);
+    position: relative;
+  }
+
+  &_image {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &_content {
+    color: var(--tan);
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+    bottom: vh(128px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_title {
+    font-size: rem(64px);
+    line-height: rem(64px);
+    margin-bottom: rem(34px);
+  }
+
+  .button {
+    color: var(--tan);
+    border-color: var(--tan);
+
+    svg {
+      path {
+        stroke: var(--tan)
+      }
+    }
+  }
+}

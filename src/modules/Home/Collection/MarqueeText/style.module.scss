@@ -1,0 +1,50 @@
+.textMarquee {
+  display: flex;
+  background: transparent;
+  border: 1px solid var(--black-08);
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(8px) 0;
+  font-size: rem(40px);
+  line-height: rem(53.92px);
+  overflow: hidden;
+
+  &_text {
+    display: flex;
+    align-items: center;
+    margin-right: rem(50px);
+    text-transform: uppercase;
+
+    span {
+      width: max-content;
+
+      &.img {
+        height: rem(64px);
+        border-radius: rem(5px);
+
+        img {
+          width: auto;
+          height: 100%;
+        }
+      }
+    }
+
+    &.text1 {
+      span {
+        margin-right: rem(50px);
+      }
+    }
+
+    &.text2 {
+      span {
+        &:not(:last-child) {
+          margin-right: rem(50px);
+        }
+
+        &:last-child {
+          margin-right: rem(30px);
+        }
+      }
+    }
+  }
+}

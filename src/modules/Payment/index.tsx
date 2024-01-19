@@ -193,6 +193,8 @@ const PaymentModule = () => {
               <div key={index} className={s.orderItem}>
                 <img src={item.image} alt={item.name} />
                 <Link href={`/product/${item._id}`}>{item.name}</Link>
+                <div>color: {item.color}</div>
+                <div>size: {item.size}</div>
                 <p>
                   Price: ${item.price} X {item.qty}
                 </p>

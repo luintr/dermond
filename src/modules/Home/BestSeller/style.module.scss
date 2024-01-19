@@ -1,0 +1,86 @@
+.bestSellerSection {
+  background: var(--black-08);
+  padding: rem(40px) 0;
+
+  .container {
+    .itemInfo {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color: var(--tan);
+
+      &_title {
+        font-size: rem(48px);
+        line-height: rem(56.35px);
+        color: var(--tan);
+        font-weight: 900;
+
+        span {
+          display: block;
+          color: var(--coral)
+        }
+      }
+
+      &_name {
+        font-size: rem(48px);
+        line-height: rem(48px);
+        margin-bottom: rem(48px);
+        max-width: rem(410px);
+      }
+
+      .sliderNumber {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: rem(64px);
+        line-height: rem(64px);
+        letter-spacing: rem(6.4px);
+      }
+    }
+
+    .itemSlider {
+      position: relative;
+
+      &_btn {
+        position: absolute;
+        top: 50%;
+        left: rem(40px);
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 2;
+
+        &.right {
+          left: unset;
+          right: rem(40px);
+          transform: translateY(-50%) rotate(180deg);
+        }
+      }
+
+      &_slider {
+        position: relative;
+        border-radius: rem(10px);
+        overflow: hidden;
+
+        &::before {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.00) 100%),
+        }
+      }
+    }
+  }
+}
+
+.roundedText {
+  position: absolute;
+  bottom: rem(100px);
+  right: rem(40px);
+}

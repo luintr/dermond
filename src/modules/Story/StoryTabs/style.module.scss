@@ -1,0 +1,76 @@
+.storyTabs {
+  margin-bottom: rem(120px);
+
+  .tabList {
+    border: rem(1px) solid var(--coral);
+    border-radius: rem(20px);
+    display: flex;
+    min-height: rem(990px);
+    overflow: hidden;
+
+    .tabItem {
+      width: 20%;
+      padding: rem(40px);
+      position: relative;
+      cursor: pointer;
+
+
+      .number {
+        font-size: rem(64px);
+        line-height: rem(64px);
+        margin-bottom: rem(24px);
+      }
+
+      .title {
+        font-size: rem(64px);
+        line-height: rem(64px);
+        letter-spacing: rem(6.4px);
+        margin-bottom: rem(16px);
+      }
+
+      &_initial {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+          height: 80%;
+        }
+      }
+
+      &_service {
+        font-size: rem(24px);
+        line-height: rem(24px);
+        position: absolute;
+        top: rem(40px);
+        left: rem(40px);
+      }
+
+      &_enhance {
+        width: rem(680px);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+
+        .content {
+          width: rem(430px);
+          align-self: flex-end;
+        }
+      }
+
+      .wrap_roundedText {
+        position: absolute;
+        right: rem(140px);
+        bottom: rem(100px);
+
+        .roundedText {
+          position: relative;
+        }
+      }
+    }
+  }
+}

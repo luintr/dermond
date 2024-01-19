@@ -1,0 +1,41 @@
+.followSection {
+  padding-top: rem(735px);
+  position: relative;
+  z-index: 3;
+
+  .container {
+
+    .follow {
+      text-align: center;
+
+      &_title {
+        font-size: rem(64px);
+        line-height: rem(86.27px);
+        margin-bottom: rem(32px);
+      }
+
+      &_content {
+        font-size: rem(24px);
+        line-height: rem(28.18px);
+        margin-bottom: rem(16px);
+      }
+    }
+
+    .parallaxBg {
+      margin: 0 rem(-40px);
+    }
+
+    .svgAnimate {
+      position: absolute;
+      top: rem(128px);
+      left: 0;
+      width: 100%;
+      max-height: rem(900px);
+
+      svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

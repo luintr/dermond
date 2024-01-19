@@ -117,7 +117,7 @@ const ProductTable = ({ setProductID, setEditMode }: IProductTable) => {
       <Table
         className={`col-span-12`}
         columns={columns}
-        dataSource={products}
+        dataSource={[...products].reverse()}
         rowKey="_id"
       />
     </div>

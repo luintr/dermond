@@ -1,0 +1,22 @@
+.button {
+  font-size: rem(20px);
+  line-height: rem(20px);
+  letter-spacing: rem(1px);
+  border: rem(1px) solid var(--black-08);
+  border-radius: rem(100px);
+  padding: rem(8px) rem(24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(24px);
+  width: fit-content;
+
+  span {
+    width: rem(12px);
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

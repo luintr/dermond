@@ -3,29 +3,32 @@ import React, { ReactNode } from 'react';
 import Header from './Header';
 import { Provider } from 'react-redux';
 import store from '@/store/store';
-import {
-  PayPalScriptProvider,
-  ScriptProviderProps,
-} from '@paypal/react-paypal-js';
+import s from './style.module.scss';
+import Footer from './Footer';
+import { GridDebug } from './GridDebug';
+import CartModel from '../CartModel';
+import LenisScroller from '../Lenis';
+
 type ILayout = {
   children: ReactNode;
   className: string;
 };
 
 const Layout = ({ children, className }: ILayout) => {
-  const paypalOptions: ScriptProviderProps['options'] = {
-    clientId: process.env.PAYPAL_CLIENT_ID || '',
-    currency: 'VND',
-  };
-
   return (
     <Provider store={store}>
-      <PayPalScriptProvider options={paypalOptions} deferLoading={true}>
-        <body className={className}>
+      <body
+        className={`${className} ${s.mainLayout}`}
+      >
+        <LenisScroller>
           <Header />
           {children}
-        </body>
-      </PayPalScriptProvider>
+          <Footer />
+          <CartModel />
+        </LenisScroller>
+
+        {process.env.NODE_ENV === 'development' && <GridDebug />}
+      </body>
     </Provider>
   );
 };

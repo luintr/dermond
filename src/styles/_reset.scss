@@ -136,6 +136,31 @@ table {
   border-spacing: 0;
 }
 
+html {
+  box-sizing: border-box;
+  font-size: 10px !important;
+  
+  // /* width */
+  // ::-webkit-scrollbar {
+  //   width: rem(4px);
+  // }
+
+  // /* Track */
+  // ::-webkit-scrollbar-track {
+  //   background: var(--body-bg);
+  //   width: rem(4px);
+  // }
+
+  // /* Handle */
+  // ::-webkit-scrollbar-thumb {
+  //   background: var(--gold);
+  // }
+
+  @include pcSmall {
+    font-size: vw(10px) !important;
+  }
+}
+
 div,
 button,
 p,
@@ -162,4 +187,9 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+body {
+  font-size: rem(20px);
+  color: var(--black-08);
 }

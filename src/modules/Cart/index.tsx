@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ROUTE_PATH } from '@/constants/route';
-import { Select as AntdSelect } from 'antd';
+import { Select as AntdSelect, Radio } from 'antd';
 import { ICartItem } from '@/types/global';
 import { addToCart, removeFromCart } from '@/store/slices/cartSlice';
 
@@ -53,31 +53,67 @@ const CartModule = () => {
                   <img src={item.image} alt="image" />
                 </div>
                 <div>
-                  <Link
-                    href={`/product/${item._id}`}
-                    className={s.cartItem_title}
+                  <div>
+                    <Link
+                      href={`/product/${item._id}`}
+                      className={s.cartItem_title}
+                    >
+                      {item.name}
+                    </Link>
+                  </div>
+                  <div className={s.cartItem_qty}>
+                    <AntdSelect
+                      value={item.qty.toString()}
+                      onChange={value => addtoCartHandler(item, Number(value))}
+                    >
+                      {Array.from({ length: item.countInStock }, (_, index) => (
+                        <Option key={index} value={(index + 1).toString()}>
+                          {index + 1}
+                        </Option>
+                      ))}
+                    </AntdSelect>
+                  </div>
+
+                  <div>
+                    <Radio.Group
+                      value={item.size}
+                      onChange={e => {
+                        addtoCartHandler(
+                          { ...item, size: e.target.value },
+                          item.qty
+                        );
+                      }}
+                    >
+                      <Radio.Button value="S">S</Radio.Button>
+                      <Radio.Button value="M">M</Radio.Button>
+                      <Radio.Button value="L">L</Radio.Button>
+                    </Radio.Group>
+                  </div>
+
+                  <div>
+                    <Radio.Group
+                      value={item.color}
+                      onChange={e => {
+                        addtoCartHandler(
+                          { ...item, color: e.target.value },
+                          item.qty
+                        );
+                      }}
+                    >
+                      <Radio.Button value="be">Be</Radio.Button>
+                      <Radio.Button value="brown">Brown</Radio.Button>
+                      <Radio.Button value="black">Black</Radio.Button>
+                      <Radio.Button value="white">White</Radio.Button>
+                    </Radio.Group>
+                  </div>
+
+                  <p className={s.cartItem_price}>${item.price}</p>
+                  <div
+                    className={s.cartItem_delete}
+                    onClick={() => removeFromCartHandler(item._id)}
                   >
-                    {item.name}
-                  </Link>
-                  <p className={s.cartItem_price}>{item.price}</p>
-                </div>
-                <div className={s.cartItem_qty}>
-                  <AntdSelect
-                    value={item.qty.toString()}
-                    onChange={value => addtoCartHandler(item, Number(value))}
-                  >
-                    {Array.from({ length: item.countInStock }, (_, index) => (
-                      <Option key={index} value={(index + 1).toString()}>
-                        {index + 1}
-                      </Option>
-                    ))}
-                  </AntdSelect>
-                </div>
-                <div
-                  className={s.cartItem_delete}
-                  onClick={() => removeFromCartHandler(item._id)}
-                >
-                  Delete
+                    Delete
+                  </div>
                 </div>
               </div>
             ))}

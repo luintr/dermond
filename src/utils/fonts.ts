@@ -1,13 +1,21 @@
-import { Russo_One, Ubuntu } from 'next/font/google';
+import { Cinzel, Pinyon_Script, Playfair_Display, Raleway } from 'next/font/google';
 
-export const contentFont = Ubuntu({
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
+export const contentFont = Raleway({
+  weight: ["400", "500", "600", "700", "800", "900"],
   subsets: ['latin'],
-  display: 'swap',
-});
+})
 
-export const titleFont = Russo_One({
+export const playfairFont = Playfair_Display({
   weight: '400',
   subsets: ['latin'],
 });
+
+export const cinzelFont = Cinzel({
+  weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ['latin'],
+});
+
+export const pinyonFont = Pinyon_Script({
+  weight: "400",
+  subsets: ['latin'],
+})

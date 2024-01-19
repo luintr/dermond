@@ -1,0 +1,76 @@
+.seasonSection {
+  position: relative;
+  z-index: 2;
+
+  .container {
+    .seasonDesc {
+      position: relative;
+      font-size: rem(20px);
+      line-height: rem(22px);
+      letter-spacing: rem(2px);
+      padding-top: rem(120px);
+
+      &_title {
+        font-size: rem(128px);
+        line-height: rem(128px);
+        margin-bottom: rem(18px);
+      }
+
+      &_content {
+        margin-bottom: rem(76px);
+      }
+
+      &_navigateBox {
+        p {
+          margin-bottom: rem(8px);
+
+          span {
+            font-weight: 700;
+          }
+        }
+      }
+
+      .image {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: vh(624px);
+        width: auto;
+        border-radius: rem(10px);
+        transform: translateX(-60%);
+      }
+    }
+
+    .seasonImage {
+      padding-top: rem(325px);
+      position: relative;
+
+      a {
+        font-size: rem(32px);
+        line-height: rem(32px);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: rem(24px);
+        margin-bottom: rem(38px);
+      }
+
+      &_img {
+        position: relative;
+        z-index: 1;
+        border-radius: rem(10px);
+        overflow: hidden;
+      }
+
+      &_subImg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        border-radius: rem(10px);
+        z-index: 2;
+        transform: translate(-82%, 60%);
+      }
+    }
+  }
+}

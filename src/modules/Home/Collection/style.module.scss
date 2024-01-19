@@ -1,0 +1,60 @@
+.collectionSection {
+  .container {
+    .introduce {
+      margin-bottom: rem(80px);
+
+      &_title {
+        position: relative;
+        font-size: rem(128px);
+        line-height: rem(128px);
+        margin-bottom: rem(-20px);
+
+        span {
+          position: relative;
+          right: rem(-150px);
+
+        }
+
+        &::before {
+          position: absolute;
+          content: '';
+          width: rem(100px);
+          height: rem(5px);
+          background: var(--black-08);
+          bottom: 17%;
+          left: 0%;
+        }
+      }
+
+      &_desc {
+        .line {
+          width: 100%;
+          height: rem(5px);
+          background: var(--black-08);
+        }
+
+        p {
+          align-self: end;
+
+          span {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    .collection {
+      display: flex;
+
+
+      .wrapImage {
+        max-height: rem(900px);
+      }
+
+      &_img {
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+}

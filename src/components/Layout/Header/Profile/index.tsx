@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { removeUserStorage } from '@/store/slices/authSlice';
 import { logout } from '@/api/userAPI';
 import useClickOutside from '@/hooks/useClickOutside';
+import { UserIcon } from '@/components/Icons';
 
 const ProfileHeader = ({ data }: { data: any }) => {
   const [optionState, setOptionState] = useState<boolean>(false);
@@ -40,11 +41,16 @@ const ProfileHeader = ({ data }: { data: any }) => {
 
   return (
     <div className={s.profile} ref={ref}>
-      <div className={s.profileTitle} onClick={toggleOptionBox}>
-        {name}
+      <div className={s.profileIcon} onClick={toggleOptionBox}>
+        <UserIcon />
       </div>
 
       <ul className={`${s.profileOptions} ${optionState ? s.open : ''}`}>
+        <li onClick={hideOptions}>
+          <Link href={'/profile'} className={s.profileOptions_item}>
+            {name}
+          </Link>
+        </li>
         <li onClick={hideOptions}>
           <Link href={'/profile'} className={s.profileOptions_item}>
             Profile

@@ -1,8 +1,15 @@
 .profile {
   position: relative;
 
-  .profileTitle {
+  .profileIcon {
+    width: 100%;
     cursor: pointer;
+    width: rem(20px);
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
   }
 
   .profileOptions {
@@ -12,10 +19,13 @@
     transform: translateY(100%);
     display: none;
     width: fit-content;
-    min-width: rem(50px);
+    min-width: rem(60px);
 
     &_item {
       cursor: pointer;
+      font-size: rem(16px);
+      line-height: rem(18.78px);
+      font-weight: 600;
     }
 
     &.open {

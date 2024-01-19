@@ -1,0 +1,21 @@
+.storyHero {
+  padding-top: rem(100px);
+  margin-bottom: rem(60px);
+
+  &_headline {
+    font-size: rem(128px);
+    line-height: rem(140px);
+    letter-spacing: rem(2px);
+    text-transform: uppercase;
+  }
+
+  &_img {
+    width: 100%;
+    margin-top: vh(-130px);
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

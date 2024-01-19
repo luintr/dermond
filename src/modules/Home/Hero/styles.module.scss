@@ -1,0 +1,53 @@
+.heroSection {
+  min-height: 100vh;
+
+  &_container {
+    .topHero {
+      padding-top: rem(68px);
+
+      p {
+        font-size: rem(16px);
+        line-height: rem(18.78px);
+        color: var(--black-08)
+      }
+
+      &_right {
+        text-align: right;
+      }
+    }
+
+    .bottomHero {
+      position: relative;
+      margin-top: rem(30px);
+
+      &_title {
+        position: relative;
+        z-index: 2;
+
+        h2 {
+          font-size: rem(250px);
+          line-height: 100%;
+          color: var(--black-08);
+          letter-spacing: rem(-10px);
+          &:last-child {
+            text-align: right;
+          }
+        }
+      }
+
+      &_wrapImage {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        background: #fff;
+        min-width: vw(670px);
+        min-height: vh(855px);
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        overflow: hidden;
+      }
+    }
+  }
+}

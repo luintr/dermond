@@ -11,12 +11,12 @@ $color-debug: #ff6b4c;
   z-index: 99999999999;
 
   .grid-col {
-    background-color: rgba($color-debug, 0.3);
+    background-color: rgba($color-debug, 0.15);
     height: 100vh;
     position: relative;
 
     &::before {
-      background-color: rgba($color-debug, 0.3);
+      background-color: rgba($color-debug, 0.15);
       content: '';
       height: 100%;
       left: 0;
@@ -25,12 +25,16 @@ $color-debug: #ff6b4c;
     }
 
     &::after {
-      background-color: rgba($color-debug, 0.3);
+      background-color: rgba($color-debug, 0.15);
       content: '';
       height: 100%;
       right: 0;
       position: absolute;
       width: 1px;
     }
+  }
+
+  &.d-none {
+    display: none;
   }
 }

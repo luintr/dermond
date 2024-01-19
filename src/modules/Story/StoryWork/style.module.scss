@@ -1,0 +1,65 @@
+.storyWork {
+  margin-bottom: rem(100px);
+
+  &_title {
+    font-size: rem(64px);
+    line-height: rem(64px);
+    max-width: rem(430px);
+    position: relative;
+    margin-bottom: rem(40px);
+
+    span {
+      font-size: rem(96px);
+      line-height: rem(96px);
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      background: var(--coral);
+      width: rem(80px);
+      height: rem(80px);
+      border-radius: rem(100px);
+      left: rem(20px);
+      top: rem(-4px);
+      z-index: -1;
+    }
+  }
+
+  .workList {
+    .workItem {
+      padding: rem(54px) rem(80px);
+      border: rem(1px) solid var(--black-08);
+      border-radius: rem(20px);
+      margin-bottom: rem(24px);
+
+      &_content {
+        font-size: rem(20px);
+        line-height: rem(22px);
+        letter-spacing: rem(2px);
+      }
+
+      &_top {
+        display: flex;
+        gap: rem(8px);
+        justify-content: flex-start;
+        margin-bottom: rem(84px);
+      }
+
+      &_number {
+        font-size: rem(36px);
+        line-height: rem(36px);
+      }
+
+      &_title {
+        font-size: rem(96px);
+        line-height: rem(96px);
+        font-weight: 700;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

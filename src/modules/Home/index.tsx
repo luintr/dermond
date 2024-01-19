@@ -1,16 +1,21 @@
-import React from 'react'
-import s from './style.module.scss'
-import ProductList from './ProductList'
+import React from 'react';
+import s from './style.module.scss';
+import HeroSection from './Hero';
+import CollectionSecion from './Collection';
+import BestSellerSection from './BestSeller';
+import SeasonSection from './Season';
+import FollowSection from './Follow';
 
 const HomeModule = (): React.ReactElement => {
   return (
     <div className={s.hompage}>
-      <div className={`${s.container} container`}>
-        <h1>Lastest Product</h1>
-       <ProductList/>
-      </div>
+      <HeroSection />
+      <CollectionSecion />
+      <BestSellerSection />
+      <SeasonSection />
+      <FollowSection />
     </div>
-  )
-}
+  );
+};
 
-export default HomeModule
+export default HomeModule;

@@ -1,21 +1,12 @@
 body {
-  --gap-x: #{rem(25px)};
+  --gap-x: #{rem(40px)};
   --easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
   --easeInOutQuart: cubic-bezier(0.76, 0, 0.24, 1);
 
   --white: #ffffff;
   --black: #000000;
-  --silver: #ebebeb;
-  --dark: #121212;
-  --gray: #7d7d7d;
-  --graySolid: #808080;
-  --emperor: #4f4f4f;
-  --gray79: #c9c9c9;
-  --black-dark: #1a160f;
-  --white-f2: #f2f2f2;
+  --black-08: #080808;
+  --tan: #F0F1EC;
   --be: #f9f5f0;
-
-  @include min-tablet {
-    --gap-x: #{rem(50px)};
-  }
+  --coral: #A37C75;
 }

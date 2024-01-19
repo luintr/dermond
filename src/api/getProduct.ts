@@ -1,4 +1,4 @@
-import { IProductItem } from "@/modules/Home/ProductList/ProductItem";
+import { IProductItem } from "@/modules/Shop/ProductList/ProductItem";
 import { useEffect, useState } from "react";
 
 import { get } from '@Api/requestMethod';

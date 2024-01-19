@@ -26,3 +26,22 @@
 :where(.css-dev-only-do-not-override-xu9wm8).ant-menu-horizontal {
   line-height: normal;
 }
+
+//custom antd
+.ant-input {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--black-08);
+  padding-left: 0;
+
+  &:hover {
+    border-color: var(--black-08);
+  }
+
+  &:focus-within {
+    outline: none;
+    box-shadow: none;
+    border-color: var(--black-08);
+  }
+}
