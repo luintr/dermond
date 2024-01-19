@@ -2,7 +2,7 @@ import React from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
 import Image from 'next/image';
-import image from '@Images/StoryHead.png';
+import hero from '@Images/storyHead.png';
 
 const StoryHero = () => {
   return (
@@ -14,10 +14,10 @@ const StoryHero = () => {
         </h2>
         <div className={s.storyHero_img}>
           <Image
-            src={image.src}
-            width={image.width}
-            height={image.height}
-            alt={'image'}
+            src={hero.src}
+            width={hero.width}
+            height={hero.height}
+            alt={'hero'}
           />
         </div>
       </Container>
