@@ -33,8 +33,8 @@ const SeasonSection = () => {
               <p>
                 <span className={cinzelFont.className}>DER MOND</span> SERVICES
               </p>
-              
-              <ButtonNavigate href={ROUTE_PATH.STORY} text='DISCOVER'/>
+
+              <ButtonNavigate href={ROUTE_PATH.STORY} text="DISCOVER" />
             </div>
             <p className={`${s.seasonDesc_subContent} col-span-2 col-start-4`}>
               Customization Beyond Boundaries: Design is personal, and so is our

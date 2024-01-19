@@ -12,8 +12,12 @@ const AdminTabs = ({ setTab }: ITab) => {
   };
   return (
     <div className={s.adminTabs}>
-      {tabData.map((item) => (
-        <div className={s.adminTabs_item} key={item.id} onClick={() => tabClickHandler(item.id)}>
+      {tabData.map(item => (
+        <div
+          className={s.adminTabs_item}
+          key={item.id}
+          onClick={() => tabClickHandler(item.id)}
+        >
           {item.name}
         </div>
       ))}

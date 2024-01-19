@@ -9,7 +9,13 @@ interface Vector2 {
   y: number;
 }
 
-const LineEq = (y2: number, y1: number, x2: number, x1: number, currentVal: number): number => {
+const LineEq = (
+  y2: number,
+  y1: number,
+  x2: number,
+  x1: number,
+  currentVal: number
+): number => {
   const m: number = (y2 - y1) / (x2 - x1);
   const b: number = y1 - m * x1;
   return m * currentVal + b;
@@ -24,11 +30,23 @@ const LineEq = (y2: number, y1: number, x2: number, x1: number, currentVal: numb
  * @returns {number}
  * @constructor
  */
-const MathMap = (x: number, a: number, b: number, c: number, d: number): number => {
+const MathMap = (
+  x: number,
+  a: number,
+  b: number,
+  c: number,
+  d: number
+): number => {
   return parseFloat((((x - a) * (d - c)) / (b - a) + c).toFixed(3));
 };
 
-const MathMapVector3 = (point: number, a: number, b: number, c: Vector3, d: Vector3): Vector3 => {
+const MathMapVector3 = (
+  point: number,
+  a: number,
+  b: number,
+  c: Vector3,
+  d: Vector3
+): Vector3 => {
   return {
     x: MathMap(point, a, b, c.x, d.x),
     y: MathMap(point, a, b, c.y, d.y),
@@ -75,7 +93,13 @@ interface IGetOffsetThreeJs {
   winSize: Vector2;
 }
 
-const GetOffsetThreeJs = ({ left, top, width, height, winSize }: IGetOffsetThreeJs): Vector2 => {
+const GetOffsetThreeJs = ({
+  left,
+  top,
+  width,
+  height,
+  winSize,
+}: IGetOffsetThreeJs): Vector2 => {
   return {
     x: left - winSize.x / 2 + width / 2,
     y: -top + winSize.y / 2 - height / 2,
@@ -94,7 +118,10 @@ export const shuffleArray = (array: any[]): any[] => {
     currentIndex--;
 
     // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
   }
 
   return array;
@@ -112,11 +139,18 @@ export const getRandomInt = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max_ - min_) + min_); // The maximum is exclusive and the minimum is inclusive
 };
 
-export const randomValueRangeInt = (hash: number, minVal: number, maxVal: number): number => {
+export const randomValueRangeInt = (
+  hash: number,
+  minVal: number,
+  maxVal: number
+): number => {
   return minVal + (hash % (maxVal - minVal + 1));
 };
 
-export const randomValueIndexArrayInt = (hash: number, lenArray: number): number => {
+export const randomValueIndexArrayInt = (
+  hash: number,
+  lenArray: number
+): number => {
   return hash % lenArray;
 };
 
@@ -136,7 +170,12 @@ export const cyrb128 = (str: string): number[] => {
   h2 = Math.imul(h4 ^ (h2 >>> 22), 2869860233);
   h3 = Math.imul(h1 ^ (h3 >>> 17), 951274213);
   h4 = Math.imul(h2 ^ (h4 >>> 19), 2716044179);
-  return [(h1 ^ h2 ^ h3 ^ h4) >>> 0, (h2 ^ h1) >>> 0, (h3 ^ h1) >>> 0, (h4 ^ h1) >>> 0];
+  return [
+    (h1 ^ h2 ^ h3 ^ h4) >>> 0,
+    (h2 ^ h1) >>> 0,
+    (h3 ^ h1) >>> 0,
+    (h4 ^ h1) >>> 0,
+  ];
 };
 
 function sfc32(_a: number, _b: number, _c: number, _d: number): number {
@@ -160,7 +199,11 @@ function sfc32(_a: number, _b: number, _c: number, _d: number): number {
 }
 
 // return random value from [l -> r]
-export const consistentRand = (seed: string | number, l: number, r: number): number => {
+export const consistentRand = (
+  seed: string | number,
+  l: number,
+  r: number
+): number => {
   const sfc = cyrb128(seed.toString());
   const rand = sfc32(sfc[0], sfc[1], sfc[2], sfc[3]);
   return l + rand * (r - l);

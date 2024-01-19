@@ -10,9 +10,9 @@ const AdminProductList = () => {
     <div className={`${s.admin_productList} grid grid-cols-12`}>
       <div className={`col-span-12`}>Admin Product List</div>
       {!editMode ? (
-        <ProductTable setProductID={setProductID} setEditMode={setEditMode}/>
+        <ProductTable setProductID={setProductID} setEditMode={setEditMode} />
       ) : (
-        <ProductEdit productID={productID} setEditMode={setEditMode}/>
+        <ProductEdit productID={productID} setEditMode={setEditMode} />
       )}
     </div>
   );

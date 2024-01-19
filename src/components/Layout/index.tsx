@@ -17,9 +17,7 @@ type ILayout = {
 const Layout = ({ children, className }: ILayout) => {
   return (
     <Provider store={store}>
-      <body
-        className={`${className} ${s.mainLayout}`}
-      >
+      <body className={`${className} ${s.mainLayout}`}>
         <LenisScroller>
           <Header />
           {children}

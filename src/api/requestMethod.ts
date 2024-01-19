@@ -5,21 +5,25 @@ const request = axios.create({
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     'Access-Control-Allow-Headers': '*',
-    'Access-Control-Allow-Credentials': 'true'
+    'Access-Control-Allow-Credentials': 'true',
   },
 });
 
-request.interceptors.request.use(function (config) {
-  const userInfo = typeof window !== 'undefined' && localStorage.getItem('userInfo')
-  const token = userInfo && JSON.parse(userInfo).token
+request.interceptors.request.use(
+  function (config) {
+    const userInfo =
+      typeof window !== 'undefined' && localStorage.getItem('userInfo');
+    const token = userInfo && JSON.parse(userInfo).token;
 
-  config.headers.Authorization = token;
+    config.headers.Authorization = token;
 
-  return config;
-}, function (error) {
-  // Do something with request error
-  return Promise.reject(error);
-});
+    return config;
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  }
+);
 
 export type TDefaultResponse<T> = {
   status: number;

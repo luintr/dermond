@@ -97,7 +97,7 @@ const ProductEdit = ({ productID, setEditMode }: IProductEdit) => {
         const result = await updateProduct(updatedProduct);
       } catch (error) {
         setIsDisable(false);
-        throw new Error('Something went wrong')
+        throw new Error('Something went wrong');
       }
       setHaveUpload(false);
       messageApi.open({

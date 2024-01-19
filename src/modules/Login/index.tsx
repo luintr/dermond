@@ -12,7 +12,6 @@ import Link from 'next/link';
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
-
   const dispatch = useDispatch();
   const router = useRouter();
 

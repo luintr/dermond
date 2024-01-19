@@ -25,7 +25,11 @@ const StoryTabs = () => {
 
         if (index + 1 === activeTab) {
           gsap.to(tabRef, { ease: 'power4.out', duration: 1, width: '60%' });
-          gsap.to(initialRef, { ease: 'power4.out', duration: 0.5, opacity: 0 });
+          gsap.to(initialRef, {
+            ease: 'power4.out',
+            duration: 0.5,
+            opacity: 0,
+          });
           gsap.to(enhanceRef, {
             ease: 'power4.out',
             pointerEvents: 'initial',

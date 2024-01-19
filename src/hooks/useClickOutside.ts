@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 
-const useClickOutside = (ref: React.RefObject<HTMLElement>, onClickOutside: () => void): void => {
+const useClickOutside = (
+  ref: React.RefObject<HTMLElement>,
+  onClickOutside: () => void
+): void => {
   useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent): void => {
       // Remove preventDefault and stopPropagation for passive event listeners

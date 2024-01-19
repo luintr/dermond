@@ -1,8 +1,8 @@
-import { IProductItem } from "@/modules/Shop/ProductList/ProductItem";
-import { useEffect, useState } from "react";
+import { IProductItem } from '@/modules/Shop/ProductList/ProductItem';
+import { useEffect, useState } from 'react';
 
 import { get } from '@Api/requestMethod';
-import { PRODUCTS_URL } from "@/constants/route";
+import { PRODUCTS_URL } from '@/constants/route';
 
 export const useGetProduct = () => {
   const [products, setProducts] = useState<IProductItem[]>([]);
@@ -23,5 +23,5 @@ export const useGetProduct = () => {
     fetchProducts();
   }, [products]);
 
-  return { products, loading }
-}
+  return { products, loading };
+};

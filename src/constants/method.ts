@@ -2,21 +2,21 @@ export const paymentMethod = [
   {
     title: 'Paypal',
     value: 'paypal',
-    image: ''
+    image: '',
   },
   {
     title: 'Visa',
     value: 'visa',
-    image: ''
+    image: '',
   },
   {
     title: 'Debit',
     value: 'debit',
-    image: ''
+    image: '',
   },
   {
     title: 'Momo',
     value: 'momo',
-    image: ''
+    image: '',
   },
-]
+];

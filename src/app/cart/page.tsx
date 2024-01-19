@@ -1,10 +1,8 @@
-import CartModule from '@/modules/Cart'
-import React from 'react'
+import CartModule from '@/modules/Cart';
+import React from 'react';
 
 const CartPage = () => {
-  return (
-    <CartModule/>
-  )
-}
+  return <CartModule />;
+};
 
-export default CartPage
+export default CartPage;

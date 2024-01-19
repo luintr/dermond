@@ -1,10 +1,8 @@
-import HomeModule from '@/modules/Home'
-import React from 'react'
+import HomeModule from '@/modules/Home';
+import React from 'react';
 
 const HomePage = () => {
-  return (
-   <HomeModule/>
-  )
-}
+  return <HomeModule />;
+};
 
-export default HomePage
+export default HomePage;

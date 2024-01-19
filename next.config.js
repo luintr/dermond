@@ -12,6 +12,6 @@ const nextConfig = {
     @import "@Styles/_setting.scss";
    `,
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

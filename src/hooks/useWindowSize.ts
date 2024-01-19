@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 interface IDimension {
   width: number;
@@ -24,10 +24,10 @@ const useWindowResize = (): IDimension => {
     // set width + height on initial because window "resize" does not invoke on first load
     listener();
 
-    window?.addEventListener?.("resize", listener);
+    window?.addEventListener?.('resize', listener);
 
     return () => {
-      window?.removeEventListener?.("resize", listener);
+      window?.removeEventListener?.('resize', listener);
     };
   }, []);
 

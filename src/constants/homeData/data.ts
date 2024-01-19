@@ -1,61 +1,61 @@
-import { ROUTE_PATH } from "../route";
-import image1 from '@Images/homeCol1.jpeg'
-import image2 from '@Images/homeCol2.jpeg'
-import image3 from '@Images/homeCol3.jpeg'
+import { ROUTE_PATH } from '../route';
+import image1 from '@Images/homeCol1.jpeg';
+import image2 from '@Images/homeCol2.jpeg';
+import image3 from '@Images/homeCol3.jpeg';
 
 export const FOOTER_NAVIGATE = [
   {
-    title: "Navigate",
+    title: 'Navigate',
     links: [
       {
         title: 'Our Shop',
-        link: ROUTE_PATH.SHOP
+        link: ROUTE_PATH.SHOP,
       },
       {
         title: 'Gallery',
-        link: ROUTE_PATH.GALLERY
+        link: ROUTE_PATH.GALLERY,
       },
       {
         title: 'Story',
-        link: ROUTE_PATH.STORY
+        link: ROUTE_PATH.STORY,
       },
       {
         title: 'Cart',
-        link: ROUTE_PATH.CART
+        link: ROUTE_PATH.CART,
       },
-    ]
+    ],
   },
   {
-    title: "Assistance",
+    title: 'Assistance',
     links: [
       {
         title: 'Shipping & returns',
-        link: ROUTE_PATH.SHOP
+        link: ROUTE_PATH.SHOP,
       },
       {
         title: 'Contact',
-        link: ROUTE_PATH.GALLERY
+        link: ROUTE_PATH.GALLERY,
       },
       {
         title: 'Privacy Policy',
-        link: ROUTE_PATH.STORY
+        link: ROUTE_PATH.STORY,
       },
       {
         title: 'FAQ',
-        link: ROUTE_PATH.CART
+        link: ROUTE_PATH.CART,
       },
-    ]
+    ],
   },
   {
-    title: "Follow Us",
+    title: 'Follow Us',
     links: [
       {
         title: 'Instagram',
-        link: '#'
+        link: '#',
       },
-    ]
+    ],
   },
-]
+];
 
 export const HOME_COLLECTION_DATA = [
   {
@@ -73,4 +73,4 @@ export const HOME_COLLECTION_DATA = [
     width: image3.width,
     height: image3.height,
   },
-]
+];

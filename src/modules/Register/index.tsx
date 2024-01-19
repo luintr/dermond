@@ -79,7 +79,7 @@ const RegisterModule = () => {
             },
           ]}
         >
-          <Input autoComplete="email"/>
+          <Input autoComplete="email" />
         </Form.Item>
 
         <Form.Item
@@ -93,7 +93,7 @@ const RegisterModule = () => {
           ]}
           hasFeedback
         >
-          <Input.Password autoComplete="new-password"/>
+          <Input.Password autoComplete="new-password" />
         </Form.Item>
 
         <Form.Item
@@ -118,7 +118,7 @@ const RegisterModule = () => {
             }),
           ]}
         >
-          <Input.Password autoComplete="new-password"/>
+          <Input.Password autoComplete="new-password" />
         </Form.Item>
 
         <Form.Item
@@ -143,7 +143,7 @@ const RegisterModule = () => {
         </Form.Item>
       </Form>
       <p>
-       Already have account?{' '}
+        Already have account?{' '}
         <Link href={redirect ? `login?redirect=${redirect}` : '/login'}>
           Login
         </Link>

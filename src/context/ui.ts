@@ -1,3 +1,1 @@
-export const UI = () => {
-
-}
+export const UI = () => {};

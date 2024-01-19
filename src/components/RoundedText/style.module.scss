@@ -8,7 +8,6 @@
   }
 
   svg {
-
     &:first-child {
       position: absolute;
       top: 50%;
@@ -20,7 +19,6 @@
       path {
         stroke: var(--tan);
       }
-
     }
 
     &:last-child {
@@ -31,8 +29,7 @@
 
 @-webkit-keyframes rotating
 
-/* Safari and Chrome */
-  {
+/* Safari and Chrome */ {
   to {
     -webkit-transform: rotate(-360deg);
     -o-transform: rotate(-360deg);

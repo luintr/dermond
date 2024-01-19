@@ -10,7 +10,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "prettier --write . && next lint",
+    "lint:css": "stylelint --fix **/*.{scss,css}",
+    "lint:json": "prettier --write \"./**/*.json\"",
     "format": "prettier --write .",
     "prepare": "husky install"
   },
