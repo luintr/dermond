@@ -2,7 +2,7 @@ import React from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
 import Image from 'next/image';
-import hero from '@Images/storyHead.png';
+import hero from '@Images/storyHeadImg.png';
 
 const StoryHero = () => {
   return (
