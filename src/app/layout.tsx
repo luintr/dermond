@@ -17,7 +17,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        {/* Add the meta tag for Content Security Policy */}
         <meta
           http-equiv="Content-Security-Policy"
           content="upgrade-insecure-requests"
