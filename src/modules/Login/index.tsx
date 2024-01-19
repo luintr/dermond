@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '@/store/slices/authSlice';
 import { login } from '@/api/userAPI';
 import Link from 'next/link';
+import { cinzelFont } from '@/utils/fonts';
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -53,55 +54,94 @@ const LoginModule = () => {
   return (
     <div className={`${s.login} container grid grid-cols-12`}>
       {contextHolder}
-      <h1>Sign In</h1>
-      <Form
-        name="basic"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="on"
-        className={`col-span-12`}
+      <div
+        className={`${s.loginBox} col-span-10 col-start-2 grid grid-cols-10`}
       >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your email!',
-            },
-          ]}
-        >
-          <Input autoComplete="email" />
-        </Form.Item>
+        <div className={`${s.loginBox_top} col-span-7 col-start-1`}>
+          <div className={`${s.topContent_left}`}>
+            <p>TAILOR SHOP BASED IN VIETNAM</p>
+            <p>ETS 2019</p>
+          </div>
+          <div className={`${s.topContent_middle} ${cinzelFont.className}`}>
+            <p>DERMOND</p>
+          </div>
+          <div className={`${s.topContent_right}`}>
+            <p>INSTAGRAM</p>
+            <p>@DERMOND.VN</p>
+          </div>
+        </div>
+        <div className={`${s.loginBox_form} col-span-4 col-start-1`}>
+          <h2 className={`${s.formTitle} ${cinzelFont.className}`}>Sign In</h2>
+          <Form
+            name="basic"
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            autoComplete="on"
+            className={`col-span-12`}
+          >
+            <Form.Item
+              name="email"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your email!',
+                },
+              ]}
+            >
+              <Input placeholder="Email" autoComplete="email" />
+            </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
-        >
-          <Input.Password autoComplete="current-password" />
-        </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your password!',
+                },
+              ]}
+            >
+              <Input.Password
+                placeholder="Passwork"
+                autoComplete="current-password"
+              />
+            </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-      <p>
-        New Customer?{' '}
-        <Link href={redirect ? `register?redirect=${redirect}` : '/register'}>
-          Register
-        </Link>
-      </p>
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                Sign In
+              </Button>
+            </Form.Item>
+          </Form>
+          <div className={s.loginBox_regis}>
+            <p>Forgot your password?</p>
+            <div className={s.wrapRegis}>
+              <p>New Customer?</p>
+              <Link
+                href={redirect ? `register?redirect=${redirect}` : '/register'}
+              >
+                Register Now
+              </Link>
+            </div>
+          </div>
+
+          <div className={s.loginBox_googleLogin}>
+            <div className={s.dashed}>
+              <span></span>
+              OR
+              <span></span>
+            </div>
+            <button disabled>Login with Google</button>
+          </div>
+        </div>
+
+        <div className={`${s.loginBox_text} col-span-2 col-start-6`}>
+          <p>We embrace Beauty and</p>
+          <p>Perfection</p>
+        </div>
+      </div>
     </div>
   );
 };

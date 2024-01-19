@@ -51,7 +51,7 @@
   background: transparent;
   border: none;
   border-radius: 0;
-  border-bottom: 1px solid var(--black-08);
+  border-bottom: rem(1px) solid var(--black-08);
   padding-left: 0;
 
   &:hover {
@@ -62,5 +62,93 @@
     outline: none;
     box-shadow: none;
     border-color: var(--black-08);
+  }
+
+  &::placeholder {
+    color: rgba($color: #08080899, $alpha: 0.6);
+  }
+}
+
+.ant-input-outlined {
+  font-size: rem(20px);
+  padding: rem(4px) rem(10px);
+  background: transparent;
+  border: none;
+  border-bottom: rem(1px) solid var(--black-08);
+
+  &.ant-input-status-error {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: rem(1px) solid #ff4d4f !important;
+
+    &:focus-within {
+      box-shadow: none !important;
+    }
+
+    &::not(.ant-input-disabled) {
+      background: transparent;
+      border: none;
+      border-bottom: rem(1px) solid #ff4d4f;
+    }
+  }
+
+  &:hover {
+    background-color: transparent;
+    border-color: var(--black-08);
+  }
+
+  &:focus {
+    border-color: var(--black-08);
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &:focus-within {
+    box-shadow: none;
+    border-color: var(--black-08);
+    background-color: transparent;
+  }
+
+  &::placeholder {
+    color: rgba($color: #08080899, $alpha: 0.6);
+  }
+}
+
+.ant-input-affix-wrapper {
+  padding: rem(4px) rem(10px);
+  color: var(--black-08);
+  font-size: rem(20px);
+  line-height: 100%;
+  border-radius: 0;
+}
+
+.ant-form-item {
+  box-shadow: none;
+
+  button {
+    padding: rem(14px) rem(24px);
+    border: rem(1px) solid var(--black-08);
+    background: var(--black-08);
+    border-radius: rem(100px);
+    transition: 0.4s all var(--easeOutQuart);
+    box-shadow: none;
+
+    span {
+      display: block;
+      font-size: rem(16px);
+      line-height: rem(16px);
+      transition: 0.4s all var(--easeOutQuart);
+    }
+
+    &:not(:disabled) {
+    }
+
+    &:hover {
+      background: transparent !important;
+
+      span {
+        color: var(--black-08) !important;
+      }
+    }
   }
 }

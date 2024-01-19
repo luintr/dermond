@@ -1,0 +1,126 @@
+.login {
+  background: var(--black-08);
+  padding: rem(100px) 0;
+
+  .loginBox {
+    position: relative;
+    margin: 0 rem(-40px);
+    padding: 0 rem(40px);
+    border-radius: rem(20px);
+    overflow: hidden;
+    background: var(--tan);
+
+    &_top {
+      padding-top: rem(40px);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: rem(68px);
+
+      p {
+        font-size: rem(16px);
+        line-height: rem(18.78px);
+      }
+
+      .topContent {
+        &_middle {
+          letter-spacing: rem(-1.6px);
+        }
+
+        &_right {
+          text-align: right;
+        }
+      }
+    }
+
+    &_form {
+      .formTitle {
+        font-size: rem(64px);
+        line-height: rem(64px);
+        margin-bottom: rem(86px);
+      }
+
+      :global(.ant-form-item) {
+        margin-bottom: rem(68px);
+
+        &:last-child {
+          margin-bottom: rem(36px);
+        }
+      }
+
+      :global(.ant-form-item) {
+        span {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    &_regis {
+      display: flex;
+      justify-content: space-between;
+      font-size: rem(16px);
+      line-height: rem(18.78px);
+      margin-bottom: rem(94px);
+
+      .wrapRegis {
+        text-align: right;
+      }
+
+      p {
+        color: rgba($color: #080808b2, $alpha: 0.7);
+      }
+
+      a {
+        font-weight: 700;
+      }
+    }
+
+    &_googleLogin {
+      padding-bottom: rem(40px);
+
+      .dashed {
+        text-align: center;
+        font-size: rem(12px);
+        line-height: rem(12px);
+        color: var(--coral);
+        margin-bottom: rem(24px);
+
+        display: flex;
+        gap: rem(12px);
+        align-items: center;
+
+        span {
+          flex: 1;
+          height: rem(1px);
+          background: var(--coral);
+          margin-top: rem(-3px);
+        }
+      }
+
+      button {
+        padding: rem(18px) 0;
+        width: 100%;
+        border: rem(1px) solid var(--black-08);
+        border-radius: rem(10px);
+        font-size: rem(16px);
+        box-shadow: -3px 4px 4px 0px rgba(0, 0, 0, 0.1);
+        cursor: not-allowed;
+      }
+    }
+
+    &_text {
+      align-self: flex-end;
+      text-align: right;
+      padding-bottom: rem(40px);
+      padding-right: rem(40px);
+
+      p {
+        font-size: rem(20px);
+        line-height: 100%;
+
+        &:last-child {
+          color: var(--coral);
+        }
+      }
+    }
+  }
+}
