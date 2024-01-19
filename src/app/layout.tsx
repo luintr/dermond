@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import '@Styles/index.scss';
-import Head from 'next/head';
 import Layout from '@/components/Layout';
 import { contentFont } from '@/utils/fonts';
 
@@ -16,12 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <meta
-          http-equiv="Content-Security-Policy"
+          httpEquiv="Content-Security-Policy"
           content="upgrade-insecure-requests"
         />
-      </Head>
+      </head>
       <Layout className={`${contentFont.className}`}>{children}</Layout>
     </html>
   );

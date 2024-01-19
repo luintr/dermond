@@ -14,7 +14,7 @@ const cspHeader = `
     frame-ancestors 'none';
     block-all-mixed-content;
     upgrade-insecure-requests;
-`
+`;
 
 const nextConfig = {
   swcMinify: true,
