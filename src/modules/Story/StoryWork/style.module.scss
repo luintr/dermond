@@ -27,11 +27,15 @@
   }
 
   .workList {
+    position: relative;
     .workItem {
+      // position: sticky;
+      // top: rem(24px);
       padding: rem(54px) rem(80px);
       border: rem(1px) solid var(--black-08);
       border-radius: rem(20px);
       margin-bottom: rem(24px);
+      background: var(--tan);
 
       &_content {
         font-size: rem(20px);
@@ -55,10 +59,6 @@
         font-size: rem(96px);
         line-height: rem(96px);
         font-weight: 700;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
       }
     }
   }
