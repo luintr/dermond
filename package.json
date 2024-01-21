@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://3.27.109.212:6969",
+  "proxy": "https://be-dermond.vercel.app/",
   "engines": {
     "node": ">=14.0.0"
   },
