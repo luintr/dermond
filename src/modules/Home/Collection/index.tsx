@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './style.module.scss';
-import Container from '@/components/Container';
+import Container from '@Components/Container';
 import { cinzelFont, playfairFont } from '@/utils/fonts';
 import Image from 'next/image';
 import { HOME_COLLECTION_DATA } from '@/constants/homeData/data';
-import MarqueeText from './MarqueeText';
+import MarqueeText from '@/modules/Home/Collection/MarqueeText';
 
 const CollectionSecion = () => {
   return (

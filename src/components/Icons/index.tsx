@@ -97,4 +97,23 @@ const SingleArrowIcon = () => {
   );
 };
 
-export { UserIcon, CartIcon, Logo, ArrowIcon, SingleArrowIcon };
+const Subtract = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="24"
+      fill="none"
+      viewBox="0 0 14 24"
+    >
+      <path
+        fill="#F0F1EC"
+        fillRule="evenodd"
+        d="M0 12c0 6.627 5.373 12 12 12 .681 0 1.35-.057 2-.166C8.325 22.882 4 17.946 4 12S8.325 1.118 14 .166C13.35.056 12.681 0 12 0 5.373 0 0 5.373 0 12z"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+};
+
+export { UserIcon, CartIcon, Logo, ArrowIcon, SingleArrowIcon, Subtract };
