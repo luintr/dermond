@@ -61,7 +61,7 @@ const LoginModule = () => {
       <div
         className={`${s.loginBox} col-span-10 col-start-2 grid grid-cols-10`}
       >
-        <div className={`col-span-7 grid grid-col-7`}>
+        <div className={`col-span-7 grid grid-cols-7`}>
           <div className={`${s.loginBox_top} col-span-7 col-start-1`}>
             <div className={`${s.topContent_left}`}>
               <p>TAILOR SHOP BASED IN VIETNAM</p>
