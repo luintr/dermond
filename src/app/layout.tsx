@@ -15,12 +15,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="upgrade-insecure-requests"
-        />
-      </head>
       <Layout className={`${contentFont.className}`}>{children}</Layout>
     </html>
   );
