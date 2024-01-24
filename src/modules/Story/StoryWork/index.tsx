@@ -30,7 +30,7 @@ const StoryWork = () => {
 
         ScrollTrigger.create(triggerOptions);
       });
-      
+
       ScrollTrigger.create({
         trigger: triggerRef.current,
         start: 'top top',

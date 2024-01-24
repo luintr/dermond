@@ -43,7 +43,9 @@ export default function useFade({
 
   useEffect(() => {
     const gsapContext = gsap.context(() => {
-      const animationIn = (scrollTrigger: ScrollTrigger.StaticVars | null): void => {
+      const animationIn = (
+        scrollTrigger: ScrollTrigger.StaticVars | null
+      ): void => {
         const delay = getDelay({
           refContentCurrent: refContent.current,
           delayEnter,
@@ -68,7 +70,7 @@ export default function useFade({
       if (!isObserver) {
         isPageEnter && animationIn(refContent.current);
       } else {
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(entries => {
           if (entries[0].isIntersecting) {
             animationIn(null);
             refContent.current && observer?.unobserve(refContent.current);
@@ -76,10 +78,20 @@ export default function useFade({
           }
         });
 
-        isPageEnter && refContent.current && observer?.observe(refContent.current);
+        isPageEnter &&
+          refContent.current &&
+          observer?.observe(refContent.current);
       }
     }, [refContent]);
 
     return () => gsapContext.revert();
-  }, [duration, delayEnter, delayTrigger, direction, isPageEnter, refContent, isObserver]);
+  }, [
+    duration,
+    delayEnter,
+    delayTrigger,
+    direction,
+    isPageEnter,
+    refContent,
+    isObserver,
+  ]);
 }

@@ -17,7 +17,8 @@ export default function useObHeightChange(): { scrollHeight: number } {
   );
 
   const resizeObserver = useMemo(() => {
-    if (typeof window !== 'undefined') return new ResizeObserver(debouncedResize);
+    if (typeof window !== 'undefined')
+      return new ResizeObserver(debouncedResize);
   }, [debouncedResize]);
 
   useIsomorphicLayoutEffect(() => {
