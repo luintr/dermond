@@ -9,6 +9,10 @@ import { setCredentials } from '@/store/slices/authSlice';
 import { login } from '@/api/userAPI';
 import Link from 'next/link';
 import { cinzelFont } from '@/utils/fonts';
+import Image from 'next/image';
+import image from '@Images/singinImg.jpg';
+import { Subtract } from '@/components/Icons';
+import Marquee from 'react-fast-marquee';
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -57,89 +61,114 @@ const LoginModule = () => {
       <div
         className={`${s.loginBox} col-span-10 col-start-2 grid grid-cols-10`}
       >
-        <div className={`${s.loginBox_top} col-span-7 col-start-1`}>
-          <div className={`${s.topContent_left}`}>
-            <p>TAILOR SHOP BASED IN VIETNAM</p>
-            <p>ETS 2019</p>
+        <div className={`col-span-7 grid grid-cols-7`}>
+          <div className={`${s.loginBox_top} col-span-7 col-start-1`}>
+            <div className={`${s.topContent_left}`}>
+              <p>TAILOR SHOP BASED IN VIETNAM</p>
+              <p>ETS 2019</p>
+            </div>
+            <div className={`${s.topContent_middle} ${cinzelFont.className}`}>
+              <p>DERMOND</p>
+            </div>
+            <div className={`${s.topContent_right}`}>
+              <p>INSTAGRAM</p>
+              <p>@DERMOND.VN</p>
+            </div>
           </div>
-          <div className={`${s.topContent_middle} ${cinzelFont.className}`}>
-            <p>DERMOND</p>
-          </div>
-          <div className={`${s.topContent_right}`}>
-            <p>INSTAGRAM</p>
-            <p>@DERMOND.VN</p>
-          </div>
-        </div>
-        <div className={`${s.loginBox_form} col-span-4 col-start-1`}>
-          <h2 className={`${s.formTitle} ${cinzelFont.className}`}>Sign In</h2>
-          <Form
-            name="basic"
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="on"
-            className={`col-span-12`}
-          >
-            <Form.Item
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your email!',
-                },
-              ]}
+          <div className={`${s.loginBox_form} col-span-4 col-start-1`}>
+            <h2 className={`${s.formTitle} ${cinzelFont.className}`}>
+              Sign In
+            </h2>
+            <Form
+              name="basic"
+              initialValues={{
+                remember: true,
+              }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              autoComplete="on"
+              className={`col-span-12`}
             >
-              <Input placeholder="Email" autoComplete="email" />
-            </Form.Item>
-
-            <Form.Item
-              name="password"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your password!',
-                },
-              ]}
-            >
-              <Input.Password
-                placeholder="Passwork"
-                autoComplete="current-password"
-              />
-            </Form.Item>
-
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                Sign In
-              </Button>
-            </Form.Item>
-          </Form>
-          <div className={s.loginBox_regis}>
-            <p>Forgot your password?</p>
-            <div className={s.wrapRegis}>
-              <p>New Customer?</p>
-              <Link
-                href={redirect ? `register?redirect=${redirect}` : '/register'}
+              <Form.Item
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your email!',
+                  },
+                ]}
               >
-                Register Now
-              </Link>
+                <Input placeholder="Email" autoComplete="email" />
+              </Form.Item>
+
+              <Form.Item
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your password!',
+                  },
+                ]}
+              >
+                <Input.Password
+                  placeholder="Passwork"
+                  autoComplete="current-password"
+                />
+              </Form.Item>
+
+              <Form.Item>
+                <Button type="primary" htmlType="submit">
+                  Sign In
+                </Button>
+              </Form.Item>
+            </Form>
+            <div className={s.loginBox_regis}>
+              <p>Forgot your password?</p>
+              <div className={s.wrapRegis}>
+                <p>New Customer?</p>
+                <Link
+                  href={
+                    redirect ? `register?redirect=${redirect}` : '/register'
+                  }
+                >
+                  Register Now
+                </Link>
+              </div>
+            </div>
+
+            <div className={s.loginBox_googleLogin}>
+              <div className={s.dashed}>
+                <span></span>
+                OR
+                <span></span>
+              </div>
+              <button disabled>Login with Google</button>
             </div>
           </div>
-
-          <div className={s.loginBox_googleLogin}>
-            <div className={s.dashed}>
-              <span></span>
-              OR
-              <span></span>
-            </div>
-            <button disabled>Login with Google</button>
+          <div className={`${s.loginBox_text} col-span-2 col-start-6`}>
+            <p>We embrace Beauty and</p>
+            <p>Perfection</p>
           </div>
         </div>
+        <div className={`${s.boxImage} col-span-3 col-start-8`}>
+          <div className={`${s.boxImage_img}`}>
+            <Image
+              src={image.src}
+              width={image.width}
+              height={image.height}
+              alt="image"
+            />
 
-        <div className={`${s.loginBox_text} col-span-2 col-start-6`}>
-          <p>We embrace Beauty and</p>
-          <p>Perfection</p>
+            <div className={s.boxImage_logo}>
+              <Subtract />
+            </div>
+
+            <div className={s.boxImage_maquee}>
+              {/* <Marquee speed={10} gradient={false} direction="up"> */}
+              <p className={`${cinzelFont.className}`}>DER MOND</p>
+              {/* </Marquee> */}
+            </div>
+          </div>
         </div>
       </div>
     </div>

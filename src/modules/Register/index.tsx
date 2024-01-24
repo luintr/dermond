@@ -9,6 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { setCredentials } from '@/store/slices/authSlice';
 import { register } from '@/api/userAPI';
+import { cinzelFont } from '@/utils/fonts';
+import Image from 'next/image';
+import image from '@Images/regisImg.jpg';
+import { Subtract } from '@/components/Icons';
 
 const RegisterModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -54,100 +58,149 @@ const RegisterModule = () => {
   return (
     <div className={`${s.register} container grid grid-cols-12`}>
       {contextHolder}
-      <h1>Sign Up</h1>
-      <Form
-        name="basic"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="on"
-        className={`col-span-12`}
+      <div
+        className={`${s.regisBox} col-span-10 col-start-2 grid grid-cols-10`}
       >
-        <Form.Item
-          name="email"
-          label="E-mail"
-          rules={[
-            {
-              type: 'email',
-              message: 'The input is not valid E-mail!',
-            },
-            {
-              required: true,
-              message: 'Please input your E-mail!',
-            },
-          ]}
-        >
-          <Input autoComplete="email" />
-        </Form.Item>
+        <div className={`${s.boxImage} col-span-3 col-start-1`}>
+          <div className={`${s.boxImage_img}`}>
+            <Image
+              src={image.src}
+              width={image.width}
+              height={image.height}
+              alt="image"
+            />
 
-        <Form.Item
-          name="password"
-          label="Password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
-          hasFeedback
-        >
-          <Input.Password autoComplete="new-password" />
-        </Form.Item>
+            <div className={s.boxImage_logo}>
+              <Subtract />
+            </div>
 
-        <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={['password']}
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: 'Please confirm your password!',
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue('password') === value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(
-                  new Error('The new password that you entered do not match!')
-                );
-              },
-            }),
-          ]}
-        >
-          <Input.Password autoComplete="new-password" />
-        </Form.Item>
+            <div className={s.boxImage_maquee}>
+              {/* <Marquee speed={10} gradient={false} direction="up"> */}
+              <p className={`${cinzelFont.className}`}>DER MOND</p>
+              {/* </Marquee> */}
+            </div>
+          </div>
+        </div>
+        <div className={`${s.wrapBox} col-span-7 col-start-4 grid grid-cols-7`}>
+          <div className={`${s.regisBox_top} col-span-7 col-start-1`}>
+            <div className={`${s.topContent_left}`}>
+              <p>TAILOR SHOP BASED IN VIETNAM</p>
+              <p>ETS 2019</p>
+            </div>
+            <div className={`${s.topContent_middle} ${cinzelFont.className}`}>
+              <p>DERMOND</p>
+            </div>
+            <div className={`${s.topContent_right}`}>
+              <p>INSTAGRAM</p>
+              <p>@DERMOND.VN</p>
+            </div>
+          </div>
+          <div className={`${s.regisBox_form} col-span-4 col-start-1`}>
+            <h2 className={`${s.formTitle} ${cinzelFont.className}`}>
+              Sign Up
+            </h2>
+            <Form
+              name="basic"
+              initialValues={{
+                remember: true,
+              }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              autoComplete="on"
+              className={`col-span-12`}
+            >
+              <Form.Item
+                name="name"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your name!',
+                    whitespace: true,
+                  },
+                ]}
+              >
+                <Input placeholder="Name" />
+              </Form.Item>
+              <Form.Item
+                name="email"
+                rules={[
+                  {
+                    type: 'email',
+                    message: 'The input is not valid E-mail!',
+                  },
+                  {
+                    required: true,
+                    message: 'Please input your E-mail!',
+                  },
+                ]}
+              >
+                <Input autoComplete="email" placeholder="Email" />
+              </Form.Item>
 
-        <Form.Item
-          name="name"
-          label="Name"
-          tooltip="What do you want others to call you?"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your name!',
-              whitespace: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+              <Form.Item
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your password!',
+                  },
+                ]}
+                hasFeedback
+              >
+                <Input.Password
+                  autoComplete="new-password"
+                  placeholder="Password"
+                />
+              </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-      <p>
-        Already have account?{' '}
-        <Link href={redirect ? `login?redirect=${redirect}` : '/login'}>
-          Login
-        </Link>
-      </p>
+              <Form.Item
+                name="confirm"
+                dependencies={['password']}
+                hasFeedback
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please confirm your password!',
+                  },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue('password') === value) {
+                        return Promise.resolve();
+                      }
+                      return Promise.reject(
+                        new Error(
+                          'The new password that you entered do not match!'
+                        )
+                      );
+                    },
+                  }),
+                ]}
+              >
+                <Input.Password
+                  autoComplete="new-password"
+                  placeholder="Confirm Password"
+                />
+              </Form.Item>
+
+              <Form.Item>
+                <Button type="primary" htmlType="submit">
+                  Sign Up
+                </Button>
+              </Form.Item>
+            </Form>
+            <div className={s.regisBox_login}>
+              <p>Already have account?</p>
+              <Link href={redirect ? `login?redirect=${redirect}` : '/login'}>
+                Sign In
+              </Link>
+            </div>
+          </div>
+          <div className={`${s.regisBox_text} col-span-2 col-start-6`}>
+            <p>We embrace Beauty and</p>
+            <p>Perfection</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
