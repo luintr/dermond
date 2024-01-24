@@ -2,6 +2,7 @@ import React from 'react';
 import s from './styles.module.scss';
 import Container from '@/components/Container';
 import { cinzelFont } from '@/utils/fonts';
+import Fade from '@/components/Fade';
 
 const HeroSection = () => {
   return (
@@ -9,15 +10,25 @@ const HeroSection = () => {
       <Container className={s.heroSection_container}>
         <div className={`${s.topHero} grid grid-cols-12`}>
           <div className={`${s.topHero_left} col-span-2 col-start-2`}>
-            <p>TAILOR SHOP BASED IN VIETNAM</p>
-            <p>ETS 2019</p>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+              <p>TAILOR SHOP BASED IN VIETNAM</p>
+            </Fade>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+              <p>ETS 2019</p>
+            </Fade>
           </div>
           <div className={`${s.topHero_middle} col-span-2 col-start-6`}>
-            <p>INSTAGRAM: @DERMOND.VN</p>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+              <p>INSTAGRAM: @DERMOND.VN</p>
+            </Fade>
           </div>
           <div className={`${s.topHero_right} col-span-2 col-start-10`}>
-            <p>HN 16:59</p>
-            <p>19 DEC 2023</p>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+              <p>HN 16:59</p>
+            </Fade>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+              <p>19 DEC 2023</p>
+            </Fade>
           </div>
         </div>
         <div className={`${s.bottomHero} grid grid-cols-12`}>
