@@ -1,42 +1,57 @@
-'use client';
-
 import React, { useEffect, useRef } from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
 import { cinzelFont } from '@/utils/fonts';
 import { storyWorkData } from '@/constants/story/storyWorks';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const StoryWork = () => {
-  const tabRefs = useRef<Array<HTMLDivElement | null>>([]);
+  gsap.registerPlugin(ScrollTrigger);
+  const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const triggerRef = useRef<HTMLElement | null>(null);
+  const titleRef = useRef<HTMLParagraphElement | null>(null);
 
   useEffect(() => {
-    if (!tabRefs.current) return;
     const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: tabRefs.current[0],
-        start: 'top top+=100',
-        end: 'bottom bottom',
-        pin: true,
-        markers: true,
-        scrub: false,
-        onEnter: () => {
-          console.log('enter');
-        },
+      itemRefs.current.forEach((item, index) => {
+        const itemRef = itemRefs.current[index];
+        const itemHeight = itemRef?.clientHeight;
+        const startOffset = itemHeight && (itemHeight / 1.6) * index;
+
+        const triggerOptions = {
+          trigger: triggerRef.current,
+          start: `top+=${startOffset}`,
+          end: `bottom ${`88%`}`,
+          pin: itemRef,
+          markers: true,
+          pinSpacing: false,
+        };
+
+        ScrollTrigger.create(triggerOptions);
       });
-    }, [tabRefs.current[0]]);
+      
+      ScrollTrigger.create({
+        trigger: triggerRef.current,
+        start: 'top top',
+        end: 'bottom 88%',
+        pin: titleRef.current,
+        markers: true,
+        pinSpacing: false,
+      });
+    });
 
     return () => {
-      ctx.kill();
+      ctx.revert();
     };
-  }, [tabRefs]);
-
+  }, []);
   return (
-    <section className={s.storyWork}>
+    <section className={s.storyWork} ref={triggerRef}>
       <Container className={s.container}>
-        <p className={`${s.storyWork_title} ${cinzelFont.className}`}>
+        <p
+          className={`${s.storyWork_title} ${cinzelFont.className}`}
+          ref={titleRef}
+        >
           <span>H</span>ow we work
         </p>
 
@@ -45,7 +60,7 @@ const StoryWork = () => {
             <div
               key={item.id}
               className={`${s.workItem} grid grid-cols-12`}
-              ref={el => (tabRefs.current[index] = el)}
+              ref={el => (itemRefs.current[index] = el)}
             >
               <div className={`${s.workItem_top} col-span-12 col-start-1`}>
                 <span className={s.workItem_number}>{`0${item.id}.`}</span>
