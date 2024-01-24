@@ -1,0 +1,8 @@
+.boxParallax {
+  overflow: hidden;
+
+  .boxParallax_inner {
+    --clipPath: inset(0% 0%);
+    clip-path: var(--clipPath);
+  }
+}

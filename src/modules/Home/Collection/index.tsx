@@ -5,6 +5,7 @@ import { cinzelFont, playfairFont } from '@/utils/fonts';
 import Image from 'next/image';
 import { HOME_COLLECTION_DATA } from '@/constants/homeData/data';
 import MarqueeText from '@/modules/Home/Collection/MarqueeText';
+import BoxParallax from '@/components/BoxParallax';
 
 const CollectionSecion = () => {
   return (
@@ -32,13 +33,15 @@ const CollectionSecion = () => {
         <div className={s.collection}>
           {HOME_COLLECTION_DATA.map((item, index) => (
             <div key={index} className={s.wrapImage}>
-              <Image
-                className={`${s.collection_img}`}
-                src={item.image}
-                width={item.width}
-                height={item.height}
-                alt="image"
-              />
+              <BoxParallax>
+                <Image
+                  className={`${s.collection_img}`}
+                  src={item.image}
+                  width={item.width}
+                  height={item.height}
+                  alt="image"
+                />
+              </BoxParallax>
             </div>
           ))}
         </div>
