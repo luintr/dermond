@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { HOME_COLLECTION_DATA } from '@/constants/homeData/data';
 import MarqueeText from '@/modules/Home/Collection/MarqueeText';
 import BoxParallax from '@/components/BoxParallax';
+import Fade from '@/components/Fade';
 
 const CollectionSecion = () => {
   return (
@@ -21,12 +22,17 @@ const CollectionSecion = () => {
             className={`${s.introduce_desc} col-span-4 col-start-8 grid grid-cols-4`}
           >
             <div className={`${s.line} col-span-4`}></div>
-            <p className={`col-span-3 col-start-2`}>
-              Emphasize <span className={playfairFont.className}>DER MOND</span>
-              &apos;s specialization in creating unique, one-of-a-kind prom
-              dresses tailored to each client&apos;s individual style and
-              preferences.
-            </p>
+            <div className={`${s.wrapText} col-span-3 col-start-2`}>
+              <Fade direction={'bottom'} from={'30px'} delayTrigger={0.2}>
+                <p>
+                  Emphasize{' '}
+                  <span className={playfairFont.className}>DER MOND</span>
+                  &apos;s specialization in creating unique, one-of-a-kind prom
+                  dresses tailored to each client&apos;s individual style and
+                  preferences.
+                </p>
+              </Fade>
+            </div>
           </div>
         </div>
 
