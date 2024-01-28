@@ -7,7 +7,8 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import s from './style.module.scss';
 import { cinzelFont } from '@/utils/fonts';
-import { BuyNow } from '@/components/Icons';
+import { AddtoCart, BuyNow } from '@/components/Icons';
+import { colorPicker } from '@/constants/colors';
 
 type IProduct = {
   _id: string;
@@ -81,10 +82,15 @@ const ProductModules = ({ data }: { data: IProduct }) => {
           <div className={s.leftOptions}>
             <div className={s.wrapContent_color}>
               <Radio.Group value={colorModel} onChange={handleColorChange}>
-                <Radio.Button value="be">Be</Radio.Button>
-                <Radio.Button value="brown">Brown</Radio.Button>
-                <Radio.Button value="black">Black</Radio.Button>
-                <Radio.Button value="white">White</Radio.Button>
+                {colorPicker.map((item, index) => (
+                  <Radio.Button
+                    key={index}
+                    value={item.name}
+                    style={{ backgroundColor: item.color }}
+                  >
+                    {item.name}
+                  </Radio.Button>
+                ))}
               </Radio.Group>
             </div>
 
@@ -98,28 +104,31 @@ const ProductModules = ({ data }: { data: IProduct }) => {
           </div>
 
           <div className={s.wrapContent_qty}>
-            <div className={s.button} onClick={handleMinusQty}>
+            <button className={s.button} onClick={handleMinusQty}>
               <span>-</span>
-            </div>
+            </button>
             <div className={s.qty}>
               <span>{qty}</span>
             </div>
-            <div className={s.button} onClick={handlePlusQty}>
+            <button className={s.button} onClick={handlePlusQty}>
               <span>+</span>
-            </div>
+            </button>
           </div>
-        </div>
-
-        <div className={s.wrapContent_desc}>desc: {description}</div>
-
-        <div className={s.wrapContent_status}>
-          status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}
         </div>
 
         <div className={s.wrapContent_buttons}>
           <button disabled={data.countInStock === 0} onClick={buyNowHandler}>
             <BuyNow /> <span>Buy Now</span>
           </button>
+          <button disabled={data.countInStock === 0} onClick={buyNowHandler}>
+            <AddtoCart /> <span>Buy Now</span>
+          </button>
+        </div>
+
+        <div className={s.wrapContent_desc}>desc: {description}</div>
+
+        <div className={s.wrapContent_status}>
+          status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}
         </div>
       </div>
     </div>
