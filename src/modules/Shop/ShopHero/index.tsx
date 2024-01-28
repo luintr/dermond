@@ -3,17 +3,20 @@ import s from './style.module.scss';
 import image from '@Images/shopHero.jpg';
 import Image from 'next/image';
 import { playfairFont } from '@/utils/fonts';
+import BoxParallax from '@/components/BoxParallax';
 
 const ShopHero = () => {
   return (
     <section className={`${s.shopHero} `}>
       <div className={s.shopHero_img}>
-        <Image
-          src={image.src}
-          width={image.width}
-          height={image.height}
-          alt="image"
-        />
+        <BoxParallax>
+          <Image
+            src={image.src}
+            width={image.width}
+            height={image.height}
+            alt="image"
+          />
+        </BoxParallax>
       </div>
       <div className={`${s.shopHero_content} container grid grid-cols-12`}>
         <div className={`${s.wrapContent} col-span-6 col-start-2`}>

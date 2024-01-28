@@ -2,9 +2,12 @@
 
 import React, { useState } from 'react';
 import { addToCart } from '@/store/slices/cartSlice';
-import { Select as AntdSelect, Radio, RadioChangeEvent } from 'antd';
+import { Radio, RadioChangeEvent } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import s from './style.module.scss';
+import { cinzelFont } from '@/utils/fonts';
+import { BuyNow } from '@/components/Icons';
 
 type IProduct = {
   _id: string;
@@ -22,8 +25,6 @@ type IProduct = {
 };
 
 const ProductModules = ({ data }: { data: IProduct }) => {
-  const { Option } = AntdSelect;
-
   const {
     name,
     image,
@@ -45,7 +46,7 @@ const ProductModules = ({ data }: { data: IProduct }) => {
     'be' | 'brown' | 'black' | 'white'
   >(color);
 
-  const addtoCartHandler = () => {
+  const buyNowHandler = () => {
     dispatch(addToCart({ ...data, qty, size: sizeModel, color: colorModel }));
     router.push('/cart');
   };
@@ -57,64 +58,69 @@ const ProductModules = ({ data }: { data: IProduct }) => {
     setColorModel(e.target.value);
   };
 
+  const handleMinusQty = () => {
+    setQty(qty - 1);
+  };
+  const handlePlusQty = () => {
+    setQty(qty + 1);
+  };
+
   return (
-    <div className={`container grid-cols-12`}>
-      <div>
+    <div className={`${s.productDetail} container grid grid-cols-12`}>
+      <div className={`${s.productDetail_img} col-span-6 col-start-1`}>
         <img src={image} alt={name} />
       </div>
-      <div>
-        <h1>{name}</h1>
-        <div>
-          <div>rate: {rating}</div>
-          <div>{numReviews}</div>
-        </div>
-        <div>price: ${price}</div>
-        <div>desc: {description}</div>
-      </div>
+      <div className={`${s.wrapContent} col-span-6 col-start-7`}>
+        <h1 className={`${s.wrapContent_title} ${cinzelFont.className}`}>
+          {name}
+        </h1>
 
-      <div>
-        <div>price: ${price}</div>
-        <div>status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}</div>
-        <div>color: {color}</div>
-        <div>
-          <Radio.Group value={sizeModel} onChange={handleSizeChange}>
-            <Radio.Button value="S">S</Radio.Button>
-            <Radio.Button value="M">M</Radio.Button>
-            <Radio.Button value="L">L</Radio.Button>
-          </Radio.Group>
-        </div>
+        <div className={s.wrapContent_price}>$ {price}</div>
 
-        <div>
-          <Radio.Group value={colorModel} onChange={handleColorChange}>
-            <Radio.Button value="be">Be</Radio.Button>
-            <Radio.Button value="brown">Brown</Radio.Button>
-            <Radio.Button value="black">Black</Radio.Button>
-            <Radio.Button value="white">White</Radio.Button>
-          </Radio.Group>
-        </div>
+        <div className={s.wrapContent_options}>
+          <div className={s.leftOptions}>
+            <div className={s.wrapContent_color}>
+              <Radio.Group value={colorModel} onChange={handleColorChange}>
+                <Radio.Button value="be">Be</Radio.Button>
+                <Radio.Button value="brown">Brown</Radio.Button>
+                <Radio.Button value="black">Black</Radio.Button>
+                <Radio.Button value="white">White</Radio.Button>
+              </Radio.Group>
+            </div>
 
-        {data.countInStock > 0 && (
-          <div>
-            <div>
-              <div>Qty</div>
-              <div>
-                <AntdSelect
-                  value={qty.toString()}
-                  onChange={value => setQty(Number(value))}
-                >
-                  {Array.from({ length: data.countInStock }, (_, index) => (
-                    <Option key={index} value={(index + 1).toString()}>
-                      {index + 1}
-                    </Option>
-                  ))}
-                </AntdSelect>
-              </div>
+            <div className={s.wrapContent_size}>
+              <Radio.Group value={sizeModel} onChange={handleSizeChange}>
+                <Radio.Button value="S">S</Radio.Button>
+                <Radio.Button value="M">M</Radio.Button>
+                <Radio.Button value="L">L</Radio.Button>
+              </Radio.Group>
             </div>
           </div>
-        )}
-        <button disabled={data.countInStock === 0} onClick={addtoCartHandler}>
-          Add to cart
-        </button>
+
+          <div className={s.wrapContent_qty}>
+            <div className={s.button} onClick={handleMinusQty}>
+              <span>-</span>
+            </div>
+            <div className={s.qty}>
+              <span>{qty}</span>
+            </div>
+            <div className={s.button} onClick={handlePlusQty}>
+              <span>+</span>
+            </div>
+          </div>
+        </div>
+
+        <div className={s.wrapContent_desc}>desc: {description}</div>
+
+        <div className={s.wrapContent_status}>
+          status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}
+        </div>
+
+        <div className={s.wrapContent_buttons}>
+          <button disabled={data.countInStock === 0} onClick={buyNowHandler}>
+            <BuyNow /> <span>Buy Now</span>
+          </button>
+        </div>
       </div>
     </div>
   );
