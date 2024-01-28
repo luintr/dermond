@@ -1,18 +1,18 @@
 export const colorPicker = [
   {
     name: 'be',
-    color: '#D3CFC1'
+    color: '#D3CFC1',
   },
   {
     name: 'brown',
-    color: '#533A3A'
+    color: '#533A3A',
   },
   {
     name: 'black',
-    color: '#000000'
+    color: '#000000',
   },
   {
     name: 'white',
-    color: '#ffffff'
+    color: '#ffffff',
   },
-]
+];
