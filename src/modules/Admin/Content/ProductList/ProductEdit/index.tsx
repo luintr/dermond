@@ -166,7 +166,7 @@ const ProductEdit = ({ productID, setEditMode }: IProductEdit) => {
           </Form.Item>
 
           <Form.Item name="description" label="Description">
-            <Input.TextArea data-lenis-prevent/>
+            <Input.TextArea data-lenis-prevent />
           </Form.Item>
 
           <Form.Item>
