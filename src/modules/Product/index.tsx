@@ -9,6 +9,7 @@ import s from './style.module.scss';
 import { cinzelFont } from '@/utils/fonts';
 import { AddtoCart, BuyNow } from '@/components/Icons';
 import { colorPicker } from '@/constants/colors';
+import { useModelStore } from '@/store/zustandStore';
 
 type IProduct = {
   _id: string;
@@ -40,6 +41,7 @@ const ProductModules = ({ data }: { data: IProduct }) => {
 
   const dispatch = useDispatch();
   const router = useRouter();
+  const { setModelToggle } = useModelStore();
 
   const [qty, setQty] = useState<number>(1);
   const [sizeModel, setSizeModel] = useState<'S' | 'M' | 'L'>(size);
@@ -50,6 +52,11 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   const buyNowHandler = () => {
     dispatch(addToCart({ ...data, qty, size: sizeModel, color: colorModel }));
     router.push('/cart');
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...data, qty, size: sizeModel, color: colorModel }));
+    setModelToggle()
   };
 
   const handleSizeChange = (e: RadioChangeEvent) => {
@@ -120,12 +127,12 @@ const ProductModules = ({ data }: { data: IProduct }) => {
           <button disabled={data.countInStock === 0} onClick={buyNowHandler}>
             <BuyNow /> <span>Buy Now</span>
           </button>
-          <button disabled={data.countInStock === 0} onClick={buyNowHandler}>
-            <AddtoCart /> <span>Buy Now</span>
+          <button disabled={data.countInStock === 0} onClick={addToCartHandler}>
+            <AddtoCart /> <span>Add to cart</span>
           </button>
         </div>
 
-        <div className={s.wrapContent_desc}>desc: {description}</div>
+        <div className={s.wrapContent_desc}>{description}</div>
 
         <div className={s.wrapContent_status}>
           status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}
