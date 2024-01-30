@@ -8,8 +8,10 @@ import { useRouter } from 'next/navigation';
 import s from './style.module.scss';
 import { cinzelFont } from '@/utils/fonts';
 import { AddtoCart, BuyNow } from '@/components/Icons';
-import { colorPicker } from '@/constants/colors';
+import { colorPicker, sizePicker } from '@/constants/options';
 import { useModelStore } from '@/store/zustandStore';
+import RadioColor from '@/components/CustomAntd/RadioColor';
+import QtyInput from '@/components/CustomAntd/QtyInput';
 
 type IProduct = {
   _id: string;
@@ -62,15 +64,9 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   const handleSizeChange = (e: RadioChangeEvent) => {
     setSizeModel(e.target.value);
   };
+
   const handleColorChange = (e: RadioChangeEvent) => {
     setColorModel(e.target.value);
-  };
-
-  const handleMinusQty = () => {
-    setQty(qty - 1);
-  };
-  const handlePlusQty = () => {
-    setQty(qty + 1);
   };
 
   return (
@@ -87,30 +83,24 @@ const ProductModules = ({ data }: { data: IProduct }) => {
 
         <div className={s.wrapContent_options}>
           <div className={s.leftOptions}>
-            <div className={s.wrapContent_color}>
-              <Radio.Group value={colorModel} onChange={handleColorChange}>
-                {colorPicker.map((item, index) => (
-                  <Radio.Button
-                    key={index}
-                    value={item.name}
-                    style={{ backgroundColor: item.color }}
-                  >
+            <RadioColor
+              colorModel={colorModel}
+              handleColorChange={handleColorChange}
+              className={s.wrapContent_color}
+            />
+
+            <div className={s.wrapContent_size}>
+              <Radio.Group value={sizeModel} onChange={handleSizeChange}>
+                {sizePicker.map((item, index) => (
+                  <Radio.Button key={index} value={item.value}>
                     {item.name}
                   </Radio.Button>
                 ))}
               </Radio.Group>
             </div>
-
-            <div className={s.wrapContent_size}>
-              <Radio.Group value={sizeModel} onChange={handleSizeChange}>
-                <Radio.Button value="S">S</Radio.Button>
-                <Radio.Button value="M">M</Radio.Button>
-                <Radio.Button value="L">L</Radio.Button>
-              </Radio.Group>
-            </div>
           </div>
 
-          <div className={s.wrapContent_qty}>
+          {/* <div className={s.wrapContent_qty}>
             <button className={s.button} onClick={handleMinusQty}>
               <span>-</span>
             </button>
@@ -120,7 +110,8 @@ const ProductModules = ({ data }: { data: IProduct }) => {
             <button className={s.button} onClick={handlePlusQty}>
               <span>+</span>
             </button>
-          </div>
+          </div> */}
+          <QtyInput qty={qty} setQty={setQty} className={s.wrapContent_qty} />
         </div>
 
         <div className={s.wrapContent_buttons}>

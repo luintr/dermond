@@ -1,0 +1,40 @@
+.qtyInput {
+  display: flex;
+  align-items: center;
+  gap: rem(8px);
+
+  .button {
+    width: rem(40px);
+    height: rem(40px);
+    background: var(--black-08);
+    border-radius: rem(20px);
+    color: var(--tan);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+      font-size: rem(36px);
+      height: fit-content;
+      font-weight: 400;
+    }
+
+    &:first-child {
+      span {
+        margin-top: rem(-5px);
+      }
+    }
+  }
+
+  .qty {
+    font-size: rem(24px);
+    width: rem(80px);
+    height: rem(40px);
+    border-radius: rem(20px);
+    border: rem(1px) solid var(--black-08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

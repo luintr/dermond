@@ -16,3 +16,18 @@ export const colorPicker = [
     color: '#ffffff',
   },
 ];
+
+export const sizePicker = [
+  {
+    name: 'S',
+    value: 'S',
+  },
+  {
+    name: 'M',
+    value: 'M',
+  },
+  {
+    name: 'L',
+    value: 'L',
+  },
+];
