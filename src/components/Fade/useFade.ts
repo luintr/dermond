@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { MutableRefObject, useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/all';
 import { IAnimationElement } from '@/types/common';
-import useUiContext from '@/context/ui';
+import useUiContext from '@/context/uiContext';
 
 interface IUseFade {
   refContent: MutableRefObject<IAnimationElement | null>;

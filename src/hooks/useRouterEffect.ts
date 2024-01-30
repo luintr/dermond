@@ -1,4 +1,4 @@
-import useUiContext from '@/context/ui';
+import useUiContext from '@/context/uiContext';
 import { TIME_DELAY_ROUTING } from '@Constants/animation';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';

@@ -8,7 +8,7 @@ import Footer from './Footer';
 import { GridDebug } from './GridDebug';
 import CartModel from '../CartModel';
 import LenisScroller from '../Lenis';
-import { UiProvider } from '@/context/ui';
+import { UiProvider } from '@/context/uiContext';
 
 type ILayout = {
   children: ReactNode;

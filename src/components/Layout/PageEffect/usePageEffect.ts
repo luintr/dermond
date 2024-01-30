@@ -1,4 +1,4 @@
-import useUiContext from '@/context/ui';
+import useUiContext from '@/context/uiContext';
 import { gsap } from 'gsap';
 import { MutableRefObject, useEffect, useRef } from 'react';
 
