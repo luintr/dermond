@@ -190,13 +190,13 @@
         justify-content: center;
         gap: rem(12px);
         padding: rem(15px) 0;
-        transition: .4s all var(--easeOutQuart);
+        transition: 0.4s all var(--easeOutQuart);
         border: rem(1px) solid var(--black-08);
         text-transform: uppercase;
 
         svg {
           path {
-            transition: .4s all var(--easeOutQuart);
+            transition: 0.4s all var(--easeOutQuart);
           }
         }
 

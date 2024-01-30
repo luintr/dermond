@@ -3,7 +3,9 @@ import { TIME_DELAY_ROUTING } from '@Constants/animation';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function useRouterEffect(): { routerEffect: (r: string) => void } {
+export default function useRouterEffect(): {
+  routerEffect: (r: string) => void;
+} {
   const router = useRouter();
 
   const { pageStatus, setPageStatus } = useUiContext();
