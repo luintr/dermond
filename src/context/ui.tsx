@@ -30,14 +30,11 @@ type tPageStatus =
   | 'PAGE_LEAVE'
   | 'PAGE_EXIT'
   | 'PAGE_ONCE';
-export type tHeaderColor = 'white' | 'green' | 'brow';
 
 interface IUiContext {
   pageOnce: boolean;
   pageStatus: string;
-  logoColor: string;
   scrollHeight: number;
-  setLogoColor: React.Dispatch<SetStateAction<tHeaderColor>>;
   setPageStatus: React.Dispatch<SetStateAction<tPageStatus>>;
   setFramesLoaded: React.Dispatch<SetStateAction<boolean>>;
   isPageLeave: boolean;
@@ -46,9 +43,7 @@ interface IUiContext {
 export const UiContext = createContext<IUiContext>({
   pageStatus: 'PAGE_ONCE',
   scrollHeight: 0,
-  logoColor: 'white',
   setPageStatus: _ => null,
-  setLogoColor: _ => null,
   setFramesLoaded: _ => null,
   pageOnce: false,
   isPageLeave: false,
@@ -67,18 +62,21 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
   // const [isMenuSHow, setIsMenuShow] = useState<boolean>(false);
   const [pageOnce, setPageOnce] = useState(true);
   const { scrollHeight } = useObHeightChange();
-  const [logoColor, setLogoColor] = useState<tHeaderColor>('white');
   const [_framesLoaded, setFramesLoaded] = useState<boolean>(false);
   const [isPageLeave, setIsPageLeave] = useState(false);
   const [isPageEnter, setIsPageEnter] = useState(false);
 
   const isLoaded = useMemo((): boolean => {
+    console.log(pageStatus);
     return pageStatus === 'PAGE_LOADED';
   }, [pageStatus]);
 
   useEffect(() => {
+    console.log(pageStatus);
     setIsPageLeave(pageStatus === 'PAGE_LOADED');
+    console.log(pageStatus);
     setIsPageEnter(pageStatus === 'PAGE_ENTER');
+    console.log(pageStatus);
   }, [pageStatus]);
 
   useEffect(() => {
@@ -101,8 +99,6 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
       setPageStatus,
       scrollHeight,
       pageOnce,
-      logoColor,
-      setLogoColor,
       setFramesLoaded,
       isPageLeave,
       isPageEnter,
@@ -112,8 +108,6 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
     pageOnce,
     setPageStatus,
     scrollHeight,
-    logoColor,
-    setLogoColor,
     setFramesLoaded,
     isPageLeave,
     isPageEnter,
@@ -121,7 +115,7 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <UiContext.Provider value={contextValues}>
-      <PageLoader isLoaded={isLoaded} onCompleted={onCompleteLoaded} />
+      <PageLoader isLoaded={pageOnce} onCompleted={onCompleteLoaded} />
       {children}
     </UiContext.Provider>
   );

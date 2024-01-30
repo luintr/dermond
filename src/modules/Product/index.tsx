@@ -56,7 +56,7 @@ const ProductModules = ({ data }: { data: IProduct }) => {
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...data, qty, size: sizeModel, color: colorModel }));
-    setModelToggle()
+    setModelToggle();
   };
 
   const handleSizeChange = (e: RadioChangeEvent) => {

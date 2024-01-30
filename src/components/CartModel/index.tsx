@@ -45,7 +45,7 @@ const CartModel = () => {
   const checkoutHandler = () => {
     setModelToggle();
     if (user) {
-      router.push('/payment');
+      router.push('/cart');
     } else {
       router.push('/login?redirect=/payment');
     }
