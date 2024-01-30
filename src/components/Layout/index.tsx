@@ -9,6 +9,7 @@ import { GridDebug } from './GridDebug';
 import CartModel from '../CartModel';
 import LenisScroller from '../Lenis';
 import { UiProvider } from '@/context/uiContext';
+import PageEffect from './PageEffect';
 
 type ILayout = {
   children: ReactNode;
@@ -26,6 +27,7 @@ const Layout = ({ children, className }: ILayout) => {
             <Footer />
             <CartModel />
           </LenisScroller>
+          <PageEffect />
         </UiProvider>
         {process.env.NODE_ENV === 'development' && <GridDebug />}
       </body>

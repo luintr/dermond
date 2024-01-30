@@ -9,7 +9,6 @@ interface ISusePageEffect {
 export default function usePageEffect({ refContent }: ISusePageEffect): void {
   const { pageStatus, setPageStatus } = useUiContext();
   const refisWinload = useRef<boolean>(false);
-
   useEffect(() => {
     gsap.context(() => {
       if (pageStatus === 'PAGE_EXIT') {

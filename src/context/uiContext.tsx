@@ -59,7 +59,6 @@ function scrollRestoration(): void {
 
 export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
   const [pageStatus, setPageStatus] = useState<tPageStatus>('PAGE_ONCE');
-  // const [isMenuSHow, setIsMenuShow] = useState<boolean>(false);
   const [pageOnce, setPageOnce] = useState(true);
   const { scrollHeight } = useObHeightChange();
   const [_framesLoaded, setFramesLoaded] = useState<boolean>(false);
@@ -67,16 +66,12 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isPageEnter, setIsPageEnter] = useState(false);
 
   const isLoaded = useMemo((): boolean => {
-    console.log(pageStatus);
     return pageStatus === 'PAGE_LOADED';
   }, [pageStatus]);
 
   useEffect(() => {
-    console.log(pageStatus);
     setIsPageLeave(pageStatus === 'PAGE_LOADED');
-    console.log(pageStatus);
     setIsPageEnter(pageStatus === 'PAGE_ENTER');
-    console.log(pageStatus);
   }, [pageStatus]);
 
   useEffect(() => {
