@@ -258,4 +258,30 @@
       transform: translate(-100%, 100%);
     }
   }
+
+  .storyWork_title {
+    font-size: rem(64px);
+    line-height: rem(64px);
+    max-width: rem(430px);
+    position: relative;
+    margin-bottom: rem(40px);
+    margin-top: rem(40px);
+
+    span {
+      font-size: rem(96px);
+      line-height: rem(96px);
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      background: var(--coral);
+      width: rem(80px);
+      height: rem(80px);
+      border-radius: rem(100px);
+      left: rem(20px);
+      top: rem(-4px);
+      z-index: -1;
+    }
+  }
 }

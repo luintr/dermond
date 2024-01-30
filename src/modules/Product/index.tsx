@@ -138,6 +138,12 @@ const ProductModules = ({ data }: { data: IProduct }) => {
           status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}
         </div>
       </div>
+      <p
+          className={`${s.storyWork_title} ${cinzelFont.className} col-span-3`}
+          // ref={titleRef}
+        >
+          <span>Y</span>ou may also love
+      </p>
     </div>
   );
 };
