@@ -10,6 +10,7 @@ export default function useRouterEffect(): {
 
   const { pageStatus, setPageStatus } = useUiContext();
   const [url, setUrl] = useState<string | null>(null);
+
   const routerEffect = (url: string): void => {
     setPageStatus('PAGE_EXIT');
     setUrl(url);

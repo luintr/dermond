@@ -9,7 +9,7 @@ interface Props extends PropsWithChildren {
   target?: string;
   children: React.ReactNode;
 }
-const LinEffect = React.forwardRef(
+const LinkEffect = React.forwardRef(
   (
     { href, className, target, children, ...setProps }: Props,
     ref: Ref<HTMLAnchorElement> | undefined
@@ -34,5 +34,5 @@ const LinEffect = React.forwardRef(
   }
 );
 
-LinEffect.displayName = 'LinEffect';
-export default LinEffect;
+LinkEffect.displayName = 'LinkEffect';
+export default LinkEffect;
