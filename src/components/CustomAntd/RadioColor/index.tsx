@@ -5,7 +5,8 @@ import { colorPicker } from '@/constants/options';
 
 type IHandlderColorChange = {
   colorModel: 'be' | 'brown' | 'black' | 'white';
-  handleColorChange: (e: RadioChangeEvent) => void;
+  handleColorChange?: (e: RadioChangeEvent) => void;
+  addtoCartHandler?: (e: RadioChangeEvent) => void;
   className?: string;
 };
 
@@ -13,10 +14,20 @@ const RadioColor: React.FC<IHandlderColorChange> = ({
   className,
   colorModel,
   handleColorChange,
+  addtoCartHandler,
 }) => {
+  const handleChange = (e: RadioChangeEvent) => {
+    if (addtoCartHandler) {
+      addtoCartHandler(e);
+    } else if (handleColorChange) {
+      handleColorChange(e);
+    } else {
+      return;
+    }
+  };
   return (
     <div className={`${s.radioColor} ${className}`}>
-      <Radio.Group value={colorModel} onChange={handleColorChange}>
+      <Radio.Group value={colorModel} onChange={handleChange}>
         {colorPicker.map((item, index) => (
           <Radio.Button
             key={index}

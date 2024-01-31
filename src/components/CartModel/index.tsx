@@ -6,17 +6,13 @@ import { useModelStore } from '@/store/zustandStore';
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { ICartItem } from '@/types/global';
-import { Select as AntdSelect, Radio } from 'antd';
-import { addToCart, removeFromCart } from '@/store/slices/cartSlice';
+import { removeFromCart } from '@/store/slices/cartSlice';
 import Link from 'next/link';
 
 const CartModel = () => {
-  const { Option } = AntdSelect;
-
-  const { modelState, setModelToggle } = useModelStore();
-
   const [cartList, setCartList] = useState<ICartItem[]>([]);
 
+  const { modelState, setModelToggle } = useModelStore();
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -29,9 +25,6 @@ const CartModel = () => {
     setCartList(cartItems);
   }, [cartItems]);
 
-  const addtoCartHandler = async (product: ICartItem, qty: number) => {
-    dispatch(addToCart({ ...product, qty }));
-  };
   const removeFromCartHandler = async (id: string) => {
     dispatch(removeFromCart(id));
   };
@@ -66,66 +59,33 @@ const CartModel = () => {
                         <Link
                           href={`/product/${item._id}`}
                           className={s.cartItem_title}
+                          onClick={setModelToggle}
                         >
                           {item.name}
                         </Link>
                         <div className={s.wrapSelect}>
                           <div className={s.cartItem_qty}>
-                            <AntdSelect
-                              value={item.qty.toString()}
-                              onChange={value =>
-                                addtoCartHandler(item, Number(value))
-                              }
-                            >
-                              {Array.from(
-                                { length: item.countInStock },
-                                (_, index) => (
-                                  <Option
-                                    key={index}
-                                    value={(index + 1).toString()}
-                                  >
-                                    {index + 1}
-                                  </Option>
-                                )
-                              )}
-                            </AntdSelect>
+                            <p>
+                              Quantity: <span>{item.qty}</span>
+                            </p>
                           </div>
 
                           <div className={s.cartItem_size}>
-                            <Radio.Group
-                              value={item.size}
-                              onChange={e => {
-                                addtoCartHandler(
-                                  { ...item, size: e.target.value },
-                                  item.qty
-                                );
-                              }}
-                            >
-                              <Radio.Button value="S">S</Radio.Button>
-                              <Radio.Button value="M">M</Radio.Button>
-                              <Radio.Button value="L">L</Radio.Button>
-                            </Radio.Group>
+                            <p>
+                              Size: <span>{item.size}</span>
+                            </p>
                           </div>
                         </div>
 
                         <div className={s.cartItem_color}>
-                          <Radio.Group
-                            value={item.color}
-                            onChange={e => {
-                              addtoCartHandler(
-                                { ...item, color: e.target.value },
-                                item.qty
-                              );
-                            }}
-                          >
-                            <Radio.Button value="be">Be</Radio.Button>
-                            <Radio.Button value="brown">Brown</Radio.Button>
-                            <Radio.Button value="black">Black</Radio.Button>
-                            <Radio.Button value="white">White</Radio.Button>
-                          </Radio.Group>
+                          <p>
+                            Color: <span>{item.color}</span>
+                          </p>
                         </div>
 
-                        <p className={s.cartItem_price}>1 x ${item.price}</p>
+                        <p className={s.cartItem_price}>
+                          {item.qty} x ${item.price * item.qty}
+                        </p>
                       </div>
                       <div
                         className={s.cartItem_delete}

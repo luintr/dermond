@@ -75,11 +75,11 @@
 
         &_title {
           display: block;
-          font-size: rem(24px);
+          font-size: rem(28px);
           line-height: rem(28px);
           margin-bottom: rem(24px);
           transition: 0.4s all var(--easeOutQuart);
-          font-weight: 500;
+          font-weight: 700;
 
           &:hover {
             opacity: 0.5;
@@ -98,13 +98,29 @@
 
           .wrapSelect {
             display: flex;
-            gap: rem(8px);
+            gap: rem(24px);
             margin-bottom: rem(8px);
+
+            p {
+              font-weight: 600;
+
+              span {
+                font-weight: 400;
+              }
+            }
           }
         }
 
         &_color {
           margin-bottom: rem(8px);
+
+          p {
+            font-weight: 600;
+
+            span {
+              font-weight: 400;
+            }
+          }
         }
 
         &_delete {
