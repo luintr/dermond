@@ -52,7 +52,9 @@ const ProductModules = ({ data }: { data: IProduct }) => {
 
   const [qty, setQty] = useState<number>(1);
   const [sizeModel, setSizeModel] = useState<'S' | 'M' | 'L'>(size);
-  const [recommendProducts, setRecommendProducts] = useState<IProductItem[]>([]);
+  const [recommendProducts, setRecommendProducts] = useState<IProductItem[]>(
+    []
+  );
   const [colorModel, setColorModel] = useState<
     'be' | 'brown' | 'black' | 'white'
   >(color);
@@ -87,10 +89,12 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   useEffect(() => {
     let randomAnswer = [];
     for (let index = 0; index < 3; index++) {
-      randomAnswer.push(products.data[Math.floor(Math.random() * products.data.length)]);      
+      randomAnswer.push(
+        products.data[Math.floor(Math.random() * products.data.length)]
+      );
     }
     setRecommendProducts(randomAnswer);
-  }, [])
+  }, []);
 
   return (
     <div className={`${s.productDetail} container grid grid-cols-12`}>
@@ -139,7 +143,7 @@ const ProductModules = ({ data }: { data: IProduct }) => {
       </div>
       <p
         className={`${s.storyWork_title} ${cinzelFont.className} col-span-3`}
-      // ref={titleRef}
+        // ref={titleRef}
       >
         <span>Y</span>ou may also love
       </p>
