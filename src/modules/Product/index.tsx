@@ -12,6 +12,7 @@ import { colorPicker, sizePicker } from '@/constants/options';
 import { useModelStore } from '@/store/zustandStore';
 import RadioColor from '@/components/CustomAntd/RadioColor';
 import QtyInput from '@/components/CustomAntd/QtyInput';
+import RadioSize from '@/components/CustomAntd/RadioSize';
 
 type IProduct = {
   _id: string;
@@ -89,28 +90,13 @@ const ProductModules = ({ data }: { data: IProduct }) => {
               className={s.wrapContent_color}
             />
 
-            <div className={s.wrapContent_size}>
-              <Radio.Group value={sizeModel} onChange={handleSizeChange}>
-                {sizePicker.map((item, index) => (
-                  <Radio.Button key={index} value={item.value}>
-                    {item.name}
-                  </Radio.Button>
-                ))}
-              </Radio.Group>
-            </div>
+            <RadioSize
+              sizeModel={sizeModel}
+              handleSizeChange={handleSizeChange}
+              className={s.wrapContent_size}
+            />
           </div>
 
-          {/* <div className={s.wrapContent_qty}>
-            <button className={s.button} onClick={handleMinusQty}>
-              <span>-</span>
-            </button>
-            <div className={s.qty}>
-              <span>{qty}</span>
-            </div>
-            <button className={s.button} onClick={handlePlusQty}>
-              <span>+</span>
-            </button>
-          </div> */}
           <QtyInput qty={qty} setQty={setQty} className={s.wrapContent_qty} />
         </div>
 

@@ -4,6 +4,7 @@ import s from './style.module.scss';
 type IQtyInput = {
   qty: number;
   setQty: (qty: number) => void;
+  addtoCartHandler?: () => void;
   className?: string;
 };
 

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './style.module.scss';
 import { ICartItem } from '@/types/global';
 import { addToCart, removeFromCart } from '@/store/slices/cartSlice';
 import { useDispatch } from 'react-redux';
 import LinkEffect from '@/components/LinkEffect';
 import { Radio } from 'antd';
+import RadioSize from '@/components/CustomAntd/RadioSize';
+import RadioColor from '@/components/CustomAntd/RadioColor';
+import QtyInput from '@/components/CustomAntd/QtyInput';
 
 interface CartItemProps {
   item: ICartItem;
@@ -13,6 +16,11 @@ interface CartItemProps {
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
   console.log(item);
   const { _id, image, qty, countInStock, size, color, price, name } = item;
+  const [qtyS, setQtyS] = useState<number | null>(null);
+
+  useEffect(() => {
+    setQtyS(qty);
+  }, [qty]);
 
   const dispatch = useDispatch();
 
@@ -34,45 +42,22 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
             {name}
           </LinkEffect>
         </div>
-        <div className={s.cartItem_qty}>
-          {/* <AntdSelect
-            value={qty.toString()}
-            onChange={value => addtoCartHandler(item, Number(value))}
-          >
-            {Array.from({ length: countInStock }, (_, index) => (
-              <Option key={index} value={(index + 1).toString()}>
-                {index + 1}
-              </Option>
-            ))}
-          </AntdSelect> */}
-        </div>
 
-        <div>
-          <Radio.Group
-            value={size}
-            onChange={e => {
-              addtoCartHandler({ ...item, size: e.target.value }, qty);
-            }}
-          >
-            <Radio.Button value="S">S</Radio.Button>
-            <Radio.Button value="M">M</Radio.Button>
-            <Radio.Button value="L">L</Radio.Button>
-          </Radio.Group>
-        </div>
+        <QtyInput qty={qty} setQty={value => addtoCartHandler(item, value)} />
 
-        <div>
-          <Radio.Group
-            value={color}
-            onChange={e => {
-              addtoCartHandler({ ...item, color: e.target.value }, qty);
-            }}
-          >
-            <Radio.Button value="be">Be</Radio.Button>
-            <Radio.Button value="brown">Brown</Radio.Button>
-            <Radio.Button value="black">Black</Radio.Button>
-            <Radio.Button value="white">White</Radio.Button>
-          </Radio.Group>
-        </div>
+        <RadioSize
+          sizeModel={size}
+          addtoCartHandler={e => {
+            addtoCartHandler({ ...item, size: e.target.value }, qty);
+          }}
+        />
+
+        <RadioColor
+          colorModel={color}
+          addtoCartHandler={e => {
+            addtoCartHandler({ ...item, color: e.target.value }, qty);
+          }}
+        />
 
         <p className={s.cartItem_price}>${price}</p>
         <div
