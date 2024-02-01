@@ -107,13 +107,13 @@ const GetOffsetThreeJs = ({
 };
 
 //
-export const shuffleArray = <T>(array: T[]) => { 
-  for (let i = array.length - 1; i > 0; i--) { 
-    const j = Math.floor(Math.random() * (i + 1)); 
-    [array[i], array[j]] = [array[j], array[i]]; 
+export const shuffleArray = <T>(array: T[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
-  return array; 
-}; 
+  return array;
+};
 
 export const randBool = (): boolean => {
   const a = new Uint8Array(1);

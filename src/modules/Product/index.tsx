@@ -14,7 +14,9 @@ import RadioColor from '@/components/CustomAntd/RadioColor';
 import QtyInput from '@/components/CustomAntd/QtyInput';
 import RadioSize from '@/components/CustomAntd/RadioSize';
 import { shuffleArray } from '@/utils/mathUtils';
-import ProductItem, { IProductItem } from '@/modules/Shop/ProductList/ProductItem';
+import ProductItem, {
+  IProductItem,
+} from '@/modules/Shop/ProductList/ProductItem';
 import { useGetProduct } from '@/api/getProduct';
 
 type IProduct = {
@@ -89,10 +91,13 @@ const ProductModules = ({ data }: { data: IProduct }) => {
     const temp = [...products];
     let shuffleProducts: IProductItem[] = shuffleArray(temp);
     if (shuffleProducts.length) {
-      setRecommendProducts([shuffleProducts[0], shuffleProducts[1], shuffleProducts[2]]);
+      setRecommendProducts([
+        shuffleProducts[0],
+        shuffleProducts[1],
+        shuffleProducts[2],
+      ]);
     }
   }, [loading]);
-
 
   return (
     <div className={`${s.productDetail} container grid grid-cols-12`}>
@@ -141,16 +146,15 @@ const ProductModules = ({ data }: { data: IProduct }) => {
       </div>
       <p
         className={`${s.storyWork_title} ${cinzelFont.className} col-span-3`}
-      // ref={titleRef}
+        // ref={titleRef}
       >
         <span>Y</span>ou may also love
       </p>
       <div className={`${s.productList} col-span-12`}>
-        {
-          recommendProducts && recommendProducts.map((product: IProductItem) => (
+        {recommendProducts &&
+          recommendProducts.map((product: IProductItem) => (
             <ProductItem key={product._id} data={product} />
-          ))
-        }
+          ))}
       </div>
     </div>
   );
