@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { addToCart } from '@/store/slices/cartSlice';
 import { Radio, RadioChangeEvent } from 'antd';
 import { useDispatch } from 'react-redux';
@@ -13,6 +13,10 @@ import { useModelStore } from '@/store/zustandStore';
 import RadioColor from '@/components/CustomAntd/RadioColor';
 import QtyInput from '@/components/CustomAntd/QtyInput';
 import RadioSize from '@/components/CustomAntd/RadioSize';
+import { useGetProductsQuery } from '@/store/slices/productApiSlice';
+import ProductItem, {
+  IProductItem,
+} from '@/modules/Shop/ProductList/ProductItem';
 
 type IProduct = {
   _id: string;
@@ -48,9 +52,19 @@ const ProductModules = ({ data }: { data: IProduct }) => {
 
   const [qty, setQty] = useState<number>(1);
   const [sizeModel, setSizeModel] = useState<'S' | 'M' | 'L'>(size);
+  const [recommendProducts, setRecommendProducts] = useState<IProductItem[]>([]);
   const [colorModel, setColorModel] = useState<
     'be' | 'brown' | 'black' | 'white'
   >(color);
+
+  const { data: products, isLoading, error } = useGetProductsQuery('Product');
+
+  const getErrorMessage = (error: any): string => {
+    if (error && typeof error.status === 'number') {
+      return `Error status: ${error.status}`;
+    }
+    return 'An error occurred';
+  };
 
   const buyNowHandler = () => {
     dispatch(addToCart({ ...data, qty, size: sizeModel, color: colorModel }));
@@ -69,6 +83,14 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   const handleColorChange = (e: RadioChangeEvent) => {
     setColorModel(e.target.value);
   };
+
+  useEffect(() => {
+    let randomAnswer = [];
+    for (let index = 0; index < 3; index++) {
+      randomAnswer.push(products.data[Math.floor(Math.random() * products.data.length)]);      
+    }
+    setRecommendProducts(randomAnswer);
+  }, [])
 
   return (
     <div className={`${s.productDetail} container grid grid-cols-12`}>
@@ -116,11 +138,22 @@ const ProductModules = ({ data }: { data: IProduct }) => {
         </div>
       </div>
       <p
-          className={`${s.storyWork_title} ${cinzelFont.className} col-span-3`}
-          // ref={titleRef}
-        >
-          <span>Y</span>ou may also love
+        className={`${s.storyWork_title} ${cinzelFont.className} col-span-3`}
+      // ref={titleRef}
+      >
+        <span>Y</span>ou may also love
       </p>
+      <div className={`${s.productList} col-span-12`}>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <div>{getErrorMessage(error)}</div>
+        ) : (
+          recommendProducts.map((product: IProductItem) => (
+            <ProductItem key={product._id} data={product} />
+          ))
+        )}
+      </div>
     </div>
   );
 };

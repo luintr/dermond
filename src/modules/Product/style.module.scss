@@ -198,4 +198,10 @@
       z-index: -1;
     }
   }
+  .productList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(4px);
+    margin-bottom: rem(40px);
+  }
 }
