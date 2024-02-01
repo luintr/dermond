@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { addToCart } from '@/store/slices/cartSlice';
 import { Radio, RadioChangeEvent } from 'antd';
 import { useDispatch } from 'react-redux';
@@ -13,6 +13,11 @@ import { useModelStore } from '@/store/zustandStore';
 import RadioColor from '@/components/CustomAntd/RadioColor';
 import QtyInput from '@/components/CustomAntd/QtyInput';
 import RadioSize from '@/components/CustomAntd/RadioSize';
+import { shuffleArray } from '@/utils/mathUtils';
+import ProductItem, {
+  IProductItem,
+} from '@/modules/Shop/ProductList/ProductItem';
+import { useGetProduct } from '@/api/getProduct';
 
 type IProduct = {
   _id: string;
@@ -48,9 +53,21 @@ const ProductModules = ({ data }: { data: IProduct }) => {
 
   const [qty, setQty] = useState<number>(1);
   const [sizeModel, setSizeModel] = useState<'S' | 'M' | 'L'>(size);
+  const [recommendProducts, setRecommendProducts] = useState<IProductItem[]>(
+    []
+  );
   const [colorModel, setColorModel] = useState<
     'be' | 'brown' | 'black' | 'white'
   >(color);
+
+  const { products, loading } = useGetProduct();
+
+  const getErrorMessage = (error: any): string => {
+    if (error && typeof error.status === 'number') {
+      return `Error status: ${error.status}`;
+    }
+    return 'An error occurred';
+  };
 
   const buyNowHandler = () => {
     dispatch(addToCart({ ...data, qty, size: sizeModel, color: colorModel }));
@@ -69,6 +86,18 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   const handleColorChange = (e: RadioChangeEvent) => {
     setColorModel(e.target.value);
   };
+
+  useEffect(() => {
+    const temp = [...products];
+    let shuffleProducts: IProductItem[] = shuffleArray(temp);
+    if (shuffleProducts.length) {
+      setRecommendProducts([
+        shuffleProducts[0],
+        shuffleProducts[1],
+        shuffleProducts[2],
+      ]);
+    }
+  }, [loading]);
 
   return (
     <div className={`${s.productDetail} container grid grid-cols-12`}>
@@ -114,6 +143,18 @@ const ProductModules = ({ data }: { data: IProduct }) => {
         <div className={s.wrapContent_status}>
           status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}
         </div>
+      </div>
+      <p
+        className={`${s.storyWork_title} ${cinzelFont.className} col-span-3`}
+        // ref={titleRef}
+      >
+        <span>Y</span>ou may also love
+      </p>
+      <div className={`${s.productList} col-span-12`}>
+        {recommendProducts &&
+          recommendProducts.map((product: IProductItem) => (
+            <ProductItem key={product._id} data={product} />
+          ))}
       </div>
     </div>
   );
