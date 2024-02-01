@@ -13,10 +13,9 @@ import { useModelStore } from '@/store/zustandStore';
 import RadioColor from '@/components/CustomAntd/RadioColor';
 import QtyInput from '@/components/CustomAntd/QtyInput';
 import RadioSize from '@/components/CustomAntd/RadioSize';
-import { useGetProductsQuery } from '@/store/slices/productApiSlice';
-import ProductItem, {
-  IProductItem,
-} from '@/modules/Shop/ProductList/ProductItem';
+import { shuffleArray } from '@/utils/mathUtils';
+import ProductItem, { IProductItem } from '@/modules/Shop/ProductList/ProductItem';
+import { useGetProduct } from '@/api/getProduct';
 
 type IProduct = {
   _id: string;
@@ -59,7 +58,7 @@ const ProductModules = ({ data }: { data: IProduct }) => {
     'be' | 'brown' | 'black' | 'white'
   >(color);
 
-  const { data: products, isLoading, error } = useGetProductsQuery('Product');
+  const { products, loading } = useGetProduct();
 
   const getErrorMessage = (error: any): string => {
     if (error && typeof error.status === 'number') {
@@ -87,14 +86,13 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   };
 
   useEffect(() => {
-    let randomAnswer = [];
-    for (let index = 0; index < 3; index++) {
-      randomAnswer.push(
-        products.data[Math.floor(Math.random() * products.data.length)]
-      );
+    const temp = [...products];
+    let shuffleProducts: IProductItem[] = shuffleArray(temp);
+    if (shuffleProducts.length) {
+      setRecommendProducts([shuffleProducts[0], shuffleProducts[1], shuffleProducts[2]]);
     }
-    setRecommendProducts(randomAnswer);
-  }, []);
+  }, [loading]);
+
 
   return (
     <div className={`${s.productDetail} container grid grid-cols-12`}>
@@ -143,20 +141,16 @@ const ProductModules = ({ data }: { data: IProduct }) => {
       </div>
       <p
         className={`${s.storyWork_title} ${cinzelFont.className} col-span-3`}
-        // ref={titleRef}
+      // ref={titleRef}
       >
         <span>Y</span>ou may also love
       </p>
       <div className={`${s.productList} col-span-12`}>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <div>{getErrorMessage(error)}</div>
-        ) : (
-          recommendProducts.map((product: IProductItem) => (
+        {
+          recommendProducts && recommendProducts.map((product: IProductItem) => (
             <ProductItem key={product._id} data={product} />
           ))
-        )}
+        }
       </div>
     </div>
   );
