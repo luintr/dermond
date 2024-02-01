@@ -8,13 +8,13 @@ import { Radio } from 'antd';
 import RadioSize from '@/components/CustomAntd/RadioSize';
 import RadioColor from '@/components/CustomAntd/RadioColor';
 import QtyInput from '@/components/CustomAntd/QtyInput';
+import { cinzelFont } from '@/utils/fonts';
 
 interface CartItemProps {
   item: ICartItem;
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
-  console.log(item);
   const { _id, image, qty, countInStock, size, color, price, name } = item;
   const [qtyS, setQtyS] = useState<number | null>(null);
 
@@ -32,34 +32,49 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   };
 
   return (
-    <div key={_id} className={s.cartItem}>
-      <div className={s.cartItem_img}>
+    <div key={_id} className={`${s.cartItem} grid grid-cols-7`}>
+      <div className={`${s.cartItem_img} col-span-3`}>
         <img src={image} alt="image" />
       </div>
-      <div>
-        <div>
-          <LinkEffect href={`/product/${_id}`} className={s.cartItem_title}>
-            {name}
-          </LinkEffect>
+      <div className={`${s.cartItem_content} col-span-4`}>
+        <LinkEffect
+          href={`/product/${_id}`}
+          className={`${s.cartItem_content_title} ${cinzelFont.className}`}
+        >
+          {name}
+        </LinkEffect>
+
+        <div className={s.wrapContent}>
+          <div className={s.wrapContent_left}>
+            <QtyInput
+              qty={qty}
+              setQty={value => addtoCartHandler(item, value)}
+              className={s.cartItem_content_qty}
+            />
+
+            <RadioSize
+              sizeModel={size}
+              addtoCartHandler={e => {
+                addtoCartHandler({ ...item, size: e.target.value }, qty);
+              }}
+              className={s.cartItem_content_size}
+            />
+
+            <RadioColor
+              colorModel={color}
+              addtoCartHandler={e => {
+                addtoCartHandler({ ...item, color: e.target.value }, qty);
+              }}
+              className={s.cartItem_content_color}
+            />
+          </div>
+
+          <div className={s.wrapContent_right}>
+            <p className={s.cartItem_content_price}>${price}</p>
+            <p className={s.cartItem_content_total}>${price * qty}</p>
+          </div>
         </div>
 
-        <QtyInput qty={qty} setQty={value => addtoCartHandler(item, value)} />
-
-        <RadioSize
-          sizeModel={size}
-          addtoCartHandler={e => {
-            addtoCartHandler({ ...item, size: e.target.value }, qty);
-          }}
-        />
-
-        <RadioColor
-          colorModel={color}
-          addtoCartHandler={e => {
-            addtoCartHandler({ ...item, color: e.target.value }, qty);
-          }}
-        />
-
-        <p className={s.cartItem_price}>${price}</p>
         <div
           className={s.cartItem_delete}
           onClick={() => removeFromCartHandler(_id)}

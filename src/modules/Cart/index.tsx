@@ -27,7 +27,6 @@ const CartModule = () => {
   }, [cartItems]);
 
   const checkoutHandler = () => {
-    console.log(userInfo);
     if (userInfo) {
       router.push('/payment');
     } else {
@@ -52,9 +51,17 @@ const CartModule = () => {
             ))}
           </div>
           <div className={`${s.cartInfo} col-span-4 col-start-9`}>
-            <div>
-              Subtotal
-              <p>{cartItems.reduce((acc, item) => acc + item.qty, 0)}</p>
+            <div className={s.cartInfo_top}>
+              <p
+                className={s.cartInfo_title}
+              >{`${cartList.length} item${cartList.length > 0 && 's'}`}</p>
+
+              <p>
+                Total products:{' '}
+                <span>
+                  {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                </span>
+              </p>
               <p>
                 $
                 {cartItems
@@ -71,6 +78,8 @@ const CartModule = () => {
               >
                 Proceed to Checkout
               </button>
+
+              <LinkEffect href={ROUTE_PATH.SHOP}>Back To Shop</LinkEffect>
             </div>
           </div>
         </div>

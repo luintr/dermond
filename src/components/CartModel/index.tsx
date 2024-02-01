@@ -13,6 +13,8 @@ const CartModel = () => {
   const [cartList, setCartList] = useState<ICartItem[]>([]);
 
   const { modelState, setModelToggle } = useModelStore();
+    // @ts-ignore:next-line
+    const { userInfo } = useSelector(state => state.auth);
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -30,7 +32,11 @@ const CartModel = () => {
   };
   const checkoutHandler = () => {
     setModelToggle();
-    router.push('/cart');
+    if (userInfo) {
+      router.push('/payment');
+    } else {
+      router.push('/login?redirect=/payment');
+    }
   };
 
   return (

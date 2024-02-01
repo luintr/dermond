@@ -41,9 +41,22 @@
       padding-top: rem(40px);
     }
 
-    .cartItem {
+    .cartInfo {
+      margin-right: rem(-40px);
+      border-top-left-radius: rem(50px);
+      padding: rem(40px);
+      background: rgba($color: #A37C751A, $alpha: 0.1);
+      min-height: rem(1000px);
       display: flex;
-      gap: rem(10px);
+      flex-direction: column;
+      justify-content: space-between;
+
+      &_title {
+        font-size: rem(36px);
+        line-height: rem(36px);
+        font-weight: 700;
+        margin-bottom: rem(132px);
+      }
     }
   }
 }
