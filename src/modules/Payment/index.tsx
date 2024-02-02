@@ -192,7 +192,9 @@ const PaymentModule = () => {
             dataStorage.cartItems.map((item: any, index: number) => (
               <div key={index} className={s.orderItem}>
                 <img src={item.image} alt={item.name} />
-                <LinkEffect href={`/product/${item._id}`}>{item.name}</LinkEffect>
+                <LinkEffect href={`/product/${item._id}`}>
+                  {item.name}
+                </LinkEffect>
                 <div>color: {item.color}</div>
                 <div>size: {item.size}</div>
                 <p>

@@ -190,7 +190,9 @@ const RegisterModule = () => {
             </Form>
             <div className={s.regisBox_login}>
               <p>Already have account?</p>
-              <LinkEffect href={redirect ? `login?redirect=${redirect}` : '/login'}>
+              <LinkEffect
+                href={redirect ? `login?redirect=${redirect}` : '/login'}
+              >
                 Sign In
               </LinkEffect>
             </div>

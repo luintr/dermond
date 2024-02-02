@@ -28,7 +28,10 @@ const ProductItem = ({ data }: { data: IProductItem }): React.ReactElement => {
       </LinkEffect>
 
       <div className={s.productItem_content}>
-        <LinkEffect href={`/product/${_id}`} className={s.productItem_content_title}>
+        <LinkEffect
+          href={`/product/${_id}`}
+          className={s.productItem_content_title}
+        >
           {name}
         </LinkEffect>
         <p className={s.productItem_content_price}>${price}</p>

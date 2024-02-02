@@ -54,7 +54,9 @@ const ProfileModule = () => {
       key: '_id',
       render: (text: string) => {
         const shortenedString = text.substring(0, 15);
-        return <LinkEffect href={`/order/${text}`}>{shortenedString}...</LinkEffect>;
+        return (
+          <LinkEffect href={`/order/${text}`}>{shortenedString}...</LinkEffect>
+        );
       },
       width: '40%',
     },
