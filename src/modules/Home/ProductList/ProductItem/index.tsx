@@ -3,7 +3,7 @@
 import React from 'react';
 
 import s from './style.module.scss';
-import Link from 'next/link';
+import LinkEffect from '@/components/LinkEffect';
 
 export type IProductItem = {
   _id: string;
@@ -23,14 +23,14 @@ const ProductItem = ({ data }: { data: IProductItem }): React.ReactElement => {
 
   return (
     <div className={`${s.productItem} col-span-3`}>
-      <Link href={`/product/${_id}`}>
+      <LinkEffect href={`/product/${_id}`}>
         <img className={s.productItem_image} src={image} alt={name} />
-      </Link>
+      </LinkEffect>
 
       <div className={s.productItem_content}>
-        <Link href={`/product/${_id}`} className={s.productItem_content_title}>
+        <LinkEffect href={`/product/${_id}`} className={s.productItem_content_title}>
           {name}
-        </Link>
+        </LinkEffect>
         <p className={s.productItem_content_price}>${price}</p>
       </div>
     </div>

@@ -3,9 +3,9 @@
 import React from 'react';
 
 import s from './style.module.scss';
-import Link from 'next/link';
 import Fade from '@/components/Fade';
 import { cinzelFont } from '@/utils/fonts';
+import LinkEffect from '@/components/LinkEffect';
 
 export type IProductItem = {
   _id: string;
@@ -26,16 +26,16 @@ const ProductItem = ({ data }: { data: IProductItem }): React.ReactElement => {
   return (
     <Fade direction={'bottom'} from={'30px'} delayTrigger={0.5}>
       <div className={`${s.productItem}`}>
-        <Link href={`/product/${_id}`}>
+        <LinkEffect href={`/product/${_id}`}>
           <img className={s.productItem_image} src={image} alt={name} />
-        </Link>
+        </LinkEffect>
         <div className={s.productItem_content}>
-          <Link
+          <LinkEffect
             href={`/product/${_id}`}
             className={`${s.productItem_content_title} ${cinzelFont.className}`}
           >
             {name}
-          </Link>
+          </LinkEffect>
         </div>
       </div>
     </Fade>

@@ -11,8 +11,8 @@ import {
   savePaymentMethod,
   saveShippingAddress,
 } from '@/store/slices/cartSlice';
-import Link from 'next/link';
 import { createOrder } from '@/api/orderAPI';
+import LinkEffect from '@/components/LinkEffect';
 
 const PaymentModule = () => {
   const [value, setValue] = useState<string>('');
@@ -192,7 +192,7 @@ const PaymentModule = () => {
             dataStorage.cartItems.map((item: any, index: number) => (
               <div key={index} className={s.orderItem}>
                 <img src={item.image} alt={item.name} />
-                <Link href={`/product/${item._id}`}>{item.name}</Link>
+                <LinkEffect href={`/product/${item._id}`}>{item.name}</LinkEffect>
                 <div>color: {item.color}</div>
                 <div>size: {item.size}</div>
                 <p>

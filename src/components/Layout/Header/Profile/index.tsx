@@ -7,6 +7,7 @@ import { removeUserStorage } from '@/store/slices/authSlice';
 import { logout } from '@/api/userAPI';
 import useClickOutside from '@/hooks/useClickOutside';
 import { UserIcon } from '@/components/Icons';
+import LinkEffect from '@/components/LinkEffect';
 
 const ProfileHeader = ({ data }: { data: any }) => {
   const [optionState, setOptionState] = useState<boolean>(false);
@@ -47,14 +48,14 @@ const ProfileHeader = ({ data }: { data: any }) => {
 
       <ul className={`${s.profileOptions} ${optionState ? s.open : ''}`}>
         <li onClick={hideOptions}>
-          <Link href={'/profile'} className={s.profileOptions_item}>
+          <LinkEffect href={'/profile'} className={s.profileOptions_item}>
             {name}
-          </Link>
+          </LinkEffect>
         </li>
         <li onClick={hideOptions}>
-          <Link href={'/profile'} className={s.profileOptions_item}>
+          <LinkEffect href={'/profile'} className={s.profileOptions_item}>
             Profile
-          </Link>
+          </LinkEffect>
         </li>
         {isAdmin ? (
           <li onClick={hideOptions}>

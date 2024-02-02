@@ -8,7 +8,7 @@ import { profile } from '@/api/userAPI';
 import { setCredentials } from '@/store/slices/authSlice';
 import { useRouter } from 'next/navigation';
 import { getMyOrders } from '@/api/orderAPI';
-import Link from 'next/link';
+import LinkEffect from '@/components/LinkEffect';
 const ProfileModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [orders, setOrders] = useState<any>(null);
@@ -54,7 +54,7 @@ const ProfileModule = () => {
       key: '_id',
       render: (text: string) => {
         const shortenedString = text.substring(0, 15);
-        return <Link href={`/order/${text}`}>{shortenedString}...</Link>;
+        return <LinkEffect href={`/order/${text}`}>{shortenedString}...</LinkEffect>;
       },
       width: '40%',
     },

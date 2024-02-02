@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 import s from './style.module.scss';
 import { Button, Form, Input, message } from 'antd';
-import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -13,6 +12,7 @@ import { cinzelFont } from '@/utils/fonts';
 import Image from 'next/image';
 import image from '@Images/regisImg.jpg';
 import { Subtract } from '@/components/Icons';
+import LinkEffect from '@/components/LinkEffect';
 
 const RegisterModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -190,9 +190,9 @@ const RegisterModule = () => {
             </Form>
             <div className={s.regisBox_login}>
               <p>Already have account?</p>
-              <Link href={redirect ? `login?redirect=${redirect}` : '/login'}>
+              <LinkEffect href={redirect ? `login?redirect=${redirect}` : '/login'}>
                 Sign In
-              </Link>
+              </LinkEffect>
             </div>
           </div>
           <div className={`${s.regisBox_text} col-span-2 col-start-6`}>

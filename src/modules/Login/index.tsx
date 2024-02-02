@@ -7,12 +7,12 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '@/store/slices/authSlice';
 import { login } from '@/api/userAPI';
-import Link from 'next/link';
 import { cinzelFont } from '@/utils/fonts';
 import Image from 'next/image';
 import image from '@Images/singinImg.jpg';
 import { Subtract } from '@/components/Icons';
 import Marquee from 'react-fast-marquee';
+import LinkEffect from '@/components/LinkEffect';
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -126,13 +126,13 @@ const LoginModule = () => {
               <p>Forgot your password?</p>
               <div className={s.wrapRegis}>
                 <p>New Customer?</p>
-                <Link
+                <LinkEffect
                   href={
                     redirect ? `register?redirect=${redirect}` : '/register'
                   }
                 >
                   Register Now
-                </Link>
+                </LinkEffect>
               </div>
             </div>
 
