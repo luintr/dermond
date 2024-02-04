@@ -8,7 +8,7 @@ type IHandlderSizeChange = {
   handleSizeChange?: (e: RadioChangeEvent) => void;
   addtoCartHandler?: (e: RadioChangeEvent) => void;
   className?: string;
-  small?: boolean
+  small?: boolean;
 };
 
 const RadioSize: React.FC<IHandlderSizeChange> = ({
@@ -16,7 +16,7 @@ const RadioSize: React.FC<IHandlderSizeChange> = ({
   handleSizeChange,
   addtoCartHandler,
   className,
-  small
+  small,
 }) => {
   const handleChange = (e: RadioChangeEvent) => {
     if (addtoCartHandler) {

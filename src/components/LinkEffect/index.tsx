@@ -15,7 +15,7 @@ const LinkEffect = React.forwardRef(
     { href, className, target, children, ...setProps }: Props,
     ref: Ref<HTMLAnchorElement> | undefined
   ): React.ReactElement => {
-  const { setModelHide } = useModelStore();
+    const { setModelHide } = useModelStore();
     const { routerEffect } = useRouterEffect();
     return (
       <Link
