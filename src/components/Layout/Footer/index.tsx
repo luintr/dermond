@@ -3,9 +3,9 @@ import s from '../style.module.scss';
 import Container from '@/components/Container';
 import { cinzelFont, contentFont } from '@/utils/fonts';
 import { FOOTER_NAVIGATE } from '@/constants/homeData/data';
-import Link from 'next/link';
 import { Input } from 'antd';
 import { ArrowIcon } from '@/components/Icons';
+import LinkEffect from '@/components/LinkEffect';
 
 const Footer = () => {
   return (
@@ -25,7 +25,7 @@ const Footer = () => {
               <ul className={s.navItem_list}>
                 {item.links.map((link, index) => (
                   <li key={index}>
-                    <Link href={link.link}>{link.title}</Link>
+                    <LinkEffect href={link.link}>{link.title}</LinkEffect>
                   </li>
                 ))}
               </ul>
