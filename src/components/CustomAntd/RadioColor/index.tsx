@@ -8,6 +8,7 @@ type IHandlderColorChange = {
   handleColorChange?: (e: RadioChangeEvent) => void;
   addtoCartHandler?: (e: RadioChangeEvent) => void;
   className?: string;
+  small?: boolean
 };
 
 const RadioColor: React.FC<IHandlderColorChange> = ({
@@ -15,6 +16,7 @@ const RadioColor: React.FC<IHandlderColorChange> = ({
   colorModel,
   handleColorChange,
   addtoCartHandler,
+  small
 }) => {
   const handleChange = (e: RadioChangeEvent) => {
     if (addtoCartHandler) {
@@ -26,7 +28,7 @@ const RadioColor: React.FC<IHandlderColorChange> = ({
     }
   };
   return (
-    <div className={`${s.radioColor} ${className}`}>
+    <div className={`${s.radioColor} ${small && s.small} ${className}`}>
       <Radio.Group value={colorModel} onChange={handleChange}>
         {colorPicker.map((item, index) => (
           <Radio.Button

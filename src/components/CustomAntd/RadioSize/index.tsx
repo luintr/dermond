@@ -8,6 +8,7 @@ type IHandlderSizeChange = {
   handleSizeChange?: (e: RadioChangeEvent) => void;
   addtoCartHandler?: (e: RadioChangeEvent) => void;
   className?: string;
+  small?: boolean
 };
 
 const RadioSize: React.FC<IHandlderSizeChange> = ({
@@ -15,6 +16,7 @@ const RadioSize: React.FC<IHandlderSizeChange> = ({
   handleSizeChange,
   addtoCartHandler,
   className,
+  small
 }) => {
   const handleChange = (e: RadioChangeEvent) => {
     if (addtoCartHandler) {
@@ -26,7 +28,7 @@ const RadioSize: React.FC<IHandlderSizeChange> = ({
     }
   };
   return (
-    <div className={`${s.radioSize} ${className}`}>
+    <div className={`${s.radioSize} ${small && s.small} ${className}`}>
       <Radio.Group value={sizeModel} onChange={handleChange}>
         {sizePicker.map((item, index) => (
           <Radio.Button key={index} value={item.value}>

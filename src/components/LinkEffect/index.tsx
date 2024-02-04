@@ -1,4 +1,5 @@
 'use client';
+import { useModelStore } from '@/store/zustandStore';
 import useRouterEffect from '@Hooks/useRouterEffect';
 import Link from 'next/link';
 import React, { PropsWithChildren, Ref } from 'react';
@@ -14,6 +15,7 @@ const LinkEffect = React.forwardRef(
     { href, className, target, children, ...setProps }: Props,
     ref: Ref<HTMLAnchorElement> | undefined
   ): React.ReactElement => {
+  const { setModelHide } = useModelStore();
     const { routerEffect } = useRouterEffect();
     return (
       <Link
@@ -25,6 +27,7 @@ const LinkEffect = React.forwardRef(
         onClick={(e): void => {
           routerEffect(href);
           e.preventDefault();
+          setModelHide();
         }}
         passHref
       >

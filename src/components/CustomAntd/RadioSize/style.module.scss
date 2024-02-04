@@ -48,4 +48,23 @@
       color: var(--black-08);
     }
   }
+
+  &.small {
+    :global(.ant-radio-button-wrapper) {
+      width: rem(30px) !important;
+      height: rem(30px) !important;
+
+      span {
+        font-size: rem(12px);
+        font-weight: 500;
+      }
+    }
+
+    :global(.ant-radio-button-wrapper-checked) {
+      &::after {
+        width: rem(36px);
+        height: rem(36px);
+      }
+    }
+  }
 }

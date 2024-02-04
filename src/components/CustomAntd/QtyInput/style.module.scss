@@ -37,4 +37,21 @@
     justify-content: center;
     align-items: center;
   }
+
+  &.small {
+    .button {
+      width: rem(30px);
+      height: rem(30px);
+
+      span {
+        font-size: rem(28px);
+      }
+    }
+    
+    .qty {
+      font-size: rem(20px);
+      width: rem(60px);
+      height: rem(30px);
+    }
+  }
 }

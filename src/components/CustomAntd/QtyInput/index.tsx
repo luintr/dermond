@@ -6,9 +6,10 @@ type IQtyInput = {
   setQty: (qty: number) => void;
   addtoCartHandler?: () => void;
   className?: string;
+  small?: boolean;
 };
 
-const QtyInput: React.FC<IQtyInput> = ({ qty, setQty, className }) => {
+const QtyInput: React.FC<IQtyInput> = ({ qty, setQty, className, small }) => {
   const handleMinusQty = () => {
     setQty(qty - 1);
   };
@@ -17,7 +18,7 @@ const QtyInput: React.FC<IQtyInput> = ({ qty, setQty, className }) => {
   };
 
   return (
-    <div className={`${s.qtyInput} ${className}`}>
+    <div className={`${s.qtyInput} ${small && s.small} ${className}`}>
       <button className={s.button} onClick={handleMinusQty}>
         <span>-</span>
       </button>
