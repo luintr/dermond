@@ -28,6 +28,7 @@
       &_desc {
         .line {
           width: 100%;
+          clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
           height: rem(5px);
           background: var(--black-08);
         }
