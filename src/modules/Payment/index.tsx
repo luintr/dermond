@@ -13,13 +13,13 @@ import {
 } from '@/store/slices/cartSlice';
 import { createOrder } from '@/api/orderAPI';
 import LinkEffect from '@/components/LinkEffect';
+import { cinzelFont } from '@/utils/fonts';
 
 const PaymentModule = () => {
   const [value, setValue] = useState<string>('');
   const [dataStorage, setDataStorage] = useState<any | undefined>();
   const dispatch = useDispatch();
   const router = useRouter();
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const localUser = localStorage.getItem('userInfo');
@@ -60,9 +60,10 @@ const PaymentModule = () => {
 
   return (
     <div className={`${s.shipping} container grid grid-cols-12`}>
-      <h1 className={`col-span-12`}>Shipping</h1>
-
-      <div className={`${s.shippingForm} col-span-6`}>
+      <div className={`${s.shippingForm} col-span-6 col-start-2`}>
+        <h1 className={`${s.shipping_title} ${cinzelFont.className}`}>
+          Shipping
+        </h1>
         <Form
           name="basic"
           initialValues={{
@@ -73,11 +74,7 @@ const PaymentModule = () => {
           className={``}
         >
           <Form.Item
-            label="Name"
             name="name"
-            style={{
-              width: '100%',
-            }}
             rules={[
               {
                 required: true,
@@ -85,15 +82,11 @@ const PaymentModule = () => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="Name" />
           </Form.Item>
 
           <Form.Item
-            label="Phone number"
             name="number"
-            style={{
-              width: '100%',
-            }}
             rules={[
               {
                 required: true,
@@ -101,15 +94,11 @@ const PaymentModule = () => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="Phone Number" />
           </Form.Item>
 
           <Form.Item
-            label="Address"
             name="address"
-            style={{
-              width: '100%',
-            }}
             rules={[
               {
                 required: true,
@@ -117,15 +106,11 @@ const PaymentModule = () => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="Address" />
           </Form.Item>
 
           <Form.Item
-            label="City"
             name="city"
-            style={{
-              width: '100%',
-            }}
             rules={[
               {
                 required: true,
@@ -133,15 +118,11 @@ const PaymentModule = () => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="City" />
           </Form.Item>
 
           <Form.Item
-            label="Postal Code"
             name="postalCode"
-            style={{
-              width: '100%',
-            }}
             rules={[
               {
                 required: true,
@@ -149,15 +130,11 @@ const PaymentModule = () => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="Postal Code" />
           </Form.Item>
 
           <Form.Item
-            label="Country"
             name="country"
-            style={{
-              width: '100%',
-            }}
             rules={[
               {
                 required: true,
@@ -165,10 +142,14 @@ const PaymentModule = () => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="Country" />
           </Form.Item>
 
-          <Radio.Group onChange={onChangeRadio} value={value}>
+          <Radio.Group
+            onChange={onChangeRadio}
+            value={value}
+            className={s.shippingForm_radio}
+          >
             <Space direction="vertical">
               {paymentMethod.map((item, index) => (
                 <Radio key={index} value={item.value}>
@@ -187,31 +168,69 @@ const PaymentModule = () => {
       </div>
 
       {dataStorage && (
-        <div className={`col-span-6`}>
-          {dataStorage.cartItems &&
-            dataStorage.cartItems.map((item: any, index: number) => (
-              <div key={index} className={s.orderItem}>
-                <img src={item.image} alt={item.name} />
-                <LinkEffect href={`/product/${item._id}`}>
-                  {item.name}
-                </LinkEffect>
-                <div>color: {item.color}</div>
-                <div>size: {item.size}</div>
-                <p>
-                  Price: ${item.price} X {item.qty}
-                </p>
-              </div>
-            ))}
-          <div className={s.sumary}>
-            <p>Subtotal: ${dataStorage.itemsPrice}</p>
+        <div className={`${s.billInfo} col-span-5`}>
+          <p className={s.text}>
+            <span className={cinzelFont.className}>Summary</span>
+            <span className={s.textDash}></span>
+          </p>
+          <div className={s.billInfo_list}>
+            {dataStorage.cartItems &&
+              dataStorage.cartItems.map((item: any, index: number) => (
+                <div key={index} className={s.orderItem}>
+                  <div className={s.orderItem_img}>
+                    <img src={item.image} alt={item.name} className={s.img} />
+                    <LinkEffect
+                      href={`/product/${item._id}`}
+                      className={`${s.title} ${cinzelFont.className}`}
+                    >
+                      {item.name}
+                    </LinkEffect>
+                  </div>
+                  <div className={s.orderItem_info}>
+                    <div className={s.wrap}>
+                      <p>
+                        Color: <span>{item.color}</span>
+                      </p>
+                      <p>
+                        Size: <span>{item.size}</span>
+                      </p>
+                    </div>
+                    <p>
+                      Quatity: <span>{item.qty}</span>
+                    </p>
+                    <p>
+                      Price: <span>${item.price * item.qty}</span>
+                    </p>
+                  </div>
+                </div>
+              ))}
+          </div>
+          <div className={s.billInfo_summary}>
+            <div className={s.dash}></div>
             <p>
-              Shipping:{' '}
-              {dataStorage.shippingPrice == 0
-                ? 'Free ship'
-                : dataStorage.shippingPrice}
+              <span>Product Total ({dataStorage.cartItems.length})</span>
+              <span>${dataStorage.itemsPrice}</span>
             </p>
-            <p>Tax: {dataStorage.taxPrice}</p>
-            <p>Total: {dataStorage.totalPrice}</p>
+            <p>
+              <span>Shipping</span>
+              <span>
+                {dataStorage.shippingPrice == 0
+                  ? 'Free ship'
+                  : dataStorage.shippingPrice}
+              </span>
+            </p>
+            <p>
+              <span>Tax</span>
+              <span>{dataStorage.taxPrice}</span>
+            </p>
+
+            <div className={s.total}>
+              <p className={s.text}>
+                <span className={cinzelFont.className}>Total</span>
+                <span className={s.textDash}></span>
+              </p>
+              <p className={s.price}>${dataStorage.totalPrice}</p>
+            </div>
           </div>
         </div>
       )}

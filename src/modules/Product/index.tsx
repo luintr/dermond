@@ -18,6 +18,7 @@ import ProductItem, {
   IProductItem,
 } from '@/modules/Shop/ProductList/ProductItem';
 import { useGetProduct } from '@/api/getProduct';
+import useRouterEffect from '@/hooks/useRouterEffect';
 
 type IProduct = {
   _id: string;
@@ -50,6 +51,8 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { setModelToggle } = useModelStore();
+  const { routerEffect } = useRouterEffect();
+
 
   const [qty, setQty] = useState<number>(1);
   const [sizeModel, setSizeModel] = useState<'S' | 'M' | 'L'>(size);
@@ -69,9 +72,11 @@ const ProductModules = ({ data }: { data: IProduct }) => {
     return 'An error occurred';
   };
 
-  const buyNowHandler = () => {
-    dispatch(addToCart({ ...data, qty, size: sizeModel, color: colorModel }));
-    router.push('/cart');
+  const buyNowHandler = async () => {
+    await dispatch(
+      addToCart({ ...data, qty, size: sizeModel, color: colorModel })
+    );
+    routerEffect('/payment')
   };
 
   const addToCartHandler = () => {

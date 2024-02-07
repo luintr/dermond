@@ -11,8 +11,8 @@ import { cinzelFont } from '@/utils/fonts';
 import Image from 'next/image';
 import image from '@Images/singinImg.jpg';
 import { Subtract } from '@/components/Icons';
-import Marquee from 'react-fast-marquee';
 import LinkEffect from '@/components/LinkEffect';
+import Fade from '@/components/Fade';
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -64,15 +64,25 @@ const LoginModule = () => {
         <div className={`col-span-7 grid grid-cols-7`}>
           <div className={`${s.loginBox_top} col-span-7 col-start-1`}>
             <div className={`${s.topContent_left}`}>
-              <p>TAILOR SHOP BASED IN VIETNAM</p>
-              <p>ETS 2019</p>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+                <p>TAILOR SHOP BASED IN VIETNAM</p>
+              </Fade>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+                <p>ETS 2019</p>
+              </Fade>
             </div>
             <div className={`${s.topContent_middle} ${cinzelFont.className}`}>
-              <p>DERMOND</p>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+                <p>DERMOND</p>
+              </Fade>
             </div>
             <div className={`${s.topContent_right}`}>
-              <p>INSTAGRAM</p>
-              <p>@DERMOND.VN</p>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+                <p>INSTAGRAM</p>
+              </Fade>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+                <p>@DERMOND.VN</p>
+              </Fade>
             </div>
           </div>
           <div className={`${s.loginBox_form} col-span-4 col-start-1`}>
