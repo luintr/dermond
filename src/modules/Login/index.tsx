@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import s from './style.module.scss';
 import { Button, Form, Input, message } from 'antd';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -12,7 +12,20 @@ import Image from 'next/image';
 import image from '@Images/singinImg.jpg';
 import { Subtract } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';
-import Fade from '@/components/Fade';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+const marqueeItems = [
+  { index: 1, content: 'DER MOND ' },
+  { index: 2, content: 'DER MOND ' },
+  { index: 3, content: 'DER MOND ' },
+  { index: 4, content: 'DER MOND ' },
+  { index: 5, content: 'DER MOND ' },
+  { index: 6, content: 'DER MOND ' },
+  { index: 7, content: 'DER MOND ' },
+  { index: 8, content: 'DER MOND ' },
+  { index: 9, content: 'DER MOND ' },
+];
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -25,6 +38,12 @@ const LoginModule = () => {
 
   const pathName = useSearchParams();
   const redirect = pathName.get('redirect') || '/';
+
+  const marqueeInner = useRef(null);
+  const marqueePartRefs = marqueeItems.map(() =>
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useRef<HTMLSpanElement | null>(null)
+  );
 
   useEffect(() => {
     if (userInfo) {
@@ -54,6 +73,20 @@ const LoginModule = () => {
     });
     console.log('Failed:', errorInfo);
   };
+
+  useGSAP(() => {
+    marqueePartRefs.map((item: React.MutableRefObject<HTMLElement | null>) => {
+      gsap
+        .to(item.current, {
+          yPercent: -100,
+          repeat: -1,
+          duration: 5,
+          ease: 'none',
+        })
+        .totalProgress(0.5);
+    });
+    gsap.set(marqueeInner.current, { yPercent: -50 });
+  });
 
   return (
     <div className={`${s.login} container grid grid-cols-12`}>
@@ -173,10 +206,18 @@ const LoginModule = () => {
               <Subtract />
             </div>
 
-            <div className={s.boxImage_maquee}>
-              {/* <Marquee speed={10} gradient={false} direction="up"> */}
-              <p className={`${cinzelFont.className}`}>DER MOND</p>
-              {/* </Marquee> */}
+            <div ref={marqueeInner} className={s.boxImage_maquee}>
+              {marqueeItems.map((project, index) => {
+                return (
+                  <span
+                    ref={marqueePartRefs[index]}
+                    key={index}
+                    className={`${cinzelFont.className}`}
+                  >
+                    {project.content}
+                  </span>
+                );
+              })}
             </div>
           </div>
         </div>
