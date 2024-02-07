@@ -14,18 +14,9 @@ import { Subtract } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-
-const marqueeItems = [
-  { index: 1, content: 'DER MOND ' },
-  { index: 2, content: 'DER MOND ' },
-  { index: 3, content: 'DER MOND ' },
-  { index: 4, content: 'DER MOND ' },
-  { index: 5, content: 'DER MOND ' },
-  { index: 6, content: 'DER MOND ' },
-  { index: 7, content: 'DER MOND ' },
-  { index: 8, content: 'DER MOND ' },
-  { index: 9, content: 'DER MOND ' },
-];
+import Fade from '@/components/Fade';
+import { marqueeItems } from '@/constants/utils';
+import useMarquee from '@/hooks/useMarquee';
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -39,11 +30,7 @@ const LoginModule = () => {
   const pathName = useSearchParams();
   const redirect = pathName.get('redirect') || '/';
 
-  const marqueeInner = useRef(null);
-  const marqueePartRefs = marqueeItems.map(() =>
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useRef<HTMLSpanElement | null>(null)
-  );
+  const marqueeInner = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (userInfo) {
@@ -74,19 +61,7 @@ const LoginModule = () => {
     console.log('Failed:', errorInfo);
   };
 
-  useGSAP(() => {
-    marqueePartRefs.map((item: React.MutableRefObject<HTMLElement | null>) => {
-      gsap
-        .to(item.current, {
-          yPercent: -100,
-          repeat: -1,
-          duration: 5,
-          ease: 'none',
-        })
-        .totalProgress(0.5);
-    });
-    gsap.set(marqueeInner.current, { yPercent: -50 });
-  });
+  const { marqueePartRefs } = useMarquee({ marqueeInner });
 
   return (
     <div className={`${s.login} container grid grid-cols-12`}>
@@ -189,8 +164,12 @@ const LoginModule = () => {
             </div>
           </div>
           <div className={`${s.loginBox_text} col-span-2 col-start-6`}>
-            <p>We embrace Beauty and</p>
-            <p>Perfection</p>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+              <p>We embrace Beauty and</p>
+            </Fade>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+              <p>Perfection</p>
+            </Fade>
           </div>
         </div>
         <div className={`${s.boxImage} col-span-3 col-start-8`}>

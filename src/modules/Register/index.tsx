@@ -13,6 +13,7 @@ import Image from 'next/image';
 import image from '@Images/regisImg.jpg';
 import { Subtract } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';
+import Fade from '@/components/Fade';
 
 const RegisterModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -75,24 +76,32 @@ const RegisterModule = () => {
             </div>
 
             <div className={s.boxImage_maquee}>
-              {/* <Marquee speed={10} gradient={false} direction="up"> */}
               <p className={`${cinzelFont.className}`}>DER MOND</p>
-              {/* </Marquee> */}
             </div>
           </div>
         </div>
         <div className={`${s.wrapBox} col-span-7 col-start-4 grid grid-cols-7`}>
           <div className={`${s.regisBox_top} col-span-7 col-start-1`}>
             <div className={`${s.topContent_left}`}>
-              <p>TAILOR SHOP BASED IN VIETNAM</p>
-              <p>ETS 2019</p>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+                <p>TAILOR SHOP BASED IN VIETNAM</p>
+              </Fade>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+                <p>ETS 2019</p>
+              </Fade>
             </div>
             <div className={`${s.topContent_middle} ${cinzelFont.className}`}>
-              <p>DERMOND</p>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+                <p>DERMOND</p>
+              </Fade>
             </div>
             <div className={`${s.topContent_right}`}>
-              <p>INSTAGRAM</p>
-              <p>@DERMOND.VN</p>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+                <p>INSTAGRAM</p>
+              </Fade>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+                <p>@DERMOND.VN</p>
+              </Fade>
             </div>
           </div>
           <div className={`${s.regisBox_form} col-span-4 col-start-1`}>
@@ -198,8 +207,12 @@ const RegisterModule = () => {
             </div>
           </div>
           <div className={`${s.regisBox_text} col-span-2 col-start-6`}>
-            <p>We embrace Beauty and</p>
-            <p>Perfection</p>
+          <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+              <p>We embrace Beauty and</p>
+            </Fade>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+              <p>Perfection</p>
+            </Fade>
           </div>
         </div>
       </div>
