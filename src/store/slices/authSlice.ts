@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAction, createSlice } from '@reduxjs/toolkit';
 
 const localExist = typeof localStorage !== 'undefined';
 const storedUserInfo = localExist && localStorage.getItem('userInfo');
@@ -23,6 +23,8 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCredentials, removeUserStorage } = authSlice.actions;
+export const { setCredentials } = authSlice.actions;
+
+export const removeUserStorage = createAction('auth/removeUserStorage')
 
 export default authSlice.reducer;

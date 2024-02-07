@@ -5,7 +5,7 @@ import s from './style.module.scss';
 import { Button, Form, Input, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { setCredentials } from '@/store/slices/authSlice';
 import { register } from '@/api/userAPI';
 import { cinzelFont } from '@/utils/fonts';
@@ -14,6 +14,7 @@ import image from '@Images/regisImg.jpg';
 import { Subtract } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';
 import Fade from '@/components/Fade';
+import useRouterEffect from '@/hooks/useRouterEffect';
 
 const RegisterModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -22,22 +23,22 @@ const RegisterModule = () => {
   const { userInfo } = useSelector(state => state.auth);
 
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { routerEffect } = useRouterEffect();
 
   const pathName = useSearchParams();
   const redirect = pathName.get('redirect') || '/';
 
   useEffect(() => {
     if (userInfo) {
-      router.push(redirect);
+      routerEffect(redirect);
     }
-  }, [redirect, userInfo, router]);
+  }, [redirect, userInfo]);
 
   const onFinish = async (values: any) => {
     try {
       const res = await register(values);
       dispatch(setCredentials(res));
-      router.push(redirect);
+      routerEffect(redirect);
     } catch (err) {
       messageApi.open({
         type: 'error',

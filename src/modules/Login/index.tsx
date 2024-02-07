@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import s from './style.module.scss';
 import { Button, Form, Input, message } from 'antd';
-import { useRouter, useSearchParams } from 'next/navigation';
+import {  useSearchParams } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '@/store/slices/authSlice';
 import { login } from '@/api/userAPI';
@@ -12,17 +12,16 @@ import Image from 'next/image';
 import image from '@Images/singinImg.jpg';
 import { Subtract } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import Fade from '@/components/Fade';
 import { marqueeItems } from '@/constants/utils';
 import useMarquee from '@/hooks/useMarquee';
+import useRouterEffect from '@/hooks/useRouterEffect';
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { routerEffect } = useRouterEffect();
 
   // @ts-ignore:next-line
   const { userInfo } = useSelector(state => state.auth);
@@ -34,15 +33,15 @@ const LoginModule = () => {
 
   useEffect(() => {
     if (userInfo) {
-      router.push(redirect);
+      routerEffect(redirect);
     }
-  }, [redirect, userInfo, router]);
+  }, [redirect, userInfo]);
 
   const onFinish = async (values: any) => {
     try {
       const res = await login(values);
       dispatch(setCredentials(res));
-      router.push(redirect);
+      routerEffect(redirect);
     } catch (err) {
       messageApi.open({
         type: 'error',

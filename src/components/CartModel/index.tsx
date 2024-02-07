@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import s from './style.module.scss';
 import { useModelStore } from '@/store/zustandStore';
-import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { ICartItem } from '@/types/global';
 import CartModelItem from './CartModelItem';
+import useRouterEffect from '@/hooks/useRouterEffect';
 
 const CartModel = () => {
   const [cartList, setCartList] = useState<ICartItem[]>([]);
@@ -14,7 +14,7 @@ const CartModel = () => {
   const { modelState, setModelToggle } = useModelStore();
   // @ts-ignore:next-line
   const { userInfo } = useSelector(state => state.auth);
-  const router = useRouter();
+  const { routerEffect } = useRouterEffect();
 
   // @ts-ignore:next-line
   const { cartItems } = useSelector(
@@ -28,9 +28,9 @@ const CartModel = () => {
   const checkoutHandler = () => {
     setModelToggle();
     if (userInfo) {
-      router.push('/payment');
+      routerEffect('/payment');
     } else {
-      router.push('/login?redirect=/payment');
+      routerEffect('/login?redirect=/payment');
     }
   };
 
@@ -57,7 +57,6 @@ const CartModel = () => {
               <div className={`${s.cartInfo}`}>
                 <div className={s.cartInfo_subTotal}>
                   <p className={s.title}>Subtotal</p>
-                  {/* <p>{cartItems.reduce((acc, item) => acc + item.qty, 0)}</p> */}
                   <p className={s.content}>
                     $
                     {cartItems
