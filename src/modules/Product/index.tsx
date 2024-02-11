@@ -53,7 +53,6 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   const { setModelToggle } = useModelStore();
   const { routerEffect } = useRouterEffect();
 
-
   const [qty, setQty] = useState<number>(1);
   const [sizeModel, setSizeModel] = useState<'S' | 'M' | 'L'>(size);
   const [recommendProducts, setRecommendProducts] = useState<IProductItem[]>(
@@ -76,7 +75,7 @@ const ProductModules = ({ data }: { data: IProduct }) => {
     await dispatch(
       addToCart({ ...data, qty, size: sizeModel, color: colorModel })
     );
-    routerEffect('/payment')
+    routerEffect('/payment');
   };
 
   const addToCartHandler = () => {

@@ -25,6 +25,6 @@ const authSlice = createSlice({
 
 export const { setCredentials } = authSlice.actions;
 
-export const removeUserStorage = createAction('auth/removeUserStorage')
+export const removeUserStorage = createAction('auth/removeUserStorage');
 
 export default authSlice.reducer;

@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import s from './style.module.scss';
 import { Button, Form, Input, message } from 'antd';
-import {  useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '@/store/slices/authSlice';
 import { login } from '@/api/userAPI';

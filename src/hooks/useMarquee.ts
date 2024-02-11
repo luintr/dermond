@@ -1,11 +1,11 @@
-import { marqueeItems } from "@/constants/utils";
-import { useGSAP } from "@gsap/react";
-import { RefObject, useRef } from "react";
+import { marqueeItems } from '@/constants/utils';
+import { useGSAP } from '@gsap/react';
+import { RefObject, useRef } from 'react';
 import gsap from 'gsap';
 
 type IMarquee = {
-  marqueeInner: RefObject<HTMLDivElement>
-}
+  marqueeInner: RefObject<HTMLDivElement>;
+};
 
 const useMarquee = ({ marqueeInner }: IMarquee) => {
   const marqueePartRefs = marqueeItems.map(() =>
@@ -28,8 +28,8 @@ const useMarquee = ({ marqueeInner }: IMarquee) => {
   });
 
   return {
-    marqueePartRefs
-  }
-}
+    marqueePartRefs,
+  };
+};
 
-export default useMarquee
+export default useMarquee;

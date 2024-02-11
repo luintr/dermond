@@ -208,7 +208,7 @@ const RegisterModule = () => {
             </div>
           </div>
           <div className={`${s.regisBox_text} col-span-2 col-start-6`}>
-          <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
               <p>We embrace Beauty and</p>
             </Fade>
             <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
