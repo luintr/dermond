@@ -3,6 +3,9 @@ import s from './styles.module.scss';
 import Container from '@/components/Container';
 import { cinzelFont } from '@/utils/fonts';
 import Fade from '@/components/Fade';
+import heroImg from '@Images/heroImg.jpg';
+import Image from 'next/image';
+import BoxParallax from '@/components/BoxParallax';
 
 const HeroSection = () => {
   return (
@@ -38,9 +41,16 @@ const HeroSection = () => {
             <h2>DER</h2>
             <h2>MOND</h2>
           </div>
-          <div
-            className={`${s.bottomHero_wrapImage} col-span-6 col-start-4`}
-          ></div>
+          <div className={`${s.bottomHero_wrapImage} col-span-6 col-start-4`}>
+            <BoxParallax offset={0.1}>
+              <Image
+                src={heroImg.src}
+                width={heroImg.width}
+                height={heroImg.height}
+                alt={heroImg.src}
+              />
+            </BoxParallax>
+          </div>
         </div>
       </Container>
     </section>

@@ -59,7 +59,7 @@ const CollectionSecion = () => {
         <div className={s.collection}>
           {HOME_COLLECTION_DATA.map((item, index) => (
             <div key={index} className={s.wrapImage}>
-              <BoxParallax>
+              <BoxParallax offset={item.offset}>
                 <Image
                   className={`${s.collection_img}`}
                   src={item.image}

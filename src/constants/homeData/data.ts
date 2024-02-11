@@ -62,15 +62,18 @@ export const HOME_COLLECTION_DATA = [
     image: image1.src,
     width: image1.width,
     height: image1.height,
+    offset: 0.2,
   },
   {
     image: image2.src,
     width: image2.width,
     height: image2.height,
+    offset: 0.25,
   },
   {
     image: image3.src,
     width: image3.width,
     height: image3.height,
+    offset: 0.15,
   },
 ];

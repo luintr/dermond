@@ -1,0 +1,63 @@
+.profile {
+  padding-bottom: rem(120px);
+  padding-top: rem(80px);
+
+  .editProfile {
+    position: relative;
+    z-index: 1;
+    margin-top: rem(40px);
+    padding-top: rem(60px);
+
+    &_title {
+      position: absolute;
+      top: 0;
+      left: rem(40px);
+      transform: translateY(-50%);
+      font-size: rem(64px);
+      font-weight: 500;
+      color: var(--coral);
+      background: var(--tan);
+    }
+
+    :global(.ant-form-item) {
+      margin-bottom: rem(48px);
+
+      :global(.ant-btn) {
+        span {
+          font-size: rem(20px);
+        }
+      }
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 112%;
+      height: rem(2px);
+      top: 0;
+      left: 0;
+      background: var(--coral);
+    }
+  }
+
+  .tableProfile {
+    position: relative;
+    z-index: 2;
+    margin: rem(40px) 0 rem(40px) rem(40px);
+    padding: rem(60px) 0 rem(40px) rem(40px);
+    border-top: rem(2px) solid var(--coral);
+    border-left: rem(2px) solid var(--coral);
+    border-top-left-radius: rem(50px);
+
+    &_title {
+      position: absolute;
+      top: 0;
+      right: rem(40px);
+      background: var(--tan);
+      font-size: rem(64px);
+      font-weight: 500;
+      color: var(--coral);
+      transform: translateY(-50%);
+    }
+  }
+}

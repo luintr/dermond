@@ -119,6 +119,7 @@ const ProductTable = ({ setProductID, setEditMode }: IProductTable) => {
         columns={columns}
         dataSource={[...products].reverse()}
         rowKey="_id"
+        pagination={{ pageSize: 5 }}
       />
     </div>
   );

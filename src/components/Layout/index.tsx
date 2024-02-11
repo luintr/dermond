@@ -23,7 +23,7 @@ const Layout = ({ children, className }: ILayout) => {
         <UiProvider>
           <LenisScroller>
             <Header />
-            {children}
+            <div className={s.body}>{children}</div>
             <Footer />
             <CartModel />
           </LenisScroller>

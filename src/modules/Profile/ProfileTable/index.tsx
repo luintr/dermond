@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import s from './style.module.scss';
-import { getOrders } from '@/api/orderAPI';
-import Link from 'next/link';
+import React from 'react';
 import { Table, Tag } from 'antd';
+import LinkEffect from '@/components/LinkEffect';
+import s from '../styles.module.scss';
+import { cinzelFont } from '@/utils/fonts';
 
-type IUser = {
-  _id: string;
-  name: string;
+type IProfileTable = {
+  orders: any;
 };
 
-const AdminOrderList = () => {
-  const [orders, setOrders] = useState<any>(null);
-
-  useEffect(() => {
-    getOrders().then((res: any) => {
-      setOrders(res);
-    });
-  }, []);
-
+const ProfileTable: React.FC<IProfileTable> = ({ orders }) => {
   const columns = [
     {
       title: 'ID',
@@ -25,19 +16,11 @@ const AdminOrderList = () => {
       key: '_id',
       render: (text: string) => {
         const shortenedString = text.substring(0, 15);
-        return <Link href={`/order/${text}`}>{shortenedString}...</Link>;
+        return (
+          <LinkEffect href={`/order/${text}`}>{shortenedString}...</LinkEffect>
+        );
       },
-      width: '30%',
-    },
-    {
-      title: 'Name',
-      dataIndex: 'user',
-      key: 'user',
-      render: (text: IUser) => {
-        const { name } = text;
-        return name;
-      },
-      width: '20%',
+      width: '40%',
     },
     {
       title: 'Date',
@@ -85,9 +68,11 @@ const AdminOrderList = () => {
       width: '30%',
     },
   ];
-
   return (
-    <div className={s.admin_orderList}>
+    <div className={` ${s.tableProfile} col-span-7`}>
+      <h2 className={`${s.tableProfile_title} ${cinzelFont.className}`}>
+        Your Orders
+      </h2>
       <Table
         columns={columns}
         dataSource={orders}
@@ -98,4 +83,4 @@ const AdminOrderList = () => {
   );
 };
 
-export default AdminOrderList;
+export default ProfileTable;

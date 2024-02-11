@@ -37,7 +37,7 @@ const Header = (): React.ReactElement => {
           </div>
           <LinkEffect
             href={ROUTE_PATH.HOME}
-            className={`${s.headline} ${playfairFont.className}`}
+            className={`${s.headline_logo} ${playfairFont.className}`}
           >
             DER MOND
           </LinkEffect>
@@ -47,9 +47,6 @@ const Header = (): React.ReactElement => {
           <LinkEffect href={ROUTE_PATH.STORY} className={s.navigate_item}>
             OUR STORY
           </LinkEffect>
-          {/* <Link href={ROUTE_PATH.GALLERY} className={s.navigate_item}>
-            GALLERY
-          </Link> */}
           <LinkEffect href={ROUTE_PATH.SHOP} className={s.navigate_item}>
             Shop
           </LinkEffect>
