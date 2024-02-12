@@ -48,10 +48,18 @@
     flex-direction: column;
     overflow-y: scroll;
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     .cartList {
       flex: 1;
       height: auto;
       overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .cartInfo {

@@ -3,45 +3,9 @@ import s from './style.module.scss';
 import { deliverOrder, getOrderDetail, payOrder } from '@/api/orderAPI';
 import { useSelector } from 'react-redux';
 import { message } from 'antd';
-
-type IOrderItem = {
-  image: string;
-  name: string;
-  price: number;
-  product: string;
-  qty: number;
-  _id: string;
-};
-
-type IShippingAddress = {
-  address: string;
-  city: string;
-  country: string;
-  postalCode: string;
-};
-
-type IUser = {
-  _id: string;
-  email: string;
-  name: string;
-};
-
-type OrderData = {
-  _id: string;
-  isDelivered: boolean;
-  isPaid: boolean;
-  itemsPrice: number;
-  orderItems: IOrderItem[];
-  paymentMethod: string;
-  shippingAddress: IShippingAddress;
-  shippingPrice: number;
-  taxPrice: number;
-  totalPrice: number;
-  updatedAt: string;
-  user: IUser;
-  deliveredAt: string;
-  paidAt: string;
-};
+import { OrderData } from '@/types/global';
+import { cinzelFont } from '@/utils/fonts';
+import { daysOfWeek, monthsOfYear } from '@/constants/utils';
 
 const OrderModule = ({ orderID }: { orderID: string }) => {
   const [orderData, setOrderData] = useState<OrderData | null>(null);
@@ -58,7 +22,11 @@ const OrderModule = ({ orderID }: { orderID: string }) => {
   }, [paid, deli]);
 
   if (!orderData) {
-    return <div>Loading...</div>;
+    return (
+      <div className={s.loading}>
+        <h2>Loading...</h2>
+      </div>
+    );
   }
 
   const payHandler = async () => {
@@ -78,6 +46,7 @@ const OrderModule = ({ orderID }: { orderID: string }) => {
       });
     }
   };
+
   const deliverHandler = async () => {
     try {
       await deliverOrder(orderID);
@@ -96,11 +65,25 @@ const OrderModule = ({ orderID }: { orderID: string }) => {
     }
   };
 
+  const originalDate = new Date(orderData.createdAt);
+
   return (
-    <div className={`${s.orderPaypal} container grid grid-cols-12`}>
+    <div className={`${s.orderDetail} container grid grid-cols-12`}>
       {contextHolder}
-      <div className={`col-span-6`}>
-        <p>Order {orderData._id}</p>
+      <div className={`col-span-6 col-start-1`}>
+        <h2 className={`${s.orderDetail_title} ${cinzelFont.className}`}>
+          Order Details
+        </h2>
+      </div>
+
+      <div className={` ${s.orderDetail_box} col-span-12 col-start-1`}>
+        <p className={s.orderDetail_box_id}>
+          Order ID: {`#${orderData._id.substring(0, 10)}`}
+        </p>
+        <p className={s.orderDetail_box_date}>
+          {`${daysOfWeek[originalDate.getUTCDay()]}, ${monthsOfYear[originalDate.getUTCMonth()]} ${originalDate.getUTCDate()}, ${originalDate.getUTCFullYear()}`}
+        </p>
+        <div className={s.orderDetail_box_wrap}></div>
         <div>
           <p>Shipping</p>
           <p>Name: {orderData.user.name}</p>
@@ -145,7 +128,7 @@ const OrderModule = ({ orderID }: { orderID: string }) => {
           </div>
         </div>
       </div>
-      <div className={`col-span-6`}>
+      <div className={`col-span-12`}>
         <p>Order Summary</p>
         <p>
           <strong>Items Price:</strong> ${orderData.itemsPrice}

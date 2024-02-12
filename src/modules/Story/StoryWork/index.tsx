@@ -24,7 +24,6 @@ const StoryWork = () => {
           start: `top+=${startOffset}`,
           end: `bottom ${`88%`}`,
           pin: itemRef,
-          // markers: true,
           pinSpacing: false,
         };
 
@@ -36,7 +35,6 @@ const StoryWork = () => {
         start: 'top top',
         end: 'bottom 88%',
         pin: titleRef.current,
-        // markers: true,
         pinSpacing: false,
       });
     });

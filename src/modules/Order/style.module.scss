@@ -1,0 +1,26 @@
+.loading {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-size: rem(64px);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: rem(15px);
+  }
+}
+
+.orderDetail {
+  &_title {
+    font-size: rem(64px);
+    font-weight: 500;
+  }
+
+  &_box {
+    padding: var(--gap-x);
+    border: rem(2px) solid var(--coral);
+    border-radius: rem(50px);
+  }
+}

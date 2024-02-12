@@ -2,13 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { addToCart } from '@/store/slices/cartSlice';
-import { Radio, RadioChangeEvent } from 'antd';
+import { RadioChangeEvent } from 'antd';
 import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation';
 import s from './style.module.scss';
 import { cinzelFont } from '@/utils/fonts';
 import { AddtoCart, BuyNow } from '@/components/Icons';
-import { colorPicker, sizePicker } from '@/constants/options';
 import { useModelStore } from '@/store/zustandStore';
 import RadioColor from '@/components/CustomAntd/RadioColor';
 import QtyInput from '@/components/CustomAntd/QtyInput';
@@ -36,20 +34,9 @@ type IProduct = {
 };
 
 const ProductModules = ({ data }: { data: IProduct }) => {
-  const {
-    name,
-    image,
-    description,
-    size,
-    color,
-    price,
-    countInStock,
-    rating,
-    numReviews,
-  } = data;
+  const { name, image, description, size, color, price, countInStock } = data;
 
   const dispatch = useDispatch();
-  const router = useRouter();
   const { setModelToggle } = useModelStore();
   const { routerEffect } = useRouterEffect();
 

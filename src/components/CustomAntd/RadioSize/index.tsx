@@ -1,7 +1,7 @@
 import { Radio, RadioChangeEvent } from 'antd';
 import React from 'react';
 import s from './style.module.scss';
-import { sizePicker } from '@/constants/options';
+import { sizePicker } from '@/constants/utils';
 
 type IHandlderSizeChange = {
   sizeModel: 'S' | 'M' | 'L';

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './style.module.scss';
 import { Radio, RadioChangeEvent } from 'antd';
-import { colorPicker } from '@/constants/options';
+import { colorPicker } from '@/constants/utils';
 
 type IHandlderColorChange = {
   colorModel: 'be' | 'brown' | 'black' | 'white';
