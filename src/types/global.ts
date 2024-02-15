@@ -37,7 +37,7 @@ export type IOrderItem = {
   price: number;
   product: string;
   color: string;
-  size: string,
+  size: string;
   qty: number;
   _id: string;
 };
