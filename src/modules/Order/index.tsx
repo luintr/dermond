@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { message } from 'antd';
 import { OrderData } from '@/types/global';
 import { cinzelFont } from '@/utils/fonts';
-import { daysOfWeek, monthsOfYear } from '@/constants/utils';
+import { colorPicker, daysOfWeek, monthsOfYear } from '@/constants/utils';
 
 const OrderModule = ({ orderID }: { orderID: string }) => {
   const [orderData, setOrderData] = useState<OrderData | null>(null);
@@ -66,95 +66,139 @@ const OrderModule = ({ orderID }: { orderID: string }) => {
   };
 
   const originalDate = new Date(orderData.createdAt);
+  const paidDay = new Date(orderData.paidAt);
+  const deliveryDay = new Date(orderData.deliveredAt);
 
   return (
     <div className={`${s.orderDetail} container grid grid-cols-12`}>
       {contextHolder}
-      <div className={`col-span-6 col-start-1`}>
+      <div className={`col-span-10 col-start-2`}>
         <h2 className={`${s.orderDetail_title} ${cinzelFont.className}`}>
           Order Details
         </h2>
       </div>
 
-      <div className={` ${s.orderDetail_box} col-span-12 col-start-1`}>
-        <p className={s.orderDetail_box_id}>
+      <div className={` ${s.orderDetail_wrap} col-span-10 col-start-2`}>
+        <p className={s.orderDetail_wrap_id}>
           Order ID: {`#${orderData._id.substring(0, 10)}`}
         </p>
-        <p className={s.orderDetail_box_date}>
+        <p className={s.orderDetail_wrap_date}>
           {`${daysOfWeek[originalDate.getUTCDay()]}, ${monthsOfYear[originalDate.getUTCMonth()]} ${originalDate.getUTCDate()}, ${originalDate.getUTCFullYear()}`}
         </p>
-        <div className={s.orderDetail_box_wrap}></div>
-        <div>
-          <p>Shipping</p>
-          <p>Name: {orderData.user.name}</p>
-          <p>Email: {orderData.user.email}</p>
-          <p>
-            Address: {orderData.shippingAddress.address},{' '}
-            {orderData.shippingAddress.city},{' '}
-            {orderData.shippingAddress.postalCode},{' '}
-            {orderData.shippingAddress.country}
-          </p>
-          <div>
-            {orderData.isDelivered ? (
-              <p>Delivered on:{orderData.deliveredAt}</p>
-            ) : (
-              <p>Not Delivered</p>
-            )}
-          </div>
-          <div>
+        <div className={s.orderDetail_box}>
+          <div className={`${s.delivery} ${s.orderDetail_box_item}`}>
+            <h4>Deliver To</h4>
+            <h5>{orderData.user.name}</h5>
             <p>
-              <strong>Method:</strong> {orderData.paymentMethod}
+              Email: <span>{orderData.user.email}</span>
             </p>
+            <p>
+              Phone: <span>{orderData.number}</span>
+            </p>
+          </div>
+          <div className={`${s.payment} ${s.orderDetail_box_item}`}>
+            <h4>Payment Method</h4>
+            <h5>{orderData.paymentMethod}</h5>
             {orderData.isPaid ? (
-              <p>Paid on: {orderData.paidAt}</p>
+              <p>
+                Paid on:{' '}
+                <span>
+                  {`${daysOfWeek[paidDay.getUTCDay()]}, ${monthsOfYear[paidDay.getUTCMonth()]} ${paidDay.getUTCDate()}, ${paidDay.getUTCFullYear()} -- ${paidDay.getHours()}: ${paidDay.getMinutes()}`}
+                </span>
+              </p>
             ) : (
               <p>Not Paid</p>
             )}
           </div>
+          <div className={`${s.delivery} ${s.orderDetail_box_item}`}>
+            <h4>Delivery</h4>
+            <h5>Address</h5>
+            <p>
+              <span>
+                {orderData.shippingAddress.address},{' '}
+                {orderData.shippingAddress.city},{' '}
+                {orderData.shippingAddress.country}
+              </span>
+            </p>
+            {orderData.isDelivered ? (
+              <p>
+                Delivered on:{' '}
+                <span>{`${daysOfWeek[deliveryDay.getUTCDay()]}, ${monthsOfYear[deliveryDay.getUTCMonth()]} ${deliveryDay.getUTCDate()}, ${deliveryDay.getUTCFullYear()} -- ${deliveryDay.getHours()}: ${deliveryDay.getMinutes()}`}</span>
+              </p>
+            ) : (
+              <p>Not Delivered</p>
+            )}
+          </div>
         </div>
-        <div>
-          <p>
-            <strong>Order Items</strong>
-          </p>
-          <div>
-            {orderData.orderItems.map(item => (
-              <div key={item._id} className={s.orderItem}>
-                <img src={item.image} alt="image" />
-                <p>{item.name}</p>
-                <p>Qty: {item.qty}</p>
-                <p>Price: ${item.price}</p>
+        <div className={s.orderDetail_box2}>
+          <div className={s.orderDetail_items}>
+            <h4>Order Items</h4>
+            <div className={s.orderList}>
+              {orderData.orderItems.map(item => (
+                <div key={item._id} className={s.orderItem}>
+                  <div className={s.left}>
+                    <img src={item.image} alt="image" />
+                    <div className={s.orderItem_content}>
+                      <p className={s.title}>{item.name}</p>
+                      <div className={`${s.flex}`}>
+                        <div className={s.flex_item}>
+                          <p>Qty</p> <p>{item.qty}</p>
+                        </div>
+                        <div className={s.flex_item}>
+                          <p>Color</p>
+                          <p
+                            style={{
+                              backgroundColor: colorPicker.find(
+                                color => color.name === item.color
+                              )?.color,
+                            }}
+                            className={s.color}
+                          ></p>
+                        </div>
+                        <div className={s.flex_item}>
+                          <p>Size</p> <p>{item.size}</p>
+                        </div>
+                      </div>
+                      <div className={s.price}>
+                        <p>Price:</p> <span>${item.price}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={s.summary}>
+            <h4>Summary</h4>
+
+            <p>
+              <strong>Items Price:</strong> ${orderData.itemsPrice}
+            </p>
+            <p>
+              <strong>Shipping:</strong>{' '}
+              {orderData.shippingPrice == 0
+                ? 'Free Ship'
+                : `$${orderData.shippingPrice}`}
+            </p>
+            <p>
+              <strong>Tax:</strong> ${orderData.taxPrice}
+            </p>
+            <p>
+              <strong>Total Price:</strong> ${orderData.totalPrice}
+            </p>
+            {userInfo && userInfo.isAdmin && !orderData.isPaid && (
+              <div>
+                <button onClick={payHandler}>Mark as Paid</button>
               </div>
-            ))}
+            )}
+            {userInfo && userInfo.isAdmin && !orderData.isDelivered && (
+              <div>
+                <button onClick={deliverHandler}>Mark as Delivered</button>
+              </div>
+            )}
           </div>
         </div>
-      </div>
-      <div className={`col-span-12`}>
-        <p>Order Summary</p>
-        <p>
-          <strong>Items Price:</strong> ${orderData.itemsPrice}
-        </p>
-        <p>
-          <strong>Shipping:</strong>{' '}
-          {orderData.shippingPrice == 0
-            ? 'Free Ship'
-            : `$${orderData.shippingPrice}`}
-        </p>
-        <p>
-          <strong>Tax:</strong> ${orderData.taxPrice}
-        </p>
-        <p>
-          <strong>Total Price:</strong> ${orderData.totalPrice}
-        </p>
-        {userInfo && userInfo.isAdmin && !orderData.isPaid && (
-          <div>
-            <button onClick={payHandler}>Mark as Paid</button>
-          </div>
-        )}
-        {userInfo && userInfo.isAdmin && !orderData.isDelivered && (
-          <div>
-            <button onClick={deliverHandler}>Mark as Delivered</button>
-          </div>
-        )}
       </div>
     </div>
   );

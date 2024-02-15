@@ -45,6 +45,7 @@ const PaymentModule = () => {
         orderItems: dataStorage.cartItems,
         shippingAddress: values,
         paymentMethod: value,
+        number: values.number,
         itemsPrice: dataStorage.itemsPrice,
         taxPrice: dataStorage.taxPrice,
         shippingPrice: dataStorage.shippingPrice,

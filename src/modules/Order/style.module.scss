@@ -13,14 +13,144 @@
 }
 
 .orderDetail {
+  padding: rem(20px) 0;
+
   &_title {
     font-size: rem(64px);
     font-weight: 500;
   }
 
+  h4 {
+    font-size: rem(20px);
+    line-height: rem(20px);
+    padding: rem(10px) rem(20px);
+    text-transform: uppercase;
+    background: var(--coral);
+    color: var(--tan);
+    border-radius: rem(100px);
+    font-weight: 500;
+    width: fit-content;
+    margin-bottom: rem(16px);
+  }
+
+  &_wrap {
+    &_id {
+      font-weight: 700;
+    }
+
+    &_date {
+      font-weight: 700;
+    }
+  }
+
   &_box {
-    padding: var(--gap-x);
-    border: rem(2px) solid var(--coral);
-    border-radius: rem(50px);
+    margin: rem(40px) 0;
+    display: flex;
+    gap: rem(40px);
+
+    &_item {
+      width: calc(100% / 3 - rem(20px));
+
+      h5 {
+        text-transform: uppercase;
+        margin-bottom: rem(8px);
+        font-weight: 800;
+      }
+
+      p {
+        font-weight: 600;
+
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  &_box2 {
+    display: flex;
+    justify-content: space-between;
+    gap: rem(40px);
+
+    .orderDetail_items {
+      flex: 1;
+
+      .orderList {
+        .orderItem {
+          width: 100%;
+          padding: rem(20px) 0;
+          border-bottom: rem(1px) solid var(--coral);
+
+          .left {
+            display: flex;
+            gap: rem(40px);
+            align-items: center;
+            height: rem(200px);
+
+            img {
+              height: 100%;
+              border-radius: rem(50px);
+              aspect-ratio: 1/1;
+            }
+          }
+
+          &_content {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: rem(10px) 0;
+          }
+
+          .title {
+            font-size: rem(36px);
+            font-weight: 800;
+            color: var(--coral);
+          }
+
+          .flex {
+            display: flex;
+            gap: rem(24px);
+
+            &_item {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: space-between;
+
+              p {
+                &:first-child {
+                  font-weight: 600;
+                }
+
+                &.color {
+                  width: rem(20px);
+                  height: rem(20px);
+                  border-radius: rem(50px);
+                  border: rem(1px) solid var(--black-08);
+                }
+              }
+            }
+          }
+
+          .price {
+            display: flex;
+            gap: rem(8px);
+
+            p {
+              font-weight: 600;
+            }
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+
+    .summary {
+      width: calc(100% /3 - rem(20px));
+    }
   }
 }
