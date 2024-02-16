@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import React, { useRef } from 'react';
 import s from '../style.module.scss';
 import { useGSAP } from '@gsap/react';
@@ -6,20 +6,23 @@ import gsap from 'gsap';
 const SvgAnimate = () => {
   const svgAnimateRef = useRef<SVGSVGElement | null>(null);
 
-  useGSAP(() => {
-    gsap.to('.path', {
-      opacity: 1,
-      ease: 'power4.inOut',
-      duration: 2,
-      stagger: .4,
-      scrollTrigger: {
-        trigger: svgAnimateRef.current,
-        start: 'top 50%',
-        end: 'bottom center',
-        scrub: true,
-      },
-    });
-  }, {scope: svgAnimateRef});
+  useGSAP(
+    () => {
+      gsap.to('.path', {
+        opacity: 1,
+        ease: 'power4.inOut',
+        duration: 2,
+        stagger: 0.4,
+        scrollTrigger: {
+          trigger: svgAnimateRef.current,
+          start: 'top 50%',
+          end: 'bottom center',
+          scrub: true,
+        },
+      });
+    },
+    { scope: svgAnimateRef }
+  );
 
   return (
     <div className={s.svgAnimate}>
