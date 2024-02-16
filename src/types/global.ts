@@ -36,6 +36,8 @@ export type IOrderItem = {
   name: string;
   price: number;
   product: string;
+  color: string;
+  size: string;
   qty: number;
   _id: string;
 };
@@ -69,4 +71,5 @@ export type OrderData = {
   user: IUser;
   deliveredAt: string;
   paidAt: string;
+  number: string;
 };
