@@ -13,7 +13,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
 const CollectionSecion = () => {
-  const line = useRef(null);
+  const line = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
     gsap.to(line.current, {
