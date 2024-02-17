@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import s from './style.module.scss';
 import { Button, Form, Input, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +15,8 @@ import { Subtract } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';
 import Fade from '@/components/Fade';
 import useRouterEffect from '@/hooks/useRouterEffect';
+import { marqueeItems } from '@/constants/utils';
+import useMarquee from '@/hooks/useMarquee';
 
 const RegisterModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -27,6 +29,9 @@ const RegisterModule = () => {
 
   const pathName = useSearchParams();
   const redirect = pathName.get('redirect') || '/';
+
+  const marqueeInner = useRef<HTMLDivElement | null>(null);
+  const { marqueePartRefs } = useMarquee({ marqueeInner });
 
   useEffect(() => {
     if (userInfo) {
@@ -76,8 +81,18 @@ const RegisterModule = () => {
               <Subtract />
             </div>
 
-            <div className={s.boxImage_maquee}>
-              <p className={`${cinzelFont.className}`}>DER MOND</p>
+            <div ref={marqueeInner} className={s.boxImage_maquee}>
+              {marqueeItems.map((project, index) => {
+                return (
+                  <span
+                    ref={marqueePartRefs[index]}
+                    key={index}
+                    className={`${cinzelFont.className}`}
+                  >
+                    {project.content}
+                  </span>
+                );
+              })}
             </div>
           </div>
         </div>
