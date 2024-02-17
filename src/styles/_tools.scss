@@ -238,9 +238,9 @@
 }
 
 @mixin overtext($lines) {
-	display: -webkit-inline-box;
-	-webkit-line-clamp: $lines;
-	-webkit-box-orient: vertical;
-	text-overflow: ellipsis;
-	overflow: hidden;
+  display: -webkit-inline-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
