@@ -2,7 +2,6 @@ import React from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
 import { ROUTE_PATH } from '@/constants/route';
-import Link from 'next/link';
 import { ArrowIcon } from '@/components/Icons';
 import Image from 'next/image';
 import image1 from '@Images/season1.jpeg';
@@ -10,6 +9,8 @@ import image2 from '@Images/season2.jpeg';
 import image3 from '@Images/season3.jpeg';
 import { cinzelFont } from '@/utils/fonts';
 import ButtonNavigate from '@/components/Button';
+import BoxParallax from '@/components/BoxParallax';
+import LinkEffect from '@/components/LinkEffect';
 
 const SeasonSection = () => {
   return (
@@ -45,39 +46,46 @@ const SeasonSection = () => {
             </p>
           </div>
 
-          <Image
-            src={image3.src}
-            width={image3.width}
-            height={image3.height}
-            alt="image"
-            className={s.image}
-          />
+          <div className={s.image}>
+            <BoxParallax>
+              <Image
+                src={image3.src}
+                width={image3.width}
+                height={image3.height}
+                alt="image"
+              />
+            </BoxParallax>
+          </div>
         </div>
 
         <div className={`${s.seasonImage} col-span-5 col-start-8`}>
-          <Link href={ROUTE_PATH.SHOP}>
+          <LinkEffect href={ROUTE_PATH.SHOP}>
             Our Shop
             <span>
               <ArrowIcon />
             </span>
-          </Link>
+          </LinkEffect>
 
           <div className={s.seasonImage_img}>
-            <Image
-              src={image1.src}
-              width={image1.width}
-              height={image1.height}
-              alt="image"
-            />
+            <BoxParallax>
+              <Image
+                src={image1.src}
+                width={image1.width}
+                height={image1.height}
+                alt="image"
+              />
+            </BoxParallax>
           </div>
 
           <div className={s.seasonImage_subImg}>
-            <Image
-              src={image2.src}
-              width={image2.width}
-              height={image2.height}
-              alt="image"
-            />
+            <BoxParallax offset={0.05}>
+              <Image
+                src={image2.src}
+                width={image2.width}
+                height={image2.height}
+                alt="image"
+              />
+            </BoxParallax>
           </div>
         </div>
       </Container>

@@ -3,13 +3,13 @@
 import Container from '@/components/Container';
 import React, { useEffect, useState } from 'react';
 import s from '../style.module.scss';
-import Link from 'next/link';
 import { ROUTE_PATH } from '@/constants/route';
 import { useSelector } from 'react-redux';
 import ProfileHeader from './Profile';
 import { playfairFont } from '@/utils/fonts';
 import { CartIcon, Logo } from '@/components/Icons';
 import { useModelStore } from '@/store/zustandStore';
+import LinkEffect from '@/components/LinkEffect';
 
 const Header = (): React.ReactElement => {
   const [qtyItems, setQtyItems] = useState<[]>([]);
@@ -35,30 +35,27 @@ const Header = (): React.ReactElement => {
           <div className={s.logoAnim}>
             <Logo />
           </div>
-          <Link
+          <LinkEffect
             href={ROUTE_PATH.HOME}
-            className={`${s.headline} ${playfairFont.className}`}
+            className={`${s.headline_logo} ${playfairFont.className}`}
           >
             DER MOND
-          </Link>
+          </LinkEffect>
         </div>
 
         <div className={s.navigate}>
-          <Link href={ROUTE_PATH.STORY} className={s.navigate_item}>
+          <LinkEffect href={ROUTE_PATH.STORY} className={s.navigate_item}>
             OUR STORY
-          </Link>
-          {/* <Link href={ROUTE_PATH.GALLERY} className={s.navigate_item}>
-            GALLERY
-          </Link> */}
-          <Link href={ROUTE_PATH.SHOP} className={s.navigate_item}>
+          </LinkEffect>
+          <LinkEffect href={ROUTE_PATH.SHOP} className={s.navigate_item}>
             Shop
-          </Link>
+          </LinkEffect>
           {user ? (
             <ProfileHeader data={user} />
           ) : (
-            <Link href={ROUTE_PATH.LOGIN} className={s.navigate_item}>
+            <LinkEffect href={ROUTE_PATH.LOGIN} className={s.navigate_item}>
               Sign In
-            </Link>
+            </LinkEffect>
           )}
           <div className={s.navigate_item} onClick={() => setModelToggle()}>
             <CartIcon />

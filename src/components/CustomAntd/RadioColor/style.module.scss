@@ -1,0 +1,49 @@
+.radioColor {
+  :global(.ant-radio-group) {
+    display: flex;
+    gap: rem(16px);
+  }
+
+  :global(.ant-radio-button-wrapper) {
+    border: 0px !important;
+    width: rem(40px);
+    height: rem(40px);
+    position: relative;
+    border-radius: 0;
+
+    &::before {
+      display: none;
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  :global(.ant-radio-button-wrapper-checked) {
+    &::after {
+      position: absolute;
+      content: '';
+      width: rem(48px);
+      height: rem(48px);
+      top: 50%;
+      left: 50%;
+      border: rem(1px) solid var(--black-08);
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &.small {
+    :global(.ant-radio-button-wrapper) {
+      width: rem(30px);
+      height: rem(30px);
+    }
+
+    :global(.ant-radio-button-wrapper-checked) {
+      &::after {
+        width: rem(36px);
+        height: rem(36px);
+      }
+    }
+  }
+}

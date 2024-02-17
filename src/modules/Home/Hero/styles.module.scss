@@ -43,10 +43,15 @@
         z-index: 1;
         background: #fff;
         min-width: vw(670px);
-        min-height: vh(855px);
+        max-height: vh(855px);
         border-top-left-radius: 50%;
         border-top-right-radius: 50%;
         overflow: hidden;
+
+        img {
+          height: 100%;
+          width: auto;
+        }
       }
     }
   }

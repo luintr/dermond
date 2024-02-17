@@ -5,6 +5,7 @@ import { cinzelFont, pinyonFont, playfairFont } from '@/utils/fonts';
 import image from '@Images/serviceImg1.jpg';
 import Image from 'next/image';
 import { storyEngageData, storyService } from '@/constants/story/storyService';
+import BoxParallax from '@/components/BoxParallax';
 
 const StoryService = () => {
   return (
@@ -23,12 +24,14 @@ const StoryService = () => {
           </p>
         </div>
         <div className={`${s.storyService_image} col-span-6 col-start-7`}>
-          <Image
-            src={image.src}
-            width={image.width}
-            height={image.height}
-            alt={'image'}
-          />
+          <BoxParallax offset={0.1}>
+            <Image
+              src={image.src}
+              width={image.width}
+              height={image.height}
+              alt={'image'}
+            />
+          </BoxParallax>
         </div>
       </Container>
 

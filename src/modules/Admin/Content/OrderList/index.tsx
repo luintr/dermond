@@ -3,6 +3,7 @@ import s from './style.module.scss';
 import { getOrders } from '@/api/orderAPI';
 import Link from 'next/link';
 import { Table, Tag } from 'antd';
+import { IOrderItem } from '@/types/global';
 
 type IUser = {
   _id: string;
@@ -10,7 +11,7 @@ type IUser = {
 };
 
 const AdminOrderList = () => {
-  const [orders, setOrders] = useState<any>(null);
+  const [orders, setOrders] = useState<IOrderItem[]>([]);
 
   useEffect(() => {
     getOrders().then((res: any) => {
@@ -88,7 +89,12 @@ const AdminOrderList = () => {
 
   return (
     <div className={s.admin_orderList}>
-      <Table columns={columns} dataSource={orders} rowKey="_id" />
+      <Table
+        columns={columns}
+        dataSource={[...orders].reverse()}
+        rowKey="_id"
+        pagination={{ pageSize: 5 }}
+      />
     </div>
   );
 };

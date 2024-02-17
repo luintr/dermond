@@ -3,7 +3,9 @@
 import React from 'react';
 
 import s from './style.module.scss';
-import Link from 'next/link';
+import Fade from '@/components/Fade';
+import { cinzelFont } from '@/utils/fonts';
+import LinkEffect from '@/components/LinkEffect';
 
 export type IProductItem = {
   _id: string;
@@ -19,21 +21,24 @@ export type IProductItem = {
 };
 
 const ProductItem = ({ data }: { data: IProductItem }): React.ReactElement => {
-  const { _id, image, name, price } = data;
+  const { _id, image, name } = data;
 
   return (
-    <div className={`${s.productItem}`}>
-      <Link href={`/product/${_id}`}>
-        <img className={s.productItem_image} src={image} alt={name} />
-      </Link>
-
-      <div className={s.productItem_content}>
-        <Link href={`/product/${_id}`} className={s.productItem_content_title}>
-          {name}
-        </Link>
-        <p className={s.productItem_content_price}>${price}</p>
+    <Fade direction={'bottom'} from={'30px'} delayTrigger={0.5}>
+      <div className={`${s.productItem}`}>
+        <LinkEffect href={`/product/${_id}`}>
+          <img className={s.productItem_image} src={image} alt={name} />
+        </LinkEffect>
+        <div className={s.productItem_content}>
+          <LinkEffect
+            href={`/product/${_id}`}
+            className={`${s.productItem_content_title} ${cinzelFont.className}`}
+          >
+            {name}
+          </LinkEffect>
+        </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

@@ -1,0 +1,212 @@
+.shipping {
+  padding-bottom: rem(100px);
+
+  &_title {
+    padding-top: rem(64px);
+    font-size: rem(64px);
+    line-height: rem(64px);
+    margin-bottom: rem(42px);
+  }
+
+  .shippingForm {
+    :global(.ant-form-item) {
+      margin-bottom: rem(36px);
+    }
+
+    &_radio {
+      margin-bottom: rem(32px);
+
+      :global(.ant-space-gap-row-small) {
+        row-gap: rem(16px);
+        column-gap: rem(16px);
+      }
+
+      :global(.ant-space-item) {
+        label {
+          span {
+            font-size: rem(20px);
+            color: var(--black-08);
+          }
+
+          :global(.ant-radio) {
+            width: rem(32px);
+            height: rem(32px);
+
+            input {
+              transition: 0.4s all var(--easeOutQuart);
+            }
+
+            input {
+              &:hover {
+                color: var(--black-08);
+              }
+            }
+
+            :global(.ant-radio-inner) {
+              border-color: var(--black-08);
+              width: 100%;
+              height: 100%;
+
+              &:after {
+                transform: scale(0.8);
+              }
+            }
+          }
+        }
+
+        :global(.ant-radio-wrapper-checked) {
+          :global(.ant-radio) {
+            :global(.ant-radio-inner) {
+              background-color: var(--black-08);
+            }
+          }
+        }
+      }
+    }
+
+    button {
+      text-transform: uppercase;
+    }
+  }
+
+  .billInfo {
+    padding: rem(64px);
+    background-color: rgba($color: #a37c751a, $alpha: 0.1);
+    border-top-left-radius: rem(50px);
+    margin-right: rem(-40px);
+
+    .text {
+      display: flex;
+      gap: rem(16px);
+      align-items: center;
+      margin-bottom: rem(32px);
+
+      span {
+        &:first-child {
+          width: fit-content;
+          font-size: rem(32px);
+        }
+      }
+
+      .textDash {
+        flex: 1;
+        height: rem(2px);
+        border-radius: rem(100px);
+        background-color: var(--coral);
+      }
+    }
+
+    &_list {
+      margin-bottom: rem(64px);
+      display: flex;
+      flex-direction: column;
+      gap: rem(32px);
+
+      .orderItem {
+        display: flex;
+        align-items: flex-end;
+        gap: rem(32px);
+
+        &_img {
+          position: relative;
+          width: 45%;
+
+          .img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+          }
+
+          .title {
+            position: absolute;
+            top: rem(12px);
+            right: 0;
+            background: var(--black-08);
+            color: var(--tan);
+            font-size: rem(24px);
+            transform: translateX(80%);
+            padding: rem(10px);
+            width: 140%;
+          }
+        }
+
+        &_info {
+          flex: 1;
+          font-size: rem(20px);
+          padding-bottom: rem(12px);
+
+          .wrap {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: rem(16px);
+            margin-bottom: rem(16px);
+            border-bottom: rem(2px) solid var(--coral);
+          }
+
+          p {
+            span {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    &_summary {
+      position: relative;
+      padding-top: rem(32px);
+
+      .dash {
+        position: absolute;
+        width: 100%;
+        height: rem(2px);
+        border-radius: rem(100px);
+        top: 0;
+        left: 0;
+        background-color: var(--coral);
+      }
+
+      p {
+        margin-bottom: rem(16px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+          font-size: rem(24px);
+
+          &:last-child {
+            text-transform: uppercase;
+            opacity: 0.6;
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .total {
+        .text {
+          margin-top: rem(32px);
+          margin-bottom: 0;
+
+          span {
+            &:first-child {
+              width: fit-content;
+              font-size: rem(42px);
+            }
+          }
+        }
+
+        .price {
+          display: block;
+          font-size: rem(68px);
+          line-height: rem(68px);
+          text-align: right;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

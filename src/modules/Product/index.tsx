@@ -1,10 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { addToCart } from '@/store/slices/cartSlice';
-import { Select as AntdSelect, Radio, RadioChangeEvent } from 'antd';
+import { RadioChangeEvent } from 'antd';
 import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation';
+import s from './style.module.scss';
+import { cinzelFont } from '@/utils/fonts';
+import { AddtoCart, BuyNow } from '@/components/Icons';
+import { useModelStore } from '@/store/zustandStore';
+import RadioColor from '@/components/CustomAntd/RadioColor';
+import QtyInput from '@/components/CustomAntd/QtyInput';
+import RadioSize from '@/components/CustomAntd/RadioSize';
+import { shuffleArray } from '@/utils/mathUtils';
+import ProductItem, {
+  IProductItem,
+} from '@/modules/Shop/ProductList/ProductItem';
+import { useGetProduct } from '@/api/getProduct';
+import useRouterEffect from '@/hooks/useRouterEffect';
 
 type IProduct = {
   _id: string;
@@ -22,99 +34,118 @@ type IProduct = {
 };
 
 const ProductModules = ({ data }: { data: IProduct }) => {
-  const { Option } = AntdSelect;
-
-  const {
-    name,
-    image,
-    description,
-    size,
-    color,
-    price,
-    countInStock,
-    rating,
-    numReviews,
-  } = data;
+  const { name, image, description, size, color, price, countInStock } = data;
 
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { setModelToggle } = useModelStore();
+  const { routerEffect } = useRouterEffect();
 
   const [qty, setQty] = useState<number>(1);
   const [sizeModel, setSizeModel] = useState<'S' | 'M' | 'L'>(size);
+  const [recommendProducts, setRecommendProducts] = useState<IProductItem[]>(
+    []
+  );
   const [colorModel, setColorModel] = useState<
     'be' | 'brown' | 'black' | 'white'
   >(color);
 
-  const addtoCartHandler = () => {
+  const { products, loading } = useGetProduct();
+
+  const getErrorMessage = (error: any): string => {
+    if (error && typeof error.status === 'number') {
+      return `Error status: ${error.status}`;
+    }
+    return 'An error occurred';
+  };
+
+  const buyNowHandler = async () => {
+    await dispatch(
+      addToCart({ ...data, qty, size: sizeModel, color: colorModel })
+    );
+    routerEffect('/payment');
+  };
+
+  const addToCartHandler = () => {
     dispatch(addToCart({ ...data, qty, size: sizeModel, color: colorModel }));
-    router.push('/cart');
+    setModelToggle();
   };
 
   const handleSizeChange = (e: RadioChangeEvent) => {
     setSizeModel(e.target.value);
   };
+
   const handleColorChange = (e: RadioChangeEvent) => {
     setColorModel(e.target.value);
   };
 
+  useEffect(() => {
+    const temp = [...products];
+    let shuffleProducts: IProductItem[] = shuffleArray(temp);
+    if (shuffleProducts.length) {
+      setRecommendProducts([
+        shuffleProducts[0],
+        shuffleProducts[1],
+        shuffleProducts[2],
+      ]);
+    }
+  }, [loading]);
+
   return (
-    <div className={`container grid-cols-12`}>
-      <div>
+    <div className={`${s.productDetail} container grid grid-cols-12`}>
+      <div className={`${s.productDetail_img} col-span-6 col-start-1`}>
         <img src={image} alt={name} />
       </div>
-      <div>
-        <h1>{name}</h1>
-        <div>
-          <div>rate: {rating}</div>
-          <div>{numReviews}</div>
-        </div>
-        <div>price: ${price}</div>
-        <div>desc: {description}</div>
-      </div>
+      <div className={`${s.wrapContent} col-span-6 col-start-7`}>
+        <h1 className={`${s.wrapContent_title} ${cinzelFont.className}`}>
+          {name}
+        </h1>
 
-      <div>
-        <div>price: ${price}</div>
-        <div>status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}</div>
-        <div>color: {color}</div>
-        <div>
-          <Radio.Group value={sizeModel} onChange={handleSizeChange}>
-            <Radio.Button value="S">S</Radio.Button>
-            <Radio.Button value="M">M</Radio.Button>
-            <Radio.Button value="L">L</Radio.Button>
-          </Radio.Group>
-        </div>
+        <div className={s.wrapContent_price}>$ {price}</div>
 
-        <div>
-          <Radio.Group value={colorModel} onChange={handleColorChange}>
-            <Radio.Button value="be">Be</Radio.Button>
-            <Radio.Button value="brown">Brown</Radio.Button>
-            <Radio.Button value="black">Black</Radio.Button>
-            <Radio.Button value="white">White</Radio.Button>
-          </Radio.Group>
-        </div>
+        <div className={s.wrapContent_options}>
+          <div className={s.leftOptions}>
+            <RadioColor
+              colorModel={colorModel}
+              handleColorChange={handleColorChange}
+              className={s.wrapContent_color}
+            />
 
-        {data.countInStock > 0 && (
-          <div>
-            <div>
-              <div>Qty</div>
-              <div>
-                <AntdSelect
-                  value={qty.toString()}
-                  onChange={value => setQty(Number(value))}
-                >
-                  {Array.from({ length: data.countInStock }, (_, index) => (
-                    <Option key={index} value={(index + 1).toString()}>
-                      {index + 1}
-                    </Option>
-                  ))}
-                </AntdSelect>
-              </div>
-            </div>
+            <RadioSize
+              sizeModel={sizeModel}
+              handleSizeChange={handleSizeChange}
+              className={s.wrapContent_size}
+            />
           </div>
-        )}
-        <button disabled={data.countInStock === 0} onClick={addtoCartHandler}>
-          Add to cart
-        </button>
+
+          <QtyInput qty={qty} setQty={setQty} className={s.wrapContent_qty} />
+        </div>
+
+        <div className={s.wrapContent_buttons}>
+          <button disabled={data.countInStock === 0} onClick={buyNowHandler}>
+            <BuyNow /> <span>Buy Now</span>
+          </button>
+          <button disabled={data.countInStock === 0} onClick={addToCartHandler}>
+            <AddtoCart /> <span>Add to cart</span>
+          </button>
+        </div>
+
+        <div className={s.wrapContent_desc}>{description}</div>
+
+        <div className={s.wrapContent_status}>
+          status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}
+        </div>
+      </div>
+      <p
+        className={`${s.storyWork_title} ${cinzelFont.className} col-span-3`}
+        // ref={titleRef}
+      >
+        <span>Y</span>ou may also love
+      </p>
+      <div className={`${s.productList} col-span-12`}>
+        {recommendProducts &&
+          recommendProducts.map((product: IProductItem) => (
+            <ProductItem key={product._id} data={product} />
+          ))}
       </div>
     </div>
   );

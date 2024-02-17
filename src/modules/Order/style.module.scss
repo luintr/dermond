@@ -1,0 +1,238 @@
+.loading {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loader {
+    width: rem(64px);
+    height: rem(64px);
+    display: inline-block;
+    position: relative;
+
+    &::after,
+    &::before {
+      content: '';
+      box-sizing: border-box;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--black-08);
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: animloader 2s linear infinite;
+    }
+
+    &::after {
+      animation-delay: 1s;
+    }
+
+    @keyframes animloader {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.orderDetail {
+  padding: rem(20px) 0;
+
+  &_title {
+    font-size: rem(64px);
+    font-weight: 500;
+  }
+
+  h4 {
+    font-size: rem(20px);
+    line-height: rem(20px);
+    padding: rem(10px) rem(20px);
+    text-transform: uppercase;
+    background: var(--coral);
+    color: var(--tan);
+    border-radius: rem(100px);
+    font-weight: 500;
+    width: fit-content;
+    margin-bottom: rem(16px);
+  }
+
+  &_wrap {
+    &_id {
+      font-weight: 700;
+    }
+
+    &_date {
+      font-weight: 700;
+    }
+  }
+
+  &_box {
+    margin: rem(40px) 0;
+    display: flex;
+    gap: rem(40px);
+
+    &_item {
+      width: calc(100% / 3 - rem(20px));
+
+      h5 {
+        text-transform: uppercase;
+        margin-bottom: rem(8px);
+        font-weight: 800;
+      }
+
+      p {
+        font-weight: 600;
+
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  &_box2 {
+    display: flex;
+    justify-content: space-between;
+    gap: rem(120px);
+
+    .orderDetail_items {
+      flex: 1;
+
+      .orderList {
+        .orderItem {
+          width: 100%;
+          padding: rem(20px) 0;
+          border-bottom: rem(1px) solid var(--coral);
+
+          .left {
+            display: flex;
+            gap: rem(40px);
+            align-items: center;
+            height: rem(200px);
+
+            img {
+              height: 100%;
+              border-radius: rem(50px);
+              aspect-ratio: 1/1;
+            }
+          }
+
+          &_content {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: rem(10px) 0;
+          }
+
+          .title {
+            font-size: rem(36px);
+            font-weight: 800;
+            color: var(--coral);
+            @include overtext(1);
+          }
+
+          .flex {
+            display: flex;
+            gap: rem(24px);
+
+            &_item {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: space-between;
+
+              p {
+                &:first-child {
+                  font-weight: 600;
+                }
+
+                &.color {
+                  width: rem(20px);
+                  height: rem(20px);
+                  border-radius: rem(50px);
+                  border: rem(1px) solid var(--black-08);
+                }
+              }
+            }
+          }
+
+          .price {
+            display: flex;
+            gap: rem(8px);
+
+            p {
+              font-weight: 600;
+            }
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+
+    .summary {
+      width: calc(100% / 3 - rem(60px));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: rem(40px);
+
+      h4 {
+        margin-bottom: rem(36px);
+      }
+
+      p {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: rem(16px);
+        font-weight: 600;
+        font-size: rem(24px);
+
+        span {
+          font-weight: 800;
+          color: var(--coral);
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+
+          padding-top: rem(16px);
+          border-top: rem(1px) solid var(--coral);
+        }
+      }
+
+      button {
+        margin-bottom: rem(16px);
+        width: 100%;
+        padding: rem(12px) 0;
+        color: var(--tan);
+        background: var(--coral);
+        border-radius: rem(50px);
+        transition: 0.4s all var(--easeOutQuart);
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &.disable {
+          background: rgba($color: #464646, $alpha: 0.7);
+          cursor: not-allowed;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

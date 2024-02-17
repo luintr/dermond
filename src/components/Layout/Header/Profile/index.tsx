@@ -1,21 +1,21 @@
 import React, { useRef, useState } from 'react';
 import s from './styles.module.scss';
-import Link from 'next/link';
 import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation';
 import { removeUserStorage } from '@/store/slices/authSlice';
 import { logout } from '@/api/userAPI';
 import useClickOutside from '@/hooks/useClickOutside';
 import { UserIcon } from '@/components/Icons';
+import LinkEffect from '@/components/LinkEffect';
+import { useRouter } from 'next/navigation';
+import useRouterEffect from '@/hooks/useRouterEffect';
 
 const ProfileHeader = ({ data }: { data: any }) => {
   const [optionState, setOptionState] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  const { name, isAdmin } = data;
-
-  const dispatch = useDispatch();
   const router = useRouter();
+  const { name, isAdmin } = data;
+  // const { routerEffect } = useRouterEffect();
+  const dispatch = useDispatch();
 
   const toggleOptionBox = () => {
     setOptionState(!optionState);
@@ -26,15 +26,9 @@ const ProfileHeader = ({ data }: { data: any }) => {
   };
 
   const logoutHandler = async () => {
-    try {
-      // @ts-ignore:next-line
-      const res = await logout();
-      // @ts-ignore:next-line
-      dispatch(removeUserStorage());
-      router.push('/login');
-    } catch (error) {
-      console.log(error);
-    }
+    await logout();
+    dispatch(removeUserStorage());
+    router.push('/login');
   };
 
   useClickOutside(ref, hideOptions);
@@ -47,20 +41,21 @@ const ProfileHeader = ({ data }: { data: any }) => {
 
       <ul className={`${s.profileOptions} ${optionState ? s.open : ''}`}>
         <li onClick={hideOptions}>
-          <Link href={'/profile'} className={s.profileOptions_item}>
-            {name}
-          </Link>
+          <LinkEffect href={'/profile'} className={s.profileOptions_item}>
+            <UserIcon />
+            <span>{name}</span>
+          </LinkEffect>
         </li>
         <li onClick={hideOptions}>
-          <Link href={'/profile'} className={s.profileOptions_item}>
+          <LinkEffect href={'/profile'} className={s.profileOptions_item}>
             Profile
-          </Link>
+          </LinkEffect>
         </li>
         {isAdmin ? (
           <li onClick={hideOptions}>
-            <Link href={'/admin'} className={s.profileOptions_item}>
+            <LinkEffect href={'/admin'} className={s.profileOptions_item}>
               Admin
-            </Link>
+            </LinkEffect>
           </li>
         ) : (
           ''

@@ -4,22 +4,41 @@
   text-align: center;
 }
 
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal>.ant-menu-submenu-selected::after {
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-submenu-selected::after {
   border: none;
 }
 
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal>.ant-menu-item:hover::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-item:hover::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal>.ant-menu-submenu:hover::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-submenu:hover::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal>.ant-menu-item-active::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-item-active::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal>.ant-menu-submenu-active::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-submenu-active::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal>.ant-menu-item-open::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-item-open::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal>.ant-menu-submenu-open::after,
-:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light>.ant-menu.ant-menu-horizontal>.ant-menu-submenu-open::after {
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-item:hover::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light
+  > .ant-menu.ant-menu-horizontal
+  > .ant-menu-item:hover::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-submenu:hover::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light
+  > .ant-menu.ant-menu-horizontal
+  > .ant-menu-submenu:hover::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-item-active::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light
+  > .ant-menu.ant-menu-horizontal
+  > .ant-menu-item-active::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-submenu-active::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light
+  > .ant-menu.ant-menu-horizontal
+  > .ant-menu-submenu-active::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-item-open::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light
+  > .ant-menu.ant-menu-horizontal
+  > .ant-menu-item-open::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-submenu-open::after,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-menu-light
+  > .ant-menu.ant-menu-horizontal
+  > .ant-menu-submenu-open::after {
   border: unset;
 }
 
@@ -103,10 +122,18 @@
   border-radius: 0;
 }
 
+.ant-input-disabled {
+  background-color: transparent !important;
+
+  &:hover {
+    border-bottom: rem(2px) solid #d9d9d9 !important;
+  }
+}
+
 .ant-form-item {
   box-shadow: none;
 
-  button {
+  .ant-btn {
     padding: 0;
     transition: 0.4s all var(--easeOutQuart);
     box-shadow: none;
@@ -137,9 +164,46 @@
       }
     }
 
-
     &:active {
       background: none;
+    }
+  }
+}
+
+.ant-table-thead {
+  .ant-table-cell {
+    background-color: rgba($color: #080808, $alpha: 0.8) !important;
+    color: var(--tan) !important;
+  }
+}
+
+.ant-table-tbody {
+  .ant-table-cell {
+    a {
+      transition: 0.4s all var(--easeOutQuart);
+
+      &:hover {
+        color: #000000e0 !important;
+        opacity: 0.5;
+      }
+    }
+
+    button {
+      transition: 0.4s all var(--easeOutQuart);
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.ant-table-pagination {
+  .ant-pagination-item-active {
+    border-color: rgba($color: #080808, $alpha: 0.8) !important;
+
+    a {
+      color: rgba($color: #080808, $alpha: 0.8) !important;
     }
   }
 }

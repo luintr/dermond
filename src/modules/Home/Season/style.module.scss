@@ -34,10 +34,13 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        height: vh(624px);
-        width: auto;
         border-radius: rem(10px);
         transform: translateX(-60%);
+        overflow: hidden;
+        img {
+          height: vh(624px);
+          width: auto;
+        }
       }
     }
 

@@ -8,6 +8,8 @@ import Footer from './Footer';
 import { GridDebug } from './GridDebug';
 import CartModel from '../CartModel';
 import LenisScroller from '../Lenis';
+import { UiProvider } from '@/context/uiContext';
+import PageEffect from './PageEffect';
 
 type ILayout = {
   children: ReactNode;
@@ -18,13 +20,15 @@ const Layout = ({ children, className }: ILayout) => {
   return (
     <Provider store={store}>
       <body className={`${className} ${s.mainLayout}`}>
-        <LenisScroller>
-          <Header />
-          {children}
-          <Footer />
-          <CartModel />
-        </LenisScroller>
-
+        <UiProvider>
+          <LenisScroller>
+            <Header />
+            <div className={s.body}>{children}</div>
+            <Footer />
+            <CartModel />
+          </LenisScroller>
+          <PageEffect />
+        </UiProvider>
         {process.env.NODE_ENV === 'development' && <GridDebug />}
       </body>
     </Provider>

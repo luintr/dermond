@@ -16,20 +16,50 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    transform: translateY(100%);
-    display: none;
     width: fit-content;
     min-width: rem(60px);
+    border: rem(1px) solid var(--black-08);
+    padding: rem(20px) 0;
+    transform: translateY(110%);
+    border-radius: rem(24px);
+    transition: 0.4s all var(--easeOutQuart);
+    opacity: 0;
+    background: var(--be);
+    pointer-events: none;
 
     &_item {
       cursor: pointer;
       font-size: rem(16px);
       line-height: rem(18.78px);
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: rem(8px);
+      width: max-content;
+      padding: rem(5px) rem(24px);
+      transition: 0.4s all var(--easeOutQuart);
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    li {
+      margin-bottom: rem(8px);
+
+      &:first-child {
+        pointer-events: none;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     &.open {
-      display: block;
+      transform: translateY(105%);
+      opacity: 1;
+      pointer-events: initial;
     }
   }
 }

@@ -1,3 +1,14 @@
 .productItem {
-  width: calc(100% / 3);
+  width: calc(100% / 3 - rem(4px));
+  border: rem(1px) solid var(--coral);
+
+  &_content {
+    padding: rem(8px) rem(16px);
+
+    a {
+      font-size: rem(24px);
+      line-height: rem(24px);
+      min-height: rem(48px);
+    }
+  }
 }

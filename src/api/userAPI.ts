@@ -9,7 +9,7 @@ export const register = async (data: any) => {
   const res = await post(`${USERS_URL}/register`, data);
   return res;
 };
-export const logout = async (data: any) => {
+export const logout = async (data?: any) => {
   const res = await post(`${USERS_URL}/logout`, data);
   return res;
 };

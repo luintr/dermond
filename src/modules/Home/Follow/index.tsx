@@ -5,6 +5,7 @@ import { cinzelFont } from '@/utils/fonts';
 import Image from 'next/image';
 import bg from '@Images/follow.jpeg';
 import SvgAnimate from './SvgAnimate';
+import BoxParallax from '@/components/BoxParallax';
 
 const FollowSection = () => {
   return (
@@ -17,7 +18,9 @@ const FollowSection = () => {
           <p className={s.follow_content}>@DERMOND.VN</p>
         </div>
         <div className={s.parallaxBg}>
-          <Image src={bg.src} width={bg.width} height={bg.height} alt="bg" />
+          <BoxParallax offset={0.07}>
+            <Image src={bg.src} width={bg.width} height={bg.height} alt="bg" />
+          </BoxParallax>
         </div>
         <SvgAnimate />
       </Container>

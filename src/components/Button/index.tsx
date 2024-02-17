@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import React from 'react';
 import s from './styles.module.scss';
 import { ArrowIcon } from '../Icons';
+import LinkEffect from '../LinkEffect';
 
 type IButtonNavigate = {
   text?: string;
@@ -10,12 +10,12 @@ type IButtonNavigate = {
 };
 const ButtonNavigate = ({ text, href, className }: IButtonNavigate) => {
   return (
-    <Link href={href ? href : '#'} className={`${s.button} ${className}`}>
+    <LinkEffect href={href ? href : '#'} className={`${s.button} ${className}`}>
       {text}
       <span>
         <ArrowIcon />
       </span>
-    </Link>
+    </LinkEffect>
   );
 };
 

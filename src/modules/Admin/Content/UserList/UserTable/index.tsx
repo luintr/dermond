@@ -100,6 +100,7 @@ const AdminUserTable = ({ setUserID, setUserEditMode }: IUserTable) => {
         columns={columns}
         dataSource={users}
         rowKey="_id"
+        pagination={{ pageSize: 5 }}
       />
     </div>
   );

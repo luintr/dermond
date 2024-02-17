@@ -1,5 +1,5 @@
 import { createProduct, deleteProduct, getProduct } from '@/api/productAPI';
-import { IProduct } from '@/constants/product';
+import { IProduct } from '@/types/global';
 import { Table, message } from 'antd';
 import React, { useEffect, useState } from 'react';
 
@@ -119,6 +119,7 @@ const ProductTable = ({ setProductID, setEditMode }: IProductTable) => {
         columns={columns}
         dataSource={[...products].reverse()}
         rowKey="_id"
+        pagination={{ pageSize: 5 }}
       />
     </div>
   );
