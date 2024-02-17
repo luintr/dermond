@@ -3,9 +3,10 @@ import { Table, Tag } from 'antd';
 import LinkEffect from '@/components/LinkEffect';
 import s from '../styles.module.scss';
 import { cinzelFont } from '@/utils/fonts';
+import { IOrderItem } from '@/types/global';
 
 type IProfileTable = {
-  orders: any;
+  orders: IOrderItem[];
 };
 
 const ProfileTable: React.FC<IProfileTable> = ({ orders }) => {
@@ -75,7 +76,7 @@ const ProfileTable: React.FC<IProfileTable> = ({ orders }) => {
       </h2>
       <Table
         columns={columns}
-        dataSource={orders}
+        dataSource={[...orders].reverse()}
         rowKey="_id"
         pagination={{ pageSize: 5 }}
       />

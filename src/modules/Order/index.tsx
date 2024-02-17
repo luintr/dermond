@@ -24,7 +24,7 @@ const OrderModule = ({ orderID }: { orderID: string }) => {
   if (!orderData) {
     return (
       <div className={s.loading}>
-        <h2>Loading...</h2>
+        <div className={s.loader}></div>
       </div>
     );
   }
@@ -78,7 +78,7 @@ const OrderModule = ({ orderID }: { orderID: string }) => {
         </h2>
       </div>
 
-      <div className={` ${s.orderDetail_wrap} col-span-10 col-start-2`}>
+      <div className={` ${s.orderDetail_wrap} col-span-9 col-start-2`}>
         <p className={s.orderDetail_wrap_id}>
           Order ID: {`#${orderData._id.substring(0, 10)}`}
         </p>
@@ -172,31 +172,49 @@ const OrderModule = ({ orderID }: { orderID: string }) => {
           <div className={s.summary}>
             <h4>Summary</h4>
 
-            <p>
-              <strong>Items Price:</strong> ${orderData.itemsPrice}
-            </p>
-            <p>
-              <strong>Shipping:</strong>{' '}
-              {orderData.shippingPrice == 0
-                ? 'Free Ship'
-                : `$${orderData.shippingPrice}`}
-            </p>
-            <p>
-              <strong>Tax:</strong> ${orderData.taxPrice}
-            </p>
-            <p>
-              <strong>Total Price:</strong> ${orderData.totalPrice}
-            </p>
-            {userInfo && userInfo.isAdmin && !orderData.isPaid && (
-              <div>
-                <button onClick={payHandler}>Mark as Paid</button>
-              </div>
-            )}
-            {userInfo && userInfo.isAdmin && !orderData.isDelivered && (
-              <div>
-                <button onClick={deliverHandler}>Mark as Delivered</button>
-              </div>
-            )}
+            <div className={s.summary_wrap}>
+              <p>
+                <span>Items Price</span> ${orderData.itemsPrice}
+              </p>
+              <p>
+                <span>Shipping</span>{' '}
+                {orderData.shippingPrice == 0
+                  ? 'Free Ship'
+                  : `$${orderData.shippingPrice}`}
+              </p>
+              <p>
+                <span>Tax</span> ${orderData.taxPrice}
+              </p>
+              <p>
+                <span>Total Price</span> ${orderData.totalPrice}
+              </p>
+
+              <button
+                onClick={payHandler}
+                disabled={userInfo && userInfo.isAdmin && !orderData.isPaid}
+                className={
+                  userInfo && userInfo.isAdmin && !orderData.isPaid
+                    ? s.disable
+                    : ''
+                }
+              >
+                Mark as Paid
+              </button>
+
+              <button
+                onClick={deliverHandler}
+                disabled={
+                  userInfo && userInfo.isAdmin && !orderData.isDelivered
+                }
+                className={
+                  userInfo && userInfo.isAdmin && !orderData.isDelivered
+                    ? s.disable
+                    : ''
+                }
+              >
+                Mark as Delivered
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,14 +1,44 @@
 .loading {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  h2 {
-    font-size: rem(64px);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: rem(15px);
+  .loader {
+    width: rem(64px);
+    height: rem(64px);
+    display: inline-block;
+    position: relative;
+
+    &::after,
+    &::before {
+      content: '';
+      box-sizing: border-box;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--black-08);
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: animloader 2s linear infinite;
+    }
+
+    &::after {
+      animation-delay: 1s;
+    }
+
+    @keyframes animloader {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
   }
 }
 
@@ -70,7 +100,7 @@
   &_box2 {
     display: flex;
     justify-content: space-between;
-    gap: rem(40px);
+    gap: rem(120px);
 
     .orderDetail_items {
       flex: 1;
@@ -106,6 +136,7 @@
             font-size: rem(36px);
             font-weight: 800;
             color: var(--coral);
+            @include overtext(1)
           }
 
           .flex {
@@ -150,7 +181,58 @@
     }
 
     .summary {
-      width: calc(100% / 3 - rem(20px));
+      width: calc(100% / 3 - rem(60px));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: rem(40px);
+
+      h4 {
+        margin-bottom: rem(36px);
+      }
+
+      p {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: rem(16px);
+        font-weight: 600;
+        font-size: rem(24px);
+
+        span {
+          font-weight: 800;
+          color: var(--coral);
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+
+          padding-top: rem(16px);
+          border-top: rem(1px) solid var(--coral);
+        }
+      }
+
+      button {
+        margin-bottom: rem(16px);
+        width: 100%;
+        padding: rem(12px) 0;
+        color: var(--tan);
+        background: var(--coral);
+        border-radius: rem(50px);
+        transition: .4s all var(--easeOutQuart);
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &.disable {
+          background: rgba($color: #464646, $alpha: 0.7);
+          cursor: not-allowed;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
     }
   }
 }

@@ -6,9 +6,10 @@ import { message } from 'antd';
 import { getMyOrders } from '@/api/orderAPI';
 import ProfileEdit from './ProfileEdit';
 import ProfileTable from './ProfileTable';
+import { IOrderItem } from '@/types/global';
 const ProfileModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
-  const [orders, setOrders] = useState<any>(null);
+  const [orders, setOrders] = useState<IOrderItem[]>([]);
 
   useEffect(() => {
     getMyOrders().then((res: any) => {
