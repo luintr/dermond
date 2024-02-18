@@ -1,0 +1,12 @@
+.admin_productList {
+  .table {
+    position: relative;
+
+    .buttonCreate {
+      position: absolute;
+      top: rem(-32px);
+      right: 0;
+      transform: translateY(-100%);
+    }
+  }
+}

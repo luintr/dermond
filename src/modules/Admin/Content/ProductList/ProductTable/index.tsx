@@ -2,7 +2,7 @@ import { createProduct, deleteProduct, getProduct } from '@/api/productAPI';
 import { IProduct } from '@/types/global';
 import { Button, Table, message } from 'antd';
 import React, { useEffect, useState } from 'react';
-
+import s from '../style.module.scss';
 type IProductTable = {
   setProductID: (id: string) => void;
   setEditMode: (state: boolean) => void;
@@ -109,9 +109,9 @@ const ProductTable = ({ setProductID, setEditMode }: IProductTable) => {
     },
   ];
   return (
-    <div className={`col-span-12 grid grid-cols-12`}>
+    <div className={` ${s.table} col-span-12 grid grid-cols-12`}>
       {contextHolder}
-      <div className={`col-span-12`}>
+      <div className={`${s.buttonCreate}`}>
         <Button onClick={createProductHandler}>Create Product</Button>
       </div>
       <Table

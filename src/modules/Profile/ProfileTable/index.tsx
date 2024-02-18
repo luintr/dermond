@@ -78,7 +78,7 @@ const ProfileTable: React.FC<IProfileTable> = ({ orders }) => {
         columns={columns}
         dataSource={[...orders].reverse()}
         rowKey="_id"
-        pagination={{ pageSize: 5 }}
+        pagination={{ pageSize: 3 }}
       />
     </div>
   );
