@@ -11,6 +11,7 @@ import { cinzelFont } from '@/utils/fonts';
 import ButtonNavigate from '@/components/Button';
 import BoxParallax from '@/components/BoxParallax';
 import LinkEffect from '@/components/LinkEffect';
+import Fade from '@/components/Fade';
 
 const SeasonSection = () => {
   return (
@@ -21,13 +22,15 @@ const SeasonSection = () => {
             <h2
               className={`${s.seasonDesc_title} col-span-5`}
             >{`// TIS THE SEASON`}</h2>
-            <p className={`${s.seasonDesc_content} col-span-5`}>
-              Customization Beyond Boundaries: Design is personal, and so is our
-              approach. We don&apos;t just design dresses; we craft experiences.
-              From fabric selection to silhouette, we tailor every detail to
-              match the individuality of our clients, ensuring a truly bespoke
-              creation.
-            </p>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+              <p className={`${s.seasonDesc_content} col-span-5`}>
+                Customization Beyond Boundaries: Design is personal, and so is
+                our approach. We don&apos;t just design dresses; we craft
+                experiences. From fabric selection to silhouette, we tailor
+                every detail to match the individuality of our clients, ensuring
+                a truly bespoke creation.
+              </p>
+            </Fade>
             <div
               className={`${s.seasonDesc_navigateBox} col-span-2 col-start-1`}
             >
@@ -37,13 +40,17 @@ const SeasonSection = () => {
 
               <ButtonNavigate href={ROUTE_PATH.STORY} text="DISCOVER" />
             </div>
-            <p className={`${s.seasonDesc_subContent} col-span-2 col-start-4`}>
-              Customization Beyond Boundaries: Design is personal, and so is our
-              approach. We don&apos;t just design dresses; we craft experiences.
-              From fabric selection to silhouette, we tailor every detail to
-              match the individuality of our clients, ensuring a truly bespoke
-              creation.
-            </p>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+              <p
+                className={`${s.seasonDesc_subContent} col-span-2 col-start-4`}
+              >
+                Customization Beyond Boundaries: Design is personal, and so is
+                our approach. We don&apos;t just design dresses; we craft
+                experiences. From fabric selection to silhouette, we tailor
+                every detail to match the individuality of our clients, ensuring
+                a truly bespoke creation.
+              </p>
+            </Fade>
           </div>
 
           <div className={s.image}>
@@ -59,13 +66,14 @@ const SeasonSection = () => {
         </div>
 
         <div className={`${s.seasonImage} col-span-5 col-start-8`}>
-          <LinkEffect href={ROUTE_PATH.SHOP}>
-            Our Shop
-            <span>
-              <ArrowIcon />
-            </span>
-          </LinkEffect>
-
+          <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+            <LinkEffect href={ROUTE_PATH.SHOP}>
+              Our Shop
+              <span>
+                <ArrowIcon />
+              </span>
+            </LinkEffect>
+          </Fade>
           <div className={s.seasonImage_img}>
             <BoxParallax>
               <Image

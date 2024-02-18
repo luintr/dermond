@@ -3,19 +3,34 @@ import useSplitType from './useSplitType';
 import gsap from 'gsap';
 
 type IHeadlineFade = {
-  headline: MutableRefObject<HTMLHeadingElement | null>;
-  duration?: number;
+  ref: MutableRefObject<
+    HTMLHeadingElement | HTMLHeadElement | HTMLElement | null
+  >;
+  stagger?: number;
 };
 
 export const useHeadlineFade = ({
-  headline,
-  duration = 0.025,
+  ref,
+  stagger = 0.025,
 }: IHeadlineFade): void => {
-  const splitTextRef = useSplitType(headline, { types: 'words, chars' });
+  const splitTextRef = useSplitType(ref, { types: 'words, chars' });
 
   useEffect(() => {
     const chars = splitTextRef.current?.chars as HTMLElement[];
-    const ctx = gsap.context(() => {
+
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        animateFadeIn();
+        // @ts-ignore
+        observer.unobserve(ref.current);
+      }
+    });
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    const animateFadeIn = () => {
       gsap.fromTo(
         chars,
         { opacity: 0 },
@@ -23,15 +38,15 @@ export const useHeadlineFade = ({
           opacity: 1,
           stagger: {
             from: 'random',
-            each: duration,
+            each: stagger,
           },
           ease: 'power4.inOut',
         }
       );
-    });
+    };
 
     return () => {
-      ctx.revert();
+      observer.disconnect();
     };
-  }, [splitTextRef]);
+  }, [splitTextRef, stagger, ref]);
 };

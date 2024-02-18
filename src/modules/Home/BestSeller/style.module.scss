@@ -29,6 +29,10 @@
         max-width: rem(410px);
       }
 
+      &_content {
+        @include overtext(6);
+      }
+
       .sliderNumber {
         position: absolute;
         top: 0;

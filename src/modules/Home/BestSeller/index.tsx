@@ -11,7 +11,7 @@ const BestSellerSection = () => {
   return (
     <section className={s.bestSellerSection}>
       <Container className={`${s.container} grid grid-cols-12`}>
-        <div className={`${s.itemInfo} col-span-4 col-start-1`}>
+        <div className={`${s.itemInfo} col-span-3 col-start-2`}>
           <div className={s.wrapContent}>
             <h3 className={`${s.itemInfo_title}`}>
               DER MOND’s <span>BEST SELLER</span>
@@ -30,7 +30,7 @@ const BestSellerSection = () => {
           <RoundedText className={s.roundedText} />
           <p className={`${s.sliderNumber} ${cinzelFont.className}`}>/01</p>
         </div>
-        <div className={`${s.itemSlider} col-span-8 col-start-5`}>
+        <div className={`${s.itemSlider} col-span-6 col-start-6`}>
           <div className={`${s.itemSlider_btn} ${s.left}`}>
             <SingleArrowIcon />
           </div>

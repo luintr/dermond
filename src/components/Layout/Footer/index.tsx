@@ -6,6 +6,7 @@ import { FOOTER_NAVIGATE } from '@/constants/homeData/data';
 import { Input } from 'antd';
 import { ArrowIcon } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';
+import Fade from '@/components/Fade';
 
 const Footer = () => {
   return (
@@ -19,31 +20,60 @@ const Footer = () => {
               key={index}
               className={`${s.navItem} col-span-2 col-start-${(index + 1) * 2}`}
             >
-              <p className={`${s.navItem_headline} ${cinzelFont.className}`}>
-                {item.title}
-              </p>
+              <Fade
+                key={index}
+                direction={'bottom'}
+                from={'30px'}
+                delayEnter={0.4}
+              >
+                <p className={`${s.navItem_headline} ${cinzelFont.className}`}>
+                  {item.title}
+                </p>
+              </Fade>
               <ul className={s.navItem_list}>
                 {item.links.map((link, index) => (
-                  <li key={index}>
-                    <LinkEffect href={link.link}>{link.title}</LinkEffect>
-                  </li>
+                  <Fade
+                    key={index}
+                    direction={'bottom'}
+                    from={'30px'}
+                    delayTrigger={0.2 + index / 10}
+                    delayEnter={0.4 + index / 10}
+                  >
+                    <li key={index}>
+                      <LinkEffect href={link.link}>{link.title}</LinkEffect>
+                    </li>
+                  </Fade>
                 ))}
               </ul>
             </div>
           ))}
         </div>
         <form className={`${s.footer_form} col-span-4 col-start-9`}>
-          <p className={cinzelFont.className}>KEEP UP TO DATE NEWSLETTER</p>
-          <div className={s.wrapInput}>
-            <Input
-              className={contentFont.className}
-              placeholder="Email"
-              type="text"
-            />
-            <div className={s.button}>
-              <ArrowIcon />
+          <Fade
+            direction={'bottom'}
+            from={'30px'}
+            delayTrigger={0.15}
+            delayEnter={0.4}
+          >
+            <p className={cinzelFont.className}>KEEP UP TO DATE NEWSLETTER</p>
+          </Fade>
+          <Fade
+            direction={'bottom'}
+            from={'30px'}
+            delayTrigger={0.15}
+            delayEnter={0.6}
+          >
+            <div className={s.wrapInput}>
+              <Input
+                className={contentFont.className}
+                placeholder="Email"
+                type="text"
+              />
+              <div className={s.button}>
+                <ArrowIcon />
+              </div>
             </div>
-          </div>
+          </Fade>
         </form>
       </Container>
     </div>

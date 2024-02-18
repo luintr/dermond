@@ -18,6 +18,7 @@
 
       &_content {
         margin-bottom: rem(76px);
+        @include overtext(4);
       }
 
       &_navigateBox {
@@ -37,6 +38,7 @@
         border-radius: rem(10px);
         transform: translateX(-60%);
         overflow: hidden;
+
         img {
           height: vh(624px);
           width: auto;

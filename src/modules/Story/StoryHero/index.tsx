@@ -8,7 +8,7 @@ import { useHeadlineFade } from '@/hooks/useHeadlineFade';
 
 const StoryHero = () => {
   const headline = useRef<HTMLHeadingElement | null>(null);
-  useHeadlineFade({ headline });
+  useHeadlineFade({ ref: headline });
 
   return (
     <section className={s.storyHero}>
