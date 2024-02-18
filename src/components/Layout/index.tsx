@@ -27,11 +27,11 @@ const Layout = ({ children, className }: ILayout) => {
       <body className={`${className} ${s.mainLayout}`}>
         <UiProvider>
           <LenisScroller>
-              <StyleProvider transformers={[px2rem]}>
-                <Header />
-                <div className={s.body}>{children}</div>
-                <Footer />
-              </StyleProvider>
+            <StyleProvider transformers={[px2rem]}>
+              <Header />
+              <div className={s.body}>{children}</div>
+              <Footer />
+            </StyleProvider>
             <CartModel />
           </LenisScroller>
           <PageEffect />
