@@ -172,17 +172,26 @@
 
 .ant-table-thead {
   .ant-table-cell {
-    background-color: rgba($color: #080808, $alpha: 0.8) !important;
-    color: var(--tan) !important;
+    // background-color: rgba($color: #080808, $alpha: 0.8) !important;
+    background-color: var(--tan) !important;
+    color: var(--black-08) !important;
+    border-bottom: rem(1px) solid #a37c7590 !important;
   }
 }
 
 .ant-table-tbody {
   .ant-table-cell {
+    background-color: var(--tan) !important;
+    border-bottom: rem(1px) solid #a37c7520 !important;
+
+    &-row-hover {
+      background: #f7f8f4 !important;
+    }
     a {
       transition: 0.4s all var(--easeOutQuart);
 
       &:hover {
+        background: var(--white) !important;
         color: #000000e0 !important;
         opacity: 0.5;
       }
@@ -199,11 +208,24 @@
 }
 
 .ant-table-pagination {
+  .ant-pagination-item,
+  .ant-pagination-item-link {
+    &:hover {
+      border-radius: 50% !important;
+      aspect-ratio: 1 !important;
+    }
+  }
   .ant-pagination-item-active {
-    border-color: rgba($color: #080808, $alpha: 0.8) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none !important;
+    border-radius: 50% !important;
+    aspect-ratio: 1 !important;
+    background-color: var(--coral) !important;
 
     a {
-      color: rgba($color: #080808, $alpha: 0.8) !important;
+      color: var(--tan) !important;
     }
   }
 }
