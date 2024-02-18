@@ -19,6 +19,8 @@ const AdminOrderList = () => {
     });
   }, []);
 
+  console.log(orders);
+
   const columns = [
     {
       title: 'ID',
@@ -34,16 +36,16 @@ const AdminOrderList = () => {
       },
       width: '30%',
     },
-    {
-      title: 'Name',
-      dataIndex: 'user',
-      key: 'user',
-      render: (text: IUser) => {
-        const { name } = text;
-        return name;
-      },
-      width: '20%',
-    },
+    // {
+    //   title: 'Name',
+    //   dataIndex: 'user',
+    //   key: 'user',
+    //   render: (text: IUser) => {
+    //     const { name } = text;
+    //     return text;
+    //   },
+    //   width: '20%',
+    // },
     {
       title: 'Date',
       dataIndex: 'createdAt',

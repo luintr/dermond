@@ -12,8 +12,11 @@
         border-radius: rem(10px);
         background-color: var(--black-08) !important;
         border: 0;
-        * {
+        height: auto;
+
+        span {
           color: var(--tan);
+          font-size: rem(20px);
         }
       }
     }

@@ -188,32 +188,34 @@ const OrderModule = ({ orderID }: { orderID: string }) => {
               <p>
                 <span>Total Price</span> ${orderData.totalPrice}
               </p>
-
-              <button
-                onClick={payHandler}
-                disabled={userInfo && userInfo.isAdmin && !orderData.isPaid}
-                className={
-                  userInfo && userInfo.isAdmin && !orderData.isPaid
-                    ? s.disable
-                    : ''
-                }
-              >
-                Mark as Paid
-              </button>
-
-              <button
-                onClick={deliverHandler}
-                disabled={
-                  userInfo && userInfo.isAdmin && !orderData.isDelivered
-                }
-                className={
-                  userInfo && userInfo.isAdmin && !orderData.isDelivered
-                    ? s.disable
-                    : ''
-                }
-              >
-                Mark as Delivered
-              </button>
+              {userInfo && userInfo.isAdmin && (
+                <button
+                  onClick={payHandler}
+                  disabled={userInfo && userInfo.isAdmin && !orderData.isPaid}
+                  className={
+                    userInfo && userInfo.isAdmin && !orderData.isPaid
+                      ? s.disable
+                      : ''
+                  }
+                >
+                  Mark as Paid
+                </button>
+              )}
+              {userInfo && userInfo.isAdmin && (
+                <button
+                  onClick={deliverHandler}
+                  disabled={
+                    userInfo && userInfo.isAdmin && !orderData.isDelivered
+                  }
+                  className={
+                    userInfo && userInfo.isAdmin && !orderData.isDelivered
+                      ? s.disable
+                      : ''
+                  }
+                >
+                  Mark as Delivered
+                </button>
+              )}
             </div>
           </div>
         </div>
