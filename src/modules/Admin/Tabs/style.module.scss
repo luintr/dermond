@@ -9,7 +9,6 @@
     border-radius: rem(12px);
     cursor: pointer;
     transition: all 0.3s ease-out;
-    border: rem(1px) solid var(--black-08);
 
     &:hover {
       background-color: transparentize(#a37c75, 0.8);

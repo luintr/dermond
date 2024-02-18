@@ -3,10 +3,19 @@
     position: relative;
 
     .buttonCreate {
-      position: absolute;
-      top: rem(-32px);
-      right: 0;
-      transform: translateY(-100%);
+      &_inner {
+        position: absolute;
+        top: rem(-32px);
+        right: 0;
+        transform: translateY(-100%);
+        padding: rem(8px) rem(64px);
+        border-radius: rem(10px);
+        background-color: var(--black-08) !important;
+        border: 0;
+        * {
+          color: var(--tan);
+        }
+      }
     }
   }
 }

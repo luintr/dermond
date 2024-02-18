@@ -111,8 +111,10 @@ const ProductTable = ({ setProductID, setEditMode }: IProductTable) => {
   return (
     <div className={` ${s.table} col-span-12 grid grid-cols-12`}>
       {contextHolder}
-      <div className={`${s.buttonCreate}`}>
-        <Button onClick={createProductHandler}>Create Product</Button>
+      <div className={`col-span-12 ${s.buttonCreate_wrapper}`}>
+        <Button onClick={createProductHandler} className={s.buttonCreate_inner}>
+          Create Product
+        </Button>
       </div>
       <Table
         className={`col-span-12`}
