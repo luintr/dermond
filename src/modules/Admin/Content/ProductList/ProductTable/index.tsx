@@ -1,6 +1,6 @@
 import { createProduct, deleteProduct, getProduct } from '@/api/productAPI';
 import { IProduct } from '@/types/global';
-import { Table, message } from 'antd';
+import { Button, Table, message } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 type IProductTable = {
@@ -112,7 +112,7 @@ const ProductTable = ({ setProductID, setEditMode }: IProductTable) => {
     <div className={`col-span-12 grid grid-cols-12`}>
       {contextHolder}
       <div className={`col-span-12`}>
-        <button onClick={createProductHandler}>Create Product</button>
+        <Button onClick={createProductHandler}>Create Product</Button>
       </div>
       <Table
         className={`col-span-12`}

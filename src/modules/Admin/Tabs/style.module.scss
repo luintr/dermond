@@ -1,8 +1,21 @@
 .adminTabs {
   display: flex;
-  gap: rem(20px);
+  // gap: rem(0px);
 
   &_item {
+    padding: rem(8px) rem(64px);
+    color: var(--black-08);
+    border-radius: rem(10px);
     cursor: pointer;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      background-color: transparentize(#a37c75, 0.8);
+    }
+
+    &__active {
+      color: var(--tan);
+      background-color: var(--black-08) !important;
+    }
   }
 }

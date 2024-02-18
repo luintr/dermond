@@ -8,7 +8,6 @@ const AdminProductList = () => {
   const [productID, setProductID] = useState<string>('');
   return (
     <div className={`${s.admin_productList} grid grid-cols-12`}>
-      <div className={`col-span-12`}>Admin Product List</div>
       {!editMode ? (
         <ProductTable setProductID={setProductID} setEditMode={setEditMode} />
       ) : (

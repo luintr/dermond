@@ -26,7 +26,11 @@ const AdminOrderList = () => {
       key: '_id',
       render: (text: string) => {
         const shortenedString = text.substring(0, 15);
-        return <Link href={`/order/${text}`}>{shortenedString}...</Link>;
+        return (
+          <Link href={`/order/${text}`} className={s.link}>
+            {shortenedString}...
+          </Link>
+        );
       },
       width: '30%',
     },

@@ -10,11 +10,17 @@ import CartModel from '../CartModel';
 import LenisScroller from '../Lenis';
 import { UiProvider } from '@/context/uiContext';
 import PageEffect from './PageEffect';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { StyleProvider, px2remTransformer } from '@ant-design/cssinjs';
 
 type ILayout = {
   children: ReactNode;
   className: string;
 };
+
+const px2rem = px2remTransformer({
+  rootValue: 8, // 10px = 1rem; @default 16
+});
 
 const Layout = ({ children, className }: ILayout) => {
   return (
@@ -22,9 +28,13 @@ const Layout = ({ children, className }: ILayout) => {
       <body className={`${className} ${s.mainLayout}`}>
         <UiProvider>
           <LenisScroller>
-            <Header />
-            <div className={s.body}>{children}</div>
-            <Footer />
+            <AntdRegistry>
+              <StyleProvider transformers={[px2rem]}>
+                <Header />
+                <div className={s.body}>{children}</div>
+                <Footer />
+              </StyleProvider>
+            </AntdRegistry>
             <CartModel />
           </LenisScroller>
           <PageEffect />

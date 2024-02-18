@@ -1,0 +1,10 @@
+.admin {
+  margin-bottom: rem(64px);
+
+  &_wrapper {
+    margin-top: rem(80px);
+    border-radius: rem(25px);
+    border: rem(1px) solid var(--coral);
+    padding: rem(24px);
+  }
+}
