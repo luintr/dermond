@@ -1,12 +1,14 @@
 import React from 'react';
 import s from './style.module.scss';
 import { tabData } from '../data';
+import { Divider } from 'antd';
 
 type ITab = {
+  currentTab: string;
   setTab: (tab: number) => void;
 };
 
-const AdminTabs = ({ setTab }: ITab) => {
+const AdminTabs = ({ currentTab, setTab }: ITab) => {
   const tabClickHandler = (id: number) => {
     setTab(id);
   };
@@ -14,7 +16,7 @@ const AdminTabs = ({ setTab }: ITab) => {
     <div className={s.adminTabs}>
       {tabData.map(item => (
         <div
-          className={s.adminTabs_item}
+          className={`${s.adminTabs_item} ${currentTab === item.name && s.adminTabs_item__active}`}
           key={item.id}
           onClick={() => tabClickHandler(item.id)}
         >
