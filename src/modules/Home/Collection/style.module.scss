@@ -45,6 +45,7 @@
 
     .collection {
       display: flex;
+      justify-content: center;
 
       .wrapImage {
         max-height: rem(900px);

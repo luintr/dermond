@@ -50,14 +50,12 @@ const HeroSection = () => {
             <h2 ref={titleRef2}>MOND</h2>
           </div>
           <div className={`${s.bottomHero_wrapImage} col-span-6 col-start-4`}>
-            <BoxParallax offset={0.1}>
-              <Image
-                src={heroImg.src}
-                width={heroImg.width}
-                height={heroImg.height}
-                alt={heroImg.src}
-              />
-            </BoxParallax>
+            <Image
+              src={heroImg.src}
+              width={heroImg.width}
+              height={heroImg.height}
+              alt={heroImg.src}
+            />
           </div>
         </div>
       </Container>

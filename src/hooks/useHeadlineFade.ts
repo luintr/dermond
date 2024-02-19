@@ -1,6 +1,7 @@
 import { MutableRefObject, useEffect } from 'react';
 import useSplitType from './useSplitType';
 import gsap from 'gsap';
+import useUiContext from '@/context/uiContext';
 
 type IHeadlineFade = {
   ref: MutableRefObject<
@@ -14,21 +15,20 @@ export const useHeadlineFade = ({
   stagger = 0.025,
 }: IHeadlineFade): void => {
   const splitTextRef = useSplitType(ref, { types: 'words, chars' });
+  const { isPageEnter } = useUiContext();
 
   useEffect(() => {
     const chars = splitTextRef.current?.chars as HTMLElement[];
 
     const observer = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        animateFadeIn();
+        isPageEnter && animateFadeIn();
         // @ts-ignore
         observer.unobserve(ref.current);
       }
     });
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    isPageEnter && ref.current && observer.observe(ref.current);
 
     const animateFadeIn = () => {
       gsap.fromTo(
@@ -48,5 +48,5 @@ export const useHeadlineFade = ({
     return () => {
       observer.disconnect();
     };
-  }, [splitTextRef, stagger, ref]);
+  }, [splitTextRef, stagger, ref, isPageEnter]);
 };

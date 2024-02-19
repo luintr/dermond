@@ -1,0 +1,15 @@
+.sellerSlider {
+  position: relative;
+
+  &_item {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &.active {
+      position: relative;
+      top: unset;
+      left: unset;
+    }
+  }
+}
