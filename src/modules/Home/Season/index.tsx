@@ -12,6 +12,7 @@ import ButtonNavigate from '@/components/Button';
 import BoxParallax from '@/components/BoxParallax';
 import LinkEffect from '@/components/LinkEffect';
 import Fade from '@/components/Fade';
+import Magnetic from '@/components/Magnetic';
 
 const SeasonSection = () => {
   return (
@@ -38,7 +39,9 @@ const SeasonSection = () => {
                 <span className={cinzelFont.className}>DER MOND</span> SERVICES
               </p>
 
-              <ButtonNavigate href={ROUTE_PATH.STORY} text="DISCOVER" />
+              <Magnetic>
+                <ButtonNavigate href={ROUTE_PATH.STORY} text="DISCOVER" />
+              </Magnetic>
             </div>
             <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
               <p
