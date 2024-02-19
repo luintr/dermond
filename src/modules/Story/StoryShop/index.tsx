@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useRef } from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
 import image from '@Images/serviceImg2.jpg';
@@ -7,8 +9,13 @@ import { playfairFont } from '@/utils/fonts';
 import ButtonNavigate from '@/components/Button';
 import { ROUTE_PATH } from '@/constants/route';
 import BoxParallax from '@/components/BoxParallax';
+import Magnetic from '@/components/Magnetic';
+import { useHeadlineFade } from '@/hooks/useHeadlineFade';
 
 const StoryShop = () => {
+  const headline = useRef<HTMLHeadingElement | null>(null);
+
+  useHeadlineFade({ ref: headline });
   return (
     <section className={s.storyShop}>
       <Container className={s.container}>
@@ -24,15 +31,20 @@ const StoryShop = () => {
             </BoxParallax>
           </div>
           <div className={s.storyShop_content}>
-            <h2 className={`${s.storyShop_title} ${playfairFont.className}`}>
+            <h2
+              ref={headline}
+              className={`${s.storyShop_title} ${playfairFont.className}`}
+            >
               SMALL LEATHER GOODS
             </h2>
 
-            <ButtonNavigate
-              text="Shop Now"
-              href={ROUTE_PATH.LOGIN}
-              className={s.button}
-            />
+            <Magnetic>
+              <ButtonNavigate
+                text="Shop Now"
+                href={ROUTE_PATH.LOGIN}
+                className={s.button}
+              />
+            </Magnetic>
           </div>
         </div>
       </Container>
