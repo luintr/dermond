@@ -1,15 +1,13 @@
 .button {
-  font-size: rem(20px);
-  line-height: rem(20px);
+  border-radius: rem(10px);
   letter-spacing: rem(1px);
-  border: rem(1px) solid var(--black-08);
-  border-radius: rem(100px);
   padding: rem(8px) rem(24px);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: rem(24px);
   width: fit-content;
+  transition: all 0.3s ease-out;
 
   span {
     width: rem(12px);
@@ -18,5 +16,76 @@
       width: 100%;
       height: auto;
     }
+  }
+}
+
+.xs {
+  padding: rem(8px) rem(24px);
+}
+
+.md {
+  padding: rem(14px) rem(24px);
+}
+
+.lg {
+  padding: rem(16px) rem(24px);
+}
+
+.outlined {
+  background-color: transparent !important;
+  border: rem(1px) solid var(--black-08) !important;
+  * {
+    color: rem(1px) solid var(--black-08) !important;
+  }
+
+  &:hover {
+    background-color: var(--coral-20) !important;
+  }
+}
+
+.solid {
+  background-color: inherit;
+
+  &:hover {
+    background-color: var(--coral) !important;
+  }
+}
+
+.text {
+  background-color: transparent !important;
+  * {
+    color: var(--black-08) !important;
+  }
+
+  &:hover {
+    background-color: var(--coral-20) !important;
+  }
+}
+
+.rounded {
+  border-radius: rem(100px);
+}
+
+.coral {
+  background-color: var(--coral);
+  * {
+    color: var(--tan);
+    fill: var(--tan);
+  }
+}
+
+.black {
+  background-color: var(--black-08);
+  * {
+    color: var(--tan);
+    fill: var(--tan);
+  }
+}
+
+.tan {
+  background-color: var(--tan);
+  * {
+    color: var(--black-08);
+    color: var(--black-08);
   }
 }

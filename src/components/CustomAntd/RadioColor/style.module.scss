@@ -1,15 +1,19 @@
 .radioColor {
+  transition: 0.3s all ease-out;
   :global(.ant-radio-group) {
     display: flex;
     gap: rem(16px);
   }
 
   :global(.ant-radio-button-wrapper) {
-    border: 0px !important;
-    width: rem(40px);
-    height: rem(40px);
     position: relative;
-    border-radius: 0;
+    width: rem(24px);
+    height: rem(24px);
+    border: rem(1px) solid var(--black-08-20);
+    border-radius: rem(100px);
+    outline-offset: rem(4px);
+    outline: rem(1px) solid var(--black-08-20);
+    padding: 0 !important;
 
     &::before {
       display: none;
@@ -24,11 +28,12 @@
     &::after {
       position: absolute;
       content: '';
-      width: rem(48px);
-      height: rem(48px);
+      width: rem(32px);
+      height: rem(32px);
       top: 50%;
       left: 50%;
       border: rem(1px) solid var(--black-08);
+      border-radius: rem(100px);
       transform: translate(-50%, -50%);
     }
   }

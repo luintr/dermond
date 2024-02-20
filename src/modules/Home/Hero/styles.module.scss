@@ -44,8 +44,8 @@
         background: #fff;
         min-width: vw(670px);
         max-height: vh(855px);
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
+        border-top-left-radius: rem(1000px);
+        border-top-right-radius: rem(1000px);
         overflow: hidden;
 
         img {

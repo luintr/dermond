@@ -1,0 +1,77 @@
+.heading {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+
+  &__64 {
+    font-size: rem(48px);
+    line-height: rem(48px);
+
+    @include min-tablet {
+      font-size: rem(52px);
+      line-height: rem(52px);
+    }
+
+    @include pcSmall {
+      font-size: rem(64px);
+      line-height: rem(64px);
+    }
+  }
+
+  &__96 {
+    font-size: rem(36px);
+    line-height: rem(36px);
+
+    @include min-tablet {
+      font-size: rem(56px);
+      line-height: rem(56px);
+    }
+
+    @include pcSmall {
+      font-size: rem(96px);
+      line-height: rem(96px);
+    }
+  }
+
+  &__128 {
+    font-size: rem(96px);
+    line-height: rem(96px);
+
+    @include min-tablet {
+      font-size: rem(100px);
+      line-height: rem(100px);
+    }
+
+    @include pcSmall {
+      font-size: rem(128px);
+      line-height: rem(128px);
+    }
+  }
+
+  &__250 {
+    font-size: rem(120px);
+    line-height: rem(120px);
+
+    @include min-tablet {
+      font-size: rem(200px);
+      line-height: rem(200px);
+    }
+
+    @include pcSmall {
+      font-size: rem(250px);
+      line-height: rem(250px);
+    }
+  }
+
+  &__coral {
+    color: var(--coral, '#a37c75');
+  }
+
+  &__tan {
+    color: var(--tan, #f0f1ec);
+  }
+
+  &__black {
+    color: var(--black-08, #080808);
+  }
+}

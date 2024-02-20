@@ -21,6 +21,18 @@
     padding-right: rem(40px);
     padding-bottom: rem(40px);
 
+    &_selectWrapper {
+      margin-bottom: rem(20px);
+    }
+
+    &_sizeGroup {
+      justify-content: space-between;
+    }
+
+    &_sizeGuideBtn {
+      padding: 0 !important;
+    }
+
     &_title {
       width: fit-content;
       font-size: rem(64px);
@@ -40,7 +52,7 @@
     }
 
     &_options {
-      display: flex;
+      // display: flex;
       justify-content: space-between;
       align-items: flex-end;
       margin-bottom: rem(24px);
@@ -96,33 +108,28 @@
       border-bottom: rem(1px) solid rgba($color: #a37c75, $alpha: 0.6);
       padding-bottom: rem(32px);
       margin-bottom: rem(32px);
+      width: 100%;
+      gap: rem(24px);
 
       button {
-        width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: rem(12px);
-        padding: rem(15px) 0;
-        transition: 0.4s all var(--easeOutQuart);
-        border: rem(1px) solid var(--black-08);
-        text-transform: uppercase;
-
-        svg {
-          path {
-            transition: 0.4s all var(--easeOutQuart);
-          }
-        }
+        width: 100%;
 
         &:first-child {
           color: var(--tan);
           background: var(--black-08);
-          border-bottom-left-radius: rem(100px);
-          border-top-left-radius: rem(100px);
+
+          span {
+            width: unset;
+          }
+        }
+
+        &:last-child {
+          * {
+            fill: var(--black-08) !important;
+          }
 
           &:hover {
-            background: var(--tan);
-            color: var(--black-08);
+            background: var(--black-08);
 
             svg {
               path {
@@ -131,22 +138,10 @@
             }
           }
         }
+      }
 
-        &:last-child {
-          border-top-right-radius: rem(100px);
-          border-bottom-right-radius: rem(100px);
-
-          &:hover {
-            background: var(--black-08);
-            color: var(--tan);
-
-            svg {
-              path {
-                fill: var(--tan);
-              }
-            }
-          }
-        }
+      span {
+        width: unset;
       }
     }
 

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { addToCart } from '@/store/slices/cartSlice';
-import { RadioChangeEvent } from 'antd';
+import { Flex, RadioChangeEvent, Space } from 'antd';
 import { useDispatch } from 'react-redux';
 import s from './style.module.scss';
 import { cinzelFont } from '@/utils/fonts';
@@ -17,6 +17,9 @@ import ProductItem, {
 } from '@/modules/Shop/ProductList/ProductItem';
 import { useGetProduct } from '@/api/getProduct';
 import useRouterEffect from '@/hooks/useRouterEffect';
+import IncrementAndDecrementButton from '@/components/IncrementAndDecrementButton';
+import { Button } from '@/components/Button';
+import { TypographyBody } from '@/components/Typography';
 
 type IProduct = {
   _id: string;
@@ -109,25 +112,51 @@ const ProductModules = ({ data }: { data: IProduct }) => {
               handleColorChange={handleColorChange}
               className={s.wrapContent_color}
             />
+          </div>
 
+          <Flex
+            align="center"
+            justify="space-between"
+            className={s.wrapContent_selectWrapper}
+          >
             <RadioSize
               sizeModel={sizeModel}
               handleSizeChange={handleSizeChange}
               className={s.wrapContent_size}
             />
-          </div>
 
-          <QtyInput qty={qty} setQty={setQty} className={s.wrapContent_qty} />
+            <IncrementAndDecrementButton amount={qty} setAmount={setQty} />
+          </Flex>
+          <Flex align="center" justify="space-between">
+            <Button variant="text" className={s.wrapContent_sizeGuideBtn}>
+              <TypographyBody size={16} color="coral">
+                VIEW SIZE GUIDE
+              </TypographyBody>
+            </Button>
+            <TypographyBody size={16} color="black">
+              2004 in-stock
+            </TypographyBody>
+          </Flex>
+
+          {/* <QtyInput qty={qty} setQty={setQty} className={s.wrapContent_qty} /> */}
         </div>
 
-        <div className={s.wrapContent_buttons}>
-          <button disabled={data.countInStock === 0} onClick={buyNowHandler}>
+        <Flex className={s.wrapContent_buttons}>
+          <Button
+            color="black"
+            disabled={data.countInStock === 0}
+            onClick={buyNowHandler}
+          >
             <BuyNow /> <span>Buy Now</span>
-          </button>
-          <button disabled={data.countInStock === 0} onClick={addToCartHandler}>
+          </Button>
+          <Button
+            variant="outlined"
+            disabled={data.countInStock === 0}
+            onClick={addToCartHandler}
+          >
             <AddtoCart /> <span>Add to cart</span>
-          </button>
-        </div>
+          </Button>
+        </Flex>
 
         <div className={s.wrapContent_desc}>{description}</div>
 

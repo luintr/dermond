@@ -8,7 +8,7 @@ import image1 from '@Images/season1.jpeg';
 import image2 from '@Images/season2.jpeg';
 import image3 from '@Images/season3.jpeg';
 import { cinzelFont } from '@/utils/fonts';
-import ButtonNavigate from '@/components/Button';
+import ButtonNavigate from '@/components/ButtonNavigate';
 import BoxParallax from '@/components/BoxParallax';
 import LinkEffect from '@/components/LinkEffect';
 import Fade from '@/components/Fade';
