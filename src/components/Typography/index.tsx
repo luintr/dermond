@@ -5,12 +5,8 @@ import TypographyLabel, { TypographyLabelProps } from './Label';
 export type TypographyProps =
   | TypographyBodyProps
   | TypographyHeadingProps
-  | TypographyLabelProps
+  | TypographyLabelProps;
 
-export type TypographyColor =
-  | 'inherit'
-  | 'tan'
-  | 'black'
-  | 'coral'
+export type TypographyColor = 'inherit' | 'tan' | 'black' | 'coral';
 
-export { TypographyBody, TypographyHeading, TypographyLabel};
+export { TypographyBody, TypographyHeading, TypographyLabel };
