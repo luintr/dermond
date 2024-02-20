@@ -7,6 +7,11 @@ import { useSelector } from 'react-redux';
 import { ICartItem } from '@/types/global';
 import CartModelItem from './CartModelItem';
 import useRouterEffect from '@/hooks/useRouterEffect';
+import Stack from '../Stack';
+import { Divider, Flex } from 'antd';
+import { Button } from '../Button';
+import { TypographyBody } from '../Typography';
+import SvgInsert from '../SvgInsert';
 
 const CartModel = () => {
   const [cartList, setCartList] = useState<ICartItem[]>([]);
@@ -38,10 +43,19 @@ const CartModel = () => {
     <div className={`${s.cartModel} ${modelState ? s.active : null}`}>
       <div className={`${s.backdrop}`} onClick={() => setModelToggle()}></div>
       <div className={`${s.model}`}>
-        <div className={s.cartModel_close} onClick={() => setModelToggle()}>
-          Close
-        </div>
-        <h3 className={s.cartModel_title}>Overview Your Cart</h3>
+        <Flex justify="space-between" align="baseline">
+          <h3 className={s.cartModel_title}>Overview Your Cart</h3>
+          <Button
+            variant="outlined"
+            shape="rounded"
+            // className={s.cartModel_close}
+            onClick={() => setModelToggle()}
+          >
+            <SvgInsert src="/icons/cross.svg" />
+            <TypographyBody>Close</TypographyBody>
+          </Button>
+        </Flex>
+
         <div className={s.cartModel_list}>
           {cartList.length === 0 ? (
             <div className={s.emptyCart}>
@@ -50,9 +64,11 @@ const CartModel = () => {
           ) : (
             <>
               <div className={`${s.cartList}`} data-lenis-prevent>
-                {cartList.map(item => (
-                  <CartModelItem key={item._id} item={item} />
-                ))}
+                <Stack divider={<Divider />}>
+                  {cartList.map(item => (
+                    <CartModelItem key={item._id} item={item} />
+                  ))}
+                </Stack>
               </div>
               <div className={`${s.cartInfo}`}>
                 <div className={s.cartInfo_subTotal}>
@@ -66,13 +82,20 @@ const CartModel = () => {
                 </div>
 
                 <div className={s.cartInfo_btn}>
-                  <button
+                  {/* <button
                     type="button"
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >
                     Proceed to Checkout
-                  </button>
+                  </button> */}
+                  <Button
+                    disabled={cartItems.length === 0}
+                    onClick={checkoutHandler}
+                    color="black"
+                  >
+                    <TypographyBody>Proceed to Checkout</TypographyBody>
+                  </Button>
                 </div>
               </div>
             </>

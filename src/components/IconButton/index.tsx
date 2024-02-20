@@ -21,7 +21,7 @@ export interface ButtonProps
   onClick?: () => void;
 }
 
-export const Button = (props: ButtonProps): React.ReactElement => {
+export const IconButton = (props: ButtonProps): React.ReactElement => {
   const {
     children,
     type,
@@ -41,7 +41,7 @@ export const Button = (props: ButtonProps): React.ReactElement => {
       {...restProps}
       disabled={loading || disabled}
       type={type}
-      className={`${s.button}
+      className={`${s.iconButton}
         ${s[variant]}
         ${s[size]}
         ${s[shape]}

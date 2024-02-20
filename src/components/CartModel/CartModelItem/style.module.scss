@@ -1,19 +1,28 @@
 .cartItem {
+  position: relative;
   display: flex;
   gap: rem(20px);
-  padding-bottom: rem(28px);
-  border-bottom: rem(1px) solid var(--black-08);
+  // border-bottom: rem(1px) solid var(--black-08);
   margin-bottom: rem(28px);
+  height: rem(164px);
+
+  &_contentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
 
   &_img {
-    width: 30%;
-    aspect-ratio: 1/1;
-    border-radius: rem(20px);
+    position: relative;
+    width: rem(204px);
+    aspect-ratio: 1;
+    border-radius: rem(25px) rem(5px) rem(5px) rem(5px);
     overflow: hidden;
 
     img {
-      width: 100%;
-      height: 100%;
+      aspect-ratio: 1;
       object-fit: cover;
     }
   }
@@ -25,9 +34,9 @@
     margin-bottom: rem(24px);
     transition: 0.4s all var(--easeOutQuart);
     padding: rem(10px);
-    background: var(--black-08);
+    // background: var(--black-08);
     width: fit-content;
-    color: var(--tan);
+    color: var(--black-08);
 
     &:hover {
       opacity: 0.5;
@@ -39,9 +48,14 @@
     display: flex;
     gap: rem(20px);
     align-items: center;
+    width: 100%;
 
     .wrapContent {
-      flex: 1;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .wrapSelect {
@@ -53,6 +67,10 @@
   }
 
   &_delete {
+    position: absolute;
+    flex: 1;
+    bottom: 0;
+    right: 0;
     cursor: pointer;
     font-weight: 700;
     transition: 0.4s all var(--easeOutQuart);

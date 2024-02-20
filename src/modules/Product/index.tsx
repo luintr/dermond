@@ -9,7 +9,6 @@ import { cinzelFont } from '@/utils/fonts';
 import { AddtoCart, BuyNow } from '@/components/Icons';
 import { useModelStore } from '@/store/zustandStore';
 import RadioColor from '@/components/CustomAntd/RadioColor';
-import QtyInput from '@/components/CustomAntd/QtyInput';
 import RadioSize from '@/components/CustomAntd/RadioSize';
 import { shuffleArray } from '@/utils/mathUtils';
 import ProductItem, {

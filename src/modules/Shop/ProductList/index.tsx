@@ -18,7 +18,7 @@ const ProductList = (): React.ReactElement => {
   };
 
   return (
-    <div className={`${s.productList} col-span-10 col-start-2`}>
+    <div className={`${s.productList} col-span-10 col-start-2 grid grid-cols-12`}>
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
