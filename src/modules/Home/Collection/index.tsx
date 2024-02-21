@@ -11,13 +11,10 @@ import BoxParallax from '@/components/BoxParallax';
 import Fade from '@/components/Fade';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { useHeadlineFade } from '@/hooks/useHeadlineFade';
+import FadeHeading from '@/components/FadeHeading';
 
 const CollectionSecion = () => {
   const line = useRef<HTMLDivElement | null>(null);
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
-
-  useHeadlineFade({ ref: titleRef, stagger: 0.05 });
 
   useGSAP(() => {
     gsap.to(line.current, {
@@ -35,12 +32,12 @@ const CollectionSecion = () => {
     <section className={s.collectionSection}>
       <Container className={s.container}>
         <div className={`${s.introduce} grid grid-cols-12`}>
-          <h2
+          <FadeHeading
             className={`${s.introduce_title} ${cinzelFont.className} col-span-6 col-start-2`}
-            ref={titleRef}
+            stagger={0.05}
           >
             MINIMALIST STRONG FOR <span>COLLECTION</span>
-          </h2>
+          </FadeHeading>
           <div
             className={`${s.introduce_desc} col-span-4 col-start-8 grid grid-cols-4`}
           >

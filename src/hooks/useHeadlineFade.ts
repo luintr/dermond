@@ -31,9 +31,8 @@ export const useHeadlineFade = ({
     isPageEnter && ref.current && observer.observe(ref.current);
 
     const animateFadeIn = () => {
-      gsap.fromTo(
+      gsap.to(
         chars,
-        { opacity: 0 },
         {
           opacity: 1,
           stagger: {

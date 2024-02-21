@@ -22,6 +22,7 @@
     height: 100%;
     z-index: 2;
     color: var(--tan);
+    overflow: hidden;
   }
 
   .wrapContent {
@@ -37,7 +38,7 @@
       left: 0;
       top: 0;
       width: rem(1px);
-      height: 100%;
+      height: 0%;
       background: var(--tan);
     }
 
@@ -45,7 +46,7 @@
       position: absolute;
       top: 53%;
       left: 0;
-      width: 100%;
+      width: 0%;
       height: rem(1px);
       background: var(--tan);
       transform: translate(-5%, -50%) scaleX(3);

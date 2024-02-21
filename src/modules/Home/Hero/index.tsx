@@ -1,20 +1,14 @@
 'use client';
-import React, { useRef } from 'react';
+import React from 'react';
 import s from './styles.module.scss';
 import Container from '@/components/Container';
 import { cinzelFont } from '@/utils/fonts';
 import Fade from '@/components/Fade';
 import heroImg from '@Images/heroImg.jpg';
 import Image from 'next/image';
-import { useHeadlineFade } from '@/hooks/useHeadlineFade';
+import FadeHeading from '@/components/FadeHeading';
 
 const HeroSection = () => {
-  const titleRef1 = useRef<HTMLHeadingElement | null>(null);
-  const titleRef2 = useRef<HTMLHeadingElement | null>(null);
-
-  useHeadlineFade({ ref: titleRef1, stagger: 0.25 });
-  useHeadlineFade({ ref: titleRef2, stagger: 0.25 });
-
   return (
     <section className={s.heroSection}>
       <Container className={s.heroSection_container}>
@@ -45,8 +39,8 @@ const HeroSection = () => {
           <div
             className={`${s.bottomHero_title} ${cinzelFont.className} col-span-6 col-start-4`}
           >
-            <h2 ref={titleRef1}>DER</h2>
-            <h2 ref={titleRef2}>MOND</h2>
+            <FadeHeading stagger={0.25}>DER</FadeHeading>
+            <FadeHeading stagger={0.25}>MOND</FadeHeading>
           </div>
           <div className={`${s.bottomHero_wrapImage} col-span-6 col-start-4`}>
             <Image

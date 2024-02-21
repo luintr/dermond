@@ -15,7 +15,6 @@ const Slider: React.FC<ISLider> = ({ className, activeSlider }) => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       sellerItemRefs.current.forEach((item, index) => {
-        console.log(sellerItemRefs.current[activeSlider]);
         if (index !== activeSlider) {
           gsap.to(item, {
             duration: 0.75,

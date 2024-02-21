@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
 import image from '@Images/serviceImg2.jpg';
@@ -10,12 +10,9 @@ import ButtonNavigate from '@/components/Button';
 import { ROUTE_PATH } from '@/constants/route';
 import BoxParallax from '@/components/BoxParallax';
 import Magnetic from '@/components/Magnetic';
-import { useHeadlineFade } from '@/hooks/useHeadlineFade';
+import FadeHeading from '@/components/FadeHeading';
 
 const StoryShop = () => {
-  const headline = useRef<HTMLHeadingElement | null>(null);
-
-  useHeadlineFade({ ref: headline });
   return (
     <section className={s.storyShop}>
       <Container className={s.container}>
@@ -31,13 +28,11 @@ const StoryShop = () => {
             </BoxParallax>
           </div>
           <div className={s.storyShop_content}>
-            <h2
-              ref={headline}
+            <FadeHeading
               className={`${s.storyShop_title} ${playfairFont.className}`}
             >
               SMALL LEATHER GOODS
-            </h2>
-
+            </FadeHeading>
             <Magnetic>
               <ButtonNavigate
                 text="Shop Now"
