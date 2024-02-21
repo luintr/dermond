@@ -23,7 +23,7 @@ const BestSellerSection = () => {
     }
     setTimeout(() => {
       setDisableClick(false);
-    }, 1000);
+    }, 1500);
   };
 
   const nextClickHandler = () => {
@@ -35,7 +35,7 @@ const BestSellerSection = () => {
     }
     setTimeout(() => {
       setDisableClick(false);
-    }, 1000);
+    }, 1500);
   };
 
   return (

@@ -15,7 +15,7 @@ const StoryHero = () => {
           Emphasize the use of premium fabrics, meticulous detailing, and
           personalized service.
         </FadeHeading>
-        <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
+        <Fade direction={'bottom'} from={'40px'} delayTrigger={0.5}>
           <div className={s.storyHero_img}>
             <Image
               src={hero.src}

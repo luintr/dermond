@@ -8,23 +8,27 @@ import BoxParallax from '@/components/BoxParallax';
 import FadeHeading from '@/components/FadeHeading';
 import Fade from '@/components/Fade';
 import gsap from 'gsap';
+import useUiContext from '@/context/uiContext';
 
 const ShopHero = () => {
   const verRef = useRef<HTMLDivElement | null>(null);
   const horRef = useRef<HTMLDivElement | null>(null);
+  const { isPageEnter } = useUiContext();
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(verRef.current, {
-        height: '100%',
-        duration: 3,
-        ease: 'power4.out',
-      });
-      gsap.to(horRef.current, {
-        width: '100%',
-        duration: 3,
-        ease: 'power4.out',
-      });
+      if (isPageEnter) {
+        gsap.to(verRef.current, {
+          height: '100%',
+          duration: 3,
+          ease: 'power4.out',
+        });
+        gsap.to(horRef.current, {
+          width: '100%',
+          duration: 3,
+          ease: 'power4.out',
+        });
+      }
     });
     return () => ctx.clear();
   });
