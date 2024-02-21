@@ -22,7 +22,10 @@ export const useHeadlineFade = ({
 
     const observer = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        isPageEnter && animateFadeIn();
+        isPageEnter &&
+          setTimeout(() => {
+            animateFadeIn();
+          }, 100);
         // @ts-ignore
         observer.unobserve(ref.current);
       }

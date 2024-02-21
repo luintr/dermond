@@ -12,7 +12,7 @@ const StoryService = () => {
   return (
     <section className={s.storyService}>
       <Container className={`${s.container} grid grid-cols-12`}>
-        <Fade direction={'left'} from={'30px'} delayTrigger={1}>
+        <Fade direction={'left'} from={'30px'} delayTrigger={0.5}>
           <div className={`${s.wrapContent} col-span-6 col-start-1`}>
             <h2 className={`${s.storyService_title} ${cinzelFont.className} `}>
               Tailored <span className={pinyonFont.className}>Perfection</span>{' '}
@@ -26,7 +26,7 @@ const StoryService = () => {
             </p>
           </div>
         </Fade>
-        <Fade direction={'right'} from={'30px'} delayTrigger={1}>
+        <Fade direction={'right'} from={'30px'} delayTrigger={0.5}>
           <div className={`${s.storyService_image} col-span-6 col-start-7`}>
             <BoxParallax offset={0.1}>
               <Image
@@ -49,7 +49,7 @@ const StoryService = () => {
               key={index}
               direction={'bottom'}
               from={'30px'}
-              delayTrigger={0.5}
+              delayTrigger={0.35}
             >
               <div
                 key={item.id}
@@ -74,7 +74,7 @@ const StoryService = () => {
               key={index}
               direction={'bottom'}
               from={'30px'}
-              delayTrigger={0.5}
+              delayTrigger={0.35}
             >
               <div key={item.id} className={`${s.serviceItem} col-span-2`}>
                 <p className={s.serviceItem_desc}>{item.desc}</p>
