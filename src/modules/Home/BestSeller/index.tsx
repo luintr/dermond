@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
-import { cinzelFont } from '@/utils/fonts';
 import RoundedText from '../../../components/RoundedText';
 import { SingleArrowIcon } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';

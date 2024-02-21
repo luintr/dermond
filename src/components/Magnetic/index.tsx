@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useMemo, useRef } from 'react';
+import React, { useRef } from 'react';
 import { IAnimationElement } from '@/types/common';
 import useMagnetic from './useMagnetic';
 
 export default function Magnetic({
   children,
-  isObserver,
 }: {
   children: React.ReactNode;
   isObserver?: boolean;
@@ -15,7 +14,6 @@ export default function Magnetic({
 
   useMagnetic({
     refContent,
-    isObserver,
   });
 
   if (!React.isValidElement(children)) {

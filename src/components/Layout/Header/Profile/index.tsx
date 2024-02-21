@@ -7,7 +7,6 @@ import useClickOutside from '@/hooks/useClickOutside';
 import { UserIcon } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';
 import { useRouter } from 'next/navigation';
-import useRouterEffect from '@/hooks/useRouterEffect';
 
 const ProfileHeader = ({ data }: { data: any }) => {
   const [optionState, setOptionState] = useState<boolean>(false);

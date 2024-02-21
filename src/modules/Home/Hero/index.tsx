@@ -6,7 +6,6 @@ import { cinzelFont } from '@/utils/fonts';
 import Fade from '@/components/Fade';
 import heroImg from '@Images/heroImg.jpg';
 import Image from 'next/image';
-import BoxParallax from '@/components/BoxParallax';
 import { useHeadlineFade } from '@/hooks/useHeadlineFade';
 
 const HeroSection = () => {

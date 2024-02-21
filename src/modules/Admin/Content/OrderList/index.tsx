@@ -5,11 +5,6 @@ import Link from 'next/link';
 import { Table, Tag } from 'antd';
 import { IOrderItem } from '@/types/global';
 
-type IUser = {
-  _id: string;
-  name: string;
-};
-
 const AdminOrderList = () => {
   const [orders, setOrders] = useState<IOrderItem[]>([]);
 
