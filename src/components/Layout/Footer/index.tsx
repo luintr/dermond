@@ -49,20 +49,10 @@ const Footer = () => {
           ))}
         </div>
         <form className={`${s.footer_form} col-span-4 col-start-9`}>
-          <Fade
-            direction={'bottom'}
-            from={'30px'}
-            delayTrigger={0.15}
-            delayEnter={0.4}
-          >
+          <Fade direction={'bottom'} from={'30px'} delayTrigger={0.3}>
             <p className={cinzelFont.className}>KEEP UP TO DATE NEWSLETTER</p>
           </Fade>
-          <Fade
-            direction={'bottom'}
-            from={'30px'}
-            delayTrigger={0.15}
-            delayEnter={0.6}
-          >
+          <Fade direction={'bottom'} from={'30px'} delayTrigger={0.45}>
             <div className={s.wrapInput}>
               <Input
                 className={contentFont.className}

@@ -33,17 +33,21 @@ const SeasonSection = () => {
                 a truly bespoke creation.
               </p>
             </Fade>
-            <div
-              className={`${s.seasonDesc_navigateBox} col-span-2 col-start-1`}
-            >
-              <p>
-                <span className={cinzelFont.className}>DER MOND</span> SERVICES
-              </p>
+            <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
+              <div
+                className={`${s.seasonDesc_navigateBox} col-span-2 col-start-1`}
+              >
+                <p>
+                  <span className={cinzelFont.className}>DER MOND</span>{' '}
+                  SERVICES
+                </p>
 
-              <Magnetic>
-                <ButtonNavigate href={ROUTE_PATH.STORY} text="DISCOVER" />
-              </Magnetic>
-            </div>
+                <Magnetic>
+                  <ButtonNavigate href={ROUTE_PATH.STORY} text="DISCOVER" />
+                </Magnetic>
+              </div>
+            </Fade>
+
             <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
               <p
                 className={`${s.seasonDesc_subContent} col-span-2 col-start-4`}
