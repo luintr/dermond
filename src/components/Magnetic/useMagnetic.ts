@@ -4,12 +4,10 @@ import { IAnimationElement } from '@/types/common';
 
 interface IUseMagnetic {
   refContent: MutableRefObject<IAnimationElement | null>;
-  isObserver?: boolean;
 }
 
 export default function useMagnetic({
   refContent,
-  isObserver,
 }: IUseMagnetic): void {
   useEffect(() => {
     const gsapContext = gsap.context(() => {
@@ -40,5 +38,5 @@ export default function useMagnetic({
     }, [refContent]);
 
     return () => gsapContext.revert();
-  }, [refContent, isObserver]);
+  }, [refContent]);
 }

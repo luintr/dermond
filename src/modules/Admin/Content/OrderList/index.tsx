@@ -19,8 +19,6 @@ const AdminOrderList = () => {
     });
   }, []);
 
-  console.log(orders);
-
   const columns = [
     {
       title: 'ID',

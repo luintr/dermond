@@ -5,6 +5,8 @@
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: rem(10px);
+    overflow: hidden;
 
     &.active {
       position: relative;

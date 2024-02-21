@@ -9,26 +9,35 @@ import LinkEffect from '@/components/LinkEffect';
 import { ROUTE_PATH } from '@/constants/route';
 import { HOME_BESTSELLER_DATA } from '@/constants/homeData/data';
 import Slider from './Slider';
+import SliderContent from './SliderContent';
+import SliderNumber from './SliderNumber';
 const BestSellerSection = () => {
   const [activeSlider, setActiveSlider] = useState<number>(0);
+  const [disableClick, setDisableClick] = useState<boolean>(false);
 
   const prevClickHandler = () => {
+    setDisableClick(true);
     if (activeSlider === 0) {
       setActiveSlider(HOME_BESTSELLER_DATA.length - 1);
     } else {
       setActiveSlider(state => state - 1);
     }
+    setTimeout(() => {
+      setDisableClick(false);
+    }, 1000);
   };
 
   const nextClickHandler = () => {
+    setDisableClick(true);
     if (activeSlider === HOME_BESTSELLER_DATA.length - 1) {
       setActiveSlider(0);
     } else {
       setActiveSlider(state => state + 1);
     }
+    setTimeout(() => {
+      setDisableClick(false);
+    }, 1000);
   };
-
-  // console.log(activeSlider);
 
   return (
     <section className={s.bestSellerSection}>
@@ -38,38 +47,32 @@ const BestSellerSection = () => {
             <h3 className={`${s.itemInfo_title}`}>
               DER MOND’s <span>BEST SELLER</span>
             </h3>
-            <div className={s.itemInfo_wrap}>
-              <h3 className={`${s.itemInfo_name} ${cinzelFont.className}`}>
-                SUEDE LEATHER BLAZER
-              </h3>
-              <p className={`${s.itemInfo_content} `}>
-                Customization Beyond Boundaries: Design is personal, and so is
-                our approach. We don&apos;t just design dresses; we craft
-                experiences. From fabric selection to silhouette, we tailor
-                every detail to match the individuality of our clients, ensuring
-                a truly bespoke creation.
-              </p>
-            </div>
+            <SliderContent
+              activeSlider={activeSlider}
+              className={s.itemSlider_slider}
+            />
           </div>
           <LinkEffect href={ROUTE_PATH.STORY} className={s.roundedText}>
             <RoundedText />
           </LinkEffect>
-          <p className={`${s.sliderNumber} ${cinzelFont.className}`}>/01</p>
+          <SliderNumber activeSlider={activeSlider} />
         </div>
         <div className={`${s.itemSlider} col-span-6 col-start-6`}>
-          <div
-            className={`${s.itemSlider_btn} ${s.left}`}
+          <button
+            className={`${s.itemSlider_btn} ${s.left} ${disableClick && s.disable}`}
             onClick={prevClickHandler}
+            disabled={disableClick}
           >
             <SingleArrowIcon />
-          </div>
+          </button>
           <Slider activeSlider={activeSlider} className={s.itemSlider_slider} />
-          <div
-            className={`${s.itemSlider_btn} ${s.right}`}
+          <button
+            className={`${s.itemSlider_btn} ${s.right} ${disableClick && s.disable}`}
             onClick={nextClickHandler}
+            disabled={disableClick}
           >
             <SingleArrowIcon />
-          </div>
+          </button>
         </div>
       </Container>
     </section>

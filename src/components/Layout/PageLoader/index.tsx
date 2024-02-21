@@ -19,7 +19,7 @@ export default function PageLoader({
       if (isLoaded && refContent.current) {
         gsap.to(refContent.current, {
           opacity: 0,
-          ease: 'power3.inOut',
+          ease: 'power4.inOut',
           duration: 0.5,
           onComplete: () => {
             onCompleted();

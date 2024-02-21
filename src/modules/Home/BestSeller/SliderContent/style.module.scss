@@ -1,0 +1,28 @@
+.sliderContent {
+  position: relative;
+
+  &_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &.active {
+      position: relative;
+      top: unset;
+      left: unset;
+    }
+  }
+
+  &_name {
+    font-size: rem(48px);
+    line-height: rem(48px);
+    margin-bottom: rem(48px);
+    max-width: rem(410px);
+    opacity: 0;
+  }
+
+  &_content {
+    @include overtext(6);
+    opacity: 0;
+  }
+}

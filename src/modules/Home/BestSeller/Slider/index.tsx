@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import s from './style.module.scss';
 import Image from 'next/image';
 import { HOME_BESTSELLER_DATA } from '@/constants/homeData/data';
-import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 type ISLider = {
   className?: string;
@@ -10,14 +10,35 @@ type ISLider = {
 };
 
 const Slider: React.FC<ISLider> = ({ className, activeSlider }) => {
-  const triggerEl = useRef<HTMLDivElement | null>(null);
   const sellerItemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  console.log(sellerItemRefs);
 
-  useGSAP(() => {}, [sellerItemRefs, activeSlider]);
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      sellerItemRefs.current.forEach((item, index) => {
+        console.log(sellerItemRefs.current[activeSlider]);
+        if (index !== activeSlider) {
+          gsap.to(item, {
+            duration: 0.75,
+            scale: 1.15,
+            opacity: 0,
+            ease: 'power4.out',
+          });
+        } else {
+          gsap.to(item, {
+            duration: 1.2,
+            scale: 1,
+            opacity: 1,
+            ease: 'power4.out',
+          });
+        }
+      });
+    });
+
+    return () => ctx.clear();
+  }, [sellerItemRefs, activeSlider]);
 
   return (
-    <div className={`${s.sellerSlider} ${className}`} ref={triggerEl}>
+    <div className={`${s.sellerSlider} ${className}`}>
       {HOME_BESTSELLER_DATA.map((item, index) => (
         <div
           key={index}

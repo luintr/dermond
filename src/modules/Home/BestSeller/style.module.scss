@@ -22,17 +22,6 @@
         }
       }
 
-      &_name {
-        font-size: rem(48px);
-        line-height: rem(48px);
-        margin-bottom: rem(48px);
-        max-width: rem(410px);
-      }
-
-      &_content {
-        @include overtext(6);
-      }
-
       .sliderNumber {
         position: absolute;
         top: 0;
@@ -52,6 +41,7 @@
         left: rem(40px);
         transform: translateY(-50%);
         cursor: pointer;
+        transition: 0.4s all var(--easeOutQuart);
         z-index: 2;
 
         &.right {
@@ -59,12 +49,16 @@
           right: rem(40px);
           transform: translateY(-50%) rotate(180deg);
         }
+
+        &.disable {
+          opacity: 0.5;
+          cursor: default;
+        }
       }
 
       &_slider {
         position: relative;
         border-radius: rem(10px);
-        overflow: hidden;
 
         &::before {
           position: absolute;
@@ -76,11 +70,9 @@
           width: 100%;
           height: 100%;
           border-radius: 10px;
-          background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.3) 0%,
-            rgba(0, 0, 0, 0) 100%
-          );
+          background: linear-gradient(180deg,
+              rgba(0, 0, 0, 0.3) 0%,
+              rgba(0, 0, 0, 0) 100%);
         }
       }
     }

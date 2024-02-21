@@ -32,6 +32,10 @@
       padding: rem(10px);
     }
 
+    &_desc {
+      white-space: pre-wrap;
+    }
+
     &_price {
       font-size: rem(36px);
       line-height: rem(36px);

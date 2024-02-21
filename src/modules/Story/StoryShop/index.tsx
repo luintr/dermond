@@ -41,7 +41,7 @@ const StoryShop = () => {
             <Magnetic>
               <ButtonNavigate
                 text="Shop Now"
-                href={ROUTE_PATH.LOGIN}
+                href={ROUTE_PATH.SHOP}
                 className={s.button}
               />
             </Magnetic>
