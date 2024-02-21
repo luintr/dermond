@@ -1,6 +1,7 @@
+'use client';
 import { useHeadlineFade } from '@/hooks/useHeadlineFade';
 import React, { PropsWithChildren, useRef } from 'react';
-import s from './style.module.scss'
+import s from './style.module.scss';
 
 type IFadeHeading = {
   className?: string;

@@ -12,7 +12,7 @@ type IHeadlineFade = {
 
 export const useHeadlineFade = ({
   ref,
-  stagger = 0.025,
+  stagger = 0.015,
 }: IHeadlineFade): void => {
   const splitTextRef = useSplitType(ref, { types: 'words, chars' });
   const { isPageEnter } = useUiContext();
@@ -31,17 +31,14 @@ export const useHeadlineFade = ({
     isPageEnter && ref.current && observer.observe(ref.current);
 
     const animateFadeIn = () => {
-      gsap.to(
-        chars,
-        {
-          opacity: 1,
-          stagger: {
-            from: 'random',
-            each: stagger,
-          },
-          ease: 'power4.inOut',
-        }
-      );
+      gsap.to(chars, {
+        opacity: 1,
+        stagger: {
+          from: 'random',
+          each: stagger,
+        },
+        ease: 'power4.inOut',
+      });
     };
 
     return () => {

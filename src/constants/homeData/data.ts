@@ -94,7 +94,7 @@ export const HOME_BESTSELLER_DATA = [
   },
   {
     id: 3,
-    image: image3,
+    image: image1,
     name: 'SUEDE LEATHER BLAZER',
     desc: ' Customization Beyond Boundaries: Design is personal, and so is our approach.We don& apos;t just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.',
   },

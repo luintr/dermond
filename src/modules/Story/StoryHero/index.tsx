@@ -5,9 +5,9 @@ import Container from '@/components/Container';
 import Image from 'next/image';
 import hero from '@Images/storyHeadImg.png';
 import FadeHeading from '@/components/FadeHeading';
+import Fade from '@/components/Fade';
 
 const StoryHero = () => {
-
   return (
     <section className={s.storyHero}>
       <Container className={s.container}>
@@ -15,14 +15,16 @@ const StoryHero = () => {
           Emphasize the use of premium fabrics, meticulous detailing, and
           personalized service.
         </FadeHeading>
-        <div className={s.storyHero_img}>
-          <Image
-            src={hero.src}
-            width={hero.width}
-            height={hero.height}
-            alt={'hero'}
-          />
-        </div>
+        <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
+          <div className={s.storyHero_img}>
+            <Image
+              src={hero.src}
+              width={hero.width}
+              height={hero.height}
+              alt={'hero'}
+            />
+          </div>
+        </Fade>
       </Container>
     </section>
   );

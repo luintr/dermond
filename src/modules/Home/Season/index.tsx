@@ -13,6 +13,7 @@ import BoxParallax from '@/components/BoxParallax';
 import LinkEffect from '@/components/LinkEffect';
 import Fade from '@/components/Fade';
 import Magnetic from '@/components/Magnetic';
+import FadeHeading from '@/components/FadeHeading';
 
 const SeasonSection = () => {
   return (
@@ -20,10 +21,10 @@ const SeasonSection = () => {
       <Container className={`${s.container} grid grid-cols-12`}>
         <div className={`${s.seasonDesc} col-span-5 col-start-2 `}>
           <div className={`${s.box} col-span-5 grid grid-cols-5`}>
-            <h2
-              className={`${s.seasonDesc_title} col-span-5`}
-            >{`// TIS THE SEASON`}</h2>
-            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+            <FadeHeading className={`${s.seasonDesc_title} col-span-5`}>
+              {`// TIS THE SEASON`}
+            </FadeHeading>
+            <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
               <p className={`${s.seasonDesc_content} col-span-5`}>
                 Customization Beyond Boundaries: Design is personal, and so is
                 our approach. We don&apos;t just design dresses; we craft
@@ -43,7 +44,7 @@ const SeasonSection = () => {
                 <ButtonNavigate href={ROUTE_PATH.STORY} text="DISCOVER" />
               </Magnetic>
             </div>
-            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+            <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
               <p
                 className={`${s.seasonDesc_subContent} col-span-2 col-start-4`}
               >
@@ -69,7 +70,7 @@ const SeasonSection = () => {
         </div>
 
         <div className={`${s.seasonImage} col-span-5 col-start-8`}>
-          <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+          <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
             <LinkEffect href={ROUTE_PATH.SHOP}>
               Our Shop
               <span>
