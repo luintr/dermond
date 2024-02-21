@@ -50,7 +50,7 @@ const SliderContent: React.FC<ISLiderContent> = ({
             y: '0%',
             duration: 1.2,
             ease: 'power4.out',
-            delay: 0.3
+            delay: 0.3,
           });
           gsap.to(contentRefs.current[index], {
             opacity: 1,

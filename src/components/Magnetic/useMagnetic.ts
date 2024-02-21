@@ -6,9 +6,7 @@ interface IUseMagnetic {
   refContent: MutableRefObject<IAnimationElement | null>;
 }
 
-export default function useMagnetic({
-  refContent,
-}: IUseMagnetic): void {
+export default function useMagnetic({ refContent }: IUseMagnetic): void {
   useEffect(() => {
     const gsapContext = gsap.context(() => {
       const xTo = gsap.quickTo(refContent.current, 'x', {
