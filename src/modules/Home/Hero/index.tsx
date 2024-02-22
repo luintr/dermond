@@ -9,7 +9,7 @@ import Image from 'next/image';
 import FadeHeading from '@/components/FadeHeading';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
   const refLightMoon = useRef<HTMLDivElement | null>(null);
