@@ -6,6 +6,7 @@ import { useGetProductsQuery } from '@/store/slices/productApiSlice';
 import ProductItem, {
   IProductItem,
 } from '@/modules/Shop/ProductList/ProductItem';
+import LoadingComp from '@Components/LoadingComp';
 
 const ProductList = (): React.ReactElement => {
   const { data: products, isLoading, error } = useGetProductsQuery('Product');
@@ -22,7 +23,7 @@ const ProductList = (): React.ReactElement => {
       className={`${s.productList} col-span-10 col-start-2 grid grid-cols-12`}
     >
       {isLoading ? (
-        <p>Loading...</p>
+        <LoadingComp />
       ) : error ? (
         <div>{getErrorMessage(error)}</div>
       ) : (

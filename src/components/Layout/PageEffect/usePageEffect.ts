@@ -22,7 +22,7 @@ export default function usePageEffect({ refContent }: ISusePageEffect): void {
           { y: '100%' },
           {
             y: 0,
-            ease: 'power3.inOut',
+            ease: 'power4.inOut',
             duration: 0.6,
             stagger: 0.05,
             onComplete: () => {
@@ -40,7 +40,7 @@ export default function usePageEffect({ refContent }: ISusePageEffect): void {
         gsap.to(itemExit, {
           y: '-100%',
           overwrite: 'auto',
-          ease: 'power3.inOut',
+          ease: 'power4.inOut',
           duration: 0.6,
           stagger: 0.05,
           onComplete: () => {

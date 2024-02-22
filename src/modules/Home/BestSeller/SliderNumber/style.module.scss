@@ -1,0 +1,21 @@
+.sliderNumber {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: rem(64px);
+  line-height: rem(64px);
+  letter-spacing: rem(6.4px);
+  overflow: hidden;
+
+  .num {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &.active {
+      position: relative;
+      top: unset;
+      right: unset;
+    }
+  }
+}

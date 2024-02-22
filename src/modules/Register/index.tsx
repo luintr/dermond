@@ -17,10 +17,14 @@ import Fade from '@/components/Fade';
 import useRouterEffect from '@/hooks/useRouterEffect';
 import { marqueeItems } from '@/constants/utils';
 import useMarquee from '@/hooks/useMarquee';
+import gsap from 'gsap';
+import useUiContext from '@/context/uiContext';
 
 const RegisterModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
-
+  const wrapImageRef = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const { isPageEnter } = useUiContext();
   // @ts-ignore:next-line
   const { userInfo } = useSelector(state => state.auth);
 
@@ -39,6 +43,23 @@ const RegisterModule = () => {
     }
   }, [redirect, userInfo]);
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (isPageEnter) {
+        gsap.to(imageRef.current, {
+          scale: 1,
+          duration: 1,
+          ease: 'power4.out',
+        });
+        gsap.to(wrapImageRef.current, {
+          clipPath: 'inset(0 0% 0 0)',
+          duration: 1,
+          ease: 'power4.out',
+        });
+      }
+    });
+    return () => ctx.clear();
+  }, [wrapImageRef, isPageEnter]);
   const onFinish = async (values: any) => {
     try {
       const res = await register(values);
@@ -69,31 +90,34 @@ const RegisterModule = () => {
         className={`${s.regisBox} col-span-10 col-start-2 grid grid-cols-10`}
       >
         <div className={`${s.boxImage} col-span-3 col-start-1`}>
-          <div className={`${s.boxImage_img}`}>
+          <div className={`${s.boxImage_img}`} ref={wrapImageRef}>
             <Image
               src={image.src}
               width={image.width}
               height={image.height}
               alt="image"
+              ref={imageRef}
             />
-
-            <div className={s.boxImage_logo}>
-              <Subtract />
-            </div>
-
-            <div ref={marqueeInner} className={s.boxImage_maquee}>
-              {marqueeItems.map((project, index) => {
-                return (
-                  <span
-                    ref={marqueePartRefs[index]}
-                    key={index}
-                    className={`${cinzelFont.className}`}
-                  >
-                    {project.content}
-                  </span>
-                );
-              })}
-            </div>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.7}>
+              <div className={s.boxImage_logo}>
+                <Subtract />
+              </div>
+            </Fade>
+            <Fade direction={'left'} from={'30px'} delayEnter={0.4}>
+              <div ref={marqueeInner} className={s.boxImage_maquee}>
+                {marqueeItems.map((project, index) => {
+                  return (
+                    <span
+                      ref={marqueePartRefs[index]}
+                      key={index}
+                      className={`${cinzelFont.className}`}
+                    >
+                      {project.content}
+                    </span>
+                  );
+                })}
+              </div>
+            </Fade>
           </div>
         </div>
         <div className={`${s.wrapBox} col-span-7 col-start-4 grid grid-cols-7`}>
@@ -121,105 +145,114 @@ const RegisterModule = () => {
             </div>
           </div>
           <div className={`${s.regisBox_form} col-span-4 col-start-1`}>
-            <h2 className={`${s.formTitle} ${cinzelFont.className}`}>
-              Sign Up
-            </h2>
-            <Form
-              name="basic"
-              initialValues={{
-                remember: true,
-              }}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-              autoComplete="on"
-              className={`col-span-12`}
-            >
-              <Form.Item
-                name="name"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your name!',
-                    whitespace: true,
-                  },
-                ]}
-              >
-                <Input placeholder="Name" />
-              </Form.Item>
-              <Form.Item
-                name="email"
-                rules={[
-                  {
-                    type: 'email',
-                    message: 'The input is not valid E-mail!',
-                  },
-                  {
-                    required: true,
-                    message: 'Please input your E-mail!',
-                  },
-                ]}
-              >
-                <Input autoComplete="email" placeholder="Email" />
-              </Form.Item>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+              <h2 className={`${s.formTitle} ${cinzelFont.className}`}>
+                Sign Up
+              </h2>
+            </Fade>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.6}>
+              <div className={`col-span-12`}>
+                <Form
+                  name="basic"
+                  initialValues={{
+                    remember: true,
+                  }}
+                  onFinish={onFinish}
+                  onFinishFailed={onFinishFailed}
+                  autoComplete="on"
+                >
+                  <Form.Item
+                    name="name"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please input your name!',
+                        whitespace: true,
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Name" />
+                  </Form.Item>
+                  <Form.Item
+                    name="email"
+                    rules={[
+                      {
+                        type: 'email',
+                        message: 'The input is not valid E-mail!',
+                      },
+                      {
+                        required: true,
+                        message: 'Please input your E-mail!',
+                      },
+                    ]}
+                  >
+                    <Input autoComplete="email" placeholder="Email" />
+                  </Form.Item>
 
-              <Form.Item
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your password!',
-                  },
-                ]}
-                hasFeedback
-              >
-                <Input.Password
-                  autoComplete="new-password"
-                  placeholder="Password"
-                />
-              </Form.Item>
+                  <Form.Item
+                    name="password"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please input your password!',
+                      },
+                    ]}
+                    hasFeedback
+                  >
+                    <Input.Password
+                      autoComplete="new-password"
+                      placeholder="Password"
+                    />
+                  </Form.Item>
 
-              <Form.Item
-                name="confirm"
-                dependencies={['password']}
-                hasFeedback
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please confirm your password!',
-                  },
-                  ({ getFieldValue }) => ({
-                    validator(_, value) {
-                      if (!value || getFieldValue('password') === value) {
-                        return Promise.resolve();
-                      }
-                      return Promise.reject(
-                        new Error(
-                          'The new password that you entered do not match!'
-                        )
-                      );
-                    },
-                  }),
-                ]}
-              >
-                <Input.Password
-                  autoComplete="new-password"
-                  placeholder="Confirm Password"
-                />
-              </Form.Item>
+                  <Form.Item
+                    name="confirm"
+                    dependencies={['password']}
+                    hasFeedback
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please confirm your password!',
+                      },
+                      ({ getFieldValue }) => ({
+                        validator(_, value) {
+                          if (!value || getFieldValue('password') === value) {
+                            return Promise.resolve();
+                          }
+                          return Promise.reject(
+                            new Error(
+                              'The new password that you entered do not match!'
+                            )
+                          );
+                        },
+                      }),
+                    ]}
+                  >
+                    <Input.Password
+                      autoComplete="new-password"
+                      placeholder="Confirm Password"
+                    />
+                  </Form.Item>
 
-              <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Sign Up
-                </Button>
-              </Form.Item>
-            </Form>
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit">
+                      Sign Up
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </div>
+            </Fade>
             <div className={s.regisBox_login}>
-              <p>Already have account?</p>
-              <LinkEffect
-                href={redirect ? `login?redirect=${redirect}` : '/login'}
-              >
-                Sign In
-              </LinkEffect>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+                <p>Already have account?</p>
+              </Fade>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+                <LinkEffect
+                  href={redirect ? `login?redirect=${redirect}` : '/login'}
+                >
+                  Sign In
+                </LinkEffect>
+              </Fade>
             </div>
           </div>
           <div className={`${s.regisBox_text} col-span-2 col-start-6`}>

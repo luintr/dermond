@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './style.module.scss';
 import { tabData } from '../data';
-import { Divider } from 'antd';
 
 type ITab = {
   currentTab: string;

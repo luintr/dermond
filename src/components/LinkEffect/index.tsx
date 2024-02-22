@@ -24,6 +24,7 @@ const LinkEffect = React.forwardRef(
         href={href}
         target={target}
         className={className}
+        aria-label={href}
         onClick={(e): void => {
           routerEffect(href);
           e.preventDefault();

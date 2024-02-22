@@ -14,7 +14,7 @@ const FollowSection = () => {
     <section className={s.followSection}>
       <Container className={s.container}>
         <div className={s.follow}>
-          <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+          <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
             <h3 className={`${s.follow_title} ${cinzelFont.className}`}>
               follow us on instagram
             </h3>

@@ -6,4 +6,5 @@ export type IAnimationElement =
   | HTMLHeadElement
   | HTMLLinkElement
   | HTMLButtonElement
-  | HTMLImageElement;
+  | HTMLImageElement
+  | HTMLHeadingElement;

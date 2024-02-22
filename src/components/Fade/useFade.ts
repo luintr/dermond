@@ -56,7 +56,7 @@ export default function useFade({
           scrollTrigger,
           opacity: 1,
           delay,
-          ease: 'power3.out',
+          ease: 'power4.out',
           duration,
         };
 

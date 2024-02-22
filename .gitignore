@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
+/.idea
 .pnp.js
 
 # testing
@@ -25,8 +26,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
-.env
+*.env
+*.env*.local
 
 # vercel
 .vercel

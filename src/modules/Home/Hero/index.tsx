@@ -6,26 +6,20 @@ import { cinzelFont } from '@/utils/fonts';
 import Fade from '@/components/Fade';
 import heroImg from '@Images/heroImg.jpg';
 import Image from 'next/image';
-import BoxParallax from '@/components/BoxParallax';
-import { useHeadlineFade } from '@/hooks/useHeadlineFade';
+import FadeHeading from '@/components/FadeHeading';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 const HeroSection = () => {
-  const titleRef1 = useRef<HTMLHeadingElement | null>(null);
-  const titleRef2 = useRef<HTMLHeadingElement | null>(null);
   const refLightMoon = useRef<HTMLDivElement | null>(null);
-
-  useHeadlineFade({ ref: titleRef1, stagger: 0.25 });
-  useHeadlineFade({ ref: titleRef2, stagger: 0.25 });
 
   useEffect(() => {
     if (!refLightMoon.current) return;
     const gsapContext = gsap.context(() => {
       gsap.to(refLightMoon.current, {
         y: function () {
-          return 0.2 * ScrollTrigger.maxScroll(window);
+          return 0.05 * ScrollTrigger.maxScroll(window);
         },
         ease: 'none',
         scrollTrigger: {
@@ -71,18 +65,16 @@ const HeroSection = () => {
             <div
               className={`${s.bottomHero_title} ${cinzelFont.className} col-span-6 col-start-4`}
             >
-              <h2 ref={titleRef1}>DER</h2>
-              <h2 ref={titleRef2}>MOND</h2>
+              <FadeHeading stagger={0.25}>DER</FadeHeading>
+              <FadeHeading stagger={0.25}>MOND</FadeHeading>
             </div>
             <div className={`${s.bottomHero_wrapImage} col-span-6 col-start-4`}>
-              <BoxParallax offset={0.1}>
-                <Image
-                  src={heroImg.src}
-                  width={heroImg.width}
-                  height={heroImg.height}
-                  alt={heroImg.src}
-                />
-              </BoxParallax>
+              <Image
+                src={heroImg.src}
+                width={heroImg.width}
+                height={heroImg.height}
+                alt={heroImg.src}
+              />
             </div>
           </div>
         </Container>
