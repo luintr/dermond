@@ -19,6 +19,7 @@
         height: 100%;
         border-radius: rem(20px);
         overflow: hidden;
+        clip-path: inset(0 100% 0 0);
 
         img {
           width: 100%;

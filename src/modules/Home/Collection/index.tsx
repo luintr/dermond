@@ -34,7 +34,7 @@ const CollectionSecion = () => {
         <div className={`${s.introduce} grid grid-cols-12`}>
           <FadeHeading
             className={`${s.introduce_title} ${cinzelFont.className} col-span-6 col-start-2`}
-            stagger={0.05}
+            stagger={0.03}
           >
             MINIMALIST STRONG FOR <span>COLLECTION</span>
           </FadeHeading>

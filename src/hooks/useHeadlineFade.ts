@@ -25,7 +25,7 @@ export const useHeadlineFade = ({
         isPageEnter &&
           setTimeout(() => {
             animateFadeIn();
-          }, 200);
+          }, 400);
         // @ts-ignore
         observer.unobserve(ref.current);
       }

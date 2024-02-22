@@ -16,11 +16,13 @@ import Fade from '@/components/Fade';
 import { marqueeItems } from '@/constants/utils';
 import useMarquee from '@/hooks/useMarquee';
 import useRouterEffect from '@/hooks/useRouterEffect';
-import FadeHeading from '@Components/FadeHeading';
+import gsap from 'gsap';
+import useUiContext from '@/context/uiContext';
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
-
+  const imageRef = useRef<HTMLDivElement | null>(null);
+  const { isPageEnter } = useUiContext();
   const dispatch = useDispatch();
   const { routerEffect } = useRouterEffect();
 
@@ -37,6 +39,17 @@ const LoginModule = () => {
       routerEffect(redirect);
     }
   }, [redirect, userInfo]);
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      isPageEnter &&
+        gsap.to(imageRef.current, {
+          clipPath: 'inset(0 0 0 0%)',
+          duration: 1,
+          ease: 'power4.out',
+        });
+    });
+    return () => ctx.clear();
+  }, [imageRef, isPageEnter]);
 
   const onFinish = async (values: any) => {
     try {
@@ -94,76 +107,87 @@ const LoginModule = () => {
             </div>
           </div>
           <div className={`${s.loginBox_form} col-span-4 col-start-1`}>
-            <FadeHeading className={`${s.formTitle} ${cinzelFont.className}`}>
-              Sign In
-            </FadeHeading>
             <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
-              <Form
-                name="basic"
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                autoComplete="on"
-                className={`col-span-12`}
-              >
-                <Form.Item
-                  name="email"
-                  rules={[
-                    {
-                      required: true,
-                      message: 'Please input your email!',
-                    },
-                  ]}
+              <h2 className={`${s.formTitle} ${cinzelFont.className}`}>
+                Sign In
+              </h2>
+            </Fade>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.6}>
+              <div className={`col-span-12`}>
+                <Form
+                  name="basic"
+                  initialValues={{
+                    remember: true,
+                  }}
+                  onFinish={onFinish}
+                  onFinishFailed={onFinishFailed}
+                  autoComplete="on"
                 >
-                  <Input placeholder="Email" autoComplete="email" />
-                </Form.Item>
+                  <Form.Item
+                    name="email"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please input your email!',
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Email" autoComplete="email" />
+                  </Form.Item>
 
-                <Form.Item
-                  name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message: 'Please input your password!',
-                    },
-                  ]}
-                >
-                  <Input.Password
-                    placeholder="Passwork"
-                    autoComplete="current-password"
-                  />
-                </Form.Item>
+                  <Form.Item
+                    name="password"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please input your password!',
+                      },
+                    ]}
+                  >
+                    <Input.Password
+                      placeholder="Passwork"
+                      autoComplete="current-password"
+                    />
+                  </Form.Item>
 
-                <Form.Item>
-                  <Button type="primary" htmlType="submit">
-                    Sign In
-                  </Button>
-                </Form.Item>
-              </Form>
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit">
+                      Sign In
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </div>
             </Fade>
             <div className={s.loginBox_regis}>
-              <p>Forgot your password?</p>
+              <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+                <p>Forgot your password?</p>
+              </Fade>
               <div className={s.wrapRegis}>
-                <p>New Customer?</p>
-                <LinkEffect
-                  href={
-                    redirect ? `register?redirect=${redirect}` : '/register'
-                  }
-                >
-                  Register Now
-                </LinkEffect>
+                <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+                  <p>New Customer?</p>
+                </Fade>
+                <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+                  <LinkEffect
+                    href={
+                      redirect ? `register?redirect=${redirect}` : '/register'
+                    }
+                  >
+                    Register Now
+                  </LinkEffect>
+                </Fade>
               </div>
             </div>
 
-            <div className={s.loginBox_googleLogin}>
-              <div className={s.dashed}>
-                <span></span>
-                OR
-                <span></span>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
+              <div className={s.loginBox_googleLogin}>
+                <div className={s.dashed}>
+                  <span></span>
+                  OR
+                  <span></span>
+                </div>
+                <button disabled>Login with Google</button>
               </div>
-              <button disabled>Login with Google</button>
-            </div>
+            </Fade>
           </div>
           <div className={`${s.loginBox_text} col-span-2 col-start-6`}>
             <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
@@ -175,31 +199,33 @@ const LoginModule = () => {
           </div>
         </div>
         <div className={`${s.boxImage} col-span-3 col-start-8`}>
-          <div className={`${s.boxImage_img}`}>
+          <div className={`${s.boxImage_img}`} ref={imageRef}>
             <Image
               src={image.src}
               width={image.width}
               height={image.height}
               alt="image"
             />
-
-            <div className={s.boxImage_logo}>
-              <Subtract />
-            </div>
-
-            <div ref={marqueeInner} className={s.boxImage_maquee}>
-              {marqueeItems.map((project, index) => {
-                return (
-                  <span
-                    ref={marqueePartRefs[index]}
-                    key={index}
-                    className={`${cinzelFont.className}`}
-                  >
-                    {project.content}
-                  </span>
-                );
-              })}
-            </div>
+            <Fade direction={'bottom'} from={'30px'} delayEnter={0.7}>
+              <div className={s.boxImage_logo}>
+                <Subtract />
+              </div>
+            </Fade>
+            <Fade direction={'right'} from={'30px'} delayEnter={0.4}>
+              <div ref={marqueeInner} className={s.boxImage_maquee}>
+                {marqueeItems.map((project, index) => {
+                  return (
+                    <span
+                      ref={marqueePartRefs[index]}
+                      key={index}
+                      className={`${cinzelFont.className}`}
+                    >
+                      {project.content}
+                    </span>
+                  );
+                })}
+              </div>
+            </Fade>
           </div>
         </div>
       </div>
