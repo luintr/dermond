@@ -1,5 +1,5 @@
 import { ICartItem } from '@/types/global';
-import { updateCart } from '@/utils/cartUtils';
+import { updateCart } from '@/utils/mathUtils';
 import { createSlice } from '@reduxjs/toolkit';
 
 const isLocalStorageAvailable = typeof localStorage !== 'undefined';

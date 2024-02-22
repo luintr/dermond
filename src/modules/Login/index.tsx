@@ -21,7 +21,8 @@ import useUiContext from '@/context/uiContext';
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
-  const imageRef = useRef<HTMLDivElement | null>(null);
+  const wrapImageRef = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
   const { isPageEnter } = useUiContext();
   const dispatch = useDispatch();
   const { routerEffect } = useRouterEffect();
@@ -41,15 +42,21 @@ const LoginModule = () => {
   }, [redirect, userInfo]);
   useEffect(() => {
     const ctx = gsap.context(() => {
-      isPageEnter &&
+      if (isPageEnter) {
         gsap.to(imageRef.current, {
+          scale: 1,
+          duration: 1,
+          ease: 'power4.out',
+        });
+        gsap.to(wrapImageRef.current, {
           clipPath: 'inset(0 0 0 0%)',
           duration: 1,
           ease: 'power4.out',
         });
+      }
     });
     return () => ctx.clear();
-  }, [imageRef, isPageEnter]);
+  }, [wrapImageRef, isPageEnter]);
 
   const onFinish = async (values: any) => {
     try {
@@ -199,12 +206,13 @@ const LoginModule = () => {
           </div>
         </div>
         <div className={`${s.boxImage} col-span-3 col-start-8`}>
-          <div className={`${s.boxImage_img}`} ref={imageRef}>
+          <div className={`${s.boxImage_img}`} ref={wrapImageRef}>
             <Image
               src={image.src}
               width={image.width}
               height={image.height}
               alt="image"
+              ref={imageRef}
             />
             <Fade direction={'bottom'} from={'30px'} delayEnter={0.7}>
               <div className={s.boxImage_logo}>

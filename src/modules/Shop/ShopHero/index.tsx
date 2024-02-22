@@ -5,7 +5,6 @@ import image from '@Images/shopHero.jpg';
 import Image from 'next/image';
 import { playfairFont } from '@/utils/fonts';
 import BoxParallax from '@/components/BoxParallax';
-import FadeHeading from '@/components/FadeHeading';
 import Fade from '@/components/Fade';
 import gsap from 'gsap';
 import useUiContext from '@/context/uiContext';

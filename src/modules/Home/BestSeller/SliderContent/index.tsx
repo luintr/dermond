@@ -66,7 +66,7 @@ const SliderContent: React.FC<ISLiderContent> = ({
   }, [activeSlider]);
 
   return (
-    <div className={s.sliderContent}>
+    <div className={`${s.sliderContent}, ${className}`}>
       {HOME_BESTSELLER_DATA.map((item, index) => (
         <div
           key={index}

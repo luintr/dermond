@@ -58,7 +58,7 @@ const BestSellerSection = () => {
         </div>
         <div className={`${s.itemSlider} col-span-6 col-start-6`}>
           <button
-            className={`${s.itemSlider_btn} ${s.left} ${disableClick && s.disable}`}
+            className={`${s.itemSlider_btn} ${disableClick && s.disable}`}
             onClick={prevClickHandler}
             disabled={disableClick}
           >
