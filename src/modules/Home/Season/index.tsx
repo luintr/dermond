@@ -13,6 +13,8 @@ import BoxParallax from '@/components/BoxParallax';
 import LinkEffect from '@/components/LinkEffect';
 import Fade from '@/components/Fade';
 import Magnetic from '@/components/Magnetic';
+import { Button } from '@/components/Button';
+import { TypographyBody } from '@/components/Typography';
 
 const SeasonSection = () => {
   return (
@@ -71,10 +73,12 @@ const SeasonSection = () => {
         <div className={`${s.seasonImage} col-span-5 col-start-8`}>
           <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
             <LinkEffect href={ROUTE_PATH.SHOP}>
-              Our Shop
-              <span>
-                <ArrowIcon />
-              </span>
+              <Button shape="rounded" variant="text">
+                <TypographyBody>Our Shop</TypographyBody>
+                <span>
+                  <ArrowIcon />
+                </span>
+              </Button>
             </LinkEffect>
           </Fade>
           <div className={s.seasonImage_img}>

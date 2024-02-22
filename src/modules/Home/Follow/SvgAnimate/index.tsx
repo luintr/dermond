@@ -14,6 +14,7 @@ const SvgAnimate = () => {
         duration: 2,
         stagger: 0.4,
         scrollTrigger: {
+          markers: true,
           trigger: svgAnimateRef.current,
           start: 'top 50%',
           end: 'bottom center',

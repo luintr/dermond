@@ -128,7 +128,7 @@ const LoginModule = () => {
                 ]}
               >
                 <Input.Password
-                  placeholder="Passwork"
+                  placeholder="Password"
                   autoComplete="current-password"
                 />
               </Form.Item>
