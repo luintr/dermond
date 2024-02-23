@@ -20,7 +20,7 @@ export default function PageLoader({
         gsap.to(refContent.current, {
           opacity: 0,
           ease: 'power4.inOut',
-          duration: 0.5,
+          duration: 1,
           onComplete: () => {
             onCompleted();
             refContent.current?.remove();

@@ -1,6 +1,12 @@
 .productItem {
   width: calc(100% / 3 - rem(4px));
   border: rem(1px) solid var(--coral);
+  aspect-ratio: 1/1;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
 
   &_content {
     padding: rem(8px) rem(16px);
