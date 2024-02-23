@@ -19,7 +19,7 @@ const HeroSection = () => {
     const gsapContext = gsap.context(() => {
       gsap.to(refLightMoon.current, {
         y: function () {
-          return 0.05 * ScrollTrigger.maxScroll(window);
+          return 0.03 * ScrollTrigger.maxScroll(window);
         },
         ease: 'none',
         scrollTrigger: {
