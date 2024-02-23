@@ -4,3 +4,24 @@
   row-gap: rem(88px);
   // row-gap: rem(58px);
 }
+
+.search {
+  border: 1px solid #080808;
+  color: #080808;
+  align-items: center;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0 2rem;
+  padding: 1rem 1.25rem;
+  width: 65%;
+
+  input {
+    color: #080808;
+    flex: 1 1;
+    font-size: 1.5rem;
+    font-weight: 500;
+    outline: none;
+    padding-right: 1rem;
+  }
+}
