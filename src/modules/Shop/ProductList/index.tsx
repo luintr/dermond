@@ -13,7 +13,7 @@ import useDebounce from '@/hooks/useDebounce';
 const ProductList = (): React.ReactElement => {
   const { data: products, isLoading, error } = useGetProductsQuery('Product');
 
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [clothes, setClothes] = useState([]);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
@@ -26,23 +26,22 @@ const ProductList = (): React.ReactElement => {
 
   const handleSearchTermChange = (e: any) => {
     setSearchTerm(e.target.value);
-  }
+  };
 
   const searchClothe = (searchValue: string) => {
-    let res = products.data.filter((item: IProductItem) => item.name == searchValue);
+    let res = products.data.filter(
+      (item: IProductItem) => item.name == searchValue
+    );
     setClothes(res);
-  }
+  };
 
-  useEffect(
-    () => {
-      if (debouncedSearchTerm) {
-        searchClothe(debouncedSearchTerm);
-      } else {
-        setClothes(products?.data);
-      }
-    },
-    [debouncedSearchTerm, products]
-  );
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      searchClothe(debouncedSearchTerm);
+    } else {
+      setClothes(products?.data);
+    }
+  }, [debouncedSearchTerm, products]);
 
   return (
     <>
@@ -56,13 +55,13 @@ const ProductList = (): React.ReactElement => {
         <Search />
       </div>
       <div className={`${s.productList} col-span-10 col-start-2`}>
-
         {isLoading ? (
           <LoadingComp />
         ) : error ? (
           <div>{getErrorMessage(error)}</div>
         ) : (
-          clothes && clothes.map((clothe: IProductItem) => (
+          clothes &&
+          clothes.map((clothe: IProductItem) => (
             <ProductItem key={clothe._id} data={clothe} />
           ))
         )}
