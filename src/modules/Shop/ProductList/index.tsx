@@ -54,15 +54,16 @@ const ProductList = (): React.ReactElement => {
         />
         <Search />
       </div>
-      <div className={`${s.productList} col-span-10 col-start-2`}>
+      <div
+        className={`${s.productList} col-span-10 col-start-2 grid grid-cols-12`}
+      >
         {isLoading ? (
           <LoadingComp />
         ) : error ? (
           <div>{getErrorMessage(error)}</div>
         ) : (
-          clothes &&
-          clothes.map((clothe: IProductItem) => (
-            <ProductItem key={clothe._id} data={clothe} />
+          products.data.map((product: IProductItem) => (
+            <ProductItem key={product._id} data={product} />
           ))
         )}
       </div>

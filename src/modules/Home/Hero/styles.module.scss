@@ -1,6 +1,10 @@
 .heroSection {
   min-height: 100vh;
 
+  &_wrapper {
+    margin-bottom: rem(400px);
+  }
+
   &_container {
     .topHero {
       padding-top: rem(68px);
@@ -44,8 +48,8 @@
         background: #fff;
         min-width: vw(670px);
         max-height: vh(855px);
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
+        border-top-left-radius: rem(1000px);
+        border-top-right-radius: rem(1000px);
         overflow: hidden;
 
         img {
@@ -53,6 +57,28 @@
           width: auto;
         }
       }
+    }
+  }
+}
+
+.eclipse {
+  position: relative;
+  .moon {
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    aspect-ratio: 1;
+    width: rem(180px);
+    height: auto;
+    border-radius: rem(100px);
+
+    &_dark {
+      background: var(--black-08);
+    }
+
+    &_light {
+      transform: translateY(-50%) translateX(-50%);
+      background: var(--tan);
     }
   }
 }

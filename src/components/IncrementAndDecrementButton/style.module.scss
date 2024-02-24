@@ -1,0 +1,29 @@
+.incrementAndDecrementBtn {
+  border: rem(1px) solid var(--black-08-20);
+  border-radius: rem(10px);
+  max-width: rem(180px);
+  gap: rem(12px);
+  height: rem(48px);
+}
+
+.minusBtn {
+  &:hover {
+    border-top-left-radius: rem(10px) !important;
+    border-bottom-left-radius: rem(10px) !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+
+.addBtn {
+  &:hover {
+    border-top-right-radius: rem(10px) !important;
+    border-bottom-right-radius: rem(10px) !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}
+
+.input {
+  width: 100%;
+}

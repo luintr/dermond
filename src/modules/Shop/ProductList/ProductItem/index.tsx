@@ -6,6 +6,8 @@ import s from './style.module.scss';
 import Fade from '@/components/Fade';
 import { cinzelFont } from '@/utils/fonts';
 import LinkEffect from '@/components/LinkEffect';
+import Image from 'next/image';
+import { Divider, Flex } from 'antd';
 
 export type IProductItem = {
   _id: string;
@@ -23,22 +25,41 @@ export type IProductItem = {
 const ProductItem = ({ data }: { data: IProductItem }): React.ReactElement => {
   const { _id, image, name } = data;
 
+  console.log(data);
+
   return (
-    <Fade direction={'bottom'} from={'30px'} delayTrigger={0.5}>
-      <div className={`${s.productItem}`}>
-        <LinkEffect href={`/product/${_id}`}>
-          <img className={s.productItem_image} src={image} alt={name} />
-        </LinkEffect>
-        <div className={s.productItem_content}>
-          <LinkEffect
-            href={`/product/${_id}`}
-            className={`${s.productItem_content_title} ${cinzelFont.className}`}
-          >
-            {name}
-          </LinkEffect>
+    <div className="col-span-4">
+      <Fade direction={'bottom'} from={'30px'} delayTrigger={0.5}>
+        <div className={`${s.productItem}`}>
+          <div className={`${s.productItem_image_link}`}>
+            <LinkEffect href={`/product/${_id}`}>
+              <div className={s.productItem_image_wrapper}>
+                <Image
+                  className={s.productItem_image_inner}
+                  src={image}
+                  alt={name}
+                  fill
+                />
+              </div>
+            </LinkEffect>
+          </div>
+          <div className={s.divider} />
+
+          <div className={s.productItem_content}>
+            <LinkEffect
+              href={`/product/${_id}`}
+              className={`${s.productItem_content_title} ${cinzelFont.className}`}
+            >
+              {name}
+            </LinkEffect>
+          </div>
+          <div className={s.dividers}>
+            <div />
+            <div />
+          </div>
         </div>
-      </div>
-    </Fade>
+      </Fade>
+    </div>
   );
 };
 

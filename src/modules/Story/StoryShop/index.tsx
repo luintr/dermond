@@ -6,7 +6,7 @@ import Container from '@/components/Container';
 import image from '@Images/serviceImg2.jpg';
 import Image from 'next/image';
 import { playfairFont } from '@/utils/fonts';
-import ButtonNavigate from '@/components/Button';
+import ButtonNavigate from '@/components/ButtonNavigate';
 import { ROUTE_PATH } from '@/constants/route';
 import BoxParallax from '@/components/BoxParallax';
 import Magnetic from '@/components/Magnetic';

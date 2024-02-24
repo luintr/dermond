@@ -1,0 +1,77 @@
+.body {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+
+  &__20 {
+    font-size: rem(16px);
+    line-height: rem(16px);
+
+    @include min-tablet {
+      font-size: rem(16px);
+      line-height: rem(14px);
+    }
+
+    @include pcSmall {
+      font-size: rem(20px);
+      line-height: rem(20px);
+    }
+  }
+
+  &__16 {
+    font-size: rem(14px);
+    line-height: rem(14px);
+
+    @include min-tablet {
+      font-size: rem(14px);
+      line-height: rem(14px);
+    }
+
+    @include pcSmall {
+      font-size: rem(16px);
+      line-height: rem(16px);
+    }
+  }
+
+  &__14 {
+    font-size: rem(12px);
+    line-height: rem(12px);
+
+    @include min-tablet {
+      font-size: rem(12px);
+      line-height: rem(12px);
+    }
+
+    @include pcSmall {
+      font-size: rem(14px);
+      line-height: rem(14px);
+    }
+  }
+
+  &__12 {
+    font-size: rem(12px);
+    line-height: rem(12px);
+
+    @include min-tablet {
+      font-size: rem(12px);
+      line-height: rem(12px);
+    }
+
+    @include pcSmall {
+      font-size: rem(12px);
+      line-height: rem(12px);
+    }
+  }
+
+  &__coral {
+    color: var(--coral, '#a37c75');
+  }
+
+  &__tan {
+    color: var(--tan, #f0f1ec);
+  }
+
+  &__black {
+    color: var(--black-08, #080808);
+  }
+}

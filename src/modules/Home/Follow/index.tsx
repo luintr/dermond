@@ -7,6 +7,7 @@ import bg from '@Images/follow.jpeg';
 import SvgAnimate from './SvgAnimate';
 import BoxParallax from '@/components/BoxParallax';
 import Fade from '@/components/Fade';
+import Link from 'next/link';
 
 const FollowSection = () => {
   return (
@@ -18,8 +19,14 @@ const FollowSection = () => {
               follow us on instagram
             </h3>
           </Fade>
-          <Fade direction={'bottom'} from={'30px'} delayTrigger={0.6}>
-            <p className={s.follow_content}>@DERMOND.VN</p>
+          <Fade direction={'bottom'} from={'30px'} delayEnter={0.6}>
+            <Link
+              href="https://www.instagram.com/dermond.vn/"
+              target="_blank"
+              className={'relative z-10'}
+            >
+              <p className={s.follow_content}>@DERMOND.VN</p>
+            </Link>
           </Fade>
         </div>
         <div className={s.parallaxBg}>

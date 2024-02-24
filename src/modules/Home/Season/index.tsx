@@ -8,11 +8,13 @@ import image1 from '@Images/season1.jpeg';
 import image2 from '@Images/season2.jpeg';
 import image3 from '@Images/season3.jpeg';
 import { cinzelFont } from '@/utils/fonts';
-import ButtonNavigate from '@/components/Button';
+import ButtonNavigate from '@/components/ButtonNavigate';
 import BoxParallax from '@/components/BoxParallax';
 import LinkEffect from '@/components/LinkEffect';
 import Fade from '@/components/Fade';
 import Magnetic from '@/components/Magnetic';
+import { Button } from '@/components/Button';
+import { TypographyBody } from '@/components/Typography';
 import FadeHeading from '@/components/FadeHeading';
 
 const SeasonSection = () => {
@@ -76,10 +78,12 @@ const SeasonSection = () => {
         <div className={`${s.seasonImage} col-span-5 col-start-8`}>
           <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
             <LinkEffect href={ROUTE_PATH.SHOP}>
-              Our Shop
-              <span>
-                <ArrowIcon />
-              </span>
+              <Button shape="rounded" variant="text">
+                <TypographyBody>Our Shop</TypographyBody>
+                <span>
+                  <ArrowIcon />
+                </span>
+              </Button>
             </LinkEffect>
           </Fade>
           <div className={s.seasonImage_img}>
