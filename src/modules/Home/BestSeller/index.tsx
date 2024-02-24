@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
 import RoundedText from '../../../components/RoundedText';
@@ -10,11 +10,12 @@ import { HOME_BESTSELLER_DATA } from '@/constants/homeData/data';
 import Slider from './Slider';
 import SliderContent from './SliderContent';
 import SliderNumber from './SliderNumber';
+
 const BestSellerSection = () => {
   const [activeSlider, setActiveSlider] = useState<number>(0);
   const [disableClick, setDisableClick] = useState<boolean>(false);
 
-  const prevClickHandler = () => {
+  const prevClickHandler = useCallback(() => {
     setDisableClick(true);
     if (activeSlider === 0) {
       setActiveSlider(HOME_BESTSELLER_DATA.length - 1);
@@ -24,9 +25,9 @@ const BestSellerSection = () => {
     setTimeout(() => {
       setDisableClick(false);
     }, 1500);
-  };
+  }, [activeSlider]);
 
-  const nextClickHandler = () => {
+  const nextClickHandler = useCallback(() => {
     setDisableClick(true);
     if (activeSlider === HOME_BESTSELLER_DATA.length - 1) {
       setActiveSlider(0);
@@ -36,7 +37,7 @@ const BestSellerSection = () => {
     setTimeout(() => {
       setDisableClick(false);
     }, 1500);
-  };
+  }, [activeSlider]);
 
   return (
     <section className={s.bestSellerSection}>
