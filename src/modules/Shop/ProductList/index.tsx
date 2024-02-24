@@ -12,7 +12,7 @@ import useDebounce from '@/hooks/useDebounce';
 
 const ProductList = (): React.ReactElement => {
   const { data: products, isLoading, error } = useGetProductsQuery('Product');
-
+  console.log(products);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [clothes, setClothes] = useState([]);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -29,7 +29,7 @@ const ProductList = (): React.ReactElement => {
   };
 
   const searchClothe = (searchValue: string) => {
-    let res = products.data.filter(
+    let res = products.products.filter(
       (item: IProductItem) => item.name == searchValue
     );
     setClothes(res);
@@ -39,7 +39,7 @@ const ProductList = (): React.ReactElement => {
     if (debouncedSearchTerm) {
       searchClothe(debouncedSearchTerm);
     } else {
-      setClothes(products?.data);
+      setClothes(products?.products);
     }
   }, [debouncedSearchTerm, products]);
 
@@ -62,7 +62,7 @@ const ProductList = (): React.ReactElement => {
         ) : error ? (
           <div>{getErrorMessage(error)}</div>
         ) : (
-          products.data.map((product: IProductItem) => (
+          products.products.map((product: IProductItem) => (
             <ProductItem key={product._id} data={product} />
           ))
         )}
