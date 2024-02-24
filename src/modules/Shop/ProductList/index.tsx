@@ -28,7 +28,7 @@ const ProductList = (): React.ReactElement => {
   };
 
   const searchClothe = (searchValue: string) => {
-    let res = products.products.filter(
+    let res = products.data.filter(
       (item: IProductItem) => item.name == searchValue
     );
     setClothes(res);
@@ -61,7 +61,7 @@ const ProductList = (): React.ReactElement => {
         ) : error ? (
           <div>{getErrorMessage(error)}</div>
         ) : (
-          products.products.map((product: IProductItem) => (
+          products.data.map((product: IProductItem) => (
             <ProductItem key={product._id} data={product} />
           ))
         )}

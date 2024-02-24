@@ -184,7 +184,9 @@
 }
 
 .ant-pagination {
-  font-size: rem(24px);
+  * {
+    font-size: rem(20px);
+  }
   .ant-pagination-item,
   .ant-pagination-prev,
   .ant-pagination-next {
