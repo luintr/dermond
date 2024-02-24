@@ -1,5 +1,5 @@
 'use client';
-import { useHeadlineFade } from '@/hooks/useHeadlineFade';
+import { useHeadlineFade } from './useHeadlineFade';
 import React, { PropsWithChildren, useRef } from 'react';
 import s from './style.module.scss';
 
