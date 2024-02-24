@@ -1,9 +1,18 @@
 .incrementAndDecrementBtn {
   border: rem(1px) solid var(--black-08-20);
   border-radius: rem(10px);
-  max-width: rem(180px);
-  gap: rem(12px);
-  height: rem(48px);
+
+  &__default {
+    max-width: rem(180px);
+    gap: rem(12px);
+    height: rem(48px);
+  }
+
+  &__small {
+    max-width: rem(160px);
+    gap: rem(4px);
+    height: rem(36px);
+  }
 }
 
 .minusBtn {

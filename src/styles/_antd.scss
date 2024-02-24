@@ -234,3 +234,7 @@
   color: inherit !important;
   border-color: var(--black-08-20) !important;
 }
+
+.ant-radio-button-checked {
+  display: none;
+}

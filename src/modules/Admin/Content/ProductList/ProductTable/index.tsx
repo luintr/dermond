@@ -15,7 +15,7 @@ const ProductTable = ({ setProductID, setEditMode }: IProductTable) => {
 
   useEffect(() => {
     getProduct().then((res: any) => {
-      setProducts(res.data);
+      setProducts(res.products);
     });
   }, [changeFlag]);
 
