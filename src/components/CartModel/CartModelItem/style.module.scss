@@ -4,19 +4,22 @@
   gap: rem(20px);
   // border-bottom: rem(1px) solid var(--black-08);
   margin-bottom: rem(28px);
-  height: rem(164px);
+  // height: rem(164px);
+
+  &_stats {
+    flex: 3;
+  }
 
   &_contentWrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
     width: 100%;
   }
 
   &_img {
     position: relative;
-    width: rem(204px);
+    width: rem(370px);
     aspect-ratio: 1;
     border-radius: rem(25px) rem(5px) rem(5px) rem(5px);
     overflow: hidden;
@@ -83,4 +86,39 @@
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.trashBtn {
+  width: rem(20px);
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.sizeOptions,
+.colorOptions {
+  position: absolute;
+  bottom: rem(-12px);
+  left: 50%;
+  width: fit-content;
+  min-width: rem(60px);
+  border: rem(1px) solid var(--black-08-20);
+  padding: rem(20px);
+  transform: translateY(110%);
+  border-radius: rem(24px);
+  transition: 0.4s all var(--easeOutQuart);
+  opacity: 0;
+  background: var(--be);
+  z-index: 3;
+  pointer-events: none;
+  margin-bottom: rem(8px);
+
+  &.open {
+    opacity: 1;
+    pointer-events: initial;
+  }
+}
+
+.dropdownIcon {
+  width: rem(16px);
+  height: auto;
 }

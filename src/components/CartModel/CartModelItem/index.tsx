@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import s from './style.module.scss';
 import { ICartItem } from '@/types/global';
 import { addToCart, removeFromCart } from '@/store/slices/cartSlice';
@@ -12,6 +12,8 @@ import IncrementAndDecrementButton from '@/components/IncrementAndDecrementButto
 import { Flex, Space } from 'antd';
 import { TypographyBody } from '@/components/Typography';
 import SvgInsert from '@/components/SvgInsert';
+import useClickOutside from '@/hooks/useClickOutside';
+import { capitalize } from '@/utils/capitalize';
 
 interface CartModelItemProps {
   item: ICartItem;
@@ -19,6 +21,29 @@ interface CartModelItemProps {
 
 const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
   const dispatch = useDispatch();
+  const [optionState, setOptionState] = useState<boolean>(false);
+  const [colorState, setColorState] = useState<boolean>(false);
+  const sizeRef = useRef<HTMLDivElement>(null);
+  const colorRef = useRef<HTMLDivElement>(null);
+
+  const toggleOptionBox = () => {
+    setOptionState(!optionState);
+  };
+
+  const hideOptions = () => {
+    setOptionState(false);
+  };
+
+  const toggleColorBox = () => {
+    setColorState(!colorState);
+  };
+
+  const hideColors = () => {
+    setColorState(false);
+  };
+
+  useClickOutside(sizeRef, hideOptions);
+  useClickOutside(colorRef, hideColors);
 
   useEffect(() => {
     if (item.qty === 0) {
@@ -35,37 +60,101 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
   };
 
   return (
-    <LinkEffect href={`/product/${item._id}`}>
-      <div key={item._id} className={s.cartItem}>
-        <div className={s.cartItem_img}>
+    <div key={item._id} className={s.cartItem}>
+      <div className={s.cartItem_img}>
+        <LinkEffect href={`/product/${item._id}`}>
           <Image src={item.image} alt="image" fill />
-        </div>
+        </LinkEffect>
+      </div>
 
-        <div className={s.cartItem_contentWrapper}>
+      <div className={s.cartItem_contentWrapper}>
+        <LinkEffect href={`/product/${item._id}`}>
           <Space className={`${s.cartItem_title} ${cinzelFont.className}`}>
             {item.name}
           </Space>
-          <Flex className={s.cartItem_wrapper}>
-            <Space
-              direction="vertical"
-              className={`${s.cartItem_stats} w-full`}
-            >
-              <Flex w-full justify="space-between">
-                <TypographyBody>${item.price}</TypographyBody>
-                <TypographyBody>{`× 1`}</TypographyBody>
-              </Flex>
+        </LinkEffect>
+        <Flex className={s.cartItem_wrapper}>
+          <Space direction="vertical" className={`${s.cartItem_stats} w-full`}>
+            <Flex w-full justify="space-between" align="baseline">
+              <TypographyBody>${item.price}</TypographyBody>
+              <IncrementAndDecrementButton
+                size="small"
+                amount={item.qty}
+                setAmount={value => addtoCartHandler(item, value)}
+              />
+              {/* <TypographyBody>{`× 1`}</TypographyBody> */}
+            </Flex>
 
+            <div ref={sizeRef} className="mb-2 relative">
               <Flex w-full justify="space-between">
                 <TypographyBody>Size</TypographyBody>
-                <TypographyBody>{item.size}</TypographyBody>
+                <Flex
+                  onClick={toggleOptionBox}
+                  align="center"
+                  className="cursor-pointer"
+                  gap={8}
+                >
+                  <TypographyBody>
+                    <b>{item.size}</b>
+                  </TypographyBody>
+                  <SvgInsert
+                    src="/icons/chevron.svg"
+                    className={s.dropdownIcon}
+                  />
+                </Flex>
               </Flex>
 
+              <div className={`${s.sizeOptions} ${optionState ? s.open : ''}`}>
+                <RadioSize
+                  sizeModel={item.size}
+                  addtoCartHandler={e => {
+                    addtoCartHandler(
+                      { ...item, size: e.target.value },
+                      item.qty
+                    );
+                  }}
+                  className={s.cartItem_size}
+                />
+              </div>
+            </div>
+
+            <div ref={colorRef} className="relative">
               <Flex w-full justify="space-between">
                 <TypographyBody>Color</TypographyBody>
-                <TypographyBody>{item.color}</TypographyBody>
-              </Flex>
 
-              {/* <IncrementAndDecrementButton
+                <Flex
+                  onClick={toggleColorBox}
+                  align="center"
+                  className="cursor-pointer"
+                  gap={8}
+                >
+                  <TypographyBody>
+                    <b>{capitalize(item.color)}</b>
+                  </TypographyBody>
+                  <SvgInsert
+                    src="/icons/chevron.svg"
+                    className={s.dropdownIcon}
+                  />
+                </Flex>
+
+                <div
+                  className={`${s.colorOptions} ${colorState ? s.open : ''}`}
+                >
+                  <RadioColor
+                    colorModel={item.color}
+                    addtoCartHandler={e => {
+                      addtoCartHandler(
+                        { ...item, color: e.target.value },
+                        item.qty
+                      );
+                    }}
+                    className={s.cartItem_color}
+                  />
+                </div>
+              </Flex>
+            </div>
+
+            {/* <IncrementAndDecrementButton
               amount={item.qty}
               setAmount={value => addtoCartHandler(item, value)}
             /> 
@@ -87,19 +176,18 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
               className={s.cartItem_color}
               small
             /> */}
-            </Space>
-            <div className={'w-full relative'}>
-              <div
-                className={s.cartItem_delete}
-                onClick={() => removeFromCartHandler(item._id)}
-              >
-                <SvgInsert src="/icons/trash.svg" />
-              </div>
+          </Space>
+          <div className={'w-full relative flex-1'}>
+            <div
+              className={s.cartItem_delete}
+              onClick={() => removeFromCartHandler(item._id)}
+            >
+              <SvgInsert src="/icons/trash.svg" className={s.trashBtn} />
             </div>
-          </Flex>
-        </div>
+          </div>
+        </Flex>
       </div>
-    </LinkEffect>
+    </div>
   );
 };
 

@@ -5,11 +5,13 @@ import s from './style.module.scss';
 interface IncrementAndDecrementButtonProps {
   amount: number;
   setAmount: (amount: number) => void;
+  size?: 'small' | 'default';
   className?: string;
 }
 
 export default function IncrementAndDecrementButton({
   amount,
+  size = 'default',
   setAmount,
 }: IncrementAndDecrementButtonProps): React.ReactElement {
   const handleMinusAmount = () => {
@@ -20,8 +22,10 @@ export default function IncrementAndDecrementButton({
     setAmount(amount + 1);
   };
 
+  const classNameSize = s[`incrementAndDecrementBtn__${size}`];
+
   return (
-    <Flex className={s.incrementAndDecrementBtn}>
+    <Flex className={`${s.incrementAndDecrementBtn} ${classNameSize}`}>
       <Button variant="text" className={s.minusBtn} onClick={handleMinusAmount}>
         -
       </Button>
