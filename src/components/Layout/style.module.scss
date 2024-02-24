@@ -11,10 +11,22 @@
     top: 0;
     left: 0;
     right: 0;
-    border-top: rem(1px) solid var(--black-08);
     border-bottom: rem(1px) solid var(--black-08);
-    background-color: rgba($color: var(--tan), $alpha: 0.3);
+    background-color: rgba(240, 241, 236, 0.3);
+    backdrop-filter: blur(30px);
     z-index: 2;
+    transition: all 0.2s ease-out;
+
+    &__light {
+      border-bottom: rem(1px) solid var(--tan);
+      background-color: var(--black-08-20);
+
+      * {
+        color: var(--tan);
+        fill: var(--tan);
+        stroke: var(--tan);
+      }
+    }
 
     &_container {
       height: 100%;
@@ -28,6 +40,10 @@
         height: 100%;
 
         .logoAnim {
+          svg {
+            width: rem(14px);
+            height: rem(24px);
+          }
           padding-right: rem(28px);
         }
 
@@ -40,16 +56,21 @@
           font-size: rem(20px);
           font-weight: 500;
           line-height: rem(26.96px);
+          border-left: rem(1px) solid var(--black-08);
 
-          &::before {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: rem(1px);
-            background: var(--black-08);
+          &__light {
+            border-left: rem(1px) solid var(--tan);
           }
+
+          // &::before {
+          //   position: absolute;
+          //   content: '';
+          //   top: 0;
+          //   left: 0;
+          //   height: 100%;
+          //   width: rem(1px);
+          //   background: var(--black-08);
+          // }
         }
       }
 
