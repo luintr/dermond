@@ -50,6 +50,7 @@ const CartModel = () => {
             shape="rounded"
             // className={s.cartModel_close}
             onClick={() => setModelToggle()}
+            size="sm"
           >
             <SvgInsert src="/icons/cross.svg" className={s.closeBtn} />
             <TypographyBody>Close</TypographyBody>
