@@ -8,7 +8,6 @@ import ProductItem, {
 } from '@/modules/Shop/ProductList/ProductItem';
 import LoadingComp from '@Components/LoadingComp';
 import { ArrowUp, Search } from '@/components/Icons';
-import { AnyARecord } from 'dns';
 
 const ProductList = (): React.ReactElement => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -32,22 +31,25 @@ const ProductList = (): React.ReactElement => {
     setSearchTerm(e.target.value);
   };
 
-  useEffect(() => {
-    // setQueryParams("?page=1&limit=9&sort=price,desc&search=");
-  }, []);
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setQueryParams({ ...queryParams, search: searchTerm });
+  };
 
   return (
     <>
-      <div className={`${s.search} col-span-4 col-start-5 mb-10`}>
+      <form
+        className={`${s.search} col-span-4 col-start-5 mb-10`}
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           placeholder="Search here..."
           value={searchTerm}
           onChange={handleSearchTermChange}
-          // onSubmit={() => {setQueryParams('')}}
         />
         <Search />
-      </div>
+      </form>
       <div className={`col-span-2 col-start-10 flex items-center mb-10`}>
         <span> Sorted by:</span>
         <span className="text[2rem] mx-5 cursor-pointer"> PRICE</span>
