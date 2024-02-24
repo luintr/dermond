@@ -170,12 +170,41 @@
   }
 }
 
+.ant-table-wrapper .ant-table {
+  font-size: rem(20px);
+}
+
+.ant-table-wrapper .ant-table-tbody > tr > td {
+  padding: rem(16px) rem(16px);
+}
+
+.ant-tag {
+  font-size: rem(20px);
+  padding: rem(8px);
+}
+
+.ant-pagination {
+  font-size: rem(24px);
+  .ant-pagination-item,
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    min-width: rem(48px);
+    height: rem(48px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .ant-table-thead {
   .ant-table-cell {
     // background-color: rgba($color: #080808, $alpha: 0.8) !important;
     background-color: var(--tan) !important;
     color: var(--black-08) !important;
     border-bottom: rem(1px) solid #a37c7590 !important;
+    * {
+      font-size: rem(20px);
+    }
   }
 }
 
