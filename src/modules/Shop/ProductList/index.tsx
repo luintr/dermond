@@ -7,14 +7,19 @@ import ProductItem, {
   IProductItem,
 } from '@/modules/Shop/ProductList/ProductItem';
 import LoadingComp from '@Components/LoadingComp';
-import { Search } from '@/components/Icons';
-import useDebounce from '@/hooks/useDebounce';
+import { ArrowUp, Search } from '@/components/Icons';
+import { AnyARecord } from 'dns';
 
 const ProductList = (): React.ReactElement => {
-  const { data: products, isLoading, error } = useGetProductsQuery('Product');
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [clothes, setClothes] = useState([]);
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  const [queryParams, setQueryParams] = useState<any>({
+    page: '1',
+    limit: 9,
+    sort: 'desc',
+    search: '',
+  });
+
+  const { data: products, isLoading, error } = useGetProductsQuery(queryParams);
 
   const getErrorMessage = (error: any): string => {
     if (error && typeof error.status === 'number') {
@@ -27,31 +32,26 @@ const ProductList = (): React.ReactElement => {
     setSearchTerm(e.target.value);
   };
 
-  const searchClothe = (searchValue: string) => {
-    let res = products.products.filter(
-      (item: IProductItem) => item.name == searchValue
-    );
-    setClothes(res);
-  };
-
   useEffect(() => {
-    if (debouncedSearchTerm) {
-      searchClothe(debouncedSearchTerm);
-    } else {
-      setClothes(products?.products);
-    }
-  }, [debouncedSearchTerm, products]);
+    // setQueryParams("?page=1&limit=9&sort=price,desc&search=");
+  }, []);
 
   return (
     <>
-      <div className={`${s.search} col-span-6 col-start-5`}>
+      <div className={`${s.search} col-span-4 col-start-5 mb-10`}>
         <input
           type="text"
           placeholder="Search here..."
           value={searchTerm}
           onChange={handleSearchTermChange}
+          // onSubmit={() => {setQueryParams('')}}
         />
         <Search />
+      </div>
+      <div className={`col-span-2 col-start-10 flex items-center mb-10`}>
+        <span> Sorted by:</span>
+        <span className="text[2rem] mx-5 cursor-pointer"> PRICE</span>
+        <ArrowUp />
       </div>
       <div
         className={`${s.productList} col-span-10 col-start-2 grid grid-cols-12`}
@@ -61,7 +61,7 @@ const ProductList = (): React.ReactElement => {
         ) : error ? (
           <div>{getErrorMessage(error)}</div>
         ) : (
-          products.products.map((product: IProductItem) => (
+          products.data.map((product: IProductItem) => (
             <ProductItem key={product._id} data={product} />
           ))
         )}

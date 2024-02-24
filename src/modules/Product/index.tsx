@@ -83,7 +83,7 @@ const ProductModules = ({ data }: { data: IProduct }) => {
 
   useEffect(() => {
     if (products) {
-      const temp = [...products.products];
+      const temp = [...products.data];
       let shuffleProducts: IProductItem[] = shuffleArray(temp);
       if (shuffleProducts) {
         setRecommendProducts([
