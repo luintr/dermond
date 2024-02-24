@@ -19,6 +19,7 @@ import useRouterEffect from '@/hooks/useRouterEffect';
 import IncrementAndDecrementButton from '@/components/IncrementAndDecrementButton';
 import { Button } from '@/components/Button';
 import { TypographyBody } from '@/components/Typography';
+import { useGetProductsQuery } from '@/store/slices/productApiSlice';
 
 type IProduct = {
   _id: string;
@@ -51,7 +52,7 @@ const ProductModules = ({ data }: { data: IProduct }) => {
     'be' | 'brown' | 'black' | 'white'
   >(color);
 
-  const { products, loading } = useGetProduct();
+  const { data: products, isLoading } = useGetProductsQuery('Product');
 
   const getErrorMessage = (error: any): string => {
     if (error && typeof error.status === 'number') {
@@ -81,16 +82,18 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   };
 
   useEffect(() => {
-    const temp = [...products];
-    let shuffleProducts: IProductItem[] = shuffleArray(temp);
-    if (shuffleProducts.length) {
-      setRecommendProducts([
-        shuffleProducts[0],
-        shuffleProducts[1],
-        shuffleProducts[2],
-      ]);
+    if (products) {
+      const temp = [...products.products];
+      let shuffleProducts: IProductItem[] = shuffleArray(temp);
+      if (shuffleProducts) {
+        setRecommendProducts([
+          shuffleProducts[0],
+          shuffleProducts[1],
+          shuffleProducts[2],
+        ]);
+      }
     }
-  }, [loading]);
+  }, [isLoading, products]);
 
   return (
     <div className={`${s.productDetail} container grid grid-cols-12`}>
@@ -159,9 +162,9 @@ const ProductModules = ({ data }: { data: IProduct }) => {
 
         <div className={s.wrapContent_desc}>{description}</div>
 
-        <div className={s.wrapContent_status}>
+        {/* <div className={s.wrapContent_status}>
           status: {countInStock <= 0 ? 'Out of stock' : 'In stock'}
-        </div>
+        </div> */}
       </div>
       <p
         className={`${s.storyWork_title} ${cinzelFont.className} col-span-3`}
@@ -169,7 +172,7 @@ const ProductModules = ({ data }: { data: IProduct }) => {
       >
         <span>Y</span>ou may also love
       </p>
-      <div className={`${s.productList} col-span-12`}>
+      <div className={`${s.productList} col-span-12 grid-cols-12 grid`}>
         {recommendProducts &&
           recommendProducts.map((product: IProductItem) => (
             <ProductItem key={product._id} data={product} />

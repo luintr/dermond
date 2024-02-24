@@ -96,11 +96,12 @@
 
   &_close {
     cursor: pointer;
-    position: absolute;
-    top: rem(20px);
-    right: rem(40px);
-    text-transform: uppercase;
     transition: 0.4s all var(--easeOutQuart);
+
+    svg {
+      width: rem(20px);
+      height: rem(20px);
+    }
 
     &:hover {
       opacity: 0.5;
@@ -124,6 +125,7 @@
   width: rem(20px);
   height: auto;
   aspect-ratio: 1;
+
   * {
     stroke: var(--black-08-60) !important;
   }
