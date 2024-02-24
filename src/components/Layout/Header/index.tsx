@@ -10,6 +10,8 @@ import { playfairFont } from '@/utils/fonts';
 import { CartIcon, Logo } from '@/components/Icons';
 import { useModelStore } from '@/store/zustandStore';
 import LinkEffect from '@/components/LinkEffect';
+import useUiContext from '@/context/uiContext';
+import SvgInsert from '@/components/SvgInsert';
 
 const Header = (): React.ReactElement => {
   const [qtyItems, setQtyItems] = useState<[]>([]);
@@ -19,6 +21,7 @@ const Header = (): React.ReactElement => {
   const { cartItems } = useSelector(state => state.cart);
   // @ts-ignore:next-line
   const { userInfo } = useSelector(state => state.auth);
+  const { headerColor } = useUiContext();
 
   useEffect(() => {
     setUser(userInfo);
@@ -28,16 +31,21 @@ const Header = (): React.ReactElement => {
     setQtyItems(cartItems);
   }, [cartItems]);
 
+  const headerColorClassName = s[`header__${headerColor}`];
+  const headlineColorClassName = s[`headline_logo__${headerColor}`];
+
   return (
-    <header className={s.header}>
+    <header className={`${s.header} ${headerColorClassName}`}>
       <Container className={s.header_container}>
         <div className={s.header_container_left}>
           <div className={s.logoAnim}>
-            <Logo />
+            {/* <Logo /> */}
+            <SvgInsert src="/icons/logo.svg" />
           </div>
+
           <LinkEffect
             href={ROUTE_PATH.HOME}
-            className={`${s.headline_logo} ${playfairFont.className}`}
+            className={`${s.headline_logo} ${headlineColorClassName} ${playfairFont.className}`}
           >
             DER MOND
           </LinkEffect>
