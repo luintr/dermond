@@ -34,10 +34,10 @@ export default function IncrementAndDecrementButton({
         value={amount}
         type="number"
         min={1}
-        defaultValue={1}
         onChange={e => {
-          if (!isNaN(parseInt(e.target.value))) {
-            setAmount(parseInt(e.target.value));
+          const newValue = parseInt(e.target.value, 10);
+          if (!isNaN(newValue) && newValue >= 1) {
+            setAmount(newValue);
           }
         }}
       />

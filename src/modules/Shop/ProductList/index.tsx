@@ -12,7 +12,6 @@ import useDebounce from '@/hooks/useDebounce';
 
 const ProductList = (): React.ReactElement => {
   const { data: products, isLoading, error } = useGetProductsQuery('Product');
-  console.log(products);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [clothes, setClothes] = useState([]);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);

@@ -75,7 +75,7 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
         </LinkEffect>
         <Flex className={s.cartItem_wrapper}>
           <Space direction="vertical" className={`${s.cartItem_stats} w-full`}>
-            <Flex w-full justify="space-between" align="baseline">
+            <Flex w-full={'true'} justify="space-between" align="baseline">
               <TypographyBody>${item.price}</TypographyBody>
               <IncrementAndDecrementButton
                 size="small"
@@ -86,7 +86,7 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
             </Flex>
 
             <div ref={sizeRef} className="mb-2 relative">
-              <Flex w-full justify="space-between">
+              <Flex w-full={'true'} justify="space-between">
                 <TypographyBody>Size</TypographyBody>
                 <Flex
                   onClick={toggleOptionBox}
@@ -119,7 +119,7 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
             </div>
 
             <div ref={colorRef} className="relative">
-              <Flex w-full justify="space-between">
+              <Flex w-full={'true'} justify="space-between">
                 <TypographyBody>Color</TypographyBody>
 
                 <Flex

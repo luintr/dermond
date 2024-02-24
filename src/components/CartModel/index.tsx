@@ -45,16 +45,9 @@ const CartModel = () => {
       <div className={`${s.model}`}>
         <Flex justify="space-between" align="baseline">
           <h3 className={s.cartModel_title}>Overview Your Cart</h3>
-          <Button
-            variant="outlined"
-            shape="rounded"
-            // className={s.cartModel_close}
-            onClick={() => setModelToggle()}
-            size="sm"
-          >
+          <div className={s.cartModel_close} onClick={() => setModelToggle()}>
             <SvgInsert src="/icons/cross.svg" className={s.closeBtn} />
-            <TypographyBody>Close</TypographyBody>
-          </Button>
+          </div>
         </Flex>
 
         <div className={s.cartModel_list}>
