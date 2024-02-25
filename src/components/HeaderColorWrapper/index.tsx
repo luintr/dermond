@@ -1,5 +1,6 @@
 'use client';
 
+import { useScrollTrigger } from '@/hooks/useScrollTrigger';
 import useUiContext from '@Context/uiContext';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -26,27 +27,24 @@ const HeaderColorWrapper = ({
   const refTrigger = useRef<HTMLDivElement>(null);
   const { isPageEnter } = useUiContext();
 
-  useEffect(() => {
-    const gc = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: refTrigger.current,
-        start: 'top top',
-        end: 'bottom top',
-        markers: true,
-        onToggle: self => {
-          if (self.isActive) {
-            setHeaderColor(headerColor);
-          }
-        },
-        onLeaveBack: () => {
-          if (colorBefore) {
-            setHeaderColor(colorBefore);
-          }
-        },
-      });
-    }, [refTrigger]);
-    return () => gc.revert();
-  }, [headerColor, colorBefore, setHeaderColor, isPageEnter]);
+  useScrollTrigger(
+    {
+      trigger: refTrigger,
+      start: 'top top',
+      end: 'bottom top',
+      onToggle: self => {
+        if (self.isActive) {
+          setHeaderColor(headerColor);
+        }
+      },
+      onLeaveBack: () => {
+        if (colorBefore) {
+          setHeaderColor(colorBefore);
+        }
+      },
+    },
+    [headerColor, colorBefore, setHeaderColor, isPageEnter]
+  );
 
   return <div ref={refTrigger}>{children}</div>;
 };
