@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import s from './style.module.scss';
 import { ICartItem } from '@/types/global';
-import { addToCart, removeFromCart } from '@/store/slices/cartSlice';
+import {
+  modifyColorCartItem,
+  modifyQtyCartItem,
+  modifySizeCartItem,
+  removeFromCart,
+} from '@/store/slices/cartSlice';
 import { useDispatch } from 'react-redux';
 import LinkEffect from '@/components/LinkEffect';
 import RadioSize from '@/components/CustomAntd/RadioSize';
@@ -47,16 +52,38 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
 
   useEffect(() => {
     if (item.qty === 0) {
-      removeFromCartHandler(item._id);
+      removeFromCartHandler(item);
     }
   }, [item.qty]);
 
-  const addtoCartHandler = async (product: ICartItem, qty: number) => {
-    dispatch(addToCart({ ...product, qty }));
+  const modifyCartHandler = async (
+    product: ICartItem,
+    qty: number,
+    type: 'size' | 'color' | 'qty' = 'qty'
+  ) => {
+    switch (type) {
+      case 'size':
+        dispatch(modifySizeCartItem({ ...product, qty }));
+        break;
+
+      case 'color':
+        dispatch(modifyColorCartItem({ ...product, qty }));
+        break;
+
+      case 'qty':
+        dispatch(modifyQtyCartItem({ ...product, qty }));
+        break;
+
+      default:
+        dispatch(modifyQtyCartItem({ ...product, qty }));
+        break;
+    }
   };
 
-  const removeFromCartHandler = async (id: string) => {
-    dispatch(removeFromCart(id));
+  // const modifySizeHandler = async(product: ICartItem,)
+
+  const removeFromCartHandler = async (item: ICartItem) => {
+    dispatch(removeFromCart(item));
   };
 
   return (
@@ -80,7 +107,7 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
               <IncrementAndDecrementButton
                 size="small"
                 amount={item.qty}
-                setAmount={value => addtoCartHandler(item, value)}
+                setAmount={value => modifyCartHandler(item, value)}
               />
               {/* <TypographyBody>{`× 1`}</TypographyBody> */}
             </Flex>
@@ -108,9 +135,10 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
                 <RadioSize
                   sizeModel={item.size}
                   addtoCartHandler={e => {
-                    addtoCartHandler(
+                    modifyCartHandler(
                       { ...item, size: e.target.value },
-                      item.qty
+                      item.qty,
+                      'size'
                     );
                   }}
                   className={s.cartItem_size}
@@ -143,9 +171,10 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
                   <RadioColor
                     colorModel={item.color}
                     addtoCartHandler={e => {
-                      addtoCartHandler(
+                      modifyCartHandler(
                         { ...item, color: e.target.value },
-                        item.qty
+                        item.qty,
+                        'color'
                       );
                     }}
                     className={s.cartItem_color}
@@ -180,7 +209,7 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
           <div className={'w-full relative flex-1'}>
             <div
               className={s.cartItem_delete}
-              onClick={() => removeFromCartHandler(item._id)}
+              onClick={() => removeFromCartHandler(item)}
             >
               <SvgInsert src="/icons/trash.svg" className={s.trashBtn} />
             </div>

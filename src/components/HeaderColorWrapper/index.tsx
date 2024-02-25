@@ -32,7 +32,6 @@ const HeaderColorWrapper = ({
         trigger: refTrigger.current,
         start: 'top top',
         end: 'bottom top',
-        markers: true,
         onToggle: self => {
           if (self.isActive) {
             setHeaderColor(headerColor);

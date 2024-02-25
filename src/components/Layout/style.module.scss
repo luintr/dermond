@@ -12,19 +12,19 @@
     left: 0;
     right: 0;
     border-bottom: rem(1px) solid var(--black-08);
-    background-color: rgba(240, 241, 236, 0.3);
-    backdrop-filter: blur(30px);
+    background-color: rgba(240, 241, 236, 0.6);
+    backdrop-filter: blur(16px);
     z-index: 2;
     transition: all 0.2s ease-out;
 
     &__light {
       border-bottom: rem(1px) solid var(--tan);
-      background-color: var(--black-08-20);
+      background-color: var(--black-08-60);
 
       * {
         color: var(--tan);
         fill: var(--tan);
-        stroke: var(--tan);
+        // stroke: var(--tan);
       }
     }
 
