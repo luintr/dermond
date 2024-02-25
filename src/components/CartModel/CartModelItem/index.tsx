@@ -2,12 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import s from './style.module.scss';
 import { ICartItem } from '@/types/global';
 import {
-  modifyColorCartItem,
   modifyQtyCartItem,
-  modifySizeCartItem,
+  modifyAtributesCartItem,
   removeFromCart,
 } from '@/store/slices/cartSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LinkEffect from '@/components/LinkEffect';
 import RadioSize from '@/components/CustomAntd/RadioSize';
 import RadioColor from '@/components/CustomAntd/RadioColor';
@@ -30,6 +29,15 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
   const [colorState, setColorState] = useState<boolean>(false);
   const sizeRef = useRef<HTMLDivElement>(null);
   const colorRef = useRef<HTMLDivElement>(null);
+  const { cartItems } = useSelector(
+    (state: { cart: { cartItems: ICartItem[] } }) => state.cart
+  );
+
+  // console.log(
+  //   cartItems
+  //     .filter(cartItem => cartItem._id === item._id)
+  //     .map(ct => ({ size: ct.size, color: ct.color }))
+  // );
 
   const toggleOptionBox = () => {
     setOptionState(!optionState);
@@ -63,11 +71,11 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
   ) => {
     switch (type) {
       case 'size':
-        dispatch(modifySizeCartItem({ ...product, qty }));
+        dispatch(modifyAtributesCartItem({ ...product }));
         break;
 
       case 'color':
-        dispatch(modifyColorCartItem({ ...product, qty }));
+        dispatch(modifyAtributesCartItem({ ...product }));
         break;
 
       case 'qty':

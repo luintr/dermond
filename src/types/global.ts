@@ -15,6 +15,7 @@ export type ICartItem = {
   createdAt: string;
   updatedAt: string;
   qty: number;
+  uuid?: string;
 };
 export type IProduct = {
   _id: string;

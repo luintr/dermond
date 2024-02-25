@@ -1,6 +1,7 @@
 import { ICartItem } from '@/types/global';
 import { updateCart } from '@/utils/mathUtils';
 import { createSlice } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 
 const isLocalStorageAvailable = typeof localStorage !== 'undefined';
 
@@ -14,6 +15,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const item = action.payload;
+      item.uuid = uuidv4();
       const existItem = state.cartItems.find((x: ICartItem) => {
         return (
           x._id === item._id && x.color === item.color && x.size === item.size
@@ -35,57 +37,35 @@ const cartSlice = createSlice({
     modifyQtyCartItem: (state, action) => {
       const item = action.payload;
       const existItem = state.cartItems.find((x: ICartItem) => {
+        return x.uuid === item.uuid;
+      });
+
+      if (existItem) {
+        state.cartItems = state.cartItems.map((x: ICartItem) =>
+          x.uuid === existItem.uuid ? item : x
+        );
+      }
+
+      return updateCart(state);
+    },
+
+    modifyAtributesCartItem: (state, action) => {
+      const item = action.payload;
+      const existItem = state.cartItems.find(
+        (x: ICartItem) => x.uuid === item.uuid
+      );
+
+      const duplicatedItem = state.cartItems.find((x: ICartItem) => {
         return (
           x._id === item._id && x.color === item.color && x.size === item.size
         );
       });
 
-      if (existItem) {
+      if (duplicatedItem) {
+        return state;
+      } else if (existItem) {
         state.cartItems = state.cartItems.map((x: ICartItem) =>
-          x._id === existItem._id &&
-          x.color === existItem.color &&
-          x.size === existItem.size
-            ? item
-            : x
-        );
-      }
-
-      return updateCart(state);
-    },
-    modifySizeCartItem: (state, action) => {
-      const item = action.payload;
-      const existItem = state.cartItems.find((x: ICartItem) => {
-        return (
-          x._id === item._id && x.color === item.color && x.qty === item.qty
-        );
-      });
-
-      if (existItem) {
-        state.cartItems = state.cartItems.map((x: ICartItem) =>
-          x._id === existItem._id &&
-          x.color === existItem.color &&
-          x.qty === existItem.qty
-            ? item
-            : x
-        );
-      }
-
-      return updateCart(state);
-    },
-
-    modifyColorCartItem: (state, action) => {
-      const item = action.payload;
-      const existItem = state.cartItems.find((x: ICartItem) => {
-        return x._id === item._id && x.size === item.size && x.qty === item.qty;
-      });
-
-      if (existItem) {
-        state.cartItems = state.cartItems.map((x: ICartItem) =>
-          x._id === existItem._id &&
-          x.size === existItem.size &&
-          x.qty === existItem.qty
-            ? item
-            : x
+          x.uuid === existItem.uuid ? item : x
         );
       }
 
@@ -129,8 +109,7 @@ export const {
   savePaymentMethod,
   clearCartItems,
   modifyQtyCartItem,
-  modifySizeCartItem,
-  modifyColorCartItem,
+  modifyAtributesCartItem,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

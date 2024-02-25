@@ -9,6 +9,7 @@ type IHandlderColorChange = {
   addtoCartHandler?: (e: RadioChangeEvent) => void;
   className?: string;
   small?: boolean;
+  disableValue?: string[];
 };
 
 const RadioColor: React.FC<IHandlderColorChange> = ({
@@ -17,6 +18,7 @@ const RadioColor: React.FC<IHandlderColorChange> = ({
   handleColorChange,
   addtoCartHandler,
   small,
+  disableValue,
 }) => {
   const handleChange = (e: RadioChangeEvent) => {
     if (addtoCartHandler) {
@@ -35,6 +37,7 @@ const RadioColor: React.FC<IHandlderColorChange> = ({
             key={index}
             value={item.name}
             style={{ backgroundColor: item.color }}
+            disabled={disableValue?.some(value => value === item.name)}
           >
             {item.name}
           </Radio.Button>
