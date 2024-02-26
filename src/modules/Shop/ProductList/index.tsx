@@ -9,10 +9,17 @@ import ProductItem, {
 import LoadingComp from '@Components/LoadingComp';
 import { ArrowUp, Search } from '@/components/Icons';
 
+type IProductsQuery = {
+  page: number;
+  limit: number;
+  sort: string;
+  search: string;
+};
+
 const ProductList = (): React.ReactElement => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [queryParams, setQueryParams] = useState<any>({
-    page: '1',
+  const [queryParams, setQueryParams] = useState<IProductsQuery>({
+    page: 1,
     limit: 9,
     sort: '',
     search: '',
