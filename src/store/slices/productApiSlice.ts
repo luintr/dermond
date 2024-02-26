@@ -6,7 +6,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getProducts: builder.query({
       query: queryParam => ({
-        url: `${PRODUCTS_URL}?page=${queryParam.page}&limit=${queryParam.limit}&sort=${queryParam.sort}&search=${queryParam.search}`,
+        url: `${PRODUCTS_URL}?page=${queryParam.page}&limit=${queryParam.limit}&sort=price,${queryParam.sort}&search=${queryParam.search}`,
       }),
       keepUnusedDataFor: 5,
     }),
