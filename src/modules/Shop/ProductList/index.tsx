@@ -9,7 +9,7 @@ import ProductItem, {
 import LoadingComp from '@Components/LoadingComp';
 import { ArrowUp, Search } from '@/components/Icons';
 
-type IProductsQuery = {
+export type IProductsQuery = {
   page: number;
   limit: number;
   sort: string;

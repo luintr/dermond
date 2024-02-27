@@ -3,6 +3,8 @@ import { IProduct } from '@/types/global';
 import { Button, Table, message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import s from '../style.module.scss';
+import { IProductsQuery } from '@/modules/Shop/ProductList';
+
 type IProductTable = {
   setProductID: (id: string) => void;
   setEditMode: (state: boolean) => void;
@@ -11,13 +13,21 @@ type IProductTable = {
 const ProductTable = ({ setProductID, setEditMode }: IProductTable) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [totalProduct, setTotalProduct] = useState<number>(0);
   const [changeFlag, setChangeFlag] = useState<boolean>(false);
+  const [queryParams, setQueryParams] = useState<IProductsQuery>({
+    page: 1,
+    limit: 5,
+    sort: '',
+    search: '',
+  });
 
   useEffect(() => {
-    getProduct().then((res: any) => {
-      setProducts(res.products);
+    getProduct(queryParams).then((res: any) => {
+      setProducts(res.data);
+      setTotalProduct(res.total);
     });
-  }, [changeFlag]);
+  }, [changeFlag, queryParams]);
 
   const deleteHandler = async (id: string | number) => {
     await deleteProduct(id);
@@ -121,7 +131,13 @@ const ProductTable = ({ setProductID, setEditMode }: IProductTable) => {
         columns={columns}
         dataSource={[...products].reverse()}
         rowKey="_id"
-        pagination={{ pageSize: 5 }}
+        pagination={{
+          pageSize: queryParams.limit,
+          total: totalProduct,
+          onChange: page => {
+            setQueryParams({ ...queryParams, page: page });
+          },
+        }}
       />
     </div>
   );

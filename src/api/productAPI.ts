@@ -1,8 +1,11 @@
 import { PRODUCTS_URL, UPLOADS_URL } from '@/constants/route';
 import { deleteMethod, get, post, put } from './requestMethod';
+import { IProductsQuery } from '@/modules/Shop/ProductList';
 
-export const getProduct = async () => {
-  const res = await get(`${PRODUCTS_URL}`);
+export const getProduct = async (queryParam: IProductsQuery) => {
+  const res = await get(
+    `${PRODUCTS_URL}?page=${queryParam.page}&limit=${queryParam.limit}&sort=price,${queryParam.sort}&search=${queryParam.search}`
+  );
   return res;
 };
 
