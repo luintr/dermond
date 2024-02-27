@@ -7,10 +7,9 @@ import { ROUTE_PATH } from '@/constants/route';
 import { useSelector } from 'react-redux';
 import ProfileHeader from './Profile';
 import { playfairFont } from '@/utils/fonts';
-import { CartIcon, Logo } from '@/components/Icons';
-import { useModelStore } from '@/store/zustandStore';
+import { CartIcon } from '@/components/Icons';
+import { useHeaderColorStore, useModelStore } from '@/store/zustandStore';
 import LinkEffect from '@/components/LinkEffect';
-import useUiContext from '@/context/uiContext';
 import SvgInsert from '@/components/SvgInsert';
 
 const Header = (): React.ReactElement => {
@@ -21,7 +20,7 @@ const Header = (): React.ReactElement => {
   const { cartItems } = useSelector(state => state.cart);
   // @ts-ignore:next-line
   const { userInfo } = useSelector(state => state.auth);
-  const { headerColor } = useUiContext();
+  const { headerColor } = useHeaderColorStore();
 
   useEffect(() => {
     setUser(userInfo);
@@ -39,7 +38,6 @@ const Header = (): React.ReactElement => {
       <Container className={s.header_container}>
         <div className={s.header_container_left}>
           <div className={s.logoAnim}>
-            {/* <Logo /> */}
             <SvgInsert src="/icons/logo.svg" />
           </div>
 

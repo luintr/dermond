@@ -31,8 +31,6 @@ type tPageStatus =
   | 'PAGE_EXIT'
   | 'PAGE_ONCE';
 
-export type tHeaderColor = 'dark' | 'light';
-
 interface IUiContext {
   pageOnce: boolean;
   pageStatus: string;
@@ -41,8 +39,6 @@ interface IUiContext {
   setFramesLoaded: React.Dispatch<SetStateAction<boolean>>;
   isPageLeave: boolean;
   isPageEnter: boolean;
-  headerColor: string;
-  setHeaderColor: React.Dispatch<SetStateAction<tHeaderColor>>;
 }
 export const UiContext = createContext<IUiContext>({
   pageStatus: 'PAGE_ONCE',
@@ -52,8 +48,6 @@ export const UiContext = createContext<IUiContext>({
   pageOnce: false,
   isPageLeave: false,
   isPageEnter: false,
-  headerColor: 'dark',
-  setHeaderColor: _ => null,
 });
 
 function scrollRestoration(): void {
@@ -70,7 +64,6 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
   const [_framesLoaded, setFramesLoaded] = useState<boolean>(false);
   const [isPageLeave, setIsPageLeave] = useState(false);
   const [isPageEnter, setIsPageEnter] = useState(false);
-  const [headerColor, setHeaderColor] = useState<tHeaderColor>('dark');
 
   const isLoaded = useMemo((): boolean => {
     return pageStatus === 'PAGE_LOADED';
@@ -104,8 +97,6 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
       setFramesLoaded,
       isPageLeave,
       isPageEnter,
-      headerColor,
-      setHeaderColor,
     };
   }, [
     pageStatus,
@@ -115,8 +106,6 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
     setFramesLoaded,
     isPageLeave,
     isPageEnter,
-    headerColor,
-    setHeaderColor,
   ]);
 
   return (

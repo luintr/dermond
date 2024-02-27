@@ -1,10 +1,11 @@
 'use client';
 
-import useUiContext, { tHeaderColor } from '@Context/uiContext';
+import { useHeaderColorStore } from '@/store/zustandStore';
+import { tHeaderColor } from '@/types/common';
 import { useEffect } from 'react';
 
 export default function useHeaderColor(color: tHeaderColor): void {
-  const { setHeaderColor } = useUiContext();
+  const { setHeaderColor } = useHeaderColorStore();
   useEffect(() => {
     setHeaderColor(color);
   }, [setHeaderColor, color]);

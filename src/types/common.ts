@@ -8,3 +8,5 @@ export type IAnimationElement =
   | HTMLButtonElement
   | HTMLImageElement
   | HTMLHeadingElement;
+
+export type tHeaderColor = 'dark' | 'light';

@@ -1,6 +1,7 @@
 'use client';
+import useUiContext from '@/context/uiContext';
 import { useModelStore } from '@/store/zustandStore';
-// import useUiContext from '@Contexts/iu';
+
 import Lenis from '@studio-freight/lenis';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { gsap } from 'gsap';
@@ -12,7 +13,7 @@ export default function LenisScroller({
   children,
 }: ISmoothScroller): React.ReactElement {
   const lenisRef = useRef<Lenis>();
-  // const { pageStatus } = useUiContext();
+  const { pageStatus } = useUiContext();
   const { modelState } = useModelStore();
 
   useEffect(() => {
@@ -24,13 +25,13 @@ export default function LenisScroller({
     else lenisRef.current?.start();
   }, [modelState]);
 
-  // useEffect(() => {
-  //   if (pageStatus === 'PAGE_ENTER') {
-  //     lenisRef.current?.start();
-  //   } else {
-  //     lenisRef.current?.stop();
-  //   }
-  // }, [pageStatus]);
+  useEffect(() => {
+    if (pageStatus === 'PAGE_ENTER') {
+      lenisRef.current?.start();
+    } else {
+      lenisRef.current?.stop();
+    }
+  }, [pageStatus]);
 
   useEffect(() => {
     function update(time: number): void {

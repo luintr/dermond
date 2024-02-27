@@ -1,6 +1,7 @@
 'use client';
 
 import { useScrollTrigger } from '@/hooks/useScrollTrigger';
+import { useHeaderColorStore } from '@/store/zustandStore';
 import useUiContext from '@Context/uiContext';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -23,7 +24,7 @@ const HeaderColorWrapper = ({
   colorBefore,
   children,
 }: Props): ReactElement => {
-  const { setHeaderColor } = useUiContext();
+  const { setHeaderColor } = useHeaderColorStore();
   const refTrigger = useRef<HTMLDivElement>(null);
   const { isPageEnter } = useUiContext();
 
