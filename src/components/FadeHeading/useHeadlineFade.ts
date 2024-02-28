@@ -13,7 +13,7 @@ type IHeadlineFade = {
 
 export const useHeadlineFade = ({
   ref,
-  stagger = 0.015,
+  stagger = 0.01,
 }: IHeadlineFade): void => {
   const splitTextRef = useSplitType(ref, { types: 'words, chars' });
   const { isPageEnter } = useUiContext();
