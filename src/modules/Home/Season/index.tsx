@@ -26,7 +26,7 @@ const SeasonSection = () => {
             <FadeHeading className={`${s.seasonDesc_title} col-span-5`}>
               {`// TIS THE SEASON`}
             </FadeHeading>
-            <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
+            <Fade direction={'bottom'} from={'40px'} delayTrigger={0.4}>
               <p className={`${s.seasonDesc_content} col-span-5`}>
                 Customization Beyond Boundaries: Design is personal, and so is
                 our approach. We don&apos;t just design dresses; we craft
@@ -35,7 +35,7 @@ const SeasonSection = () => {
                 a truly bespoke creation.
               </p>
             </Fade>
-            <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
+            <Fade direction={'bottom'} from={'50px'} delayTrigger={0.4}>
               <div
                 className={`${s.seasonDesc_navigateBox} col-span-2 col-start-1`}
               >
@@ -50,7 +50,7 @@ const SeasonSection = () => {
               </div>
             </Fade>
 
-            <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
+            <Fade direction={'bottom'} from={'60px'} delayTrigger={0.4}>
               <p
                 className={`${s.seasonDesc_subContent} col-span-2 col-start-4`}
               >

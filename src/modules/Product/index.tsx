@@ -89,7 +89,6 @@ const ProductModules = ({ data }: { data: IProduct }) => {
   useEffect(() => {
     if (products) {
       const temp = [...products.data];
-      console.log(products);
       let shuffleProducts: IProductItem[] = shuffleArray(temp);
       if (shuffleProducts) {
         setRecommendProducts([
@@ -179,7 +178,9 @@ const ProductModules = ({ data }: { data: IProduct }) => {
         <span>Y</span>ou may also love
       </p>
 
-      <div className={`${s.productList} col-span-12 grid-cols-12 grid`}>
+      <div
+        className={`${s.productList} col-span-10 col-start-2 grid-cols-12 grid`}
+      >
         {recommendProducts &&
           recommendProducts.map((product: IProductItem) => (
             <ProductItem key={product._id} data={product} />

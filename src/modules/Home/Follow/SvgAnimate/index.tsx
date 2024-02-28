@@ -11,7 +11,7 @@ const SvgAnimate = () => {
       gsap.to('.path', {
         opacity: 1,
         ease: 'power4.inOut',
-        duration: 2,
+        duration: 3,
         stagger: 0.4,
         scrollTrigger: {
           trigger: svgAnimateRef.current,

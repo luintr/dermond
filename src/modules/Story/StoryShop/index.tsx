@@ -15,24 +15,24 @@ import FadeHeading from '@/components/FadeHeading';
 const StoryShop = () => {
   return (
     <section className={s.storyShop}>
-      <Container className={s.container}>
-        <div className={s.storyShop_wrap}>
-          <div className={s.storyShop_image}>
-            <BoxParallax offset={0.09}>
-              <Image
-                src={image.src}
-                width={image.width}
-                height={image.height}
-                alt={'image'}
-              />
-            </BoxParallax>
-          </div>
-          <div className={s.storyShop_content}>
-            <FadeHeading
-              className={`${s.storyShop_title} ${playfairFont.className}`}
-            >
-              SMALL LEATHER GOODS
-            </FadeHeading>
+      <div className={s.storyShop_wrap}>
+        <div className={s.storyShop_image}>
+          <BoxParallax offset={0.09}>
+            <Image
+              src={image.src}
+              width={image.width}
+              height={image.height}
+              alt={'image'}
+            />
+          </BoxParallax>
+        </div>
+        <div className={s.storyShop_content}>
+          <FadeHeading
+            className={`${s.storyShop_title} ${playfairFont.className}`}
+          >
+            SMALL LEATHER GOODS
+          </FadeHeading>
+          <FadeHeading>
             <Magnetic>
               <ButtonNavigate
                 text="Shop Now"
@@ -40,9 +40,9 @@ const StoryShop = () => {
                 className={s.button}
               />
             </Magnetic>
-          </div>
+          </FadeHeading>
         </div>
-      </Container>
+      </div>
     </section>
   );
 };

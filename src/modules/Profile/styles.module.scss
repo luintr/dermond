@@ -38,6 +38,24 @@
       left: 0;
       background: var(--coral);
     }
+
+    .buttonSubmit {
+      span {
+        background: var(--coral);
+        padding: rem(10px) rem(20px);
+        border-radius: rem(100px);
+        transition: 0.4s all var(--easeOutQuart);
+      }
+
+      &:hover {
+        opacity: 0.7;
+
+        span {
+          background: var(--coral) !important;
+          color: var(--tan) !important;
+        }
+      }
+    }
   }
 
   .tableProfile {
