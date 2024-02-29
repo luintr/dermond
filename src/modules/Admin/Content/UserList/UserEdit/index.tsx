@@ -1,7 +1,9 @@
-import { Button, Form, Input, Radio, RadioChangeEvent, message } from 'antd';
+import { Form, Input, Radio, RadioChangeEvent, message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { IUserType } from '../UserTable';
 import { getUserDetail, updateUser } from '@/api/userAPI';
+import { TypographyBody } from '@/components/Typography';
+import { Button } from '@/components/Button';
 
 type IUserEdit = {
   userID: string;
@@ -97,12 +99,8 @@ const AdminUserEdit = ({ userID, setUserEditMode }: IUserEdit) => {
           </Form.Item>
 
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              disabled={isDisable && true}
-            >
-              Submit
+            <Button type="submit" disabled={isDisable && true} color="black">
+              <TypographyBody>Submit</TypographyBody>
             </Button>
           </Form.Item>
         </Form>

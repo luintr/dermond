@@ -98,7 +98,7 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
     <div key={item._id} className={s.cartItem}>
       <div className={s.cartItem_img}>
         <LinkEffect href={`/product/${item._id}`}>
-          <Image src={item.image} alt="image" fill />
+          <Image src={item.image} sizes={'1000px'} alt="image" fill />
         </LinkEffect>
       </div>
 

@@ -20,11 +20,6 @@
       }
     }
 
-    .parallaxBg {
-      margin: 0 rem(-40px);
-      overflow: hidden;
-    }
-
     .svgAnimate {
       position: absolute;
       top: rem(128px);
@@ -35,10 +30,23 @@
       svg {
         width: 100%;
         height: auto;
+
         .path {
           opacity: 0;
         }
       }
+    }
+  }
+
+  .parallaxBg {
+    position: relative;
+    z-index: -1;
+    margin: 0 rem(-40px);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      object-fit: cover;
     }
   }
 }

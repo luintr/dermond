@@ -9,10 +9,17 @@ import Image from 'next/image';
 import FadeHeading from '@/components/FadeHeading';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import { useScrollTrigger } from '@Hooks/useScrollTrigger';
+import useUiContext from '@Context/uiContext';
+import { useGSAP } from '@gsap/react';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
   const refLightMoon = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const wrapImage = useRef<HTMLDivElement | null>(null);
+  const { isPageEnter } = useUiContext();
 
   useEffect(() => {
     if (!refLightMoon.current) return;
@@ -33,6 +40,49 @@ const HeroSection = () => {
     }, [refLightMoon]);
     return () => gsapContext.revert();
   }, [refLightMoon]);
+
+  useScrollTrigger(
+    {
+      trigger: imageRef,
+      start: 'top bottom',
+      onEnter: () => {
+        if (isPageEnter) {
+          gsap.to(wrapImage.current, {
+            clipPath: 'inset(0 0 0% 0)',
+            ease: 'power4.out',
+            duration: 1,
+          });
+          gsap.to(imageRef.current, {
+            scale: 1,
+            ease: 'power4.out',
+            duration: 1,
+          });
+        }
+      },
+    },
+    [imageRef, wrapImage, isPageEnter]
+  );
+
+  // useGSAP(() => {
+  //     if (isPageEnter) {
+  //         gsap.to(wrapImage.current, {
+  //             clipPath: 'inset(0 0 0% 0)',
+  //             ease: 'power4.out', duration: 2,
+  //             scrollTrigger: {
+  //                 trigger: imageRef.current,
+  //                 start: 'top bottom',
+  //             }
+  //         })
+  //         gsap.to(imageRef.current, {
+  //             scale: 1,
+  //             ease: 'power4.out', duration: 2,
+  //             scrollTrigger: {
+  //                 trigger: imageRef.current,
+  //                 start: 'top bottom',
+  //             }
+  //         })
+  //     }
+  // }, [imageRef, wrapImage, isPageEnter])
 
   return (
     <div className={s.heroSection_wrapper}>
@@ -65,15 +115,19 @@ const HeroSection = () => {
             <div
               className={`${s.bottomHero_title} ${cinzelFont.className} col-span-6 col-start-4`}
             >
-              <FadeHeading stagger={0.25}>DER</FadeHeading>
-              <FadeHeading stagger={0.25}>MOND</FadeHeading>
+              <FadeHeading stagger={0.2}>DER</FadeHeading>
+              <FadeHeading stagger={0.2}>MOND</FadeHeading>
             </div>
-            <div className={`${s.bottomHero_wrapImage} col-span-6 col-start-4`}>
+            <div
+              className={`${s.bottomHero_wrapImage} col-span-6 col-start-4`}
+              ref={wrapImage}
+            >
               <Image
                 src={heroImg.src}
                 width={heroImg.width}
                 height={heroImg.height}
                 alt={heroImg.src}
+                ref={imageRef}
               />
             </div>
           </div>

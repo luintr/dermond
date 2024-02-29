@@ -7,7 +7,6 @@ import Fade from '@/components/Fade';
 import { cinzelFont } from '@/utils/fonts';
 import LinkEffect from '@/components/LinkEffect';
 import Image from 'next/image';
-import { Divider, Flex } from 'antd';
 
 export type IProductItem = {
   _id: string;
@@ -33,6 +32,7 @@ const ProductItem = ({ data }: { data: IProductItem }): React.ReactElement => {
             <div className={s.productItem_image_wrapper}>
               <Image
                 className={s.productItem_image_inner}
+                sizes={'10000px'}
                 src={image}
                 alt={name}
                 fill

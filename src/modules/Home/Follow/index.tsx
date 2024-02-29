@@ -19,7 +19,7 @@ const FollowSection = () => {
               follow us on instagram
             </h3>
           </Fade>
-          <Fade direction={'bottom'} from={'30px'} delayEnter={0.6}>
+          <Fade direction={'bottom'} from={'50px'} delayEnter={0.6}>
             <Link
               href="https://www.instagram.com/dermond.vn/"
               target="_blank"
@@ -29,13 +29,13 @@ const FollowSection = () => {
             </Link>
           </Fade>
         </div>
-        <div className={s.parallaxBg}>
-          <BoxParallax offset={0.2}>
-            <Image src={bg.src} width={bg.width} height={bg.height} alt="bg" />
-          </BoxParallax>
-        </div>
         <SvgAnimate />
       </Container>
+      <div className={s.parallaxBg}>
+        <BoxParallax offset={0.15}>
+          <Image src={bg.src} width={bg.width} height={bg.height} alt="bg" />
+        </BoxParallax>
+      </div>
     </section>
   );
 };

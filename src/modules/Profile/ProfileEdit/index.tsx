@@ -106,7 +106,7 @@ const ProfileEdit: React.FC<IProfileEdit> = ({ messageApi }) => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" className={s.buttonSubmit}>
             Submit Edit
           </Button>
         </Form.Item>

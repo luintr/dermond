@@ -1,9 +1,11 @@
 import { getProductDetail, updateProduct } from '@/api/productAPI';
 import {
-  Button,
+  Col,
+  Flex,
   Form,
   Input,
   InputNumber,
+  Row,
   UploadFile,
   UploadProps,
   message,
@@ -11,6 +13,8 @@ import {
 import Upload, { RcFile } from 'antd/es/upload';
 import ImgCrop from 'antd-img-crop';
 import React, { useEffect, useState } from 'react';
+import { Button } from '@/components/Button';
+import { TypographyBody } from '@/components/Typography';
 
 type IProductEdit = {
   productID: string;
@@ -119,6 +123,8 @@ const ProductEdit = ({ productID, setEditMode }: IProductEdit) => {
       </div>
       {detail && (
         <Form
+          labelCol={{ span: 4 }}
+          layout="horizontal"
           name="basic"
           initialValues={{
             name: detail.name,
@@ -132,52 +138,48 @@ const ProductEdit = ({ productID, setEditMode }: IProductEdit) => {
           onFinish={onFinish}
           className={`col-span-12`}
         >
-          <Form.Item name="name" label="Name">
-            <Input />
-          </Form.Item>
+          <Flex gap={40}>
+            <div className="flex-1">
+              <Form.Item name="name" label="Name">
+                <Input />
+              </Form.Item>
 
-          <Form.Item name="price" label="Price">
-            <InputNumber />
-          </Form.Item>
+              <Form.Item name="price" label="Price">
+                <InputNumber />
+              </Form.Item>
+              <Form.Item name="brand" label="Brand">
+                <Input />
+              </Form.Item>
+              <Form.Item name="image" label="Image">
+                <ImgCrop rotationSlider>
+                  <Upload
+                    action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+                    listType="picture-card"
+                    fileList={fileList}
+                    onChange={onChange}
+                  >
+                    {fileList && fileList.length < 1 && '+ Upload'}
+                  </Upload>
+                </ImgCrop>
+              </Form.Item>
+            </div>
+            <div className="flex-1">
+              <Form.Item name="category" label="Category">
+                <Input />
+              </Form.Item>
 
-          <Form.Item name="image" label="Image">
-            <ImgCrop rotationSlider>
-              <Upload
-                action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-                listType="picture-card"
-                fileList={fileList}
-                onChange={onChange}
-              >
-                {fileList && fileList.length < 1 && '+ Upload'}
-              </Upload>
-            </ImgCrop>
-          </Form.Item>
+              <Form.Item name="countInStock" label="Count In Stock">
+                <InputNumber />
+              </Form.Item>
 
-          <Form.Item name="brand" label="Brand">
-            <Input />
-          </Form.Item>
-
-          <Form.Item name="category" label="Category">
-            <Input />
-          </Form.Item>
-
-          <Form.Item name="countInStock" label="Count In Stock">
-            <InputNumber />
-          </Form.Item>
-
-          <Form.Item name="description" label="Description">
-            <Input.TextArea data-lenis-prevent />
-          </Form.Item>
-
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              disabled={isDisable && true}
-            >
-              Submit
-            </Button>
-          </Form.Item>
+              <Form.Item name="description" label="Description">
+                <Input.TextArea data-lenis-prevent />
+              </Form.Item>
+            </div>
+          </Flex>
+          <Button type="submit" disabled={isDisable && true} color="black">
+            <TypographyBody>Submit</TypographyBody>
+          </Button>
         </Form>
       )}
     </div>
