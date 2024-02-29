@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './style.module.scss';
 import { useGetProductsQuery } from '@/store/slices/productApiSlice';
 import ProductItem, {
@@ -8,6 +8,7 @@ import ProductItem, {
 } from '@/modules/Shop/ProductList/ProductItem';
 import LoadingComp from '@Components/LoadingComp';
 import { ArrowUp, Search } from '@/components/Icons';
+import InfiniteScroll from '@/components/InfiniteScroll';
 
 export type IProductsQuery = {
   page: number;
@@ -20,12 +21,15 @@ const ProductList = (): React.ReactElement => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [queryParams, setQueryParams] = useState<IProductsQuery>({
     page: 1,
-    limit: 9,
+    limit: 6,
     sort: '',
     search: '',
   });
 
   const { data: products, isLoading, error } = useGetProductsQuery(queryParams);
+
+  const [clothes, setClothes] = useState<IProductItem[]>([]);
+  const [total, setTotal] = useState<number>(0);
 
   const getErrorMessage = (error: any): string => {
     if (error && typeof error.status === 'number') {
@@ -50,6 +54,13 @@ const ProductList = (): React.ReactElement => {
     e.preventDefault();
     setQueryParams({ ...queryParams, search: searchTerm });
   };
+
+  useEffect(() => {
+    if (products) {
+      setClothes(prevItems => [...prevItems, ...products.data]);
+      setTotal(products.total);
+    }
+  }, [isLoading, products]);
 
   return (
     <>
@@ -85,21 +96,21 @@ const ProductList = (): React.ReactElement => {
           </>
         )}
       </div>
-      <div
+      <InfiniteScroll
+        loader={<LoadingComp />}
         className={`${s.productList} col-span-10 col-start-2 grid grid-cols-12`}
+        fetchMore={() => {
+          setQueryParams({ ...queryParams, page: queryParams.page + 1 });
+          console.log(queryParams);
+        }}
+        hasMore={clothes.length < total}
+        endMessage={<p></p>}
       >
-        {isLoading ? (
-          <div className="col-span-2 col-start-6">
-            <LoadingComp />
-          </div>
-        ) : error ? (
-          <div>{getErrorMessage(error)}</div>
-        ) : (
-          products.data.map((product: IProductItem) => (
+        {clothes &&
+          clothes.map((product: IProductItem) => (
             <ProductItem key={product._id} data={product} />
-          ))
-        )}
-      </div>
+          ))}
+      </InfiniteScroll>
     </>
   );
 };
