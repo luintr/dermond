@@ -46,8 +46,8 @@ const ShopHero = () => {
         </BoxParallax>
       </div>
       <div className={`${s.shopHero_content}`}>
-        <Container className={`${s.container} grid grid-cols-12`}>
-          <div className={`${s.wrapContent} col-span-6 col-start-2`}>
+        <Container className={`${s.container} grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12`}>
+          <div className={`${s.wrapContent} col-span-4 md:col-span-6 md:col-start-2`}>
             <div className={s.verticalLine} ref={verRef}></div>
             <div className={s.horizontalLine} ref={horRef}></div>
             <Fade direction={'bottom'} from={'30px'} delayEnter={0.25}>
