@@ -39,11 +39,7 @@ const ShopHero = () => {
     <section className={`${s.shopHero} `}>
       <div className={s.shopHero_img}>
         {isMobile ? (
-          <Image
-            src={image.src}
-            alt="image"
-            fill
-          />
+          <Image src={image.src} alt="image" fill />
         ) : (
           <BoxParallax>
             <Image
