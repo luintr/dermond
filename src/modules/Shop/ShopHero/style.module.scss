@@ -2,7 +2,6 @@
   margin-bottom: rem(50px);
   position: relative;
   overflow: hidden;
-  height: 100vh;
 
   .container {
     height: 100%;
@@ -14,9 +13,14 @@
     aspect-ratio: 3840/2160;
     z-index: 1;
 
+    @include onlyMobile {
+      height: 100vh;
+    }
+
     img {
       width: 100%;
       height: auto;
+      object-fit: cover;
     }
   }
 
@@ -59,14 +63,32 @@
   }
 
   &_title {
-    font-size: rem(86px);
-    line-height: rem(86px);
-    letter-spacing: rem(8.6px);
+    font-size: rem(40px);
+    line-height: rem(40px);
+    letter-spacing: rem(1.6px);
     height: fit-content;
+    margin-bottom: rem(32px);
+
+    @include min-tablet {
+      font-size: rem(56px);
+      line-height: rem(56px);
+      letter-spacing: rem(3.6px);
+    }
+
+    @include pcSmall {
+      font-size: rem(86px);
+      line-height: rem(86px);
+      letter-spacing: rem(8.6px);
+    }
   }
 
   &_desc {
     max-width: 65%;
+    font-size: rem(16px);
+
+    @include pcSmall {
+      font-size: unset;
+    }
   }
 
   &_link {

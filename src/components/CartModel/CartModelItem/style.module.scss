@@ -5,6 +5,15 @@
   // border-bottom: rem(1px) solid var(--black-08);
   margin-bottom: rem(28px);
   // height: rem(164px);
+  @include onlyMobile {
+    flex-direction: column;
+  }
+
+  &_wrapper {
+    @include onlyMobile {
+      flex-direction: column;
+    }
+  }
 
   &_stats {
     flex: 3;
@@ -20,11 +29,14 @@
 
   &_img {
     position: relative;
-    width: rem(370px);
+    width: 100%;
     aspect-ratio: 1;
     border-radius: rem(25px) rem(5px) rem(5px) rem(5px);
     overflow: hidden;
 
+    @include min-tablet {
+      width: rem(370px);
+    }
     img {
       aspect-ratio: 1;
       object-fit: cover;
@@ -33,14 +45,19 @@
 
   &_title {
     display: block;
-    font-size: rem(28px);
-    line-height: rem(28px);
+    font-size: rem(20px);
+    line-height: rem(20px);
     margin-bottom: rem(24px);
     transition: 0.4s all var(--easeOutQuart);
-    padding: rem(10px);
     // background: var(--black-08);
     width: fit-content;
     color: var(--black-08);
+
+    @include min-tablet {
+      padding: rem(10px);
+      font-size: rem(28px);
+      line-height: rem(28px);
+    }
 
     &:hover {
       opacity: 0.5;
@@ -71,13 +88,27 @@
   }
 
   &_delete {
-    position: absolute;
-    flex: 1;
+    position: relative;
     bottom: 0;
     right: 0;
     cursor: pointer;
     font-weight: 700;
     transition: 0.4s all var(--easeOutQuart);
+    padding: rem(10px);
+    border: rem(1px) solid var(--black-08-20);
+    border-radius: rem(50px);
+    width: fit-content;
+    margin-top: rem(16px);
+
+    &_wrapper{
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    @include min-tablet {
+      position: absolute;
+      flex: 1;
+    }
 
     &:hover {
       opacity: 0.5;

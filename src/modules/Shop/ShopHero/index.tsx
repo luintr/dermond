@@ -9,11 +9,13 @@ import Fade from '@/components/Fade';
 import gsap from 'gsap';
 import useUiContext from '@/context/uiContext';
 import Container from '@/components/Container';
+import useWindowResize from '@/hooks/useWindowSize';
 
 const ShopHero = () => {
   const verRef = useRef<HTMLDivElement | null>(null);
   const horRef = useRef<HTMLDivElement | null>(null);
   const { isPageEnter } = useUiContext();
+  const { isMobile } = useWindowResize();
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -36,21 +38,30 @@ const ShopHero = () => {
   return (
     <section className={`${s.shopHero} `}>
       <div className={s.shopHero_img}>
-        <BoxParallax>
+        {isMobile ? (
           <Image
             src={image.src}
-            width={image.width}
-            height={image.height}
             alt="image"
+            fill
           />
-        </BoxParallax>
+        ) : (
+          <BoxParallax>
+            <Image
+              src={image.src}
+              width={image.width}
+              height={image.height}
+              alt="image"
+              // fill
+            />
+          </BoxParallax>
+        )}
       </div>
       <div className={`${s.shopHero_content}`}>
         <Container
           className={`${s.container} grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12`}
         >
           <div
-            className={`${s.wrapContent} col-span-4 md:col-span-6 md:col-start-2`}
+            className={`${s.wrapContent} col-span-4 sm:col-span-6 md:col-start-2`}
           >
             <div className={s.verticalLine} ref={verRef}></div>
             <div className={s.horizontalLine} ref={horRef}></div>

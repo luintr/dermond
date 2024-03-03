@@ -190,31 +190,10 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
                 </div>
               </Flex>
             </div>
-
-            {/* <IncrementAndDecrementButton
-              amount={item.qty}
-              setAmount={value => addtoCartHandler(item, value)}
-            /> 
-            
-            <RadioSize
-              sizeModel={item.size}
-              addtoCartHandler={e => {
-                addtoCartHandler({ ...item, size: e.target.value }, item.qty);
-              }}
-              className={s.cartItem_size}
-              small
-            />
-
-            <RadioColor
-              colorModel={item.color}
-              addtoCartHandler={e => {
-                addtoCartHandler({ ...item, color: e.target.value }, item.qty);
-              }}
-              className={s.cartItem_color}
-              small
-            /> */}
           </Space>
-          <div className={'w-full relative flex-1'}>
+          <div
+            className={`w-full relative flex-1 ${s.cartItem_delete_wrapper}`}
+          >
             <div
               className={s.cartItem_delete}
               onClick={() => removeFromCartHandler(item)}
