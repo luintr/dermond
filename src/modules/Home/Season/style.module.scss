@@ -15,7 +15,7 @@
         line-height: rem(128px);
         margin-bottom: rem(18px);
 
-        @include min-tabletWide {
+        @include min-tablet {
           font-size: rem(62px);
           line-height: 100%;
         }
@@ -49,7 +49,7 @@
         transform: translateX(-60%);
         overflow: hidden;
 
-        @include min-tabletWide {
+        @include min-tablet {
           display: none;
         }
 
@@ -68,7 +68,7 @@
       padding-top: rem(325px);
       position: relative;
 
-      @include min-tabletWide {
+      @include min-tablet {
         padding-top: rem(232px);
       }
 
@@ -102,7 +102,7 @@
         z-index: 2;
         transform: translate(-82%, 60%);
 
-        @include min-tabletWide {
+        @include min-tablet {
           transform: translate(-82%, 90%);
         }
 

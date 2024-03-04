@@ -16,7 +16,7 @@
         color: var(--tan);
         font-weight: 900;
 
-        @include min-tabletWide {
+        @include min-tablet {
           font-size: rem(28px);
           line-height: 100%;
         }
@@ -96,7 +96,7 @@
   bottom: rem(50px);
   right: rem(40px);
 
-  @include min-tabletWide {
+  @include min-tablet {
     bottom: rem(0px);
   }
 
