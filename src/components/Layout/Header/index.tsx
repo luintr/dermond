@@ -11,6 +11,8 @@ import { CartIcon } from '@/components/Icons';
 import { useHeaderColorStore, useModelStore } from '@/store/zustandStore';
 import LinkEffect from '@/components/LinkEffect';
 import SvgInsert from '@/components/SvgInsert';
+import useWindowResize from '@/hooks/useWindowSize';
+import DrawerNav from '../DrawerNav';
 
 const Header = (): React.ReactElement => {
   const [qtyItems, setQtyItems] = useState<[]>([]);
@@ -21,6 +23,8 @@ const Header = (): React.ReactElement => {
   // @ts-ignore:next-line
   const { userInfo } = useSelector(state => state.auth);
   const { headerColor } = useHeaderColorStore();
+  const { isMobile } = useWindowResize();
+  const [isOpenNav, setIsOpenNav] = useState(false);
 
   useEffect(() => {
     setUser(userInfo);
@@ -37,25 +41,55 @@ const Header = (): React.ReactElement => {
     <header className={`${s.header} ${headerColorClassName}`}>
       <Container className={s.header_container}>
         <div className={s.header_container_left}>
-          <div className={s.logoAnim}>
-            <SvgInsert src="/icons/logo.svg" />
-          </div>
+          {isMobile && (
+            <>
+              <div
+                className={`${s.hamburger} ${isOpenNav ? s.open : ''}`}
+                onClick={() => setIsOpenNav(!isOpenNav)}
+              >
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+              <DrawerNav isOpen={isOpenNav} onOpenNav={setIsOpenNav} />
+            </>
+          )}
+          {!isMobile && (
+            <>
+              <LinkEffect href={ROUTE_PATH.HOME}>
+                <div className={s.logoAnim}>
+                  <SvgInsert src="/icons/logo.svg" />
+                </div>
+              </LinkEffect>
 
-          <LinkEffect
-            href={ROUTE_PATH.HOME}
-            className={`${s.headline_logo} ${headlineColorClassName} ${playfairFont.className}`}
-          >
-            DER MOND
-          </LinkEffect>
+              <LinkEffect
+                href={ROUTE_PATH.HOME}
+                className={`${s.headline_logo} ${headlineColorClassName} ${playfairFont.className}`}
+              >
+                DER MOND
+              </LinkEffect>
+            </>
+          )}
         </div>
-
+        {isMobile && (
+          <LinkEffect href={ROUTE_PATH.HOME}>
+            <div className={s.logoAnim}>
+              <SvgInsert src="/icons/logo.svg" />
+            </div>
+          </LinkEffect>
+        )}
         <div className={s.navigate}>
-          <LinkEffect href={ROUTE_PATH.STORY} className={s.navigate_item}>
-            OUR STORY
-          </LinkEffect>
-          <LinkEffect href={ROUTE_PATH.SHOP} className={s.navigate_item}>
-            Shop
-          </LinkEffect>
+          {!isMobile && (
+            <>
+              <LinkEffect href={ROUTE_PATH.STORY} className={s.navigate_item}>
+                OUR STORY
+              </LinkEffect>
+              <LinkEffect href={ROUTE_PATH.SHOP} className={s.navigate_item}>
+                Shop
+              </LinkEffect>
+            </>
+          )}
           {user ? (
             <ProfileHeader data={user} />
           ) : (

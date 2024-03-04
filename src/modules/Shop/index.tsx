@@ -7,7 +7,9 @@ const ShopModule = () => {
   return (
     <div className={s.shopModule}>
       <ShopHero />
-      <div className={`${s.container} container grid grid-cols-12`}>
+      <div
+        className={`${s.container} container grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12`}
+      >
         <ProductList />
       </div>
     </div>

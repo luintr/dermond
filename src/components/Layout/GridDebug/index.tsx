@@ -28,7 +28,7 @@ export const GridDebug = () => {
   return (
     <div className={`grid-debug ${isGird ? '' : 'd-none'}`}>
       <div className="container">
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12">
           <div className="col-sm-1 col col--1">
             <div className="grid-col" />
           </div>

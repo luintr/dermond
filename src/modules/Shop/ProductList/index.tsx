@@ -114,7 +114,7 @@ const ProductList = (): React.ReactElement => {
       </InfiniteScroll> */}
       <Fade direction={'bottom'} from={'30px'} delayTrigger={0.5}>
         <form
-          className={`${s.search} col-span-4 col-start-5 mb-10`}
+          className={`${s.search} col-span-4 md:col-start-5 mb-10`}
           onSubmit={handleSubmit}
         >
           <input
@@ -129,7 +129,7 @@ const ProductList = (): React.ReactElement => {
       <Fade direction={'bottom'} from={'30px'} delayTrigger={0.5}>
         <div
           onClick={handleSortByPrice}
-          className={`col-span-2 col-start-10 flex items-center mb-10 cursor-pointer`}
+          className={`col-span-4 sm:col-span-3 md:col-span-2 sm:col-start-6 md:col-start-10 flex items-center justify-end mb-10 cursor-pointer`}
         >
           <span> Sorted by:</span>
           {queryParams.sort === '' ? (
@@ -149,7 +149,7 @@ const ProductList = (): React.ReactElement => {
         </div>
       </Fade>
       <div
-        className={`${s.productList} col-span-10 col-start-2 grid grid-cols-12`}
+        className={`${s.productList} grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 col-span-4 sm:col-span-8 md:col-span-10 md:col-start-2`}
       >
         {isLoading ? (
           <div className="col-span-2 col-start-6">

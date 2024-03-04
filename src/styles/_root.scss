@@ -1,5 +1,9 @@
 body {
-  --gap-x: #{rem(40px)};
+  --gap-x: #{rem(20px)};
+
+  @include pcSmall {
+    --gap-x: #{rem(40px)};
+  }
   --easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
   --easeInOutQuart: cubic-bezier(0.76, 0, 0.24, 1);
   --header-h: #{rem(80px)};
