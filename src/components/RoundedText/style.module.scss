@@ -3,6 +3,16 @@
   height: rem(128px);
   cursor: pointer;
 
+  @include min-tabletWide {
+    width: 8.8rem;
+    height: 8.8rem;
+  }
+
+  @include pcSmall {
+    width: rem(128px);
+    height: rem(128px);
+  }
+
   text {
     font-size: rem(20px);
   }
@@ -15,6 +25,14 @@
       transform: translate(-50%, -50%);
       width: rem(29px);
       height: auto;
+
+      @include min-tabletWide {
+        width: rem(18px);
+      }
+
+      @include pcSmall {
+        width: rem(29px);
+      }
 
       path {
         stroke: var(--tan);

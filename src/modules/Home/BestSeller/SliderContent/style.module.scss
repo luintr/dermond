@@ -19,10 +19,24 @@
     margin-bottom: rem(48px);
     max-width: rem(410px);
     opacity: 0;
+
+    @include min-tabletWide {
+      font-size: 2.4rem;
+      line-height: 2.8rem;
+      margin-bottom: 2.8rem;
+    }
   }
 
   &_content {
     @include overtext(6);
     opacity: 0;
+
+    @include min-tabletWide {
+      font-size: rem(12px);
+    }
+
+    @include pcSmall {
+      font-size: rem(20px);
+    }
   }
 }

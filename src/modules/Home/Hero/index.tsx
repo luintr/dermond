@@ -89,7 +89,9 @@ const HeroSection = () => {
       <section className={s.heroSection}>
         <Container className={s.heroSection_container}>
           <div className={`${s.topHero} grid grid-cols-12`}>
-            <div className={`${s.topHero_left} col-span-2 col-start-2`}>
+            <div
+              className={`${s.topHero_left} col-span-2 col-start-2 lg:col-span-2 lg:col-start-2 md:col-span-3 md:col-start-2`}
+            >
               <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
                 <p>TAILOR SHOP BASED IN VIETNAM</p>
               </Fade>
@@ -97,7 +99,9 @@ const HeroSection = () => {
                 <p>ETS 2019</p>
               </Fade>
             </div>
-            <div className={`${s.topHero_middle} col-span-2 col-start-6`}>
+            <div
+              className={`${s.topHero_middle} col-span-2 col-start-6 lg:col-span-2 lg:col-start-6 md:col-span-3 md:col-start-6`}
+            >
               <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
                 <p>INSTAGRAM: @DERMOND.VN</p>
               </Fade>
@@ -113,7 +117,7 @@ const HeroSection = () => {
           </div>
           <div className={`${s.bottomHero} grid grid-cols-12`}>
             <div
-              className={`${s.bottomHero_title} ${cinzelFont.className} col-span-6 col-start-4`}
+              className={`${s.bottomHero_title} ${cinzelFont.className} col-span-6 col-start-4 lg:col-span-6 lg:col-start-4 md:col-span-7 md:col-start-4`}
             >
               <FadeHeading stagger={0.2}>DER</FadeHeading>
               <FadeHeading stagger={0.2}>MOND</FadeHeading>

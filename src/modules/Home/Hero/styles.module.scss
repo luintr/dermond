@@ -1,8 +1,24 @@
 .heroSection {
   min-height: 100vh;
 
+  @include min-tabletWide {
+    min-height: 85vh;
+  }
+
+  @include pcSmall {
+    min-height: 100vh;
+  }
+
   &_wrapper {
     margin-bottom: rem(400px);
+
+    @include min-tabletWide {
+      margin-bottom: rem(320px);
+    }
+
+    @include pcSmall {
+      margin-bottom: rem(400px);
+    }
   }
 
   &_container {
@@ -13,6 +29,16 @@
         font-size: rem(16px);
         line-height: rem(18.78px);
         color: var(--black-08);
+
+        @include min-tabletWide {
+          font-size: rem(12px);
+          line-height: rem(16px);
+        }
+
+        @include pcSmall {
+          font-size: rem(16px);
+          line-height: rem(18.78px);
+        }
       }
 
       &_right {
@@ -33,6 +59,14 @@
           line-height: 100%;
           color: var(--black-08);
           letter-spacing: rem(-10px);
+
+          @include min-tabletWide {
+            font-size: rem(160px);
+          }
+
+          @include pcSmall {
+            font-size: rem(250px);
+          }
 
           &:last-child {
             text-align: right;

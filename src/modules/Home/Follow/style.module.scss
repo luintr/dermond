@@ -3,6 +3,13 @@
   position: relative;
   z-index: 3;
 
+  @include pcSmall {
+    padding-top: rem(735px);
+  }
+  @include min-tabletWide {
+    padding-top: rem(440px);
+  }
+
   .container {
     .follow {
       text-align: center;
@@ -11,12 +18,32 @@
         font-size: rem(64px);
         line-height: rem(86.27px);
         margin-bottom: rem(32px);
+
+        @include min-tabletWide {
+          font-size: rem(32px);
+          margin-bottom: rem(24px);
+          line-height: 100%;
+        }
+
+        @include pcSmall {
+          font-size: rem(64px);
+          line-height: rem(86.27px);
+          margin-bottom: rem(32px);
+        }
       }
 
       &_content {
         font-size: rem(24px);
         line-height: rem(28.18px);
         margin-bottom: rem(16px);
+
+        @include min-tabletWide {
+          font-size: rem(18px);
+        }
+
+        @include pcSmall {
+          font-size: rem(24px);
+        }
       }
     }
 
@@ -41,7 +68,16 @@
   .parallaxBg {
     position: relative;
     z-index: -1;
-    margin: 0 rem(-40px);
+    margin: 0;
+
+    @include min-tabletWide {
+      margin: 0;
+    }
+
+    @include pcSmall {
+      margin: 0 rem(-40px);
+    }
+
     overflow: hidden;
 
     img {

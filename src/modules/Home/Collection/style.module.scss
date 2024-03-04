@@ -7,11 +7,29 @@
         position: relative;
         font-size: rem(128px);
         line-height: rem(128px);
-        margin-bottom: rem(-20px);
+        // margin-bottom: rem(-20px);
+
+        @include min-tabletWide {
+          font-size: rem(64px);
+          line-height: 100%;
+        }
+
+        @include pcSmall {
+          font-size: rem(128px);
+          line-height: rem(128px);
+        }
 
         span {
           position: relative;
           right: rem(-150px);
+
+          @include min-tabletWide {
+            right: rem(-80px);
+          }
+
+          @include pcSmall {
+            right: rem(-150px);
+          }
         }
 
         &::before {
@@ -22,19 +40,54 @@
           background: var(--black-08);
           bottom: 17%;
           left: 0%;
+
+          @include min-tabletWide {
+            width: rem(60px);
+            height: rem(3.2px);
+          }
+
+          @include pcSmall {
+            width: rem(100px);
+            height: rem(5px);
+          }
         }
       }
 
       &_desc {
+        @include min-tabletWide {
+          margin-bottom: rem(10px);
+        }
+
+        @include pcSmall {
+          margin-bottom: 0px;
+        }
+
         .line {
           width: 100%;
           clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
           height: rem(5px);
           background: var(--black-08);
+
+          @include min-tabletWide {
+            height: rem(3.2px);
+          }
+
+          @include pcSmall {
+            height: rem(5px);
+          }
         }
 
         .wrapText {
           align-self: end;
+          font-size: rem(20px);
+
+          @include min-tabletWide {
+            font-size: rem(11.6px);
+          }
+
+          @include pcSmall {
+            font-size: rem(20px);
+          }
 
           span {
             font-weight: 700;
