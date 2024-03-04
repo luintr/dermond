@@ -3,7 +3,7 @@
   height: rem(128px);
   cursor: pointer;
 
-  @include min-tabletWide {
+  @include min-tablet {
     width: 8.8rem;
     height: 8.8rem;
   }
@@ -26,7 +26,7 @@
       width: rem(29px);
       height: auto;
 
-      @include min-tabletWide {
+      @include min-tablet {
         width: rem(18px);
       }
 

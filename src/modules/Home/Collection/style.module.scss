@@ -9,7 +9,7 @@
         line-height: rem(128px);
         // margin-bottom: rem(-20px);
 
-        @include min-tabletWide {
+        @include min-tablet {
           font-size: rem(64px);
           line-height: 100%;
         }
@@ -23,7 +23,7 @@
           position: relative;
           right: rem(-150px);
 
-          @include min-tabletWide {
+          @include min-tablet {
             right: rem(-80px);
           }
 
@@ -41,7 +41,7 @@
           bottom: 17%;
           left: 0%;
 
-          @include min-tabletWide {
+          @include min-tablet {
             width: rem(60px);
             height: rem(3.2px);
           }
@@ -54,7 +54,7 @@
       }
 
       &_desc {
-        @include min-tabletWide {
+        @include min-tablet {
           margin-bottom: rem(10px);
         }
 
@@ -68,7 +68,7 @@
           height: rem(5px);
           background: var(--black-08);
 
-          @include min-tabletWide {
+          @include min-tablet {
             height: rem(3.2px);
           }
 
@@ -81,7 +81,7 @@
           align-self: end;
           font-size: rem(20px);
 
-          @include min-tabletWide {
+          @include min-tablet {
             font-size: rem(11.6px);
           }
 

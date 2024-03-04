@@ -1,7 +1,7 @@
 .heroSection {
   min-height: 100vh;
 
-  @include min-tabletWide {
+  @include min-tablet {
     min-height: 85vh;
   }
 
@@ -12,7 +12,7 @@
   &_wrapper {
     margin-bottom: rem(400px);
 
-    @include min-tabletWide {
+    @include min-tablet {
       margin-bottom: rem(320px);
     }
 
@@ -30,7 +30,7 @@
         line-height: rem(18.78px);
         color: var(--black-08);
 
-        @include min-tabletWide {
+        @include min-tablet {
           font-size: rem(12px);
           line-height: rem(16px);
         }
@@ -60,7 +60,7 @@
           color: var(--black-08);
           letter-spacing: rem(-10px);
 
-          @include min-tabletWide {
+          @include min-tablet {
             font-size: rem(160px);
           }
 

@@ -26,18 +26,14 @@ export const useHeadlineFade = ({
         const chars = splitTextRef.current?.chars as HTMLElement[];
 
         isPageEnter &&
-          gsap.fromTo(
-            chars,
-            { opacity: 0 },
-            {
-              opacity: 1,
-              stagger: {
-                from: 'random',
-                each: stagger,
-              },
-              ease: 'power4.inOut',
-            }
-          );
+          gsap.to(chars, {
+            opacity: 1,
+            stagger: {
+              from: 'random',
+              each: stagger,
+            },
+            ease: 'power4.inOut',
+          });
       },
     },
     [splitTextRef, stagger, ref, isPageEnter]
