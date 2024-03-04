@@ -16,6 +16,16 @@
         color: var(--tan);
         font-weight: 900;
 
+        @include min-tabletWide {
+          font-size: rem(28px);
+          line-height: 100%;
+        }
+
+        @include pcSmall {
+          font-size: rem(48px);
+          line-height: rem(56.35px);
+        }
+
         span {
           display: block;
           color: var(--coral);
@@ -85,4 +95,13 @@
   position: absolute;
   bottom: rem(50px);
   right: rem(40px);
+
+  @include min-tabletWide {
+    bottom: rem(0px);
+  }
+
+  @include pcSmall {
+    bottom: rem(50px);
+    right: rem(40px);
+  }
 }

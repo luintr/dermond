@@ -14,6 +14,16 @@
         font-size: rem(128px);
         line-height: rem(128px);
         margin-bottom: rem(18px);
+
+        @include min-tabletWide {
+          font-size: rem(62px);
+          line-height: 100%;
+        }
+
+        @include pcSmall {
+          font-size: rem(128px);
+          line-height: rem(128px);
+        }
       }
 
       &_content {
@@ -39,8 +49,16 @@
         transform: translateX(-60%);
         overflow: hidden;
 
+        @include min-tabletWide {
+          display: none;
+        }
+
+        @include pcSmall {
+          display: block;
+        }
+
         img {
-          height: vh(624px);
+          height: rem(624px);
           width: auto;
         }
       }
@@ -49,6 +67,14 @@
     .seasonImage {
       padding-top: rem(325px);
       position: relative;
+
+      @include min-tabletWide {
+        padding-top: rem(232px);
+      }
+
+      @include pcSmall {
+        padding-top: rem(325px);
+      }
 
       a {
         font-size: rem(32px);
@@ -75,6 +101,14 @@
         border-radius: rem(10px);
         z-index: 2;
         transform: translate(-82%, 60%);
+
+        @include min-tabletWide {
+          transform: translate(-82%, 90%);
+        }
+
+        @include pcSmall {
+          transform: translate(-82%, 60%);
+        }
       }
     }
   }

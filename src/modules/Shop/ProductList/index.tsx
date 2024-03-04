@@ -9,6 +9,7 @@ import ProductItem, {
 import LoadingComp from '@Components/LoadingComp';
 import { ArrowUp, Search } from '@/components/Icons';
 import InfiniteScroll from '@/components/InfiniteScroll';
+import Fade from '@/components/Fade';
 
 export type IProductsQuery = {
   page: number;
@@ -64,7 +65,7 @@ const ProductList = (): React.ReactElement => {
 
   return (
     <>
-      <form
+      {/* <form
         className={`${s.search} col-span-4 col-start-5 mb-10`}
         onSubmit={handleSubmit}
       >
@@ -110,7 +111,58 @@ const ProductList = (): React.ReactElement => {
           clothes.map((product: IProductItem) => (
             <ProductItem key={product._id} data={product} />
           ))}
-      </InfiniteScroll>
+      </InfiniteScroll> */}
+      <Fade direction={'bottom'} from={'30px'} delayTrigger={0.5}>
+        <form
+          className={`${s.search} col-span-4 col-start-5 mb-10`}
+          onSubmit={handleSubmit}
+        >
+          <input
+            type="text"
+            placeholder="Search here..."
+            value={searchTerm}
+            onChange={handleSearchTermChange}
+          />
+          <Search />
+        </form>
+      </Fade>
+      <Fade direction={'bottom'} from={'30px'} delayTrigger={0.5}>
+        <div
+          onClick={handleSortByPrice}
+          className={`col-span-2 col-start-10 flex items-center mb-10 cursor-pointer`}
+        >
+          <span> Sorted by:</span>
+          {queryParams.sort === '' ? (
+            <span className="text[2rem] mx-5"> NEWEST</span>
+          ) : (
+            <>
+              <span className="text[2rem] mx-5">PRICE</span>
+              <span
+                style={{
+                  transform: `${queryParams.sort === 'desc' ? 'rotate(180deg)' : 'rotate(0deg)'}`,
+                }}
+              >
+                <ArrowUp />
+              </span>
+            </>
+          )}
+        </div>
+      </Fade>
+      <div
+        className={`${s.productList} col-span-10 col-start-2 grid grid-cols-12`}
+      >
+        {isLoading ? (
+          <div className="col-span-2 col-start-6">
+            <LoadingComp />
+          </div>
+        ) : error ? (
+          <div>{getErrorMessage(error)}</div>
+        ) : (
+          products.data.map((product: IProductItem) => (
+            <ProductItem key={product._id} data={product} />
+          ))
+        )}
+      </div>
     </>
   );
 };

@@ -37,7 +37,7 @@ const SeasonSection = () => {
             </Fade>
             <Fade direction={'bottom'} from={'50px'} delayTrigger={0.4}>
               <div
-                className={`${s.seasonDesc_navigateBox} col-span-2 col-start-1`}
+                className={`${s.seasonDesc_navigateBox} col-span-2 col-start-1 lg:col-span-2 md:col-span-5 md:mb-16`}
               >
                 <p>
                   <span className={cinzelFont.className}>DER MOND</span>{' '}
@@ -52,7 +52,7 @@ const SeasonSection = () => {
 
             <Fade direction={'bottom'} from={'60px'} delayTrigger={0.4}>
               <p
-                className={`${s.seasonDesc_subContent} col-span-2 col-start-4`}
+                className={`${s.seasonDesc_subContent} col-span-2 col-start-4 lg:col-span-2 lg:col-start-4 md:col-span-5 md:col-start-1`}
               >
                 Customization Beyond Boundaries: Design is personal, and so is
                 our approach. We don&apos;t just design dresses; we craft
