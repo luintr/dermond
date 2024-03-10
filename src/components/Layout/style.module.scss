@@ -1,10 +1,6 @@
 .mainLayout {
   background: var(--tan);
 
-  // &.overflow {
-  //   overflow: hidden;
-  // }
-
   .header {
     height: rem(80px);
     position: sticky;
@@ -44,6 +40,7 @@
             width: rem(14px);
             height: rem(24px);
           }
+
           padding-right: rem(28px);
         }
 
@@ -115,7 +112,18 @@
 
     &_navigate {
       color: var(--tan);
-      padding: rem(120px) 0 rem(117px) 0;
+      padding: rem(68px) 0;
+      text-align: center;
+
+      @include min-tablet {
+        padding: rem(94px) 0;
+        text-align: left;
+      }
+
+      @include pcSmall {
+        padding: rem(120px) 0 rem(117px) 0;
+        text-align: left;
+      }
 
       .navItem {
         &_headline {
@@ -127,7 +135,7 @@
 
         &_list {
           li {
-            width: fit-content;
+            width: 100%;
             opacity: 0.6;
             margin-bottom: rem(20px);
             cursor: pointer;
@@ -147,14 +155,25 @@
 
     &_form {
       background: var(--tan);
-      padding: rem(120px) rem(40px) 0 rem(40px);
-      margin-left: rem(-40px);
-      margin-right: rem(-40px);
+      padding: rem(94px) rem(40px);
+
+      @include min-tablet {
+        padding: rem(94px) rem(40px);
+      }
+
+      @include pcSmall {
+        padding: rem(120px) rem(40px) 0 rem(40px);
+      }
 
       p {
-        font-size: rem(48px);
-        line-height: rem(48px);
+        font-size: rem(28px);
+        line-height: rem(38px);
         margin-bottom: rem(80px);
+
+        @include pcSmall {
+          font-size: rem(48px);
+          line-height: rem(48px);
+        }
       }
 
       .wrapInput {

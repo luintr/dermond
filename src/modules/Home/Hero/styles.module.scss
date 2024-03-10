@@ -2,7 +2,7 @@
   min-height: 100vh;
 
   @include min-tablet {
-    min-height: 85vh;
+    min-height: 60vh;
   }
 
   @include pcSmall {
@@ -61,7 +61,7 @@
           letter-spacing: rem(-10px);
 
           @include min-tablet {
-            font-size: rem(160px);
+            font-size: rem(140px);
           }
 
           @include pcSmall {

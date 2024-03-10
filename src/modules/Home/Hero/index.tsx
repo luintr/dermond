@@ -117,7 +117,7 @@ const HeroSection = () => {
           </div>
           <div className={`${s.bottomHero} grid grid-cols-12`}>
             <div
-              className={`${s.bottomHero_title} ${cinzelFont.className} col-span-6 col-start-4 lg:col-span-6 lg:col-start-4 md:col-span-7 md:col-start-4`}
+              className={`${s.bottomHero_title} ${cinzelFont.className} lg:col-span-6 lg:col-start-4 col-span-8 col-start-3`}
             >
               <FadeHeading stagger={0.2}>DER</FadeHeading>
               <FadeHeading stagger={0.2}>MOND</FadeHeading>

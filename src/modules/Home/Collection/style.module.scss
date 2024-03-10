@@ -7,10 +7,9 @@
         position: relative;
         font-size: rem(128px);
         line-height: rem(128px);
-        // margin-bottom: rem(-20px);
 
         @include min-tablet {
-          font-size: rem(64px);
+          font-size: rem(48px);
           line-height: 100%;
         }
 

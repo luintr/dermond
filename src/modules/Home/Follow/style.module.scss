@@ -3,11 +3,12 @@
   position: relative;
   z-index: 3;
 
-  @include pcSmall {
-    padding-top: rem(735px);
-  }
   @include min-tablet {
     padding-top: rem(440px);
+  }
+
+  @include pcSmall {
+    padding-top: rem(735px);
   }
 
   .container {
@@ -69,15 +70,6 @@
     position: relative;
     z-index: -1;
     margin: 0;
-
-    @include min-tablet {
-      margin: 0;
-    }
-
-    @include pcSmall {
-      margin: 0 rem(-40px);
-    }
-
     overflow: hidden;
 
     img {
