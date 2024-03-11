@@ -17,7 +17,7 @@
         font-weight: 900;
 
         @include min-tablet {
-          font-size: rem(28px);
+          font-size: rem(22px);
           line-height: 100%;
         }
 
@@ -39,6 +39,10 @@
         font-size: rem(64px);
         line-height: rem(64px);
         letter-spacing: rem(6.4px);
+
+        @include min-tablet {
+          font-size: rem(44px);
+        }
       }
     }
 
@@ -54,10 +58,38 @@
         transition: 0.4s all var(--easeOutQuart);
         z-index: 2;
 
+        @include min-tablet {
+          left: rem(20px);
+        }
+
+        @include pcSmall {
+          left: rem(40px);
+        }
+
+        svg {
+          width: rem(12px);
+
+          @include min-tablet {
+            width: rem(18px);
+          }
+
+          @include pcSmall {
+            width: rem(32px);
+          }
+        }
+
         &.right {
           left: unset;
           right: rem(40px);
           transform: translateY(-50%) rotate(180deg);
+
+          @include min-tablet {
+            right: rem(20px);
+          }
+
+          @include pcSmall {
+            right: rem(40px);
+          }
         }
 
         &.disable {

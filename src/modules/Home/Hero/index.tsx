@@ -88,9 +88,9 @@ const HeroSection = () => {
     <div className={s.heroSection_wrapper}>
       <section className={s.heroSection}>
         <Container className={s.heroSection_container}>
-          <div className={`${s.topHero} grid grid-cols-12`}>
+          <div className={`${s.topHero} grid grid-cols-12 gap-10`}>
             <div
-              className={`${s.topHero_left} col-span-2 col-start-2 lg:col-span-2 lg:col-start-2 md:col-span-3 md:col-start-2`}
+              className={`${s.topHero_left} col-span-12 col-start-1 lg:col-span-2 lg:col-start-2 sm:col-span-3 sm:col-start-2`}
             >
               <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
                 <p>TAILOR SHOP BASED IN VIETNAM</p>
@@ -100,13 +100,15 @@ const HeroSection = () => {
               </Fade>
             </div>
             <div
-              className={`${s.topHero_middle} col-span-2 col-start-6 lg:col-span-2 lg:col-start-6 md:col-span-3 md:col-start-6`}
+              className={`${s.topHero_middle} col-span-12 col-start-1 lg:col-span-2 lg:col-start-6 sm:col-span-3 sm:col-start-6`}
             >
               <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
                 <p>INSTAGRAM: @DERMOND.VN</p>
               </Fade>
             </div>
-            <div className={`${s.topHero_right} col-span-2 col-start-10`}>
+            <div
+              className={`${s.topHero_right} col-span-12 col-start-1 sm:col-span-2 sm:col-start-10`}
+            >
               <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
                 <p>HN 16:59</p>
               </Fade>
@@ -117,7 +119,7 @@ const HeroSection = () => {
           </div>
           <div className={`${s.bottomHero} grid grid-cols-12`}>
             <div
-              className={`${s.bottomHero_title} ${cinzelFont.className} lg:col-span-6 lg:col-start-4 col-span-8 col-start-3`}
+              className={`${s.bottomHero_title} ${cinzelFont.className} lg:col-span-6 lg:col-start-4 sm:col-span-8 sm:col-start-3 col-span-12 col-start-1`}
             >
               <FadeHeading stagger={0.2}>DER</FadeHeading>
               <FadeHeading stagger={0.2}>MOND</FadeHeading>

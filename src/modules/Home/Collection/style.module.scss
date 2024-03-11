@@ -5,8 +5,8 @@
 
       &_title {
         position: relative;
-        font-size: rem(128px);
-        line-height: rem(128px);
+        font-size: rem(44px);
+        line-height: 100%;
 
         @include min-tablet {
           font-size: rem(48px);
@@ -20,7 +20,7 @@
 
         span {
           position: relative;
-          right: rem(-150px);
+          right: rem(-40px);
 
           @include min-tablet {
             right: rem(-80px);
@@ -34,8 +34,8 @@
         &::before {
           position: absolute;
           content: '';
-          width: rem(100px);
-          height: rem(5px);
+          width: rem(36px);
+          height: rem(3.2px);
           background: var(--black-08);
           bottom: 17%;
           left: 0%;

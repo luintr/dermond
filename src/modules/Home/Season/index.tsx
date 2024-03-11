@@ -21,7 +21,9 @@ const SeasonSection = () => {
   return (
     <section className={s.seasonSection}>
       <Container className={`${s.container} grid grid-cols-12`}>
-        <div className={`${s.seasonDesc} col-span-5 col-start-2 `}>
+        <div
+          className={`${s.seasonDesc} col-span-12 col-start-1 sm:col-span-5 sm:col-start-2 `}
+        >
           <div className={`${s.box} col-span-5 grid grid-cols-5`}>
             <FadeHeading className={`${s.seasonDesc_title} col-span-5`}>
               {`// TIS THE SEASON`}
@@ -75,7 +77,9 @@ const SeasonSection = () => {
           </div>
         </div>
 
-        <div className={`${s.seasonImage} col-span-5 col-start-8`}>
+        <div
+          className={`${s.seasonImage} col-span-12 col-start-1 sm:col-span-5 sm:col-start-8`}
+        >
           <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
             <LinkEffect href={ROUTE_PATH.SHOP}>
               <Button shape="rounded" variant="text">

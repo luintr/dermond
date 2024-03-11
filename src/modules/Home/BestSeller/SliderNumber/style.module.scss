@@ -7,6 +7,10 @@
   letter-spacing: rem(6.4px);
   overflow: hidden;
 
+  @include min-tablet {
+    font-size: rem(44px);
+  }
+
   .num {
     position: absolute;
     top: 0;

@@ -1,5 +1,5 @@
 .heroSection {
-  min-height: 100vh;
+  min-height: 64vh;
 
   @include min-tablet {
     min-height: 60vh;
@@ -10,7 +10,7 @@
   }
 
   &_wrapper {
-    margin-bottom: rem(400px);
+    margin-bottom: rem(280px);
 
     @include min-tablet {
       margin-bottom: rem(320px);
@@ -42,7 +42,10 @@
       }
 
       &_right {
-        text-align: right;
+        text-align: left;
+        @include min-tablet {
+          text-align: right;
+        }
       }
     }
 
@@ -53,9 +56,14 @@
       &_title {
         position: relative;
         z-index: 2;
+        padding-top: rem(50px);
+
+        @include min-tablet {
+          padding-top: 0;
+        }
 
         h2 {
-          font-size: rem(250px);
+          font-size: rem(76px);
           line-height: 100%;
           color: var(--black-08);
           letter-spacing: rem(-10px);
@@ -81,12 +89,16 @@
         transform: translateX(-50%);
         z-index: 1;
         background: #fff;
-        min-width: vw(670px);
+        min-width: 90vw;
         max-height: vh(855px);
         border-top-left-radius: rem(1000px);
         border-top-right-radius: rem(1000px);
         overflow: hidden;
         clip-path: inset(0 0 100% 0);
+
+        @include min-tablet {
+          min-width: vw(670px);
+        }
 
         img {
           height: 100%;
