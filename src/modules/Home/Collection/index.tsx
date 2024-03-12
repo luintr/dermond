@@ -31,18 +31,20 @@ const CollectionSecion = () => {
   return (
     <section className={s.collectionSection}>
       <Container className={s.container}>
-        <div className={`${s.introduce} grid grid-cols-12`}>
+        <div className={`${s.introduce} grid grid-cols-12 gap-10 sm:gap-0`}>
           <FadeHeading
-            className={`${s.introduce_title} ${cinzelFont.className} col-span-6 col-start-2`}
+            className={`${s.introduce_title} ${cinzelFont.className} col-span-12 col-start-1 sm:col-span-6 sm:col-start-2`}
             stagger={0.02}
           >
             MINIMALIST STRONG FOR <span>COLLECTION</span>
           </FadeHeading>
           <div
-            className={`${s.introduce_desc} col-span-4 col-start-8 grid grid-cols-4`}
+            className={`${s.introduce_desc} col-span-12 col-start-1 sm:col-span-4 sm:col-start-8 grid grid-cols-4`}
           >
             <div className={`${s.line} col-span-4`} ref={line}></div>
-            <div className={`${s.wrapText} col-span-3 col-start-2`}>
+            <div
+              className={`${s.wrapText} col-start-1 col-span-4 sm:col-span-3 sm:col-start-2`}
+            >
               <Fade direction={'bottom'} from={'30px'} delayTrigger={0.3}>
                 <p>
                   Emphasize{' '}

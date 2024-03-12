@@ -11,12 +11,12 @@
       padding-top: rem(120px);
 
       &_title {
-        font-size: rem(128px);
-        line-height: rem(128px);
-        margin-bottom: rem(18px);
+        font-size: rem(58px);
+        line-height: 100%;
+        margin-bottom: rem(12px);
 
         @include min-tablet {
-          font-size: rem(62px);
+          font-size: rem(48px);
           line-height: 100%;
         }
 
@@ -48,10 +48,7 @@
         border-radius: rem(10px);
         transform: translateX(-60%);
         overflow: hidden;
-
-        @include min-tablet {
-          display: none;
-        }
+        display: none;
 
         @include pcSmall {
           display: block;
@@ -65,11 +62,11 @@
     }
 
     .seasonImage {
-      padding-top: rem(325px);
+      padding-top: rem(24px);
       position: relative;
 
       @include min-tablet {
-        padding-top: rem(232px);
+        padding-top: rem(214px);
       }
 
       @include pcSmall {
@@ -103,7 +100,7 @@
         transform: translate(-82%, 60%);
 
         @include min-tablet {
-          transform: translate(-82%, 90%);
+          transform: translate(-82%, 106%);
         }
 
         @include pcSmall {

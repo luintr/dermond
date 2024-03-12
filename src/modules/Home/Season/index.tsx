@@ -21,7 +21,9 @@ const SeasonSection = () => {
   return (
     <section className={s.seasonSection}>
       <Container className={`${s.container} grid grid-cols-12`}>
-        <div className={`${s.seasonDesc} col-span-5 col-start-2 `}>
+        <div
+          className={`${s.seasonDesc} col-span-12 col-start-1 sm:col-span-5 sm:col-start-2 `}
+        >
           <div className={`${s.box} col-span-5 grid grid-cols-5`}>
             <FadeHeading className={`${s.seasonDesc_title} col-span-5`}>
               {`// TIS THE SEASON`}
@@ -37,7 +39,7 @@ const SeasonSection = () => {
             </Fade>
             <Fade direction={'bottom'} from={'50px'} delayTrigger={0.4}>
               <div
-                className={`${s.seasonDesc_navigateBox} col-span-2 col-start-1 lg:col-span-2 md:col-span-5 md:mb-16`}
+                className={`${s.seasonDesc_navigateBox} col-start-1 lg:col-span-2 col-span-5 mb-16`}
               >
                 <p>
                   <span className={cinzelFont.className}>DER MOND</span>{' '}
@@ -52,7 +54,7 @@ const SeasonSection = () => {
 
             <Fade direction={'bottom'} from={'60px'} delayTrigger={0.4}>
               <p
-                className={`${s.seasonDesc_subContent} col-span-2 col-start-4 lg:col-span-2 lg:col-start-4 md:col-span-5 md:col-start-1`}
+                className={`${s.seasonDesc_subContent} lg:col-span-2 lg:col-start-4 col-span-5 col-start-1`}
               >
                 Customization Beyond Boundaries: Design is personal, and so is
                 our approach. We don&apos;t just design dresses; we craft
@@ -75,7 +77,9 @@ const SeasonSection = () => {
           </div>
         </div>
 
-        <div className={`${s.seasonImage} col-span-5 col-start-8`}>
+        <div
+          className={`${s.seasonImage} col-span-12 col-start-1 sm:col-span-5 sm:col-start-8`}
+        >
           <Fade direction={'bottom'} from={'30px'} delayTrigger={0.4}>
             <LinkEffect href={ROUTE_PATH.SHOP}>
               <Button shape="rounded" variant="text">

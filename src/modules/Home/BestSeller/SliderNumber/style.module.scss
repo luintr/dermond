@@ -1,11 +1,24 @@
 .sliderNumber {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   font-size: rem(64px);
   line-height: rem(64px);
   letter-spacing: rem(6.4px);
   overflow: hidden;
+  z-index: 15;
+  width: fit-content;
+
+  @include min-tablet {
+    position: absolute;
+    font-size: rem(44px);
+  }
+
+  @include pcSmall {
+    position: absolute;
+    font-size: rem(124px);
+    line-height: 100%;
+  }
 
   .num {
     position: absolute;

@@ -13,13 +13,10 @@ const Footer = () => {
     <div className={s.footer}>
       <Container className={`${s.footer_container} grid grid-cols-12`}>
         <div
-          className={`${s.footer_navigate} col-span-8 col-start-1 grid grid-cols-8`}
+          className={`${s.footer_navigate} lg:col-span-8 lg:col-start-1 grid grid-cols-1 gap-12 sm:grid-cols-3 col-span-12 col-start-1`}
         >
           {FOOTER_NAVIGATE.map((item, index) => (
-            <div
-              key={index}
-              className={`${s.navItem} col-span-2 col-start-${(index + 1) * 2}`}
-            >
+            <div key={index} className={`${s.navItem}`}>
               <Fade
                 key={index}
                 direction={'bottom'}
@@ -48,7 +45,9 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <form className={`${s.footer_form} col-span-4 col-start-9`}>
+        <form
+          className={`${s.footer_form} lg:col-span-4 lg:col-start-9 col-span-12 col-start-1`}
+        >
           <Fade direction={'bottom'} from={'30px'} delayTrigger={0.3}>
             <p className={cinzelFont.className}>KEEP UP TO DATE NEWSLETTER</p>
           </Fade>
