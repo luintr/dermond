@@ -41,9 +41,12 @@ const BestSellerSection = () => {
 
   return (
     <section className={s.bestSellerSection}>
-      <Container className={`${s.container} grid grid-cols-12`}>
-        <div className={`${s.itemInfo} col-span-3 col-start-2`}>
+      <Container className={`${s.container} grid grid-cols-12 relative`}>
+        <div
+          className={`${s.itemInfo} col-span-12 col-start-1 sm:col-span-3 sm:col-start-2`}
+        >
           <div className={s.wrapContent}>
+            <SliderNumber activeSlider={activeSlider} />
             <h3 className={`${s.itemInfo_title}`}>
               DER MOND’s <span>BEST SELLER</span>
             </h3>
@@ -55,9 +58,10 @@ const BestSellerSection = () => {
           <LinkEffect href={ROUTE_PATH.STORY} className={s.roundedText}>
             <RoundedText />
           </LinkEffect>
-          <SliderNumber activeSlider={activeSlider} />
         </div>
-        <div className={`${s.itemSlider} col-span-6 col-start-6`}>
+        <div
+          className={`${s.itemSlider} col-span-12 col-start-1  sm:col-span-6 sm:col-start-6`}
+        >
           <button
             className={`${s.itemSlider_btn} ${disableClick && s.disable}`}
             onClick={prevClickHandler}

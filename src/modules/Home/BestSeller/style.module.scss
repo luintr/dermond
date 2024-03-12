@@ -11,8 +11,8 @@
       color: var(--tan);
 
       &_title {
-        font-size: rem(48px);
-        line-height: rem(56.35px);
+        font-size: rem(32px);
+        line-height: rem(40px);
         color: var(--tan);
         font-weight: 900;
 
@@ -52,22 +52,18 @@
       &_btn {
         position: absolute;
         top: 50%;
-        left: rem(40px);
         transform: translateY(-50%);
         cursor: pointer;
         transition: 0.4s all var(--easeOutQuart);
         z-index: 2;
-
-        @include min-tablet {
-          left: rem(20px);
-        }
+        left: rem(20px);
 
         @include pcSmall {
           left: rem(40px);
         }
 
         svg {
-          width: rem(12px);
+          width: rem(20px);
 
           @include min-tablet {
             width: rem(18px);
@@ -80,12 +76,8 @@
 
         &.right {
           left: unset;
-          right: rem(40px);
           transform: translateY(-50%) rotate(180deg);
-
-          @include min-tablet {
-            right: rem(20px);
-          }
+          right: rem(20px);
 
           @include pcSmall {
             right: rem(40px);
@@ -127,13 +119,16 @@
   position: absolute;
   bottom: rem(50px);
   right: rem(40px);
+  display: none;
 
   @include min-tablet {
     bottom: rem(0px);
+    display: block;
   }
 
   @include pcSmall {
     bottom: rem(50px);
     right: rem(40px);
+    display: block;
   }
 }

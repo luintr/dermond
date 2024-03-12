@@ -1,8 +1,8 @@
 .heroSection {
-  min-height: 64vh;
+  min-height: 85vh;
 
   @include min-tablet {
-    min-height: 60vh;
+    min-height: 70vh;
   }
 
   @include pcSmall {
@@ -10,7 +10,7 @@
   }
 
   &_wrapper {
-    margin-bottom: rem(280px);
+    margin-bottom: rem(240px);
 
     @include min-tablet {
       margin-bottom: rem(320px);
