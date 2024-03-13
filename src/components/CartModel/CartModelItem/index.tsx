@@ -117,7 +117,6 @@ const CartModelItem: React.FC<CartModelItemProps> = ({ item }) => {
                 amount={item.qty}
                 setAmount={value => modifyCartHandler(item, value)}
               />
-              {/* <TypographyBody>{`× 1`}</TypographyBody> */}
             </Flex>
 
             <div ref={sizeRef} className="mb-2 relative">

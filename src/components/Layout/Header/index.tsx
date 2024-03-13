@@ -72,13 +72,6 @@ const Header = (): React.ReactElement => {
             </>
           )}
         </div>
-        {isMobile && (
-          <LinkEffect href={ROUTE_PATH.HOME}>
-            <div className={s.logoAnim}>
-              <SvgInsert src="/icons/logo.svg" />
-            </div>
-          </LinkEffect>
-        )}
         <div className={s.navigate}>
           {!isMobile && (
             <>

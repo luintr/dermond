@@ -40,10 +40,15 @@
   }
 
   &_title {
-    font-size: rem(32px);
-    line-height: rem(32px);
+    font-size: rem(20px);
+    line-height: rem(20px);
     font-weight: 500;
     margin-bottom: rem(24px);
+
+    @include min-tablet {
+      font-size: rem(32px);
+      line-height: rem(32px);
+    }
   }
 
   &_list {
