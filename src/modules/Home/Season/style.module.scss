@@ -11,14 +11,9 @@
       padding-top: rem(120px);
 
       &_title {
-        font-size: rem(58px);
+        font-size: rem(48px);
         line-height: 100%;
-        margin-bottom: rem(12px);
-
-        @include min-tablet {
-          font-size: rem(48px);
-          line-height: 100%;
-        }
+        margin-bottom: rem(40px);
 
         @include pcSmall {
           font-size: rem(128px);
@@ -27,8 +22,32 @@
       }
 
       &_content {
-        margin-bottom: rem(76px);
+        margin-bottom: rem(40px);
         @include overtext(4);
+
+        @include min-tablet {
+          font-size: rem(14px);
+          letter-spacing: 0px;
+        }
+
+        @include pcSmall {
+          margin-bottom: rem(76px);
+          font-size: rem(20px);
+          line-height: rem(22px);
+        }
+      }
+
+      &_subContent {
+        @include min-tablet {
+          font-size: rem(14px);
+          letter-spacing: 0px;
+        }
+
+        @include pcSmall {
+          margin-bottom: rem(76px);
+          font-size: rem(20px);
+          line-height: rem(22px);
+        }
       }
 
       &_navigateBox {

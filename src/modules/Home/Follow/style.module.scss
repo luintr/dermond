@@ -1,5 +1,5 @@
 .followSection {
-  padding-top: rem(320px);
+  padding-top: rem(40px);
   position: relative;
   z-index: 3;
 
@@ -16,7 +16,7 @@
       text-align: center;
 
       &_title {
-        font-size: rem(44px);
+        font-size: rem(40px);
         line-height: rem(40px);
         margin-bottom: rem(32px);
 
@@ -54,6 +54,11 @@
       left: 0;
       width: 100%;
       max-height: rem(900px);
+      display: none;
+
+      @include min-tablet {
+        display: block;
+      }
 
       svg {
         width: 100%;

@@ -84,18 +84,18 @@ export const HOME_BESTSELLER_DATA = [
     id: 1,
     image: example,
     name: 'SUEDE LEATHER BLAZER',
-    desc: ' Customization Beyond Boundaries: Design is personal, and so is our approach.We don& apos;t just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.',
+    desc: `Customization Beyond Boundaries: Design is personal, and so is our approach. We don't just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.`,
   },
   {
     id: 2,
     image: image2,
     name: 'SUEDE LEATHER BLAZER',
-    desc: ' Customization Beyond Boundaries: Design is personal, and so is our approach.We don& apos;t just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.',
+    desc: `Customization Beyond Boundaries: Design is personal, and so is our approach. We don't just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.`,
   },
   {
     id: 3,
     image: image1,
     name: 'SUEDE LEATHER BLAZER',
-    desc: ' Customization Beyond Boundaries: Design is personal, and so is our approach.We don& apos;t just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.',
+    desc: `Customization Beyond Boundaries: Design is personal, and so is our approach. We don't just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.`,
   },
 ];

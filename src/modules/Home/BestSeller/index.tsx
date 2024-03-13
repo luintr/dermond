@@ -42,9 +42,7 @@ const BestSellerSection = () => {
   return (
     <section className={s.bestSellerSection}>
       <Container className={`${s.container} grid grid-cols-12 relative`}>
-        <div
-          className={`${s.itemInfo} col-span-12 col-start-1 sm:col-span-3 sm:col-start-2`}
-        >
+        <div className={`${s.itemInfo} col-span-12 col-start-1 sm:col-span-4`}>
           <div className={s.wrapContent}>
             <SliderNumber activeSlider={activeSlider} />
             <h3 className={`${s.itemInfo_title}`}>
@@ -60,7 +58,7 @@ const BestSellerSection = () => {
           </LinkEffect>
         </div>
         <div
-          className={`${s.itemSlider} col-span-12 col-start-1  sm:col-span-6 sm:col-start-6`}
+          className={`${s.itemSlider} col-span-12 col-start-1 sm:col-span-8 sm:col-start-5`}
         >
           <button
             className={`${s.itemSlider_btn} ${disableClick && s.disable}`}
