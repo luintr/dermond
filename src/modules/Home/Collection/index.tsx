@@ -43,7 +43,7 @@ const CollectionSecion = () => {
           >
             <div className={`${s.line} col-span-4`} ref={line}></div>
             <div
-              className={`${s.wrapText} col-start-1 col-span-4 sm:col-span-3 sm:col-start-2`}
+              className={`${s.wrapText} col-start-1 col-span-4 sm:col-span-3 sm:col-start-2 mt-12 sm:mt-0`}
             >
               <Fade direction={'bottom'} from={'30px'} delayTrigger={0.3}>
                 <p>

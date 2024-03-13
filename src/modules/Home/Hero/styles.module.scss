@@ -1,8 +1,8 @@
 .heroSection {
-  min-height: 85vh;
+  min-height: 100vh;
 
   @include min-tablet {
-    min-height: 70vh;
+    min-height: 85vh;
   }
 
   @include pcSmall {

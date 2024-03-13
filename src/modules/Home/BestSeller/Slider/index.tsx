@@ -18,7 +18,7 @@ const Slider: React.FC<ISLider> = ({ className, activeSlider }) => {
         if (index !== activeSlider) {
           gsap.to(item, {
             duration: 0.75,
-            scale: 1.15,
+            scale: 1.05,
             opacity: 0,
             ease: 'power4.out',
           });

@@ -113,7 +113,6 @@
     &_navigate {
       color: var(--tan);
       padding: rem(68px) 0;
-      text-align: center;
 
       @include min-tablet {
         padding: rem(94px) 0;
@@ -156,6 +155,7 @@
     &_form {
       background: var(--tan);
       padding: rem(94px) rem(40px);
+      margin: 0 rem(-20px);
 
       @include min-tablet {
         padding: rem(94px) rem(40px);
@@ -163,6 +163,7 @@
 
       @include pcSmall {
         padding: rem(120px) rem(40px) 0 rem(40px);
+        margin: 0 rem(-80px);
       }
 
       p {

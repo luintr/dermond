@@ -101,7 +101,7 @@ const SeasonSection = () => {
             </BoxParallax>
           </div>
 
-          <div className={s.seasonImage_subImg}>
+          <div className={`${s.seasonImage_subImg} hidden sm:block`}>
             <BoxParallax offset={0.05}>
               <Image
                 src={image2.src}
