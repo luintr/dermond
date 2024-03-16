@@ -1,18 +1,36 @@
 .storyHero {
-  padding-top: rem(100px);
+  padding-top: rem(60px);
   margin-bottom: rem(60px);
+
+  @include min-tablet {
+    padding-top: rem(60px);
+  }
+
+  @include pcSmall {
+    padding-top: rem(100px);
+  }
 
   &_headline {
     font-weight: 300;
-    font-size: rem(128px);
-    line-height: rem(140px);
+    font-size: rem(48px);
+    line-height: 100%;
     letter-spacing: rem(2px);
     text-transform: uppercase;
+
+    @include min-tablet {
+      font-size: rem(48px);
+      line-height: 100%;
+    }
+
+    @include pcSmall {
+      font-size: rem(128px);
+      line-height: rem(140px);
+    }
   }
 
   &_img {
     width: 100%;
-    margin-top: vh(-130px);
+    margin-top: vh(-50px);
 
     img {
       width: 100%;

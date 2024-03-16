@@ -1,6 +1,5 @@
 .storyShop {
   &_wrap {
-    margin: 0 rem(-40px);
     position: relative;
   }
 
@@ -27,12 +26,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @include min-tablet {
+      bottom: vh(64px);
+    }
+
+    @include pcSmall {
+      bottom: vh(128px);
+    }
   }
 
   &_title {
-    font-size: rem(64px);
-    line-height: rem(64px);
+    font-size: rem(32px);
+    line-height: rem(32px);
     margin-bottom: rem(34px);
+
+    @include min-tablet {
+      font-size: rem(48px);
+      line-height: rem(48px);
+    }
+
+    @include pcSmall {
+      font-size: rem(64px);
+      line-height: rem(64px);
+    }
   }
 
   .button {

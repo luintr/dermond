@@ -12,30 +12,36 @@ const StoryWork = () => {
   const triggerRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLParagraphElement | null>(null);
 
+  let mm = gsap.matchMedia();
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      itemRefs.current.forEach((item, index) => {
-        const itemRef = itemRefs.current[index];
-        const itemHeight = itemRef?.clientHeight;
-        const startOffset = itemHeight && (itemHeight / 1.6) * index;
+      mm.add('(min-width: 1200px)', () => {
+        itemRefs.current.forEach((item, index) => {
+          const itemRef = itemRefs.current[index];
+          const itemHeight = itemRef?.clientHeight;
+          const startOffset = itemHeight && (itemHeight / 1.6) * index;
 
-        const triggerOptions = {
-          trigger: triggerRef.current,
-          start: `top+=${startOffset}`,
-          end: `bottom ${`88%`}`,
-          pin: itemRef,
-          pinSpacing: false,
-        };
+          const triggerOptions = {
+            trigger: triggerRef.current,
+            start: `top+=${startOffset}`,
+            end: `bottom ${`88%`}`,
+            pin: itemRef,
+            pinSpacing: false,
+          };
 
-        ScrollTrigger.create(triggerOptions);
+          ScrollTrigger.create(triggerOptions);
+        });
       });
 
-      ScrollTrigger.create({
-        trigger: triggerRef.current,
-        start: 'top top',
-        end: 'bottom 88%',
-        pin: titleRef.current,
-        pinSpacing: false,
+      mm.add('(min-width: 1200px)', () => {
+        ScrollTrigger.create({
+          trigger: triggerRef.current,
+          start: 'top top',
+          end: 'bottom 88%',
+          pin: titleRef.current,
+          pinSpacing: false,
+        });
       });
     });
 

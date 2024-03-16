@@ -13,7 +13,9 @@ const StoryService = () => {
     <section className={s.storyService}>
       <Container className={`${s.container} grid grid-cols-12`}>
         <Fade direction={'left'} from={'30px'} delayTrigger={0.5}>
-          <div className={`${s.wrapContent} col-span-6 col-start-1`}>
+          <div
+            className={`${s.wrapContent} col-span-12 col-start-1 lg:col-span-6 lg:col-start-1`}
+          >
             <h2 className={`${s.storyService_title} ${cinzelFont.className} `}>
               Tailored <span className={pinyonFont.className}>Perfection</span>{' '}
               and Unveiling Exquisite Services
@@ -27,7 +29,9 @@ const StoryService = () => {
           </div>
         </Fade>
         <Fade direction={'right'} from={'30px'} delayTrigger={0.5}>
-          <div className={`${s.storyService_image} col-span-6 col-start-7`}>
+          <div
+            className={`${s.storyService_image} col-span-12 col-start-1 lg:col-span-6 lg:col-start-7`}
+          >
             <BoxParallax offset={0.1}>
               <Image
                 src={image.src}
@@ -42,7 +46,7 @@ const StoryService = () => {
 
       <Container className={`${s.container_2} grid grid-cols-12`}>
         <div
-          className={`${s.engageList} col-span-6 col-start-1 grid grid-cols-6`}
+          className={`${s.engageList} col-span-12 col-start-1 lg:col-span-6 lg:col-start-1 grid grid-cols-6`}
         >
           {storyEngageData.map((item, index) => (
             <Fade
@@ -67,7 +71,7 @@ const StoryService = () => {
           ))}
         </div>
         <div
-          className={`${s.serviceList} col-span-6 col-start-7 grid grid-cols-6`}
+          className={`${s.serviceList} col-span-12 col-start-1 lg:col-span-6 lg:col-start-7 grid grid-cols-6`}
         >
           {storyService.map((item, index) => (
             <Fade
