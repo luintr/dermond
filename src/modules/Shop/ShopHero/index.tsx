@@ -1,14 +1,13 @@
 'use client';
 import React, { useLayoutEffect, useRef } from 'react';
 import s from './style.module.scss';
-import image from '@Images/shopHero.jpg';
-import Image from 'next/image';
 import { playfairFont } from '@/utils/fonts';
 import BoxParallax from '@/components/BoxParallax';
 import Fade from '@/components/Fade';
 import gsap from 'gsap';
 import useUiContext from '@/context/uiContext';
 import Container from '@/components/Container';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 const ShopHero = () => {
   const verRef = useRef<HTMLDivElement | null>(null);
@@ -37,11 +36,11 @@ const ShopHero = () => {
     <section className={`${s.shopHero} `}>
       <div className={s.shopHero_img}>
         <BoxParallax>
-          <Image
-            src={image.src}
-            width={image.width}
-            height={image.height}
-            alt="image"
+          <ImagePlaceholder
+            src={'/images/src/shopHero.jpg'}
+            alt={'image'}
+            width={1000}
+            height={1000}
           />
         </BoxParallax>
       </div>

@@ -2,12 +2,11 @@ import React from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
 import { cinzelFont } from '@/utils/fonts';
-import Image from 'next/image';
-import bg from '@Images/follow.jpeg';
 import SvgAnimate from './SvgAnimate';
 import BoxParallax from '@/components/BoxParallax';
 import Fade from '@/components/Fade';
 import Link from 'next/link';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 const FollowSection = () => {
   return (
@@ -33,7 +32,12 @@ const FollowSection = () => {
       </Container>
       <div className={s.parallaxBg}>
         <BoxParallax offset={0.15}>
-          <Image src={bg.src} width={bg.width} height={bg.height} alt="bg" />
+          <ImagePlaceholder
+            src={'/images/src/follow.jpeg'}
+            alt={'image'}
+            width={3840}
+            height={800}
+          />
         </BoxParallax>
       </div>
     </section>

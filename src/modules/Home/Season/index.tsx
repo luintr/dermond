@@ -16,6 +16,7 @@ import Magnetic from '@/components/Magnetic';
 import { Button } from '@/components/Button';
 import { TypographyBody } from '@/components/Typography';
 import FadeHeading from '@/components/FadeHeading';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 const SeasonSection = () => {
   return (
@@ -65,11 +66,11 @@ const SeasonSection = () => {
 
           <div className={s.image}>
             <BoxParallax>
-              <Image
-                src={image3.src}
-                width={image3.width}
-                height={image3.height}
-                alt="image"
+              <ImagePlaceholder
+                src={'/images/src/season3.jpeg'}
+                alt={'image'}
+                width={1840}
+                height={800}
               />
             </BoxParallax>
           </div>
@@ -88,22 +89,22 @@ const SeasonSection = () => {
           </Fade>
           <div className={s.seasonImage_img}>
             <BoxParallax>
-              <Image
-                src={image1.src}
-                width={image1.width}
-                height={image1.height}
-                alt="image"
+              <ImagePlaceholder
+                src={'/images/src/season1.jpeg'}
+                alt={'image'}
+                width={1840}
+                height={800}
               />
             </BoxParallax>
           </div>
 
           <div className={s.seasonImage_subImg}>
             <BoxParallax offset={0.05}>
-              <Image
-                src={image2.src}
-                width={image2.width}
-                height={image2.height}
-                alt="image"
+              <ImagePlaceholder
+                src={'/images/src/season2.jpeg'}
+                alt={'image'}
+                width={1840}
+                height={800}
               />
             </BoxParallax>
           </div>
