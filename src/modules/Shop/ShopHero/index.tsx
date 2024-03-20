@@ -7,6 +7,7 @@ import Fade from '@/components/Fade';
 import gsap from 'gsap';
 import useUiContext from '@/context/uiContext';
 import Container from '@/components/Container';
+import useWindowResize from '@/hooks/useWindowSize';
 import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 const ShopHero = () => {
