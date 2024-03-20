@@ -1,21 +1,18 @@
 'use client';
 import React, { useLayoutEffect, useRef } from 'react';
 import s from './style.module.scss';
-import image from '@Images/shopHero.jpg';
-import Image from 'next/image';
 import { playfairFont } from '@/utils/fonts';
 import BoxParallax from '@/components/BoxParallax';
 import Fade from '@/components/Fade';
 import gsap from 'gsap';
 import useUiContext from '@/context/uiContext';
 import Container from '@/components/Container';
-import useWindowResize from '@/hooks/useWindowSize';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 const ShopHero = () => {
   const verRef = useRef<HTMLDivElement | null>(null);
   const horRef = useRef<HTMLDivElement | null>(null);
   const { isPageEnter } = useUiContext();
-  const { isMobile } = useWindowResize();
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -38,19 +35,14 @@ const ShopHero = () => {
   return (
     <section className={`${s.shopHero} `}>
       <div className={s.shopHero_img}>
-        {isMobile ? (
-          <Image src={image.src} alt="image" fill />
-        ) : (
-          <BoxParallax>
-            <Image
-              src={image.src}
-              width={image.width}
-              height={image.height}
-              alt="image"
-              // fill
-            />
-          </BoxParallax>
-        )}
+        <BoxParallax>
+          <ImagePlaceholder
+            src={'/images/src/shopHero.jpg'}
+            alt={'image'}
+            width={1000}
+            height={1000}
+          />
+        </BoxParallax>
       </div>
       <div className={`${s.shopHero_content}`}>
         <Container

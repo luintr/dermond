@@ -4,7 +4,6 @@ import React, { useRef } from 'react';
 import s from './style.module.scss';
 import Container from '@Components/Container';
 import { cinzelFont, playfairFont } from '@/utils/fonts';
-import Image from 'next/image';
 import { HOME_COLLECTION_DATA } from '@/constants/homeData/data';
 import MarqueeText from '@/modules/Home/Collection/MarqueeText';
 import BoxParallax from '@/components/BoxParallax';
@@ -12,6 +11,7 @@ import Fade from '@/components/Fade';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import FadeHeading from '@/components/FadeHeading';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 const CollectionSecion = () => {
   const line = useRef<HTMLDivElement | null>(null);
@@ -62,12 +62,12 @@ const CollectionSecion = () => {
           {HOME_COLLECTION_DATA.map((item, index) => (
             <div key={index} className={s.wrapImage}>
               <BoxParallax offset={item.offset}>
-                <Image
-                  className={`${s.collection_img}`}
+                <ImagePlaceholder
                   src={item.image}
+                  alt={'image'}
                   width={item.width}
                   height={item.height}
-                  alt="image"
+                  className={`${s.collection_img}`}
                 />
               </BoxParallax>
             </div>

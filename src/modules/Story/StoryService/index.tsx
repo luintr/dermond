@@ -2,11 +2,10 @@ import React from 'react';
 import s from './style.module.scss';
 import Container from '@/components/Container';
 import { cinzelFont, pinyonFont, playfairFont } from '@/utils/fonts';
-import image from '@Images/serviceImg1.jpg';
-import Image from 'next/image';
 import { storyEngageData, storyService } from '@/constants/story/storyService';
 import BoxParallax from '@/components/BoxParallax';
 import Fade from '@/components/Fade';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 const StoryService = () => {
   return (
@@ -33,11 +32,11 @@ const StoryService = () => {
             className={`${s.storyService_image} col-span-12 col-start-1 lg:col-span-6 lg:col-start-7`}
           >
             <BoxParallax offset={0.1}>
-              <Image
-                src={image.src}
-                width={image.width}
-                height={image.height}
+              <ImagePlaceholder
+                src={'/images/src/serviceImg1.jpg'}
                 alt={'image'}
+                width={694}
+                height={128}
               />
             </BoxParallax>
           </div>

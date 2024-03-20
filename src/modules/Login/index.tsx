@@ -8,8 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '@/store/slices/authSlice';
 import { login } from '@/api/userAPI';
 import { cinzelFont } from '@/utils/fonts';
-import Image from 'next/image';
-import image from '@Images/singinImg.jpg';
 import { Subtract } from '@/components/Icons';
 import LinkEffect from '@/components/LinkEffect';
 import Fade from '@/components/Fade';
@@ -19,6 +17,7 @@ import useRouterEffect from '@/hooks/useRouterEffect';
 import gsap from 'gsap';
 import useUiContext from '@/context/uiContext';
 import Container from '@/components/Container';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 const LoginModule = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -209,12 +208,11 @@ const LoginModule = () => {
           </div>
           <div className={`${s.boxImage} col-span-3 col-start-8`}>
             <div className={`${s.boxImage_img}`} ref={wrapImageRef}>
-              <Image
-                src={image.src}
-                width={image.width}
-                height={image.height}
-                alt="image"
-                ref={imageRef}
+              <ImagePlaceholder
+                src={'/images/src/singinImg.jpg'}
+                alt={'image'}
+                width={1000}
+                height={1000}
               />
               <Fade direction={'bottom'} from={'30px'} delayEnter={0.7}>
                 <div className={s.boxImage_logo}>

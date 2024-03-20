@@ -3,6 +3,7 @@ import s from './style.module.scss';
 import Image from 'next/image';
 import { HOME_BESTSELLER_DATA } from '@/constants/homeData/data';
 import gsap from 'gsap';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 type ISLider = {
   className?: string;
@@ -44,11 +45,11 @@ const Slider: React.FC<ISLider> = ({ className, activeSlider }) => {
           className={`${s.sellerSlider_item} ${index === activeSlider && s.active}`}
           ref={element => (sellerItemRefs.current[index] = element)}
         >
-          <Image
-            src={item.image.src}
-            width={item.image.width}
-            height={item.image.height}
-            alt="img"
+          <ImagePlaceholder
+            src={item.image}
+            alt={'image'}
+            width={1000}
+            height={1000}
           />
         </div>
       ))}

@@ -3,7 +3,7 @@ import s from './style.module.scss';
 import { cinzelFont } from '@/utils/fonts';
 import Marquee from 'react-fast-marquee';
 import Image from 'next/image';
-import image from '@Images/marqueeImg.png';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 const MarqueeText = () => {
   return (
@@ -12,11 +12,11 @@ const MarqueeText = () => {
         <div className={`${s.textMarquee_text} ${s.text1}`}>
           <span>VINTAGE</span>
           <span className={s.img}>
-            <Image
-              src={image.src}
-              width={image.width}
-              height={image.height}
+            <ImagePlaceholder
+              src={'/images/src/marqueeImg.png'}
               alt={'image'}
+              width={694}
+              height={128}
             />
           </span>
           <span>TIMELESS BEAUTY</span>
@@ -26,11 +26,11 @@ const MarqueeText = () => {
         <div className={`${s.textMarquee_text} ${s.text2}`}>
           <span>VINTAGE</span>
           <span className={s.img}>
-            <Image
-              src={image.src}
-              width={image.width}
-              height={image.height}
+            <ImagePlaceholder
+              src={'/images/src/marqueeImg.png'}
               alt={'image'}
+              width={694}
+              height={128}
             />
           </span>
           <span>TIMELESS BEAUTY</span>

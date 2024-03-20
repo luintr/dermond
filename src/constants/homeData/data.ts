@@ -60,21 +60,21 @@ export const FOOTER_NAVIGATE = [
 
 export const HOME_COLLECTION_DATA = [
   {
-    image: image1.src,
-    width: image1.width,
-    height: image1.height,
+    image: '/images/src/homeCol1.jpeg',
+    width: 940,
+    height: 1800,
     offset: 0.2,
   },
   {
-    image: image2.src,
-    width: image2.width,
-    height: image2.height,
+    image: '/images/src/homeCol2.jpeg',
+    width: 1568,
+    height: 1800,
     offset: 0.23,
   },
   {
-    image: image3.src,
-    width: image3.width,
-    height: image3.height,
+    image: '/images/src/homeCol3.jpeg',
+    width: 1174,
+    height: 1800,
     offset: 0.15,
   },
 ];
@@ -82,19 +82,19 @@ export const HOME_COLLECTION_DATA = [
 export const HOME_BESTSELLER_DATA = [
   {
     id: 1,
-    image: example,
+    image: '/images/src/bestSellerImg.jpeg',
     name: 'SUEDE LEATHER BLAZER',
     desc: `Customization Beyond Boundaries: Design is personal, and so is our approach. We don't just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.`,
   },
   {
     id: 2,
-    image: image2,
+    image: '/images/src/homeCol2.jpeg',
     name: 'SUEDE LEATHER BLAZER',
     desc: `Customization Beyond Boundaries: Design is personal, and so is our approach. We don't just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.`,
   },
   {
     id: 3,
-    image: image1,
+    image: '/images/src/homeCol3.jpeg',
     name: 'SUEDE LEATHER BLAZER',
     desc: `Customization Beyond Boundaries: Design is personal, and so is our approach. We don't just design dresses; we craft experiences. From fabric selection to silhouette, we tailor every detail to match the individuality of our clients, ensuring a truly bespoke creation.`,
   },

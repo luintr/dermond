@@ -4,14 +4,12 @@ import s from './styles.module.scss';
 import Container from '@/components/Container';
 import { cinzelFont } from '@/utils/fonts';
 import Fade from '@/components/Fade';
-import heroImg from '@Images/heroImg.jpg';
-import Image from 'next/image';
 import FadeHeading from '@/components/FadeHeading';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useScrollTrigger } from '@Hooks/useScrollTrigger';
 import useUiContext from '@Context/uiContext';
-import { useGSAP } from '@gsap/react';
+import ImagePlaceholder from '@/components/ImagePlaceholder';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -157,12 +155,11 @@ const HeroSection = () => {
               className={`${s.bottomHero_wrapImage} col-span-6 col-start-4`}
               ref={wrapImage}
             >
-              <Image
-                src={heroImg.src}
-                width={heroImg.width}
-                height={heroImg.height}
-                alt={heroImg.src}
-                ref={imageRef}
+              <ImagePlaceholder
+                src={'/images/src/heroImg.jpg'}
+                alt={'image'}
+                width={2668}
+                height={3860}
               />
             </div>
           </div>
