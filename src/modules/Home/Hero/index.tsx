@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import s from './styles.module.scss';
 import Container from '@/components/Container';
 import { cinzelFont } from '@/utils/fonts';
@@ -20,6 +20,28 @@ const HeroSection = () => {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const wrapImage = useRef<HTMLDivElement | null>(null);
   const { isPageEnter } = useUiContext();
+
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState('');
+
+  const updateClock = () => {
+    let date = new Date();
+    let time = date.toLocaleString('en-US', {
+      timeZone: 'Asia/Ho_Chi_Minh',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    });
+
+    let currentDate = date.toLocaleString('en-US', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    });
+
+    setTime(time);
+    setDate(currentDate);
+  };
 
   useEffect(() => {
     if (!refLightMoon.current) return;
@@ -62,6 +84,13 @@ const HeroSection = () => {
     },
     [imageRef, wrapImage, isPageEnter]
   );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updateClock();
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // useGSAP(() => {
   //     if (isPageEnter) {
@@ -110,10 +139,10 @@ const HeroSection = () => {
               className={`${s.topHero_right} col-span-12 col-start-1 sm:col-span-2 sm:col-start-10`}
             >
               <Fade direction={'bottom'} from={'30px'} delayEnter={0.2}>
-                <p>HN 16:59</p>
+                <p>HN {time}</p>
               </Fade>
               <Fade direction={'bottom'} from={'30px'} delayEnter={0.4}>
-                <p>19 DEC 2023</p>
+                <p>{date}</p>
               </Fade>
             </div>
           </div>
