@@ -32,12 +32,15 @@ const CollectionSecion = () => {
     <section className={s.collectionSection}>
       <Container className={s.container}>
         <div className={`${s.introduce} grid grid-cols-12`}>
-          <FadeHeading
+          <div
             className={`${s.introduce_title} ${cinzelFont.className} col-span-6 col-start-2`}
-            stagger={0.02}
           >
-            MINIMALIST STRONG FOR <span>COLLECTION</span>
-          </FadeHeading>
+            <Fade direction={'bottom'} from={'30px'} delayTrigger={0.3}>
+              <h2>
+                MINIMALIST STRONG FOR <span>COLLECTION</span>
+              </h2>
+            </Fade>
+          </div>
           <div
             className={`${s.introduce_desc} col-span-4 col-start-8 grid grid-cols-4`}
           >

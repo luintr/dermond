@@ -1,26 +1,29 @@
 'use client';
+
 import { useHeadlineFade } from './useHeadlineFade';
-import React, { PropsWithChildren, useRef } from 'react';
+import React, { PropsWithChildren, useMemo, useRef } from 'react';
 import s from './style.module.scss';
 
-type IFadeHeading = {
+interface IFadeHeading extends PropsWithChildren {
   className?: string;
   stagger?: number;
-};
+}
 
-const FadeHeading: React.FC<PropsWithChildren<IFadeHeading>> = ({
-  children,
-  className,
-  stagger,
-}) => {
+export default function FadeHeading({ children, className, stagger }: IFadeHeading) {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
-  useHeadlineFade({ ref: titleRef, stagger: stagger });
+
+  const memoFade = useMemo(() => {
+    return {
+      ref: titleRef,
+      stagger,
+    };
+  }, [stagger]);
+
+  useHeadlineFade(memoFade);
 
   return (
-    <h2 className={`${s.title} ${className}`} ref={titleRef}>
+    <h2 ref={titleRef} className={`${s.title} ${className || ''}`}>
       {children}
     </h2>
   );
-};
-
-export default FadeHeading;
+}

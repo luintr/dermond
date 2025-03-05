@@ -1,41 +1,57 @@
-import { MutableRefObject, useEffect } from 'react';
-import useSplitType from '@Hooks/useSplitType';
+import { MutableRefObject, useEffect, useMemo } from 'react';
 import gsap from 'gsap';
+import useSplitType from '@Hooks/useSplitType';
 import useUiContext from '@/context/uiContext';
 import { useScrollTrigger } from '@/hooks/useScrollTrigger';
 
-type IHeadlineFade = {
-  ref: MutableRefObject<
-    HTMLHeadingElement | HTMLHeadElement | HTMLElement | null
-  >;
+interface IHeadlineFade {
+  ref: MutableRefObject<HTMLElement | null>;
   stagger?: number;
-};
+  isObserver?: boolean;
+}
 
-export const useHeadlineFade = ({
-  ref,
-  stagger = 0.01,
-}: IHeadlineFade): void => {
+export function useHeadlineFade({ ref, stagger = 0.01, isObserver = true }: IHeadlineFade): void {
   const splitTextRef = useSplitType(ref, { types: 'words, chars' });
   const { isPageEnter } = useUiContext();
 
-  useScrollTrigger(
-    {
-      trigger: ref,
-      start: 'top 90%',
-      onEnter: () => {
-        const chars = splitTextRef.current?.chars as HTMLElement[];
+  const memoFade = useMemo(() => {
+    return { ref, stagger, isObserver };
+  }, [ref, stagger, isObserver]);
 
-        isPageEnter &&
-          gsap.to(chars, {
-            opacity: 1,
-            stagger: {
-              from: 'random',
-              each: stagger,
-            },
-            ease: 'power4.inOut',
-          });
-      },
-    },
-    [splitTextRef, stagger, ref, isPageEnter]
-  );
-};
+  useEffect(() => {
+    const gsapContext = gsap.context(() => {
+      const chars = splitTextRef.current?.chars as HTMLElement[];
+
+      if (!chars) return;
+
+      gsap.set(chars, { opacity: 0 });
+
+      const animationIn = () => {
+        gsap.to(chars, {
+          opacity: 1,
+          stagger: {
+            from: 'random',
+            each: stagger,
+          },
+          ease: 'power4.inOut',
+        });
+      };
+
+      if (!isObserver) {
+        isPageEnter && animationIn();
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            animationIn();
+            ref.current && observer.unobserve(ref.current);
+            observer.disconnect();
+          }
+        });
+
+        ref.current && observer.observe(ref.current);
+      }
+    }, [ref]);
+
+    return () => gsapContext.revert();
+  }, [memoFade, isPageEnter, splitTextRef]);
+}

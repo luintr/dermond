@@ -30,14 +30,14 @@ const HeroSection = () => {
         scrollTrigger: {
           trigger: refLightMoon.current,
           start: 'top center',
-          end: 'max',
+          end: 'bottom top',
           invalidateOnRefresh: true,
           scrub: true,
         },
       });
     }, [refLightMoon]);
     return () => gsapContext.revert();
-  }, [refLightMoon]);
+  }, []);
 
   useScrollTrigger(
     {
@@ -113,8 +113,12 @@ const HeroSection = () => {
             <div
               className={`${s.bottomHero_title} ${cinzelFont.className} col-span-6 col-start-4`}
             >
-              <FadeHeading stagger={0.2}>DER</FadeHeading>
-              <FadeHeading stagger={0.2}>MOND</FadeHeading>
+              <Fade direction={'left'} from={'30px'} delayEnter={0.5}>
+                <h2>DER</h2>
+              </Fade>
+              <Fade direction={'right'} from={'30px'} delayEnter={1}>
+                <h2>MOND</h2>
+              </Fade>
             </div>
             <div
               className={`${s.bottomHero_wrapImage} col-span-6 col-start-4`}
