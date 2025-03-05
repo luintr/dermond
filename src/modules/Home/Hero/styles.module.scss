@@ -81,6 +81,7 @@
     }
 
     &_light {
+      width: rem(160px);
       transform: translateY(-50%) translateX(-50%);
       background: var(--tan);
     }

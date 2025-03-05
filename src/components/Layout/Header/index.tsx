@@ -50,12 +50,12 @@ const Header = (): React.ReactElement => {
         </div>
 
         <div className={s.navigate}>
-          <LinkEffect href={ROUTE_PATH.STORY} className={s.navigate_item}>
+          {/* <LinkEffect href={ROUTE_PATH.STORY} className={s.navigate_item}>
             OUR STORY
-          </LinkEffect>
-          <LinkEffect href={ROUTE_PATH.SHOP} className={s.navigate_item}>
+          </LinkEffect> */}
+          {/* <LinkEffect href={ROUTE_PATH.SHOP} className={s.navigate_item}>
             Shop
-          </LinkEffect>
+          </LinkEffect> */}
           {user ? (
             <ProfileHeader data={user} />
           ) : (
@@ -63,12 +63,12 @@ const Header = (): React.ReactElement => {
               Sign In
             </LinkEffect>
           )}
-          <div className={s.navigate_item} onClick={() => setModelToggle()}>
+          {/* <div className={s.navigate_item} onClick={() => setModelToggle()}>
             <CartIcon />
             {qtyItems.length > 0 && (
               <span className={s.navigate_item_cartQtr}>{qtyItems.length}</span>
             )}
-          </div>
+          </div> */}
         </div>
       </Container>
     </header>

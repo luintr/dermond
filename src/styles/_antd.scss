@@ -130,6 +130,10 @@
   }
 }
 
+.ant-btn-variant-solid {
+  background: unset;
+}
+
 .ant-form-item {
   box-shadow: none;
 
@@ -187,6 +191,7 @@
   * {
     font-size: rem(20px);
   }
+
   .ant-pagination-item,
   .ant-pagination-prev,
   .ant-pagination-next {
@@ -204,6 +209,7 @@
     background-color: var(--tan) !important;
     color: var(--black-08) !important;
     border-bottom: rem(1px) solid #a37c7590 !important;
+
     * {
       font-size: rem(20px);
     }
@@ -218,6 +224,7 @@
     &-row-hover {
       background: #f7f8f4 !important;
     }
+
     a {
       transition: 0.4s all var(--easeOutQuart);
 
@@ -246,6 +253,7 @@
       aspect-ratio: 1 !important;
     }
   }
+
   .ant-pagination-item-active {
     display: flex;
     align-items: center;

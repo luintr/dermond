@@ -12,11 +12,11 @@ const SvgAnimate = () => {
         opacity: 1,
         ease: 'power4.inOut',
         duration: 3,
-        stagger: 0.4,
+        stagger: 0.1,
         scrollTrigger: {
           trigger: svgAnimateRef.current,
-          start: 'top 50%',
-          end: 'bottom center',
+          start: 'top 40%',
+          end: 'bottom 60%',
           scrub: true,
         },
       });

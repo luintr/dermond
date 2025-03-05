@@ -1,9 +1,9 @@
 export const ROUTE_PATH = {
   HOME: '/',
-  SHOP: '/shop',
-  GALLERY: '/gallery',
-  STORY: '/story',
-  CART: '/cart',
+  SHOP: '/',
+  GALLERY: '/',
+  STORY: '/',
+  CART: '/',
   LOGIN: '/login',
   REGISTER: '/register',
 };

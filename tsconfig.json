@@ -15,8 +15,8 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next",
-      },
+        "name": "next"
+      }
     ],
     "paths": {
       "@/*": ["./src/*"],
@@ -40,8 +40,8 @@
       "@Api/*": ["./src/api/*"],
       "@Api": ["./src/api"],
       "@Images/*": ["./src/images/*"],
-      "@Images": ["./src/images"],
-    },
+      "@Images": ["./src/images"]
+    }
   },
   "include": [
     "next-env.d.ts",
@@ -49,7 +49,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/types/**/*.d.ts",
-    "../server/src/data/product.ts",
+    "../server/src/data/product.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }
