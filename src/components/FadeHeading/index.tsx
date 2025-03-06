@@ -9,7 +9,11 @@ interface IFadeHeading extends PropsWithChildren {
   stagger?: number;
 }
 
-export default function FadeHeading({ children, className, stagger }: IFadeHeading) {
+export default function FadeHeading({
+  children,
+  className,
+  stagger,
+}: IFadeHeading) {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
 
   const memoFade = useMemo(() => {

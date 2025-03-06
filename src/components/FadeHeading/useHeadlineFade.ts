@@ -10,7 +10,11 @@ interface IHeadlineFade {
   isObserver?: boolean;
 }
 
-export function useHeadlineFade({ ref, stagger = 0.01, isObserver = true }: IHeadlineFade): void {
+export function useHeadlineFade({
+  ref,
+  stagger = 0.01,
+  isObserver = true,
+}: IHeadlineFade): void {
   const splitTextRef = useSplitType(ref, { types: 'words, chars' });
   const { isPageEnter } = useUiContext();
 
@@ -40,7 +44,7 @@ export function useHeadlineFade({ ref, stagger = 0.01, isObserver = true }: IHea
       if (!isObserver) {
         isPageEnter && animationIn();
       } else {
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(entries => {
           if (entries[0].isIntersecting) {
             animationIn();
             ref.current && observer.unobserve(ref.current);

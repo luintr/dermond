@@ -24,9 +24,11 @@ const SeasonSection = () => {
       <Container className={`${s.container} grid grid-cols-12`}>
         <div className={`${s.seasonDesc} col-span-5 col-start-2 `}>
           <div className={`${s.box} col-span-5 grid grid-cols-5`}>
-            <FadeHeading className={`${s.seasonDesc_title} col-span-5`}>
-              {`// TIS THE SEASON`}
-            </FadeHeading>
+            <Fade direction={'bottom'} from={'40px'} delayTrigger={0.4}>
+              <h2
+                className={`${s.seasonDesc_title} col-span-5`}
+              >{`// TIS THE SEASON`}</h2>
+            </Fade>
             <Fade direction={'bottom'} from={'40px'} delayTrigger={0.4}>
               <p className={`${s.seasonDesc_content} col-span-5`}>
                 Customization Beyond Boundaries: Design is personal, and so is
